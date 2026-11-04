@@ -1,0 +1,16 @@
+{
+  "to": {
+    "view": "guide",
+    "id": "easy-and-fun"
+  },
+  "en": {
+    "title": "Easy and fun to build",
+    "text": "Solutions that you could start this weekend, with ordinary tools and no specialist skills.",
+    "cta": "{n} weekend projects"
+  },
+  "fr": {
+    "title": "Simple et fun à construire",
+    "text": "Des solutions à commencer ce week-end, avec des outils ordinaires et sans compétences particulières.",
+    "cta": "{n} projets"
+  }
+}

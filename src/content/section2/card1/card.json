@@ -1,0 +1,15 @@
+{
+  "to": {
+    "view": "tree"
+  },
+  "en": {
+    "title": "Map out a complete system and adopt circularity",
+    "text": "Link different solutions together, and reuse the outputs of some as an input for others.",
+    "cta": "Build a system"
+  },
+  "fr": {
+    "title": "Cartographiez un système complet et adoptez la circularité",
+    "text": "Reliez des solutions ensemble et réutilisez les produits de l'une comme ressource d'une autre.",
+    "cta": "Construisez un système"
+  }
+}

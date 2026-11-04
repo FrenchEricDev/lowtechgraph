@@ -1,0 +1,33 @@
+{
+  "_about": "Everyday words for search (brief 07, place 3; Eric, 2026-10-20). One entry per idea: the words a reader types, in both languages, and what they should find. Started from the phrases the U1 audit found failing; grow it only when a real search fails. A target is a solution or sub-need id, guide:<id>, or page:<needs|resources|guides|about|why>. Read and approved by Eric, 2026-11-03.",
+  "entries": [
+    { "words": ["fridge", "refrigerator", "frigo", "frigidaire", "réfrigérateur", "keep food cold", "garder au frais"],
+      "targets": ["SOL-184", "SOL-245", "SOL-087"] },
+    { "words": ["power cut", "blackout", "outage", "no electricity", "coupure de courant", "panne de courant", "panne d'électricité", "délestage"],
+      "targets": ["guide:resilience"] },
+    { "words": ["resilience", "resilient", "autonomy", "résilience", "résilient", "autonomie"],
+      "targets": ["guide:resilience"] },
+    { "words": ["heating bill", "energy bill", "bill", "save money", "cheap", "cheaper", "facture", "facture de chauffage", "économiser", "économies", "pas cher"],
+      "targets": ["guide:save-money"] },
+    { "words": ["flat", "apartment", "renter", "rent", "renting", "tenant", "landlord", "appartement", "locataire", "location", "propriétaire"],
+      "targets": ["guide:in-a-flat"] },
+    { "words": ["weekend", "week-end", "easy", "quick", "first build", "facile", "rapide", "premier projet"],
+      "targets": ["guide:easy-and-fun"] },
+    { "words": ["damp", "mould", "mold", "humidity", "condensation", "noise", "healthy", "health", "humidité", "moisissure", "moisissures", "bruit", "santé", "sain", "logement sain"],
+      "targets": ["guide:healthier-home"] },
+    { "words": ["sustainable", "green", "eco", "durable", "écologique"],
+      "targets": ["guide:sustainable"] },
+    { "words": ["guide", "guides", "where to start", "par où commencer"],
+      "targets": ["page:guides"] },
+    { "words": ["tutorial", "tutorials", "how to build", "diy", "tutoriel", "tutoriels", "fabriquer", "construire soi-même"],
+      "targets": ["page:needs"] },
+    { "words": ["cold water", "unheated water", "eau froide"],
+      "targets": ["SOL-053", "SOL-131"] },
+    { "words": ["resource", "resources", "ressource", "ressources"],
+      "targets": ["page:resources"] },
+    { "words": ["why", "low-tech", "lowtech", "pourquoi"],
+      "targets": ["page:why"] },
+    { "words": ["about", "who", "sources", "community", "à propos", "qui", "communauté"],
+      "targets": ["page:about"] }
+  ]
+}

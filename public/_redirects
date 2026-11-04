@@ -1,0 +1,30 @@
+# Intentionally minimal.
+#
+# There is NO catch-all rewrite here. Every legitimate route has a real file in dist:
+# 664 prerendered content pages, plus shells for the six app-only routes (tree/settings/
+# search in both languages). Anything not matching a file is genuinely missing, and
+# Cloudflare Pages serves dist/404.html with a real 404 status for it.
+#
+# A `/*  /index.html  200` fallback would answer HTTP 200 for every bad URL — a "soft
+# 404", which search engines treat as a quality signal against the site. Do not add one
+# back without also removing 404.html.
+
+# The bare root carries no language. It still goes to French -- the lead market, and a
+# real page for a crawler rather than a JS-dependent blank -- but it carries `l=auto`,
+# which tells the app this visitor did NOT ask for French: they asked for nothing.
+#
+# That distinction is the whole point. Cloudflare Pages cannot branch a redirect on
+# Accept-Language, so the language choice has to happen in the app; without a marker the
+# app cannot tell a root visitor from someone opening a /fr link that a French speaker
+# sent them, and correcting the second would be worse than not correcting the first.
+# The app strips the parameter as it goes, so nothing downstream ever sees it.
+/    /fr?l=auto    302
+
+# Building form moved from Thermal comfort to Structural integrity & safety (2026-09-16).
+# Slugs are frozen; the parent in the path changed, so the old addresses redirect.
+/en/need/thermal-comfort/building-form-compactness    /en/need/structural-integrity-safety/building-form-compactness    301
+/fr/besoin/confort-thermique/forme-et-compacite-du-batiment    /fr/besoin/integrite-structurelle-et-securite/forme-et-compacite-du-batiment    301
+
+# Unheated water became Raw water (Eric, 2026-11-01); the id IO-16 stays, the address moved.
+/en/resource/unheated-water    /en/resource/raw-water    301
+/fr/ressource/eau-froide    /fr/ressource/eau-brute    301

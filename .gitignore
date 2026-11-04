@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- project-specific notes -------------------------------------------------
+# This repository is app/webapp ONLY. The workbook, the Python pipeline, the project
+# documents and the archive stay out of version control deliberately (Eric, 2026-08-19):
+# nothing outside this folder is needed to build or run the site.
+#
+# NOT ignored, and must stay that way:
+#   src/data/catalogue.json    the catalogue the app renders
+#   src/data/build-info.json   the "last updated" date and entity counts
+# Both are generated OUTSIDE this repo by scripts/build_app_data.py, which needs Python
+# and openpyxl. The host only runs `npm run build`, so it cannot regenerate them — if
+# these were ignored, every deploy would ship a site with no data.
+
+# Wrangler's local dev state and bundles: machine-specific, never part of the site.
+.wrangler

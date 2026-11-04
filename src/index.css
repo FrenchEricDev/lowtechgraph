@@ -1,0 +1,494 @@
+/*
+ * =========================================================================
+ * DESIGN TOKENS
+ * Every colour in the app resolves through these: accent (green, low-tech), benchmark
+ * (terracotta, the high-tech option), newbuild (a constraint), resource (blue, a resource in
+ * the builder), and the verdict family.
+ *
+ * Three theme states: an explicit choice stamps data-theme on <html>; "auto" stamps nothing and
+ * prefers-color-scheme decides. So the bare :root is the complete light palette, the media
+ * query redefines only tokens (guarded so an explicit light choice wins), and
+ * [data-theme="dark"] redefines them again. Never declare a colour only inside a media or
+ * [data-theme] block.
+ * =========================================================================
+ */
+/*
+ * ---- the face: Source Sans 3 (brief 12, Eric 2026-10-18), self-hosted so it works offline and
+ * the same on every system (it was Segoe UI, San Francisco or Roboto, and Arial in fields). One
+ * variable file per style carries every weight; latin covers English and French, latin-ext the
+ * odd maker's name. Licence: assets/fonts/SourceSans3-OFL.txt.
+ */
+@font-face {
+  font-family: "Source Sans 3"; font-style: normal; font-weight: 200 900; font-display: swap;
+  src: url("./assets/fonts/source-sans-3-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Source Sans 3"; font-style: italic; font-weight: 200 900; font-display: swap;
+  src: url("./assets/fonts/source-sans-3-latin-wght-italic.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Source Sans 3"; font-style: normal; font-weight: 200 900; font-display: swap;
+  src: url("./assets/fonts/source-sans-3-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Source Sans 3"; font-style: italic; font-weight: 200 900; font-display: swap;
+  src: url("./assets/fonts/source-sans-3-latin-ext-wght-italic.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+:root {
+  color-scheme: light;
+
+  /* Neutrals. */
+  --bg: #F6F1E6;
+  --surface: #FFFFFF;
+  --surface-2: #F2ECDF;      /* subtly raised or inset panels */
+  --ink: #262420;
+  --muted: #66604F;
+  --line: #E0D7C6;
+  --line-soft: rgba(110, 100, 82, .22);
+
+  /* Accent: the logo's sage, deepened until it carries text (5.85:1). */
+  --accent: #4F6247;
+  --accent-ink: #3D4E37;
+  --accent-bg: #EBEFE5;      /* hover / selected surface */
+  --accent-bg-2: #F1F4EC;    /* the lighter of the two green tints */
+  --on-accent: #FFFFFF;      /* text on a filled accent button */
+  /* A true grey, off the warm palette on purpose: an input covered by a sister input has to
+     read as OFF, not as another shade of the page (Eric, 2026-09-23). */
+  --spare-bg: #E7E7E6;
+  --spare-ink: #6A6A68;
+  --spare-line: #98989A;
+  --header-bg: #4F6247;      /* own tokens: in dark the bar must NOT invert to bright */
+  --header-ink: #FFFFFF;
+  /*
+   * .14: white text on translucent white over the bar is a composite, and .18 fell under 4.5:1.
+   * qa-contrast composites rgba().
+   */
+  --header-btn: rgba(255, 255, 255, .14);
+  /* Hover lowers the fill on the light bar; brightening it under white text fails contrast. */
+  --header-btn-hover: rgba(255, 255, 255, .08);
+  /*
+   * Marks drawn on the bar are light, because the bar is dark in both themes: the page's
+   * --focus is invisible there.
+   */
+  --header-focus: var(--header-ink);
+  --header-dot-ring: var(--header-ink);
+  /*
+   * The search field keeps a paper ground in both themes, deliberately not redefined below, so
+   * its ink cannot come from --ink.
+   */
+  --header-field: #ffffff;
+  --header-field-ink: #23241f;
+  --header-field-muted: #6d6f66;
+  /*
+   * The hero frame stays fixed in both themes: the artwork carries its own light ground, since
+   * an SVG in an <img> cannot follow the theme.
+   */
+  --hero-frame: #4F6247;
+  --accent-line: #B4C2A6;    /* green border, e.g. the passive badge */
+  --accent-bg-strong: #DFE7D5;  /* the "this is the row you're on" tint */
+
+  /*
+   * The builder's check button: ink, the one fill in the bar that means nothing else (Eric,
+   * 2026-10-20). It was terracotta, which brief 12 keeps for high-tech alone.
+   */
+  --verdict: #262420;
+  --verdict-ink: #ffffff;
+
+  /*
+   * New-build only: a constraint, not a rating, kept a clear distance (ΔE 21) from the
+   * benchmark colour.
+   */
+  --newbuild-ink: #6a3b36;
+  --newbuild-bg: #f6e5e2;
+  --newbuild-line: #dcb8b2;
+
+  /*
+   * Benchmark, the high-tech option: the logo's second colour, darkened until it carries small
+   * text (5.26:1).
+   */
+  --benchmark: #A2492B;
+  --benchmark-ink: #833A20;
+  --benchmark-bg: #F9EAE0;
+  --benchmark-bg-2: #F6E5D9;
+  --benchmark-line: #DFB89C;
+  --badge-ink: #FFFFFF;     /* the count on a header badge, on --benchmark */
+
+  /* Resource: builder resource nodes, blue. */
+  --resource: #2C6C80;
+  --resource-ink: #245b6b;
+  --resource-bg: #eaf3f6;
+  --resource-line: #bcd7df;
+
+  /*
+   * ---- the builder's verdict marks
+   * Declared here because qa-contrast reads only index.css. Conventional status colours (green,
+   * yellow, red, grey), separate from the brand, and kept apart from the terracotta benchmark.
+   */
+  --adq-green: #37703D;  --adq-green-bg: #EEF4EE;
+  --adq-yellow: #7C5F17; --adq-yellow-bg: #F7F2E4;
+  /* Crimson, not terracotta: ΔE 21 from the benchmark. */
+  --adq-red: #A12B3A;    --adq-red-bg: #F7ECEC;
+  --adq-grey: #5F5B4E;   --adq-grey-bg: #F1EFEA;
+  /* Supplied is not a judgement: the interface's neutral ink, not a fifth hue. */
+  --adq-supplied: #4a5c6a; --adq-supplied-bg: #eef1f4;
+  /* The two quiet diagnostic cards (fabric, summer exposure). Defined, so dark mode applies. */
+  --muted-line: #C9C0AE;
+  /* A field's and a secondary control's outline: 3:1 on white (brief 12; fields were 1.21:1). */
+  --field-line: #958C7B;
+  /* The drawing's sheet (brief 12): the one raised surface at rest, lighter than the page. */
+  --sheet: #FFFDF7;
+  --shadow-raised: 0 1px 2px rgba(38, 36, 32, .08), 0 6px 18px rgba(38, 36, 32, .08);
+  --shadow-overlay: 0 12px 32px rgba(38, 36, 32, .20);
+  --warm-line: #D4BE92;
+
+  /* Focus ring: one token so it cannot drift between components. */
+  --focus: #3D4E37;
+
+  /* Soft corners: the interface should feel welcoming rather than technical. */
+  --radius: 16px;
+  /* Smaller radii for things inside something rounded: nested corners step down. */
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  /* THE PAGE WIDTH (Eric, 2026-10-21: one central width on every page, and everything inside
+     it follows it rather than stopping short). Every view, the footer and the static twins use
+     it; a page with a rail splits it. */
+  --maxw: 1040px;
+
+  /* ---- spacing scale: eight steps, grouped by what the space does. Borders and offsets keep literal pixels. */
+  --s-1: 2px;    /* hairline nudge                    */
+  --s-2: 4px;    /* tight, inside a control           */
+  --s-3: 8px;    /* snug, between related things      */
+  --s-4: 12px;   /* the default gap                   */
+  --s-5: 16px;   /* comfortable, between blocks       */
+  --s-6: 24px;   /* loose, between sections           */
+  --s-7: 32px;   /* section break                     */
+  --s-8: 48px;   /* page foot                         */
+
+  /*
+   * ---- type scale
+   * A size not on this list means the scale is wrong, not the element. It spans about 5x: the
+   * small end and body barely moved when it widened, and the range was bought at the top, so
+   * what changed is which things lead a page.
+   */
+  --t-xs:   0.75rem;   /* uppercase micro-labels, badges, tags               */
+  --t-sm:   0.875rem;   /* captions, notes, table meta                        */
+  --t-md:   1rem;   /* secondary body: list rows, the rail, settings help  */
+  --t-base: 1rem;      /* body: 16 px (brief 12: it was 17 and used five times; 16 is what pages read) */
+  --t-lg:   1.25rem;    /* headings: 20 px, in ink (brief 12)                 */
+  --t-xl:   1.75rem;    /* page title                                         */
+  /*
+   * The wordmark is off the content scale: a brand mark has one correct size and must not move
+   * when content ranks are re-cut.
+   */
+  /* Spacing and leading for type (brief 12): two letter-spacings, three line-heights. */
+  --ls-caps: .08em;      /* uppercase labels */
+  --ls-display: -.01em;  /* the page title and the home display */
+  --lh-tight: 1.15;      /* titles */
+  --lh-snug: 1.3;        /* headings, labels, controls */
+  --lh-read: 1.5;        /* body and small */
+  --t-brand: 1.15rem;  /* the header wordmark, deliberately off the scale       */
+  /* The display step for the homepage <h1>, fluid so it suits a phone and a laptop. */
+  --t-2xl:  clamp(2.125rem, 1.3rem + 3.2vw, 3.5rem);   /* homepage <h1>            */
+  /*
+   * ---- controls (brief 12): two heights. 44 carries a journey and is the floor on a phone; 36
+   * sits inside a card on a desktop. A primary is never smaller than a secondary beside it.
+   */
+  --ctl-lg: 44px;
+  --ctl-md: 36px;
+  /*
+   * ---- motion (brief 13, the motion audit's specification, agreed 2026-10-20). A duration not
+   * on this list means the scale is wrong. Script reads the same numbers (motion.js).
+   */
+  --dur-fast: 150ms;    /* a control answering; fades; closing anything */
+  --dur-base: 250ms;    /* something entering: the message, a panel, a drawing, a new card */
+  --dur-slow: 400ms;    /* a large area or an emphasis: a cross-fade, the camera, a landing */
+  --dur-travel: 600ms;  /* the longest a thing may take to cross the screen */
+  --dur-linger: 1500ms; /* how long a "this just changed" mark stays */
+  --hold-message: 7000ms; /* the message at the foot (Eric, 2026-10-18) */
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0, 1);
+  --ease-exit: cubic-bezier(.3, 0, 1, 1);
+  --ease-emphasis: cubic-bezier(.3, 1.4, .5, 1); /* the count on landing, nothing else */
+  /* Header geometry, named because the desktop rail sticks below it. */
+  --header-pad: 7px;
+  --header-btn-h: 44px;
+  --header-h: calc(var(--header-btn-h) + (var(--header-pad) * 2));
+}
+
+/* Dark, for everyone who has not explicitly chosen light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --bg: #191712;
+    --surface: #221F19;
+    --surface-2: #262219;
+    --ink: #EAE4D6;
+    --muted: #9C9483;
+    --line: #35301F;
+    --line-soft: rgba(160, 160, 160, .22);
+
+    --accent: #9FB394;
+    --accent-ink: #B6C7AC;
+    --accent-bg: #232A1F;
+    --accent-bg-2: #1F251C;
+    --on-accent: #191712;
+    --spare-bg: #2C2C2B;
+    --spare-ink: #9A9A98;
+    --spare-line: #7C7C7E;
+    --header-bg: #221F19;
+    --header-ink: #EAE4D6;
+    --header-btn: rgba(255, 255, 255, .08);
+    --header-btn-hover: rgba(255, 255, 255, .14);
+    --accent-line: #4A5742;
+    --accent-bg-strong: #2A3325;
+
+    --verdict: #EAE4D6;
+    --verdict-ink: #191712;
+
+    --newbuild-ink: #d9a49e;
+    --newbuild-bg: #2e211f;
+    --newbuild-line: #4d3733;
+
+    --benchmark: #D98E64;
+    --benchmark-ink: #E3A583;
+    --benchmark-bg: #2C221A;
+    --benchmark-bg-2: #2A211A;
+    --benchmark-line: #59422F;
+    --badge-ink: #191712;
+
+    --resource: #5FA9BC;
+    --resource-ink: #9fcdda;
+    --resource-bg: #1b262a;
+    --resource-line: #2f4750;
+
+    --focus: #B6C7AC;
+    --adq-green: #8fc396;  --adq-green-bg: rgba(143, 195, 150, .10);
+    --adq-yellow: #d8bd7a; --adq-yellow-bg: rgba(216, 189, 122, .10);
+    --adq-red: #EC8C9B;    --adq-red-bg: rgba(236, 140, 155, .10);
+    --adq-grey: #9a9c93;   --adq-grey-bg: rgba(154, 156, 147, .10);
+    --adq-supplied: #9fb4c4; --adq-supplied-bg: rgba(159, 180, 196, .10);
+    --muted-line: #4E483B;
+    --field-line: #77705F;
+    --sheet: #24201A;
+    --shadow-raised: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 18px rgba(0, 0, 0, .30);
+    --shadow-overlay: 0 12px 32px rgba(0, 0, 0, .45);
+    --warm-line: #6E5B3A;
+  }
+}
+
+/* Explicit dark choice wins over a light OS. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --verdict: #EAE4D6;
+  --verdict-ink: #191712;
+
+  --bg: #191712;
+  --surface: #221F19;
+  --surface-2: #262219;
+  --ink: #EAE4D6;
+  --muted: #9C9483;
+  --line: #35301F;
+  --line-soft: rgba(160, 160, 160, .22);
+
+  --accent: #9FB394;
+  --accent-ink: #B6C7AC;
+  --accent-bg: #232A1F;
+  --accent-bg-2: #1F251C;
+  --on-accent: #191712;
+  --spare-bg: #2C2C2B;
+  --spare-ink: #9A9A98;
+  --spare-line: #7C7C7E;
+
+  /*
+   * Every token redefined in the media query must be redefined here too, or a light OS with the
+   * dark toggle keeps light values. qa-contrast compares the two blocks token by token.
+   */
+  --header-bg: #221F19;
+  --header-ink: #EAE4D6;
+  --header-btn: rgba(255, 255, 255, .08);
+  --header-btn-hover: rgba(255, 255, 255, .14);
+  --accent-line: #4A5742;
+  --accent-bg-strong: #2A3325;
+  --newbuild-ink: #d9a49e;
+  --newbuild-bg: #2e211f;
+  --newbuild-line: #4d3733;
+
+  --benchmark: #D98E64;
+  --benchmark-ink: #E3A583;
+  --benchmark-bg: #2C221A;
+  --benchmark-bg-2: #2A211A;
+  --benchmark-line: #59422F;
+  --badge-ink: #191712;
+
+  --resource: #5FA9BC;
+  --resource-ink: #9fcdda;
+  --resource-bg: #1b262a;
+  --resource-line: #2f4750;
+
+  --focus: #B6C7AC;
+  --adq-green: #8fc396;  --adq-green-bg: rgba(143, 195, 150, .10);
+  --adq-yellow: #d8bd7a; --adq-yellow-bg: rgba(216, 189, 122, .10);
+  --adq-red: #EC8C9B;    --adq-red-bg: rgba(236, 140, 155, .10);
+  --adq-grey: #9a9c93;   --adq-grey-bg: rgba(154, 156, 147, .10);
+  --adq-supplied: #9fb4c4; --adq-supplied-bg: rgba(159, 180, 196, .10);
+  --muted-line: #4E483B;
+  --field-line: #77705F;
+  --sheet: #24201A;
+  --shadow-raised: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 18px rgba(0, 0, 0, .30);
+  --shadow-overlay: 0 12px 32px rgba(0, 0, 0, .45);
+  --warm-line: #6E5B3A;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--t-md);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: inherit; font-size: inherit; cursor: pointer; }
+/* The drawn marks (Glyph.jsx) sit on the text's baseline beside their words. */
+.glyph { flex: none; vertical-align: -0.2em; }
+/* Fields take the site's face too (they fell back to Arial: B13). */
+input, select, textarea { font-family: inherit; }
+a { color: var(--accent-ink); }
+
+/* ---- prerendered static layer (scripts/prerender.mjs): what a crawler, an LLM fetcher or a visitor without JavaScript sees; removed once React mounts. */
+#prerender { font-family: inherit; line-height: var(--lh-read); }
+/* The site line as the app sets it (.site-line in App.css): small and muted, under the trail. */
+#prerender .pr-site { margin: 0 0 var(--s-3); font-size: var(--t-sm); color: var(--muted); }
+/* The content under the app's own bar, on the app's column and its padding (B2): the first
+   screen matches the app's, so the switch to the app does not move the page. Pages without the
+   bar (the 404, the builder's shell) keep the same column. */
+#prerender > .pr-page, #prerender > main, #prerender > section {
+  max-width: var(--maxw); box-sizing: border-box; margin: 0 auto;
+  padding: var(--s-5) var(--s-5) var(--s-8);
+}
+#prerender h1:not(.home-title) { font-size: var(--t-xl); line-height: var(--lh-tight); letter-spacing: var(--ls-display); margin: var(--s-3) 0 var(--s-2); }
+#prerender h2 { font-size: var(--t-lg); margin: var(--s-6) 0 var(--s-3); }
+#prerender .home-doors h2 { margin-top: 0; }
+#prerender .is-home { padding-top: var(--s-2); }
+/* As the app's .crumbs: muted, not dimmed by opacity (B5), the same size, margin and leading. */
+#prerender .pr-long { margin: 0 0 var(--s-3); font-size: var(--t-sm); color: var(--muted); }
+#prerender .pr-crumbs { font-size: var(--t-sm); color: var(--muted); margin: 0 0 var(--s-3); line-height: 1.4; }
+#prerender .pr-lede { font-size: var(--t-base); margin: 0 0 var(--s-5); }
+#prerender .pr-badges { font-size: var(--t-sm); font-weight: 700; letter-spacing: .02em;
+  margin: 0 0 var(--s-4); color: var(--muted); }
+#prerender .pr-note { font-size: var(--t-sm); opacity: .7; }
+/*
+ * The sentence placing a solution among its alternatives, plain: the emphasis is on the
+ * tutorials.
+ */
+#prerender .pr-cmp {
+  font-size: var(--t-md); margin: 0 0 var(--s-4); color: var(--muted);
+}
+/* The one highlighted block on a static solution page, matching .tutorial-block in the app. */
+#prerender .pr-tutorials {
+  margin: var(--s-5) 0; padding: var(--s-4) var(--s-5);
+  background: var(--accent-bg); border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+}
+#prerender .pr-tutorials h2 { margin-top: 0; }
+#prerender .pr-tutorials > :last-child { margin-bottom: 0; }
+#prerender .pr-lang {
+  font-size: var(--t-xs); font-weight: 700; letter-spacing: .04em;
+  color: var(--accent-ink); border: 1px solid var(--accent-line);
+  border-radius: var(--radius-xs); padding: 0 var(--s-2);
+}
+#prerender .pr-table-wrap { overflow-x: auto; margin: 0 0 var(--s-4); }
+#prerender .pr-rank-table { border-collapse: collapse; font-size: var(--t-sm); min-width: 100%; }
+#prerender .pr-rank-table th, #prerender .pr-rank-table td {
+  border: 1px solid var(--line); padding: var(--s-3) var(--s-3); text-align: left; vertical-align: top;
+}
+#prerender .pr-rank-table th { font-weight: 700; }
+#prerender .pr-self { background: var(--accent-bg-2); }
+#prerender .pr-cell-note { opacity: .7; }
+#prerender ul { padding-left: var(--s-6); margin: 0 0 var(--s-5); }
+#prerender li { margin-bottom: var(--s-3); }
+#prerender .pr-facts { display: grid; gap: var(--s-3); margin: 0 0 var(--s-5); }
+#prerender .pr-facts > div {
+  display: grid; grid-template-columns: 190px 1fr; gap: var(--s-4);
+  padding-bottom: var(--s-3); border-bottom: 1px solid var(--line-soft);
+}
+#prerender .pr-facts dt { font-weight: 600; font-size: var(--t-sm); }
+#prerender .pr-facts dd { margin: 0; font-size: var(--t-md); }
+@media (max-width: 560px) {
+  #prerender .pr-facts > div { grid-template-columns: 1fr; gap: var(--s-1); }
+}
+
+/* ---- footers ------------------------------------------------------------ */
+/* On the content column, in the muted ink at full strength (no opacity, brief 10). */
+.site-foot {
+  width: 100%; max-width: var(--maxw); box-sizing: border-box;
+  margin: 0 auto; padding: var(--s-6) var(--s-5) var(--s-7);
+  border-top: 1px solid var(--line-soft);
+  font-size: var(--t-sm); color: var(--muted);
+}
+.site-foot .link { color: var(--ink); }
+@media (max-width: 900px) {
+  /* 44 px rows for the three links on a phone. */
+  .site-foot-links .link { display: inline-flex; align-items: center; min-height: var(--ctl-lg); }
+}
+.site-foot p { margin: 0 0 var(--s-2); }
+#prerender .pr-foot {
+  margin-top: var(--s-7); padding-top: var(--s-5);
+  border-top: 1px solid var(--line-soft);
+  font-size: var(--t-sm); opacity: .8;
+}
+#prerender .pr-nav {
+  font-size: var(--t-sm); margin: 0 0 var(--s-4);
+  padding-bottom: var(--s-3); border-bottom: 1px solid var(--line);
+}
+#prerender .pr-foot h2 { font-size: var(--t-md); margin: var(--s-5) 0 var(--s-3); }
+
+/* Read aloud, not shown. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* ---- focus: :focus-visible, so a mouse click leaves no ring. */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+/*
+ * Rows and cards take the ring inside the element: an offset ring on a large area reads as a
+ * halo.
+ */
+.row:focus-visible,
+.branch-row:focus-visible,
+.detail-btn:focus-visible,
+.chip:focus-visible { outline-offset: -2px; }
+
+/* ---- motion ------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- figures (F7, 2026-10-26): wherever numbers sit in a column or are compared, the face's
+   even-width figures, so 12 and 18 take the same room and a range reads as a measurement. The
+   site's own face, not a second monospace one. Prose keeps its proportional figures. */
+.sec-count, .filter-count, .io-chip-count, .tio, .ct td, .ct th, .cr-facts, .cmp-trade dd,
+.facts dd, .adq-sentence, .adq-src, .adq-side, .adq-num, .adq-row, .res-group, .pp-meta,
+.bh-count, .sr-count, .tree-name-slot { font-variant-numeric: tabular-nums; }

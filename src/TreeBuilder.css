@@ -1,0 +1,1019 @@
+/*
+ * On the tokens, except the type inside a node, which still has literal sizes (see "node"
+ * below). The height here is only a fallback outside the app shell, which sizes the builder
+ * itself.
+ */
+.tree-root { width: 100%; height: calc(100vh - 56px); height: calc(100dvh - 56px); display: flex; flex-direction: column; }
+.app--fullbleed .tree-root { height: 100%; }
+.tree-toolbar {
+  display: flex; align-items: stretch; gap: 10px;
+  padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); background: var(--surface);
+}
+/* the buttons wrap in whatever the house drawing leaves them */
+.tree-toolbar-tools { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.tree-tools { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+/* The second row is quieter: undo and erase must not weigh like adding something. */
+.tree-tools-aux { gap: 6px; }
+.btn.sm { padding: 7px var(--s-4); font-size: var(--t-sm); border: 0; border-radius: var(--radius-sm); background: var(--accent); color: var(--on-accent); }
+.btn.sm .glyph { margin-right: 6px; }
+/* A natural resource keeps the resource blue on its mark (it was the herb emoji). */
+.glyph-resource { color: var(--resource-ink); }
+.btn.sm.alt { background: var(--line); color: var(--ink); }
+.btn.sm.ghost {
+  background: var(--surface-2); color: var(--muted);
+  border: 1px solid var(--line); padding: 5px 10px; font-size: var(--t-sm);
+}
+.btn.sm.ghost:hover:not(:disabled) { color: var(--ink); border-color: var(--muted); }
+.btn.sm:disabled { opacity: .5; }
+
+/* The verdict button's colours are tokens in index.css, where qa-contrast can check them. */
+/*
+ * Two classes: `.btn.sm` sets the background at (0,2,0), so a lone `.tree-verdict` would render
+ * green.
+ */
+/*
+ * An opportunity, not a verdict: the resource blue, since a spare byproduct is a resource not
+ * yet used.
+ */
+.adq-verdict.adq-spare { border-left-color: var(--resource); background: var(--resource-bg); }
+.adq-spare .adq-dot { background: var(--resource); }
+.adq-spare .adq-label { color: var(--resource-ink); }
+
+/*
+ * The fabric block: the verdict card shape without the verdict colours, quieter, since it
+ * reports something the reader got right.
+ */
+.adq-fabric {
+  border-left: 4px solid var(--muted-line);
+  background: var(--surface-2);
+  border-radius: var(--radius-xs); padding: .6rem .75rem; margin: .5rem 0;
+}
+.adq-fabric .adq-dot { background: var(--muted-line); }
+.adq-fabric-group { margin: .35rem 0 0; }
+
+/* Summer exposure warms the fabric card slightly, never a verdict colour. */
+.adq-exposure { border-left-color: var(--warm-line); }
+.adq-exposure .adq-dot { background: var(--warm-line); }
+
+/* The scope line, directly under the title, so it reads as framing. */
+.adq-scope {
+  margin: 0 0 .6rem; font-size: .85em; color: var(--muted); line-height: 1.45;
+}
+
+/* The Remove button for a tapped link (S2), sitting at the link's midpoint. */
+.btn.sm.edge-del {
+  /* just below the midpoint, so the link's own label stays readable */
+  position: absolute; z-index: 6; transform: translate(-50%, 14px);
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .18); white-space: nowrap;
+}
+.btn.sm.edge-del:hover { border-color: var(--accent); }
+/* A tapped link reads as chosen: thicker and in the accent. */
+/* .tree-canvas prefix: React Flow ships its own .selected rule at equal specificity, and wins. */
+.tree-canvas .react-flow__edge.selected .react-flow__edge-path { stroke: var(--accent); stroke-width: 3; }
+
+.btn.sm.tree-verdict {
+  position: absolute; bottom: 12px; right: 12px; z-index: 5;
+  background: var(--verdict); color: var(--verdict-ink);
+  box-shadow: 0 1px 6px rgba(0,0,0,.18);
+}
+.btn.sm.tree-verdict:disabled { opacity: .45; }
+/*
+ * React Flow's controls are bottom-left, so the verdict floats bottom-right, even on a narrow
+ * screen: a static sibling would take the canvas's height.
+ */
+@media (max-width: 560px) {
+  .btn.sm.tree-verdict { bottom: 8px; right: 8px; padding: 6px 10px; font-size: var(--t-xs); }
+}
+.trees-save { margin-bottom: 14px; }
+.trees-save-label { display: block; font-size: var(--t-sm); font-weight: 600; margin-bottom: 5px; }
+.trees-save-row { display: flex; gap: var(--s-3); }
+.tree-name-input {
+  flex: 1; min-width: 0;
+  padding: 9px 11px; border: 1px solid var(--field-line); border-radius: var(--radius-sm); font-size: var(--t-md);
+  background: var(--surface); color: var(--ink); font-family: inherit;
+}
+.trees-save-note { margin: 6px 0 0; }
+
+/* Share preview. */
+.share-text {
+  width: 100%; box-sizing: border-box; resize: vertical;
+  padding: 9px 11px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: var(--t-xs);
+  white-space: pre; overflow-wrap: normal; overflow-x: auto;
+}
+.share-actions { display: flex; gap: var(--s-3); margin-top: 10px; flex-wrap: wrap; }
+/* Two labelled ways to share. */
+.share-h { margin: var(--s-5) 0 var(--s-1); font-size: var(--t-sm); text-transform: uppercase;
+  letter-spacing: .5px; color: var(--muted); }
+.share-h:first-of-type { margin-top: var(--s-2); }
+.tree-row { display: flex; align-items: center; gap: var(--s-3); }
+.tree-row .picker-item { flex: 1; }
+.tree-canvas { position: relative; flex: 1; min-height: 0; }
+/*
+ * A consistent arrow on the canvas, the hand only while panning. Two classes are required:
+ * React Flow ships `.react-flow__pane.draggable` and `.react-flow__node.draggable` at (0,2,0),
+ * and this file loads after its stylesheet, so equal specificity wins on order. Do not drop the
+ * second class.
+ */
+.react-flow__pane.draggable { cursor: default; }
+.react-flow__pane.dragging { cursor: grabbing; }
+.react-flow__node.draggable { cursor: default; }
+.react-flow__node.draggable.dragging { cursor: grabbing; }
+
+/* Natural-resource option in the suggestion menu. */
+.resource-opt { background: var(--resource-bg); }
+.resource-opt span:first-child { font-weight: 600; color: var(--resource-ink); }
+.tree-empty {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: var(--muted); pointer-events: none; text-align: center; padding: 20px;
+}
+/* The overlay covers the canvas, so it stays transparent to the pointer; its cards opt back in. */
+.tree-empty-inner { pointer-events: auto; max-width: 560px; display: grid; gap: 18px; }
+.tree-empty-lead {
+  margin: 0; line-height: 1.4; color: var(--ink);
+  font-size: var(--t-lg); text-wrap: balance;
+}
+.tree-empty-own { margin: 0; font-size: var(--t-md); color: var(--muted); }
+
+.tree-examples { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+/* On a phone the four-step animation sits above them too (S8), so the two examples stay side by
+   side, smaller, without the line under the name, and the whole block starts at the top. */
+@media (max-width: 560px) {
+  .tree-empty { align-items: flex-start; padding: 12px 16px; }
+  .tree-empty-inner { gap: 12px; }
+  .tree-empty-lead { font-size: var(--t-md); }
+  .tree-examples { gap: 10px; }
+  .tree-example { padding: 10px; gap: 4px; }
+  .tree-example-mini { width: 64px; height: 42px; }
+  .tree-example-shape { display: none; }
+}
+
+/* A card, not a link in a sentence: the whole card is the target, past the 44px touch minimum. */
+.tree-example {
+  display: grid; gap: 6px; justify-items: center; text-align: center;
+  padding: 14px var(--s-4); cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  font: inherit; color: inherit;
+  transition: border-color .12s ease, transform .12s ease;
+}
+.tree-example:hover { border-color: var(--accent); transform: translateY(-1px); }
+.tree-example:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .tree-example { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .tree-example:hover { transform: none; } }
+
+/* currentColor throughout, so the miniature follows the card in both themes. */
+.tree-example-mini { width: 96px; height: 64px; color: var(--accent); }
+.tree-example-mini path { fill: none; stroke: currentColor; stroke-width: 2; opacity: .55; }
+/* var(--surface), matching the card, so the node circles read as hollow. */
+.tree-example-mini circle { fill: var(--surface); stroke: currentColor; stroke-width: 2; }
+
+.tree-example-name { font-size: var(--t-md); color: var(--ink); line-height: 1.3; }
+.tree-example-shape { font-size: var(--t-sm); color: var(--muted); line-height: 1.3; }
+.tree-example-go {
+  margin-top: var(--s-2); font-size: var(--t-sm); color: var(--accent-ink);
+  border-bottom: 1px solid var(--accent-line);
+}
+
+/* Terminal nodes: smaller and quieter, dashed, the edge of the drawing rather than a component. */
+.tnode.is-destination {
+  min-width: 150px; max-width: 190px;
+  border-style: dashed; box-shadow: none;
+}
+.tnode.is-destination .tnode-head { border-bottom: 0; }
+.tnode.is-home { border-color: var(--accent-line); background: var(--accent-bg-2); }
+.tnode.is-env { border-color: var(--resource-line); background: var(--resource-bg); }
+/* The building reads as fabric: the environment's family, dashed because nothing leaves it. */
+.tnode.is-dwelling { border-color: var(--resource-line); background: var(--resource-bg);
+                     border-style: dashed; }
+
+/*
+ * Node. Every card's type is on the site scale (brief 03, B; the small parts folded on 2026-10-26).
+ */
+.tnode {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  min-width: 190px; max-width: 240px; box-shadow: 0 1px 4px rgba(0,0,0,.08); font-size: var(--t-sm);
+}
+.tnode-head { display: flex; align-items: center; gap: 6px; padding: 7px 9px; border-bottom: 1px solid var(--line); }
+/*
+ * Long names wrap between words only. min-width 0 lets the name shrink so the buttons stay in
+ * the card; break-word splits a word only if it cannot fit a line on its own, which no current
+ * name does. `pretty` avoids a lone last word.
+ */
+.tnode-name { font-weight: 700; flex: 1; min-width: 0; overflow-wrap: break-word; text-wrap: pretty; font-size: var(--t-base); }
+.tnode-title { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.tnode-title .tnode-name { flex: none; max-width: 100%; }
+.tnode-head .benchmark-tag { padding: 1px 6px; }
+.tnode-head:has(.tnode-title) { align-items: flex-start; }
+.tnode-i { flex: none; border: 0; background: none; color: var(--accent-ink); font-size: .95rem; cursor: pointer; line-height: 1; }
+.tnode-x { flex: none; border: 0; background: none; color: var(--muted); font-size: 1.1rem; cursor: pointer; line-height: 1; }
+
+/* Natural-resource node. */
+.tnode.is-resource { background: var(--resource-bg); border-color: var(--resource-line); border-left: 4px solid var(--resource); }
+.tnode.is-resource .tnode-name { color: var(--resource-ink); }
+
+/* Linked (fulfilled) input or output. */
+.tio.linked { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.tio.linked:hover { background: var(--accent-ink); }
+
+/* Expanded node info. */
+.tnode-more { padding: var(--s-3) 9px; border-top: 1px solid var(--line); font-size: var(--t-sm); }
+.tnode-crumbs { font-size: var(--t-xs); color: var(--accent-ink); margin-bottom: 5px; }
+.tnode-desc { margin: 0 0 6px; color: var(--muted); }
+.tnode-ranks { margin-bottom: var(--s-2); }
+
+.tnode-io { display: flex; gap: var(--s-3); padding: var(--s-3) 9px; }
+.tcol { flex: 1; display: flex; flex-direction: column; gap: var(--s-2); min-width: 0; }
+.tcol.right { text-align: right; align-items: flex-end; }
+.tcol-lbl { font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .5px; color: var(--muted); }
+/*
+ * Takes and Gives read as two columns (a user missed them, 2026-11-03): each title centred on its
+ * column, a fine rule between them from the titles to the last chip, and every chip as wide as its
+ * column, so a chip's side says which list it is in.
+ */
+.tnode-io > .tcol + .tcol { border-left: 1px solid var(--line); padding-left: var(--s-3); }
+.tnode-io > .tcol { align-items: stretch; }
+.tnode-io > .tcol > .tcol-lbl { text-align: center; }
+.tio {
+  border: 1px solid var(--line); background: var(--accent-bg-2); border-radius: var(--radius-xs);
+  padding: 3px 7px; font-size: var(--t-xs); color: var(--accent-ink); cursor: pointer;
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tio:hover { border-color: var(--accent); background: var(--accent-bg); }
+/*
+ * An open chip reads as a button (S3): accent border and a raised bottom edge. Linked and spare
+ * chips keep their own looks.
+ */
+.tio.is-open {
+  border-color: var(--accent-line); font-weight: 600;
+  box-shadow: 0 1px 0 var(--accent-line);
+}
+.tio.is-open:active { box-shadow: none; transform: translateY(1px); }
+/*
+ * The chip the tip points at. The first version (a faint ring) went unseen (Eric, 2026-09-24):
+ * now the chip itself fills with the accent and a solid ring grows out of it, every 1.4 s.
+ */
+/* Three beats, then it rests on its accent border: an endless pulse read as a focus ring and
+   never let the eye settle (U1, 2026-10-12). */
+.tio.is-hinted { border-color: var(--accent); animation: tio-hint 1.4s ease-in-out 3; }
+@keyframes tio-hint {
+  0%, 100% { background: var(--accent-bg-2); color: var(--accent-ink); box-shadow: 0 1px 0 var(--accent-line), 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent); }
+  45% { background: var(--accent); color: var(--on-accent); box-shadow: 0 1px 0 var(--accent-line), 0 0 0 7px color-mix(in srgb, var(--accent) 0%, transparent); }
+}
+
+/*
+ * The connect tip (S3): a pill at the top of the canvas, inverse colours (the same pair as the
+ * add message outside the builder). Up whenever there are cards and no link.
+ */
+.tree-hint {
+  position: absolute; z-index: 6; top: 12px; left: 50%; transform: translateX(-50%);
+  width: max-content; max-width: min(460px, calc(100% - 24px)); padding: var(--s-3) var(--s-5);
+  background: var(--ink); color: var(--bg); border-radius: 999px; text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .22); font-size: var(--t-sm); line-height: 1.3;
+  pointer-events: none; animation: tree-hint-in .3s ease-out;
+}
+@keyframes tree-hint-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .tio.is-hinted { animation: none; outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tree-hint { animation: none; }
+}
+
+/* An input a sister input already covers (S9): grey, because a second one is not needed, but
+   still connectable -- it turns green like any other once it is. */
+.tio.spare {
+  background: var(--spare-bg); color: var(--spare-ink);
+  border-color: var(--spare-line); border-style: dashed;
+}
+.tio.spare:hover { color: var(--accent-ink); border-color: var(--accent); border-style: solid; }
+.tio-none { color: var(--muted); font-size: var(--t-xs); }
+/* Chain-plausibility warning on a node. */
+/*
+ * A warning is "check this", not a verdict and not high-tech (brief 12, cross-check 2026-10-18):
+ * the condition style, a 2 px ink rule and the drawn warning mark in ink.
+ */
+.tnode-warn {
+  display: flex; gap: 6px; align-items: flex-start;
+  border-top: 2px solid var(--ink);
+  background: var(--surface-2); color: var(--ink);
+  font-size: var(--t-xs); line-height: 1.35; padding: 6px 9px;
+}
+.tnode-warn-mark { flex: none; margin-top: 1px; }
+
+/* "Fix it" under a warning: the button, then the solutions that would satisfy the rule. */
+.tnode-fix { background: var(--surface-2); padding: 0 9px 7px; }
+.tnode-fix-btn {
+  border: 1px solid var(--field-line); background: var(--surface); color: var(--ink);
+  border-radius: var(--radius-xs); font-size: var(--t-xs); padding: 3px var(--s-3); cursor: pointer;
+}
+.tnode-fix-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+.tnode-fix-list { display: flex; flex-direction: column; gap: var(--s-2); margin-top: 6px; }
+.tnode-fix-opt {
+  text-align: left; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  border-radius: var(--radius-xs); font-size: var(--t-xs); line-height: 1.3; padding: 5px var(--s-3); cursor: pointer;
+}
+.tnode-fix-opt:hover { border-color: var(--accent); background: var(--accent-bg-2); color: var(--accent-ink); }
+.tnode-fix-none { margin: 0; font-size: var(--t-xs); color: var(--ink); }
+
+/* The two actions along the bottom of a solution node. */
+.tnode-actions { display: flex; border-top: 1px solid var(--line); }
+.tnode-act {
+  flex: 1; border: 0; background: none;
+  color: var(--muted); font-size: var(--t-xs); padding: 6px var(--s-2); cursor: pointer;
+  /* "details" is an <a>: centre its text and drop the underline. */
+  text-decoration: none; text-align: center;
+  display: flex; align-items: center; justify-content: center;
+}
+.tnode-act + .tnode-act { border-left: 1px solid var(--line); }
+.tnode-act:hover { color: var(--accent-ink); background: var(--accent-bg-2); }
+
+/* Modal and pickers. */
+.modal-back {
+  position: fixed; inset: 0; background: rgba(0,0,0,.35);
+  display: flex; align-items: center; justify-content: center; z-index: 50; padding: var(--s-5);
+}
+.modal {
+  background: var(--surface); border-radius: var(--radius); width: 100%; max-width: 460px;
+  max-height: 82vh; max-height: 82dvh; display: flex; flex-direction: column;
+}
+.modal-head { display: flex; align-items: center; justify-content: space-between; padding: var(--s-4) 14px; border-bottom: 1px solid var(--line); }
+/* A dialog's title is a heading (B6), drawn as the bold line it was. */
+.modal-title { margin: 0; font-size: var(--t-md); font-weight: 700; line-height: var(--lh-snug); text-transform: none; letter-spacing: normal; color: var(--ink); }
+.modal-body { padding: var(--s-4) 14px; overflow: auto; }
+/* 16px: iOS Safari zooms into any input under 16px on focus and never zooms back. */
+.picker-search { width: 100%; padding: 9px 11px; border: 1px solid var(--field-line); border-radius: var(--radius-sm); margin-bottom: var(--s-3); font-size: var(--t-md); }
+.picker-list { display: flex; flex-direction: column; }
+/* Group titles in every picker: a need, or "From outside the house". They were muted and small,
+   and read as a footnote to the rows (Eric, 2026-09-23); in the accent and bold they read as
+   the headings they are. */
+.picker-fn { font-size: var(--t-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--accent-ink); margin: var(--s-4) 0 var(--s-2); }
+/* Suggestions align in two columns (S4): the name, then whatever tags the row carries, so the
+   tags line up down the list instead of trailing each name. */
+.sugg-group { display: contents; }
+.picker-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.picker-tags { display: flex; align-items: center; gap: 6px; justify-self: end; }
+/* Only the solution suggestions: a destination or resource row keeps its own name-and-hint flex
+   layout, which this grid squeezed into overlapping columns (fixed 2026-09-23). */
+.picker-item.sugg-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+.picker-item {
+  display: flex; align-items: center; gap: var(--s-3); width: 100%; text-align: left;
+  padding: var(--s-3) 10px; border: 0; border-radius: var(--radius-sm); background: none; color: var(--ink);
+  font-size: var(--t-sm); cursor: pointer;
+}
+.picker-item:hover { background: var(--accent-bg); }
+.picker-item span:first-child { flex: 1; }
+/* Collapsible browse rows (function, sub-function). */
+.picker-branch {
+  display: flex; align-items: center; gap: var(--s-3); width: 100%; text-align: left;
+  padding: 9px 6px; border: 0; background: none; color: var(--ink); cursor: pointer;
+  font-size: var(--t-md); font-weight: 600;
+}
+.picker-branch:hover { background: var(--accent-bg); border-radius: var(--radius-sm); }
+.picker-branch span:nth-child(2) { flex: 1; }
+.picker-branch.lvl2 { font-weight: 500; font-size: var(--t-sm); padding-left: 18px; color: var(--accent-ink); }
+.picker-tri { width: 12px; font-size: var(--t-xs); color: var(--muted); }
+.picker-sub { }
+.picker-item.lvl3 { padding-left: 34px; font-size: var(--t-sm); }
+.sugg-tier { font-size: var(--t-xs); color: var(--muted); }
+/* The row of a solution already on the canvas: a tint, so the eye finds it before the words do. */
+.picker-item.is-placed { background: var(--accent-bg); }
+.picker-item.is-placed:hover { background: var(--accent-bg-2); }
+.sugg-placed { font-size: var(--t-xs); color: var(--accent); font-weight: 700; }
+.build-cta { display: inline-block; margin: var(--s-2) 0 var(--s-3); text-decoration: none; }
+
+/* Bigger, grabbable connection handles. */
+.tnode .react-flow__handle {
+  width: 12px; height: 12px; background: var(--accent); border: 2px solid var(--on-accent);
+}
+/* Hover darkens the handle; never --benchmark, which means the high-tech option. */
+.tnode .react-flow__handle:hover { background: var(--accent-ink); }
+
+
+/* ---- React Flow's own chrome, driven from our tokens: the library's hardcoded white stays bright in dark mode. */
+.react-flow__controls-button {
+  background: var(--surface) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+.react-flow__controls-button svg { fill: var(--ink); }
+.react-flow__controls-button:hover { background: var(--accent-bg) !important; }
+.react-flow__handle { background: var(--accent); border-color: var(--surface); }
+.react-flow__edge-path { stroke: var(--muted); }
+/* The library draws a white label box in every theme. */
+.react-flow__edge-textbg { fill: var(--surface); }
+.react-flow__edge-text { fill: var(--ink); }
+/* Focus on the canvas: the library removes the outline from cards and links. */
+.tree-canvas .react-flow__node:focus-visible { outline: none; }
+.tree-canvas .react-flow__node:focus-visible > .tnode,
+.tree-canvas .react-flow__node.selected > .tnode { outline: 2px solid var(--focus); outline-offset: 2px; }
+.tree-canvas .react-flow__edge:focus-visible { outline: none; }
+.tree-canvas .react-flow__edge:focus-visible .react-flow__edge-path { stroke: var(--focus); stroke-width: 4; }
+.modal:focus, .adq-panel:focus { outline: none; }
+.react-flow__attribution { background: transparent; }
+.react-flow__attribution a { color: var(--muted); }
+
+/*
+ * The connection to the outside world (grid, mains, sewer, collection): dashed, because it
+ * comes from somewhere the reader does not control.
+ */
+.tnode.is-societal {
+  border-style: dashed;
+  border-color: var(--muted);
+}
+/*
+ * The destination card lists everything it can take, in two columns. Both max-width and
+ * min-width move: `.tnode.is-destination` caps at 190px, and a max-width clamps a width
+ * whatever the order.
+ */
+/*
+ * Width set by the content: two accepted columns of about 140px plus a produces column holding
+ * "Mixed household waste".
+ */
+.tnode.is-destination.is-wide { min-width: 480px; max-width: 480px; }
+/* The produces column claims its room first; the accepts column takes the slack. */
+.tnode.is-wide .tnode-io > .tcol:not(.tcol-accepts) { flex: 0 0 150px; min-width: 150px; }
+.tnode.is-wide .tnode-io { align-items: flex-start; }
+.tcol-accepts { flex: 1 1 auto; min-width: 0; }
+.tcol-accepts .tio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-1) 6px;
+}
+/* Unwired entries read as a menu and sit back until .linked brings them forward. */
+/* In --muted rather than at .55 opacity, which fell under 4.5:1 (B5). */
+.tnode.is-wide .tio.in:not(.linked), .tnode.is-wide .tio.in:not(.linked) * { color: var(--muted); }
+
+/*
+ * ── adequacy panel: the same .modal-back / .modal shape. Grey means "could not compute", never
+ * "might be fine". Verdict colours live in index.css.
+ */
+
+.adq-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.35);
+  display: flex; align-items: center; justify-content: center; z-index: 60; padding: var(--s-5);
+}
+.adq-panel {
+  background: var(--surface); border-radius: var(--radius); width: 100%; max-width: 540px;
+  max-height: 86vh; max-height: 86dvh; overflow: auto; padding: 0 14px 14px;
+}
+.adq-head {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-4);
+  /* z-index: the scope line below has opacity, which paints it over a sticky header without one. */
+  position: sticky; top: 0; z-index: 1; background: var(--surface); padding: var(--s-4) 0 10px;
+  border-bottom: 1px solid var(--line); margin-bottom: var(--s-4);
+}
+.adq-head h2 { font-size: var(--t-base); margin: 0; }
+.adq-head { flex-direction: column; align-items: stretch; }
+.adq-head-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); }
+.adq-pinned { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); margin: 6px 0 0; font-size: var(--t-sm); color: var(--muted); }
+.adq-pin.adq-green b { color: var(--adq-green); }
+.adq-pin.adq-yellow b { color: var(--adq-yellow); }
+.adq-pin.adq-red b { color: var(--adq-red); }
+.adq-pin.adq-grey b, .adq-pin.adq-supplied b { color: var(--adq-grey); }
+.adq-hint { color: var(--muted); font-size: var(--t-sm); margin: 0 0 10px; }
+.adq-none { color: var(--muted); font-size: var(--t-sm); }
+.adq-unlinked { font-size: var(--t-sm); border-left: 4px solid var(--muted); padding-left: var(--s-2, var(--s-3)); }
+
+.adq-scenario {
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: var(--s-4); margin-bottom: 14px;
+}
+.adq-field {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s-4); margin-bottom: var(--s-3); font-size: var(--t-sm);
+}
+.adq-field:last-child { margin-bottom: 0; }
+/* A checkbox in a row of text inputs: sized to itself and pushed right, not the inputs' 8.5rem. */
+.adq-field input.adq-check { width: auto; min-height: 0; padding: 0; margin: 0; }
+
+/* "Add:" aligned with the buttons, so the row reads as one sentence. */
+.tree-tools-label {
+  align-self: center; font-size: var(--t-sm); color: var(--muted); margin-right: var(--s-1);
+  white-space: nowrap;
+}
+.adq-field input, .adq-field select {
+  width: 8.5rem; min-height: 24px; padding: 6px var(--s-3); font-size: var(--t-md);
+  border: 1px solid var(--field-line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink);
+}
+
+.adq-verdict {
+  border: 1px solid var(--line); border-left-width: 4px;
+  border-radius: var(--radius-sm); padding: 11px var(--s-4); margin-bottom: 10px;
+}
+.adq-verdict-head { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+.adq-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.adq-label { margin-left: auto; font-size: var(--t-sm); font-weight: 600; }
+.adq-band { margin: var(--s-3) 0 6px; font-size: var(--t-md); }
+.adq-binding {
+  margin: 6px 0; padding: 7px 9px; border-radius: var(--radius-xs);
+  background: var(--surface-2); border-left: 4px solid var(--adq-yellow);
+  font-size: var(--t-sm);
+}
+.adq-incomplete {
+  margin: 6px 0; padding: 7px 9px; border-radius: var(--radius-xs);
+  background: var(--surface-2); border-left: 4px solid var(--adq-grey);
+  font-size: var(--t-sm);
+}
+.adq-reasons { margin: 0; padding-left: 18px; font-size: var(--t-sm); color: var(--muted); }
+.adq-reasons li { margin-bottom: var(--s-2); }
+.adq-warn { color: var(--adq-red); }
+
+.adq-green  { border-left-color: var(--adq-green);  background: var(--adq-green-bg); }
+.adq-green  .adq-dot, .adq-green  .adq-label { background: var(--adq-green); }
+.adq-yellow { border-left-color: var(--adq-yellow); background: var(--adq-yellow-bg); }
+.adq-yellow .adq-dot { background: var(--adq-yellow); }
+.adq-red    { border-left-color: var(--adq-red);    background: var(--adq-red-bg); }
+.adq-red    .adq-dot { background: var(--adq-red); }
+.adq-grey   { border-left-color: var(--adq-grey);   background: var(--adq-grey-bg); }
+.adq-grey   .adq-dot { background: var(--adq-grey); }
+.adq-supplied { border-left-color: var(--adq-supplied); background: var(--adq-supplied-bg); }
+.adq-supplied .adq-dot { background: var(--adq-supplied); }
+.adq-green .adq-label { background: none; color: var(--adq-green); }
+.adq-yellow .adq-label { color: var(--adq-yellow); }
+.adq-red .adq-label { color: var(--adq-red); }
+.adq-grey .adq-label { color: var(--adq-grey); }
+.adq-supplied .adq-label { color: var(--adq-supplied); }
+
+.adq-sources-toggle {
+  background: none; border: none; padding: var(--s-3) 0; min-height: 24px;
+  color: var(--accent-ink); font-size: var(--t-sm); text-decoration: underline; cursor: pointer;
+}
+.adq-sources { font-size: var(--t-sm); color: var(--muted); }
+.adq-sources h3 { font-size: var(--t-sm); color: var(--ink); margin: var(--s-4) 0 var(--s-2); }
+.adq-sources ul { padding-left: 18px; margin: 0 0 var(--s-3); }
+.adq-sources li { margin-bottom: var(--s-3); }
+.adq-sources a { color: var(--accent-ink); }
+/* On a phone the Add row keeps the full width and the house drawing sits beside the quieter
+   second row, so the bar is no taller than it was without it. */
+@media (max-width: 560px) {
+  .tree-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 10px; }
+  .tree-toolbar-tools { display: contents; }
+  .tree-toolbar-tools > .tree-tools:first-child { grid-column: 1 / -1; }
+  .tree-toolbar-tools > .tree-tools-aux { grid-column: 1; align-self: center; }
+  .tree-toolbar > .bh-vignette { grid-column: 2; grid-row: 2; }
+}
+
+/* The site-wide facets inside a solution picker: Clear all and Filter beside the title, the
+   controls in a panel above the list. */
+.facet-head { display: inline-flex; align-items: center; gap: var(--s-3); margin-left: auto; margin-right: var(--s-2); }
+.facet-head .facet-clear { margin-left: 0; font-size: var(--t-sm); }
+.btn.sm.facet-toggle.is-active { background: var(--accent-ink); }
+.facet-toggle .facet-tri { margin-left: var(--s-2); font-size: 0.85em; }
+.tree-facets { padding: var(--s-3) 0 var(--s-4); margin-bottom: var(--s-3); border-bottom: 1px solid var(--line); }
+.tree-facets .facet-controls { padding-top: 0; gap: var(--s-3); }
+.tree-facets .facet-chip, .tree-facets .facet-seg-item { min-height: 34px; font-size: var(--t-sm); }
+@media (max-width: 760px) {
+  /* a thumb still needs 44px, as on the needs page */
+  .tree-facets .facet-chip, .tree-facets .facet-seg-item { min-height: 44px; }
+}
+
+/* ---- the system check, second design (brief 04) */
+/*
+ * Docked: beside the canvas on a wide screen, a sheet over its lower part on a phone, so the
+ * system stays in view. It grows out of its button (bottom right) and shrinks back into it
+ * (brief 13: 250 ms in, 150 ms out; none under reduced motion).
+ */
+.adq-dock {
+  position: fixed; z-index: 30; right: 0; top: var(--header-h); bottom: 0;
+  width: min(420px, 100vw); box-sizing: border-box; overflow-y: auto; overscroll-behavior: contain;
+  display: flex; flex-direction: column; gap: var(--s-3);
+  padding: 0 var(--s-4) var(--s-5); background: var(--bg); color: var(--ink);
+  border-left: 1px solid var(--line); box-shadow: var(--shadow-overlay);
+  transform-origin: bottom right; animation: adq-grow var(--dur-base) var(--ease-enter);
+}
+.adq-dock.is-closing { animation: adq-shrink var(--dur-fast) var(--ease-exit) forwards; }
+.adq-dock:focus { outline: none; }
+@keyframes adq-grow { from { opacity: 0; transform: scale(.9); } }
+@keyframes adq-shrink { to { opacity: 0; transform: scale(.9); } }
+@media (prefers-reduced-motion: reduce) { .adq-dock, .adq-dock.is-closing { animation: none; } }
+@media (max-width: 760px) {
+  .adq-dock { top: auto; left: 0; width: auto; height: 58vh; height: 58dvh; border-left: 0; border-radius: var(--radius) var(--radius) 0 0; }
+}
+.adq-dock .adq-head {
+  position: sticky; top: 0; z-index: 1; display: flex; flex-direction: row; align-items: center;
+  justify-content: space-between; gap: var(--s-3); padding: var(--s-3) 0; margin: 0; background: var(--bg);
+  border: 0;
+}
+.adq-dock .adq-head h2 { margin: 0; font-size: var(--t-lg); }
+.adq-close {
+  flex: none; min-height: var(--ctl-lg); min-width: var(--ctl-lg); padding: 0 var(--s-4);
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2); color: var(--ink);
+  font: inherit; font-size: var(--t-sm); font-weight: 600; cursor: pointer;
+}
+.adq-top { margin: 0; font-size: var(--t-sm); color: var(--muted); }
+
+/* A resource: a white card, its verdict on a tinted band. Level 1 is the largest text. */
+.adq-fam { flex: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.adq-fam-head {
+  display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "mark name tag" "mark word tag";
+  align-items: center; column-gap: var(--s-3); margin: 0; padding: var(--s-3) var(--s-4);
+  font-size: inherit; text-transform: none; letter-spacing: 0; color: inherit;
+}
+.adq-fam-head:has(.adq-fam-toggle) { display: block; padding: 0; }
+.adq-fam-toggle {
+  display: grid; grid-template-columns: auto 1fr auto auto;
+  grid-template-areas: "mark name tag caret" "mark word tag caret"; align-items: center; column-gap: var(--s-3);
+  width: 100%; padding: var(--s-3) var(--s-4); border: 0; background: none; color: inherit;
+  font: inherit; text-align: left; cursor: pointer;
+}
+.adq-mark { grid-area: mark; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center;
+  justify-content: center; color: var(--bg); }
+.adq-fam-name { grid-area: name; font-size: var(--t-sm); font-weight: 600; color: var(--muted); }
+.adq-verdict-word { grid-area: word; font-size: 1.375rem; font-weight: 700; line-height: 1.15; }
+.adq-changed { grid-area: tag; padding: 1px 6px; border-radius: var(--radius-xs); background: var(--ink); color: var(--bg);
+  font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.adq-caret { grid-area: caret; color: var(--muted); }
+.adq-fam .adq-mark.adq-green { background: var(--adq-green); }
+.adq-fam .adq-mark.adq-yellow { background: var(--adq-yellow); }
+.adq-fam .adq-mark.adq-red { background: var(--adq-red); }
+.adq-fam .adq-mark.adq-grey { background: var(--adq-grey); }
+.adq-fam .adq-mark.adq-supplied { background: var(--adq-supplied); }
+.adq-fam.adq-green .adq-fam-head { background: var(--adq-green-bg); }
+.adq-fam.adq-yellow .adq-fam-head { background: var(--adq-yellow-bg); }
+.adq-fam.adq-red .adq-fam-head { background: var(--adq-red-bg); }
+.adq-fam.adq-grey .adq-fam-head { background: var(--adq-grey-bg); }
+.adq-fam.adq-supplied .adq-fam-head { background: var(--adq-supplied-bg); }
+.adq-fam.adq-green .adq-verdict-word { color: var(--adq-green); }
+.adq-fam.adq-yellow .adq-verdict-word { color: var(--adq-yellow); }
+.adq-fam.adq-red .adq-verdict-word { color: var(--adq-red); }
+.adq-fam.adq-grey .adq-verdict-word { color: var(--adq-grey); }
+.adq-fam.adq-supplied .adq-verdict-word { color: var(--adq-supplied); }
+/* The card's own ground: the older generic verdict rules tint whole boxes and draw a left rule. */
+.adq-fam.adq-green, .adq-fam.adq-yellow, .adq-fam.adq-red, .adq-fam.adq-grey, .adq-fam.adq-supplied, .adq-fam.adq-spare {
+  background: var(--surface); border-left-color: var(--line);
+}
+/* A verdict that just changed: a ring held 1.5 s (brief 13), the tag says it in words. */
+.adq-fam.is-changed { box-shadow: 0 0 0 2px var(--ink); }
+.adq-fam > :not(.adq-fam-head) { margin-left: var(--s-4); margin-right: var(--s-4); }
+.adq-fam > :nth-child(2) { margin-top: var(--s-3); }
+.adq-fam > :last-child { margin-bottom: var(--s-4); }
+.adq-fam.adq-spare .adq-fam-head { grid-template-areas: "name" "word"; grid-template-columns: 1fr; }
+
+/* Level 1's sentence; level 2, an action; level 3, quiet; level 4, a disclosure. */
+.adq-sentence { margin: 0 0 var(--s-3); font-size: var(--t-base); line-height: var(--lh-read); }
+.adq-next {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-2);
+  min-height: var(--ctl-lg); padding: 0 var(--s-4); margin: 0 0 var(--s-3); box-sizing: border-box;
+  border: 1px solid var(--accent-line); border-radius: var(--radius-sm); background: var(--accent-bg-2); color: var(--accent-ink);
+  font: inherit; font-size: var(--t-md); font-weight: 600; text-align: left; cursor: pointer;
+}
+.adq-next:hover { border-color: var(--accent); }
+.adq-picks { list-style: none; margin: 0 0 var(--s-3); padding: 0; display: flex; flex-direction: column; gap: var(--s-2); }
+.adq-picks .btn { width: 100%; min-height: var(--ctl-lg); text-align: left; }
+.adq-counted { margin: 0 0 var(--s-2); font-size: var(--t-sm); color: var(--muted); line-height: 1.4; }
+.adq-worked {
+  display: inline-flex; align-items: center; gap: var(--s-2); min-height: 32px; padding: 0; border: 0;
+  background: none; color: var(--accent-ink); font: inherit; font-size: var(--t-sm); font-weight: 600; cursor: pointer;
+}
+.adq-report { text-align: left; }
+.adq-all { align-self: flex-start; min-height: var(--ctl-lg); }
+.adq-work { font-size: var(--t-sm); line-height: 1.45; }
+.adq-work section { margin: var(--s-3) 0 0; }
+.adq-work h4, .adq-work h5 { margin: 0 0 var(--s-1); font-size: var(--t-xs); font-weight: 700; letter-spacing: var(--ls-caps);
+  text-transform: uppercase; color: var(--muted); }
+.adq-work h5 { text-transform: none; letter-spacing: 0; font-size: var(--t-sm); color: var(--ink); }
+.adq-work p { margin: 0 0 var(--s-2); }
+.adq-work ul { margin: 0; padding-left: var(--s-4); }
+.adq-balance { margin: 0 0 var(--s-2); display: grid; gap: var(--s-1); }
+.adq-balance div { display: flex; justify-content: space-between; gap: var(--s-3); }
+.adq-balance dt { color: var(--muted); }
+.adq-balance dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+.adq-src li { margin-bottom: var(--s-1); }
+
+/* The reader's situation. */
+.adq-situation { margin-top: var(--s-2); padding-top: var(--s-3); border-top: 1px solid var(--line); }
+.adq-situation h3 { margin: 0 0 var(--s-3); font-size: var(--t-xs); font-weight: 700; letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--muted); }
+.adq-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); margin: 0 0 var(--s-3); font-size: var(--t-md); }
+.adq-row > label, .adq-row > span { flex: 1; min-width: 0; }
+.adq-stepper { flex: none; display: flex; align-items: center; border: 1px solid var(--field-line); border-radius: var(--radius-sm); overflow: hidden; background: var(--surface); }
+.adq-stepper button { width: var(--ctl-lg); height: var(--ctl-lg); border: 0; background: var(--surface-2); color: var(--ink); font-size: var(--t-lg); cursor: pointer; }
+.adq-stepper input { width: 4.5em; height: var(--ctl-lg); border: 0; background: none; color: var(--ink); text-align: center;
+  font: inherit; font-weight: 600; font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; }
+.adq-stepper input::-webkit-inner-spin-button, .adq-stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.adq-unit { padding-right: var(--s-2); color: var(--muted); font-size: var(--t-sm); }
+/* An unset setting shows its default in grey. */
+.adq-stepper.is-default input, .adq-row select.is-default { color: var(--muted); font-weight: 400; }
+.adq-row select, .adq-row .adq-num {
+  flex: none; max-width: 60%; min-height: var(--ctl-lg); padding: 0 var(--s-3); box-sizing: border-box;
+  border: 1px solid var(--field-line); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); font: inherit;
+}
+.adq-row .adq-num { width: 7em; }
+.adq-check-row input { width: 22px; height: 22px; }
+.adq-note { margin: 0; font-size: var(--t-sm); color: var(--muted); }
+.adq-dock .adq-scope { margin: var(--s-3) 0 0; font-size: var(--t-xs); color: var(--muted); border: 0; padding: 0; background: none; }
+
+/* The check docked beside the canvas on a wide screen: the canvas makes room (brief 04). */
+@media (min-width: 761px) {
+  .tree-root.has-dock .tree-canvas { margin-right: min(420px, 100vw); }
+}
+/* On a phone the sheet lies over the lower part of the canvas (the board); the upper part stays
+   in view. The builder's own redesign (step 10) slims the toolbar that shares that part. */
+
+/* Focus frames the whole stepper, not the figure inside it (Eric, 2026-10-20). */
+.adq-stepper input:focus, .adq-stepper input:focus-visible { outline: none; box-shadow: none; }
+.adq-stepper:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+.adq-work .adq-src-head { margin-top: var(--s-4); font-size: var(--t-sm); color: var(--ink); }
+.adq-unused { padding-top: var(--s-3); border-top: 1px solid var(--line-soft); }
+.adq-unused h4 { font-size: var(--t-sm); color: var(--ink); }
+
+/* ---- the builder, second design (brief 03) */
+/* One row: Add, Undo, then the house, the check (wide screens) and More. */
+.tree-toolbar { align-items: center; flex-wrap: nowrap; gap: var(--s-2); padding: 6px var(--s-3); }
+.tree-toolbar-gap { flex: 1; }
+.tree-toolbar .btn.sm, .tree-bottom .btn.sm { min-height: var(--ctl-md); display: inline-flex; align-items: center; gap: 6px; }
+.tree-toolbar .btn.sm.ghost, .tree-bottom .btn.sm.ghost { color: var(--ink); }
+.tool-menu { position: relative; display: inline-flex; }
+.tool-menu-glyph { font-weight: 700; font-size: 1.1em; line-height: 1; }
+.tool-menu-list {
+  position: absolute; z-index: 25; top: calc(100% + 6px); left: 0; width: min(320px, calc(100vw - 24px));
+  display: flex; flex-direction: column; padding: var(--s-2); background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-overlay);
+  animation: sheet-rise var(--dur-base) var(--ease-enter);
+}
+.tool-menu.is-end .tool-menu-list { left: auto; right: 0; }
+.tool-menu-head { margin: 0; padding: var(--s-2) var(--s-3); font-weight: 700; border-bottom: 1px solid var(--line-soft); }
+.tool-menu-item {
+  display: flex; align-items: flex-start; gap: var(--s-3); width: 100%; min-height: var(--ctl-lg);
+  padding: var(--s-2) var(--s-3); border: 0; border-radius: var(--radius-sm); background: none; color: var(--ink);
+  font: inherit; text-align: left; cursor: pointer;
+}
+.tool-menu-item:hover:not(:disabled) { background: var(--surface-2); }
+.tool-menu-item:disabled { opacity: .5; cursor: default; }
+.tool-menu-item .glyph { margin-top: var(--s-1); color: var(--accent-ink); }
+.tool-menu-title { display: block; font-weight: 600; }
+.tool-menu-line { display: block; font-size: var(--t-sm); color: var(--muted); }
+.tool-menu-item.is-danger { margin-top: var(--s-1); border-top: 1px solid var(--line-soft); border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+.tool-menu-item.is-danger .tool-menu-title { color: var(--adq-red); }
+.tool-menu-foot { padding: var(--s-2) var(--s-3) var(--s-1); font-size: var(--t-xs); color: var(--muted); border-top: 1px solid var(--line-soft); }
+.tool-menu-foot a { color: inherit; }
+@media (prefers-reduced-motion: reduce) { .tool-menu-list { animation: none; } }
+
+/* Under the canvas: Arrange and See it all; zoom on a wide screen; the check in thumb reach on a phone. */
+.tree-bottom {
+  position: absolute; z-index: 5; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: var(--s-2);
+  padding: var(--s-2) var(--s-3); pointer-events: none;
+}
+.tree-bottom > * { pointer-events: auto; }
+.tree-zoom { display: inline-flex; gap: var(--s-2); }
+.tree-zoom .btn.sm { min-width: var(--ctl-md); justify-content: center; }
+/* The check button: in the toolbar now, not floating over cards (U-N4). */
+.btn.sm.tree-verdict { position: static; box-shadow: none; }
+.tree-root .is-desktop-only { display: inline-flex; }
+.tree-root .is-mobile-only { display: none; }
+@media (max-width: 760px) {
+  .tree-root .is-desktop-only { display: none; }
+  .tree-root .is-mobile-only { display: inline-flex; }
+  .tree-toolbar .btn.sm, .tree-bottom .btn.sm { min-height: var(--ctl-lg); }
+  .btn.sm.tree-verdict { padding: 0 var(--s-4); font-size: var(--t-sm); }
+}
+@media (min-width: 761px) { .adq-dock { transform-origin: top right; } }
+/* Two classes beat `.tree-bottom .btn.sm`, which sets display. */
+.tree-root .tree-bottom .is-mobile-only, .tree-root .tree-toolbar .is-mobile-only { display: none; }
+@media (max-width: 760px) {
+  .tree-root .tree-bottom .is-mobile-only { display: inline-flex; }
+  .tree-root .tree-toolbar .is-desktop-only, .tree-root .tree-bottom .is-desktop-only { display: none; }
+}
+
+/* ---- the card on the type scale (brief 03, B): 16 px name, 14 px body, 12 px labels */
+/* 260 px at least: "replace" and "Solution page ↗" side by side on one line each (2026-11-03). */
+.tnode { font-size: var(--t-sm); min-width: 260px; max-width: 260px; }
+.tnode-head { padding: var(--s-3) 10px; }
+.tnode-name, .tnode-title .tnode-name { font-size: var(--t-base); line-height: var(--lh-snug); }
+.tcol-lbl { font-size: var(--t-xs); font-weight: 700; letter-spacing: var(--ls-caps); }
+/* A chip's name wraps rather than being cut ("Heated wat…"), up to three lines. The clamp needs
+   overflow hidden: with it visible, a third line ran out under the chip's border (a user's
+   session, 2026-11-03: "Ease of repair and change"). */
+.tio {
+  font-size: var(--t-sm); line-height: 1.25; padding: 5px var(--s-3); min-height: 28px;
+  white-space: normal; overflow: hidden; text-overflow: clip; text-align: inherit;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+}
+.tio-none { font-size: var(--t-sm); }
+/* Info and delete: a 32 px box on a desktop, 44 px on touch. */
+.tnode-i, .tnode-x {
+  width: 32px; height: 32px; margin: -6px -4px -6px 0; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: var(--radius-sm);
+}
+/* The info mark drawn at 20 px and in the accent: the small "ⓘ" went unseen (2026-11-03). */
+.tnode-i { width: 36px; height: 36px; color: var(--accent-ink); }
+.tnode-i:hover, .tnode-x:hover { background: var(--surface-2); }
+.tnode-more { font-size: var(--t-sm); padding: 10px; }
+.tnode-crumbs { font-size: var(--t-xs); }
+.tnode-levels { margin: 0 0 var(--s-2); display: grid; gap: var(--s-1); }
+.tnode-levels div { display: flex; justify-content: space-between; gap: var(--s-2); }
+.tnode-levels dt { color: var(--muted); }
+.tnode-levels dd { margin: 0; font-weight: 600; }
+.tnode-only { margin: 0 0 var(--s-2); color: var(--muted); }
+.tnode-tut { font-size: var(--t-sm); }
+.tnode-warn { font-size: var(--t-sm); padding: var(--s-3) 10px; }
+.tnode-fix-btn, .tnode-fix-opt { font-size: var(--t-sm); }
+.tnode-fix-btn { min-height: 32px; padding: var(--s-2) 10px; }
+.tnode-fix-opt { padding: 7px 10px; }
+/* Replace and Details: the toolbar's ghost buttons, side by side (U-F7). */
+.tnode-actions { gap: 6px; padding: var(--s-3) 10px; }
+.tnode-act {
+  min-height: 32px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2);
+  color: var(--ink); font-size: var(--t-sm); font-weight: 600; padding: var(--s-2) var(--s-3);
+}
+.tnode-act + .tnode-act { border-left: 1px solid var(--line); }
+.tnode-act:hover { border-color: var(--muted); background: var(--surface-2); color: var(--ink); }
+/* On touch: 44 px targets, and no drag handles (no task needs dragging, D10 Q6; chips link). */
+@media (hover: none) {
+  .tnode-i, .tnode-x { width: 44px; height: 44px; margin: -10px -8px -10px 0; }
+  .tio { min-height: 44px; display: flex; align-items: center; }
+  .tcol { gap: var(--s-3); }
+  .tnode-act, .tnode-fix-btn { min-height: 44px; }
+  .tnode .react-flow__handle { opacity: 0; pointer-events: none; }
+}
+
+/* The card at low zoom: its name and what is still open, larger so it reads (brief 03, A). */
+.tnode.is-compact { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-4) 14px; min-width: 220px; cursor: pointer; }
+.tnode.is-compact .tnode-name { font-size: 1.5rem; line-height: 1.2; }
+.tnode-status { font-size: 1.15rem; color: var(--muted); }
+
+/* One row on a phone too: the older two-row grid gives way; the house is a 44 px button. */
+@media (max-width: 760px) {
+  .tree-toolbar { display: flex; }
+  .tree-toolbar > .bh-vignette { width: 64px; height: var(--ctl-lg); }
+  .tree-toolbar > .bh-vignette .bh-vignette-foot { display: none; }
+  .tree-toolbar > .bh-vignette .bh-vignette-drawing svg { height: 100%; object-fit: cover; }
+}
+
+/* Arriving from a guide: one line on what this view is for, two ways on, dismissable. */
+.tree-arrival { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1) var(--s-4); padding: var(--s-2) 52px var(--s-2) var(--s-4); background: var(--accent-bg-2); border-bottom: 1px solid var(--accent-line); font-size: var(--t-sm); }
+.tree-arrival p { margin: 0; flex: 1 1 22rem; }
+.tree-arrival-acts { display: inline-flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); }
+.tree-arrival .link-btn { display: inline-flex; align-items: center; min-height: var(--ctl-md); margin: 0; font-weight: 600; }
+.tree-arrival-x { position: absolute; top: 4px; right: 4px; width: var(--ctl-lg); height: var(--ctl-lg); display: inline-flex; align-items: center; justify-content: center; border: 0; background: none; color: var(--ink); cursor: pointer; }
+
+/* Loading: the frame at once, the word after 400 ms. */
+.tree-loading .tree-toolbar { min-height: 57px; }
+.tree-loading-word { margin: var(--s-6); color: var(--muted); opacity: 0; animation: fade-in-late 1ms linear var(--dur-slow) forwards; }
+@keyframes fade-in-late { to { opacity: 1; } }
+
+/* A phone turned to landscape: the bars become a strip down the left; the cards do not move (Eric, 2026-10-18). */
+@media (orientation: landscape) and (max-height: 500px) {
+  .tree-root { flex-direction: row; }
+  .tree-toolbar { flex-direction: column; align-items: stretch; width: 132px; border-bottom: 0; border-right: 1px solid var(--line); overflow-y: auto; }
+  .tree-toolbar-gap { display: none; }
+  .tree-toolbar > .bh-vignette { width: 100%; }
+  .tool-menu-list { top: 0; left: calc(100% + 6px); }
+  .tool-menu.is-end .tool-menu-list { left: calc(100% + 6px); right: auto; }
+  .tree-arrival { display: none; }
+  .app--fullbleed .site-foot { display: none; }
+}
+
+/* The dialogs: a shared 44 px close, 44 px rows, full-height sheets on a phone (brief 03, D). */
+.modal-head .tnode-x { width: var(--ctl-lg); height: var(--ctl-lg); margin: -8px -8px -8px var(--s-2); font-size: 1.4rem; }
+.modal .picker-item { min-height: var(--ctl-lg); }
+@media (max-width: 760px) {
+  .modal-back { align-items: stretch; padding: 0; }
+  .modal { width: 100%; max-width: none; height: 100vh; height: 100dvh; max-height: none; border-radius: 0; display: flex; flex-direction: column; }
+  .modal-head { position: sticky; top: 0; z-index: 1; background: var(--surface); }
+  .modal-body { flex: 1; overflow-y: auto; }
+}
+
+/* ---- builder, second pass (Eric, 2026-10-20) */
+.tree-add-row { display: inline-flex; align-items: center; gap: var(--s-2); }
+.tree-add-row .tree-tools-label { font-size: var(--t-sm); color: var(--muted); }
+.tree-root .tree-toolbar .tool-menu.is-mobile-only { display: none; }
+@media (max-width: 760px) {
+  .tree-root .tree-toolbar .tool-menu.is-mobile-only { display: inline-flex; }
+  .tree-root .tree-toolbar .tree-add-row.is-desktop-only { display: none; }
+  /* The Add tray: from the foot of the screen, covering only its lower part. */
+  .tool-menu.is-tray .tool-menu-list {
+    position: fixed; top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 70vh; max-height: 70dvh; overflow-y: auto;
+    border-radius: var(--radius) var(--radius) 0 0; padding: var(--s-2) var(--s-3) calc(var(--s-4) + env(safe-area-inset-bottom, 0px));
+  }
+  .tool-menu-backdrop { position: fixed; inset: 0; z-index: 24; background: rgba(20, 18, 14, .25); animation: fade-in var(--dur-fast) var(--ease-standard); }
+}
+/* Arrange and See it all: raised off the canvas, so they read as buttons (they were the canvas's colour). */
+.tree-bottom .btn.sm.ghost {
+  background: var(--surface); border: 1px solid var(--line-strong, var(--muted-line)); color: var(--ink);
+  box-shadow: var(--shadow-raised); font-weight: 600;
+}
+.tree-bottom .btn.sm.ghost:hover { border-color: var(--accent); }
+/* "Add:" in the label style of the design guide, in ink so it reads on the bar (Eric, 2026-10-20). */
+.tree-add-row .tree-tools-label { font-size: var(--t-xs); font-weight: 700; letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--ink); }
+
+/* "Fix it" on a phone: a sheet from the foot of the screen. */
+.fix-sheet-back { position: fixed; inset: 0; z-index: 40; background: rgba(20, 18, 14, .3); }
+.fix-sheet {
+  position: fixed; z-index: 41; left: 0; right: 0; bottom: 0; max-height: 70vh; max-height: 70dvh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3) var(--s-4) calc(var(--s-5) + env(safe-area-inset-bottom, 0px));
+  background: var(--bg); color: var(--ink); border-radius: var(--radius) var(--radius) 0 0; box-shadow: var(--shadow-overlay);
+  animation: sheet-rise var(--dur-base) var(--ease-enter);
+}
+.fix-sheet-head { display: flex; align-items: center; justify-content: space-between; }
+.fix-sheet-head .tnode-x { width: var(--ctl-lg); height: var(--ctl-lg); font-size: 1.4rem; }
+.fix-sheet-note { margin: 0; font-size: var(--t-sm); color: var(--muted); }
+.fix-sheet .tnode-fix-opt { min-height: var(--ctl-lg); font-size: var(--t-md); text-align: left; }
+@media (prefers-reduced-motion: reduce) { .fix-sheet { animation: none; } }
+
+/* The destination card at a phone's width (Mb-21): its columns stacked. */
+@media (max-width: 760px) {
+  .tnode.is-destination.is-wide { min-width: 280px; max-width: 300px; }
+  .tnode.is-wide .tnode-io { flex-direction: column; }
+  .tnode.is-wide .tnode-io > .tcol:not(.tcol-accepts) { flex: none; min-width: 0; text-align: left; align-items: flex-start; }
+  /* Stacked, the rule between the columns runs across instead. */
+  .tnode.is-wide .tnode-io > .tcol + .tcol { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: var(--s-3); }
+}
+
+/* Read this system as a list. */
+.system-list { margin: 0; padding-left: var(--s-5); display: flex; flex-direction: column; gap: var(--s-4); }
+.system-list-name { font-weight: 700; font-size: var(--t-md); }
+.system-list dl { margin: var(--s-1) 0; font-size: var(--t-sm); }
+.system-list dl div { display: flex; gap: var(--s-2); }
+.system-list dt { flex: none; width: 5.5em; color: var(--muted); }
+.system-list dd { margin: 0; }
+
+/* A card just added: in with a fade and a slight scale, then an outline for 1.5 s. */
+.react-flow__node.is-arriving > .tnode { animation: card-in var(--dur-base) var(--ease-enter); outline: 2px solid var(--accent); outline-offset: 2px; }
+@keyframes card-in { from { opacity: 0; transform: scale(.96); } }
+@media (prefers-reduced-motion: reduce) { .react-flow__node.is-arriving > .tnode { animation: none; } }
+
+/* ---- the top bar: one height, one row (Eric, 2026-10-20) */
+.tree-toolbar { min-height: 57px; }
+.tree-toolbar .btn.sm { min-height: var(--ctl-lg); white-space: nowrap; flex: none; }
+.tree-toolbar .tree-add-row, .tree-toolbar .tool-menu { flex: none; }
+/* Too narrow for the four add buttons: "+ Add", as on a phone (measured in TreeBuilder.jsx). */
+.tree-root .tree-toolbar.is-folded .tree-add-row.is-desktop-only { display: none; }
+.tree-root .tree-toolbar.is-folded .tool-menu.is-mobile-only { display: inline-flex; }
+/* The house: a 44 px button like the others, the drawing then its name. */
+.tree-toolbar > .bh-vignette {
+  display: inline-flex; align-items: center; gap: var(--s-2); flex: none;
+  width: auto; height: var(--ctl-lg); padding: 0 var(--s-3) 0 0; border-radius: var(--radius-sm);
+}
+.tree-toolbar > .bh-vignette .bh-vignette-drawing { flex: none; width: 64px; height: 100%; border-right: 1px solid var(--line-soft); }
+.tree-toolbar > .bh-vignette .bh-vignette-drawing svg { width: 100%; height: 100%; }
+.tree-toolbar > .bh-vignette .bh-vignette-foot {
+  position: static; padding: 0; background: none; white-space: nowrap; gap: var(--s-2);
+  font-size: var(--t-sm); font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--ink);
+}
+/* The middle: the system's name (or its counts), a quiet button to Save / open. */
+.tree-name-slot {
+  flex: 1 1 0; min-width: 0; min-height: var(--ctl-lg); padding: 0 var(--s-2);
+  border: 0; border-radius: var(--radius-sm); background: none; color: var(--ink); font: inherit;
+  text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;
+}
+.tree-name-slot:hover { background: var(--surface-2); }
+.tree-name-slot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tree-name-slot-name { font-weight: 600; }
+.tree-name-slot-count { font-size: var(--t-sm); color: var(--muted); }
+@media (max-width: 760px) {
+  .tree-toolbar > .bh-vignette { width: 64px; padding: 0; }
+  .tree-toolbar > .bh-vignette .bh-vignette-drawing { border-right: 0; }
+  .tree-toolbar > .bh-vignette .bh-vignette-foot { display: none; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .tree-name-slot { flex: none; }
+  /* 132 px wide: a long label takes two lines rather than being cut. */
+  .tree-toolbar .btn.sm { white-space: normal; text-align: left; }
+  .tree-toolbar > .bh-vignette .bh-vignette-foot { white-space: normal; }
+}
+/* The tray's backdrop belongs to the phone; a folded "+ Add" on a desktop is a plain dropdown. */
+.tool-menu-backdrop { display: none; }
+@media (max-width: 760px) { .tool-menu-backdrop { display: block; } }
+
+/* ---- the top bar, fourth pass (Eric, 2026-10-20) */
+/* "Add:" at the body's small size, bold, so it reads as the row's label. */
+.tree-add-row .tree-tools-label { font-size: var(--t-sm); font-weight: 700; letter-spacing: var(--ls-caps); color: var(--ink); }
+/* The name slot after More: left-aligned, with the folder mark that says it opens the saves. */
+.tree-name-slot { display: inline-flex; align-items: center; justify-content: flex-start; gap: var(--s-2); text-align: left; }
+.tree-name-slot .glyph { flex: none; color: var(--muted); }
+.tree-name-slot > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/*
+ * The house at 64 px is 8% of its drawing: lines of 1.5 units came out 0.1 px, lost on the dark
+ * bar. In the bar, strokes keep a screen width instead.
+ */
+.tree-toolbar > .bh-vignette svg :is(.pl-line, .pl-hair, .dr-line, .dr-fill, .dr-hide, .dr-dash, .ov-line, .ov-fill) { vector-effect: non-scaling-stroke; }
+.tree-toolbar > .bh-vignette svg :is(.pl-line, .dr-line, .dr-fill) { stroke-width: 1.3; opacity: 1; }
+.tree-toolbar > .bh-vignette svg :is(.pl-hair, .dr-line.hair, .dr-hide, .dr-dash) { stroke-width: .6; }
+.tree-toolbar > .bh-vignette svg :is(.ov-line, .ov-fill) { stroke-width: 2; }
+.tree-toolbar > .bh-vignette svg .ov-line.hair { stroke-width: 1; }
+.tree-toolbar > .bh-vignette .gh-layer.is-new :is(.ov-line, .ov-fill, .pl-line) { stroke-width: 2.6; }
+/* What Copy puts on the clipboard: off screen, for the select-and-copy fallback. */
+.share-text-copy { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.modal .system-list { margin-bottom: var(--s-3); }
+
+/* ---- card rails (F7, 2026-10-26): every card that is not a solution carries the resource
+   card's rail, in the colour of what it is: a grid in the high-tech terracotta, the household in
+   sage, the building and the environment in the resource blue. Solid even on a dashed card; a
+   solution card stays plain, as the main element. Last, so the dashed borders above keep their
+   other three sides. */
+.tnode.is-societal { border-left: 4px solid var(--benchmark); }
+.tnode.is-home { border-left: 4px solid var(--accent); }
+.tnode.is-env, .tnode.is-dwelling { border-left: 4px solid var(--resource); }
+
+/* The animation offered once to a reader with cards and no link (S8): over the canvas, bottom
+   right, above Arrange and See it all; on a phone, the canvas's width. */
+.tree-tour-offer {
+  position: absolute; z-index: 7; right: 12px; bottom: 60px; width: min(400px, calc(100% - 24px));
+  display: grid; gap: var(--s-3); justify-items: start; padding: var(--s-3) var(--s-4) var(--s-4);
+  background: var(--surface); border: 1px solid var(--accent-line); border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .16);
+}
+.tree-tour-offer > .bt { width: 100%; }
+.tree-tour-offer-head { width: 100%; display: flex; align-items: flex-start; gap: var(--s-3); }
+.tree-tour-offer-head h2 { flex: 1; margin: 0; font-size: var(--t-base); line-height: var(--lh-snug); }
+.tree-tour-offer-head .tree-arrival-x { position: static; flex: none; margin: -6px -8px 0 0; }

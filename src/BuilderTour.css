@@ -1,0 +1,97 @@
+/*
+ * The builder in ten seconds (BuilderTour.jsx). The look of the real builder, a size down: the
+ * card, the green chips, the dashed link. Everything moves by transitions keyed on the step, so
+ * the loop costs no animation library.
+ */
+.bt { margin: 0; display: grid; gap: var(--s-2); text-align: left; }
+.bt-box {
+  position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius);
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 16px 16px;
+}
+.bt-stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; font-size: 12px; color: var(--ink); }
+
+.bt-btn {
+  position: absolute; top: 10px; padding: 5px 10px; border-radius: var(--radius-sm); font-weight: 600;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.bt-btn.is-add { left: 8px; background: var(--accent); color: var(--on-accent); }
+.bt-btn.is-check { right: 8px; background: var(--ink); color: var(--bg); }
+.bt-btn.is-press { transform: translateY(1px) scale(.97); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
+
+.bt-card {
+  position: absolute; width: 148px; padding: 7px 8px; display: grid; gap: 5px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+  opacity: 0; transform: translateY(6px) scale(.96); transition: opacity .35s ease, transform .35s ease, outline-color .3s;
+  outline: 2px solid transparent; outline-offset: 2px;
+}
+.bt-card.is-on { opacity: 1; transform: none; }
+.bt-card.is-fit { outline-color: var(--accent); }
+.bt-name { font-size: 12.5px; line-height: 1.25; }
+.bt-row { display: flex; align-items: center; gap: 6px; }
+.bt-lbl { flex: none; min-width: 40px; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.bt-chip {
+  padding: 2px 6px; border-radius: var(--radius-xs); border: 1px solid var(--accent-line);
+  background: var(--accent-bg-2); color: var(--accent-ink); transition: background .2s, color .2s, box-shadow .2s;
+}
+.bt-chip.is-linked { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.bt-chip.is-hot { background: var(--accent); color: var(--on-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
+
+.bt-links { position: absolute; inset: 0; pointer-events: none; }
+.bt-link {
+  fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 60; stroke-dashoffset: 60;
+  transition: stroke-dashoffset .5s ease;
+}
+.bt-link.is-on { stroke-dashoffset: 0; }
+
+.bt-pick {
+  position: absolute; width: 196px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); box-shadow: 0 6px 18px rgba(0, 0, 0, .14); overflow: hidden;
+  opacity: 0; transform: translateY(-4px); transition: opacity .2s ease, transform .2s ease;
+}
+.bt-pick.is-on { opacity: 1; transform: none; }
+.bt-pick-head { padding: 5px 8px; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); }
+.bt-pick-row { padding: 5px 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background .15s; }
+.bt-pick-row.is-sel { background: var(--accent-bg); color: var(--accent-ink); font-weight: 600; }
+
+.bt-verdict {
+  position: absolute; left: 50%; bottom: 8px; transform: translate(-50%, 6px); width: max-content; max-width: 500px;
+  padding: 6px 12px; border-radius: 999px; background: var(--ink); color: var(--bg); text-align: center;
+  opacity: 0; transition: opacity .3s ease, transform .3s ease;
+}
+.bt-verdict.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* The finger: a dot that glides to what it presses, and a ring when it presses. */
+.bt-dot {
+  position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%;
+  background: color-mix(in srgb, var(--ink) 45%, transparent); border: 2px solid var(--surface);
+  transition: left .55s cubic-bezier(.4, 0, .2, 1), top .55s cubic-bezier(.4, 0, .2, 1), transform .15s;
+  pointer-events: none;
+}
+.bt-dot.is-press { transform: scale(.8); box-shadow: 0 0 0 6px color-mix(in srgb, var(--ink) 18%, transparent); }
+
+.bt-cap { display: flex; align-items: center; gap: var(--s-3); font-size: var(--t-md); color: var(--ink); min-height: 32px; }
+.bt-n { flex: none; font-size: var(--t-xs); font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+.bt-cap-text { flex: 1; }
+.bt-pause {
+  flex: none; min-height: 32px; padding: 0 var(--s-3); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink); font: inherit; font-size: var(--t-sm); cursor: pointer;
+}
+.bt-pause:hover { border-color: var(--muted); }
+@media (hover: none) { .bt-pause { min-height: 44px; } }
+.bt-steps { margin: 0; padding-left: 1.4em; font-size: var(--t-md); color: var(--ink); display: grid; gap: 2px; }
+
+/* The camera version (the home page's card): the box is the card's 3:2 frame, the stage glides
+   inside it, and the caption rides at its foot. */
+.bt.is-camera { display: block; height: 100%; }
+.bt.is-camera .bt-box { height: 100%; border: 0; border-radius: 0; }
+.bt.is-camera .bt-stage { transition: transform .8s cubic-bezier(.4, 0, .2, 1); }
+.bt.is-camera .bt-steps { display: none; }
+.bt-overlay {
+  position: absolute; left: 8px; right: 84px; bottom: 8px; padding: 4px 10px; border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface) 92%, transparent); border: 1px solid var(--line);
+  font-size: var(--t-sm); line-height: 1.3; color: var(--ink);
+}
+.bt-overlay.is-verdict { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .bt.is-camera .bt-stage { transition: none; } }

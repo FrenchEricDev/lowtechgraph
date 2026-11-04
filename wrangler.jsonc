@@ -1,0 +1,65 @@
+{
+  // Cloudflare deploys this repo as a Worker serving static assets (the *.workers.dev
+  // URL gives it away — classic Pages projects get *.pages.dev). Without this file the
+  // defaults are wrong for us in one important way, so it is not optional.
+  "name": "lowtechgraph",
+  "compatibility_date": "2026-08-19",
+
+  // A Worker script in front of the assets, added 2026-08-27 for server-side usage
+  // counting (worker/index.js). It does one thing: hand the request to the assets and
+  // record a datapoint. There is no routing, no rendering and no logic in it.
+  "main": "worker/index.js",
+
+  // Writes go to Workers Analytics Engine. `USAGE` is how the Worker reaches it (env.USAGE).
+  //
+  // PREREQUISITE, and it is not optional: Analytics Engine must be ENABLED on the account,
+  // at Storage & databases > Analytics Engine > Enable. The dataset itself is created by
+  // the first write, which is what "nothing to set up beforehand" used to say here, and
+  // that sentence was wrong in the way that cost two days.
+  //
+  // WHAT HAPPENS IF IT IS NOT ENABLED, because the failure is much worse than it sounds:
+  // `wrangler deploy` fails outright with "You need to enable Analytics Engine", and it
+  // fails AFTER uploading every asset, so the build looks healthy right up to the last
+  // line. **The whole deploy is blocked, including changes that have nothing to do with
+  // analytics.** On 2026-08-27 that silently held back two commits: this one and the
+  // service-worker fix for /catalogue.json, while the live site kept serving a build from
+  // two commits earlier and everything looked fine from outside.
+  // If a deploy ever fails here again, read the END of the build log. The gates all pass,
+  // the assets all upload, and the real error is the last line.
+  "analytics_engine_datasets": [
+    { "binding": "USAGE", "dataset": "lowtechgraph_usage" }
+  ],
+
+  "assets": {
+    "directory": "./dist",
+
+    // REQUIRED once "main" exists: without this binding env.ASSETS is undefined and the
+    // Worker cannot serve anything. If the site ever returns 500 after a deploy, this
+    // line, or the file it points at, is the first place to look.
+    "binding": "ASSETS",
+
+    // Without this, a request that matches a file is served straight from the asset
+    // store and the Worker never runs, which would mean counting nothing except 404s.
+    //
+    // Verified 2026-08-27 against wrangler 4.127.0: `wrangler deploy --dry-run` accepts
+    // this field and reports both bindings, and `wrangler dev --local` serves every kind
+    // of request through the Worker correctly (page 200, /catalogue.json as
+    // application/json, a bad URL still 404 via not_found_handling).
+    // Worth knowing anyway: Cloudflare has changed this field name and shape before, and
+    // the failure mode if a future version rejects it is MILD. Assets keep being served
+    // directly, the site behaves exactly as it does now, and the only symptom is an empty
+    // dataset. It cannot take the site down on its own.
+    "run_worker_first": true,
+
+    // A URL matching no file must answer 404, not 200. The default here was serving the
+    // SPA shell with a success status for anything unrecognised — a "soft 404", which
+    // search engines treat as a quality problem, and which would have applied to every
+    // typo and dead link pointing at the site. "404-page" serves dist/404.html with a
+    // real 404 status instead.
+    "not_found_handling": "404-page",
+
+    // Pages are emitted as "<path>.html" at their exact canonical path, so no trailing
+    // slash is ever added or removed. Belt and braces alongside that.
+    "html_handling": "drop-trailing-slash"
+  }
+}

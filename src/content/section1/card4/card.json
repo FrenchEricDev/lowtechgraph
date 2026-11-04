@@ -1,0 +1,16 @@
+{
+  "to": {
+    "view": "guide",
+    "id": "sustainable"
+  },
+  "en": {
+    "title": "Build to be more sustainable",
+    "text": " Build and reduce your footprint: Less carbon, fewer materials, and less to throw away at the end of the project.",
+    "cta": "{n} Sustainability-focused solutions"
+  },
+  "fr": {
+    "title": "Construire pour diminuer votre impact environnemental",
+    "text": "Construisez des solutions qui diminuent votre empreinte : moins de carbone, moins de matière, et moins à jeter au bout du compte.",
+    "cta": "{n} Solutions pour la planète"
+  }
+}

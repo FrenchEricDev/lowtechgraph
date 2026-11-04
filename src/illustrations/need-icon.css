@@ -1,0 +1,39 @@
+/*
+ * ===========================================================================
+ * NEED ICONS: the fifteen marks in illustrations/needIcons.js. Site tokens, so they follow
+ * light and dark. Stroke widths are in the icon's 24-unit grid; the ratios are the plates'.
+ * Classes are prefixed `nic-` because the short role names would collide. Bundled into the one
+ * stylesheet, so prerendered pages get it too.
+ * ===========================================================================
+ */
+.nic { display: block; flex: none; color: var(--ink); overflow: visible; }
+.nic .nic-h   { fill: none; stroke: currentColor; stroke-width: 1.2; opacity: .55;
+                stroke-linecap: round; stroke-linejoin: round; }
+.nic .nic-a   { fill: none; stroke: var(--accent); stroke-width: 1.9;
+                stroke-linecap: round; stroke-linejoin: round; }
+.nic .nic-ah  { fill: none; stroke: var(--accent); stroke-width: 1.25;
+                stroke-linecap: round; stroke-linejoin: round; }
+.nic .nic-af  { fill: var(--accent); stroke: none; }
+.nic .nic-at  { fill: var(--accent); opacity: .16; stroke: none; }
+.nic .nic-hid { fill: none; stroke: var(--accent); stroke-width: 1.5;
+                stroke-dasharray: 1.6 1.4; stroke-linecap: butt; }
+
+/* The chip profile at 20px and under: the same marks, house pushed back and accent forward. */
+.nic.nic-chip .nic-h  { stroke-width: 1; opacity: .32; }
+.nic.nic-chip .nic-a  { stroke-width: 2.4; }
+.nic.nic-chip .nic-ah { stroke-width: 1.7; }
+.nic.nic-chip .nic-at { opacity: .22; }
+
+/*
+ * The wrapper React renders around the string, sized so the row does not jump when the SVG is
+ * injected.
+ */
+.nic-slot { display: inline-flex; flex: none; }
+
+/* A need page's title: the icon sits beside the name at display size. */
+.fn-title { display: flex; align-items: center; gap: var(--s-4); }
+.fn-title .nic-slot { margin-top: 2px; }
+
+/* The static page carries the same icons (scripts/prerender.mjs), beside the list links. */
+#prerender .pr-need { display: inline-flex; align-items: center; gap: var(--s-3); }
+#prerender .pr-fn-title { display: flex; align-items: center; gap: var(--s-4); }

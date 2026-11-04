@@ -1,0 +1,55 @@
+{
+  "slug": {
+    "en": "sustainable",
+    "fr": "durabilite"
+  },
+  "order": 6,
+  "en": {
+    "door": "Reduce my footprint",
+    "title": "Build to be more sustainable",
+    "intro": "Four picks judged on what it takes to make them, not only on what they save once running. Each one uses very little material, and two of them turn something you currently throw away into something you use."
+  },
+  "fr": {
+    "door": "Réduire mon empreinte",
+    "title": "Construire plus durablement",
+    "intro": "Quatre propositions jugées sur ce qu’elles nécessitent pour les faire, et pas seulement sur ce qu’elles économisent ensuite. Chacune demande très peu de matière, et deux transforment un déchet existant en ressource."
+  },
+  "picks": [
+    {
+      "id": "SOL-215",
+      "en": {
+        "why": "No machine to make and none to run: a line and a few pegs replace one of the largest electrical loads in the home."
+      },
+      "fr": {
+        "why": "Aucune machine à fabriquer ni à faire tourner : un fil et quelques pinces remplacent l’un des plus gros postes électriques du logement."
+      }
+    },
+    {
+      "id": "SOL-182",
+      "en": {
+        "why": "Turns kitchen waste into soil in a box under the sink. No garden, no smell, and the worms do the work."
+      },
+      "fr": {
+        "why": "Transforme les déchets de cuisine en terreau, dans une caisse sous l’évier. Sans jardin, sans odeur, et ce sont les vers qui travaillent."
+      }
+    },
+    {
+      "id": "SOL-174",
+      "en": {
+        "why": "The least material of anything here: a piece of fabric that stops the heat before it arrives, so no machine has to remove it."
+      },
+      "fr": {
+        "why": "Le moins de matière de toute la sélection : une toile qui arrête la chaleur avant qu’elle entre, et aucune machine n’a à l’évacuer."
+      }
+    },
+    {
+      "id": "SOL-134",
+      "en": {
+        "why": "Uses no water at all. Built in with its own containers, it keeps the urine apart as a garden fertiliser and makes the composting quick."
+      },
+      "fr": {
+        "why": "N’utilise pas une goutte d’eau. Intégrée avec ses propres bacs, elle garde l’urine à part comme engrais pour le jardin, et le compostage est rapide."
+      }
+    }
+  ]
+}

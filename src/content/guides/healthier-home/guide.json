@@ -1,0 +1,64 @@
+{
+  "slug": {
+    "en": "healthier-home",
+    "fr": "logement-sain"
+  },
+  "order": 4,
+  "en": {
+    "door": "A healthier home",
+    "title": "Build for a healthier home",
+    "intro": "Damp, drinking water, noise and steam: five things you can make yourself for a healthier home, from the easiest to the most demanding. Each one says what it does, not what it cures."
+  },
+  "fr": {
+    "door": "Un logement plus sain",
+    "title": "Construire pour un logement plus sain",
+    "intro": "Humidité, eau de boisson, bruit et vapeur : cinq choses à fabriquer soi-même pour un logement plus sain, de la plus simple à la plus exigeante. Chacune dit ce qu’elle fait, pas ce qu’elle soigne."
+  },
+  "picks": [
+    {
+      "id": "SOL-248",
+      "en": {
+        "why": "Draws water out of the air in a damp cupboard or wardrobe, where mould starts. Salt and two containers, no power."
+      },
+      "fr": {
+        "why": "Retire l’eau de l’air d’un placard ou d’une armoire humide, là où la moisissure commence. Du sel et deux récipients, sans électricité."
+      }
+    },
+    {
+      "id": "SOL-148",
+      "en": {
+        "why": "Holds back dirt and most bacteria from water that does not come from the mains, such as a well or a rain tank. It does not remove chemicals."
+      },
+      "fr": {
+        "why": "Retient la saleté et la plupart des bactéries d’une eau qui ne vient pas du réseau, celle d’un puits ou d’une cuve de pluie. Il ne retire pas les produits chimiques."
+      }
+    },
+    {
+      "id": "SOL-130",
+      "en": {
+        "why": "Less echo, and less noise carried between rooms: a calmer room to live and sleep in."
+      },
+      "fr": {
+        "why": "Moins d’écho et moins de bruit d’une pièce à l’autre : une pièce plus calme pour vivre et dormir."
+      }
+    },
+    {
+      "id": "SOL-041",
+      "en": {
+        "why": "Clay plaster takes up moisture when the air is humid and gives it back when it is dry, so rooms are less prone to condensation."
+      },
+      "fr": {
+        "why": "L’enduit d’argile absorbe l’humidité quand l’air est humide et la restitue quand il est sec : les pièces sont moins sujettes à la condensation."
+      }
+    },
+    {
+      "id": "SOL-043",
+      "en": {
+        "why": "Takes steam and cooking fumes out where they are made, before they spread through the home and settle as damp."
+      },
+      "fr": {
+        "why": "Évacue la vapeur et les fumées de cuisson là où elles se forment, avant qu’elles ne se répandent dans le logement et ne s’y déposent en humidité."
+      }
+    }
+  ]
+}

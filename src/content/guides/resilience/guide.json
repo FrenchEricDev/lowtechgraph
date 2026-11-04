@@ -1,0 +1,64 @@
+{
+  "slug": {
+    "en": "resilience",
+    "fr": "resilience"
+  },
+  "order": 3,
+  "en": {
+    "door": "If the mains go off",
+    "title": "Build for resilience",
+    "intro": "What still works when the grid, the mains or the weekly delivery does not. These are chosen for what they do on the bad day, not on the average one."
+  },
+  "fr": {
+    "door": "Si les réseaux sont coupés",
+    "title": "Construire pour la résilience",
+    "intro": "Ce qui fonctionne encore quand le réseau, l’eau courante ou la livraison hebdomadaire s’arrêtent. Une sélection pour réussir à gérer une crise."
+  },
+  "picks": [
+    {
+      "id": "SOL-136",
+      "en": {
+        "why": "Cooks without electricity and burns what you can gather nearby."
+      },
+      "fr": {
+        "why": "Cuit sans électricité et brûle ce que l’on peut ramasser dans les environs."
+      }
+    },
+    {
+      "id": "SOL-069",
+      "en": {
+        "why": "Keeps working when the water is off, which a flush toilet does not."
+      },
+      "fr": {
+        "why": "Fonctionne quand l’eau est coupée, ce que ne fait pas une chasse d’eau conventionnelle."
+      }
+    },
+    {
+      "id": "SOL-053",
+      "en": {
+        "why": "A supply that does not depend on anyone else’s pumps."
+      },
+      "fr": {
+        "why": "Une ressource qui ne dépend des pompes de personne."
+      }
+    },
+    {
+      "id": "SOL-124",
+      "en": {
+        "why": "Holds heat in through a cold night with nothing running."
+      },
+      "fr": {
+        "why": "Retient la chaleur par une nuit froide sans utiliser aucun chauffage actif."
+      }
+    },
+    {
+      "id": "SOL-131",
+      "en": {
+        "why": "Makes water safe to drink with no power and no chemicals. Start it before you need it: the living layer takes a few weeks to grow."
+      },
+      "fr": {
+        "why": "Rend l’eau potable sans électricité ni produit chimique. À mettre en route avant d’en avoir besoin : la couche vivante met quelques semaines à se former."
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "to": {
+    "view": "guide",
+    "id": "resilience"
+  },
+  "en": {
+    "title": "Build for resilience",
+    "text": "Solutions that keep working when the grid, the mains or the delivery does not.",
+    "cta": "{n} Resilient solutions"
+  },
+  "fr": {
+    "title": "Construire pour la résilience",
+    "text": "Des solutions qui continuent de fonctionner quand le réseau, l’eau courante ou la livraison s’arrêtent.",
+    "cta": "{n} solutions pour l'autonomie"
+  }
+}

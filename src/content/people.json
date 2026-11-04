@@ -1,0 +1,1095 @@
+{
+ "_about": "People and places (brief 11, CM1). One entry per maker, organisation, place or forum; every one was read on its own site on the date in \"checked\". The reasons for each entry, and for those left out, are in reviews/CM1-research/makers.csv and gatherings.csv. No ranking: the page sorts alphabetically. A name and a link only; a photo or a quote only with their yes.",
+ "topics": [
+  "water",
+  "heat",
+  "food",
+  "power",
+  "sanitation",
+  "building"
+ ],
+ "entries": [
+  {
+   "id": "appropedia",
+   "group": "learn",
+   "kind": "site",
+   "title": "Appropedia",
+   "line": {
+    "en": "An open wiki of appropriate technology: thousands of projects written up by the people who built them.",
+    "fr": "Un wiki ouvert des technologies appropriées : des milliers de projets décrits par ceux qui les ont faits."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [
+    "wiki"
+   ],
+   "where": null,
+   "link": "https://www.appropedia.org/",
+   "topics": [],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "chaillot",
+   "group": "learn",
+   "kind": "channel",
+   "title": "Barnabé Chaillot",
+   "line": {
+    "en": "Barnabé Chaillot self-builds simple renewable-energy systems and films how: solar, heat, small off-grid hamlets.",
+    "fr": "Barnabé Chaillot autoconstruit des systèmes simples d’énergie renouvelable et filme comment : solaire, chaleur, petits hameaux autonomes."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [
+    "video"
+   ],
+   "where": null,
+   "link": "https://www.youtube.com/@chaillotbarnabe",
+   "topics": [
+    "power",
+    "heat"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "batirsamaison",
+   "group": "learn",
+   "kind": "channel",
+   "title": "BatirSaMaison",
+   "line": {
+    "en": "Self-building and DIY for beginners and old hands: how each job is done, shared step by step.",
+    "fr": "Autoconstruction et bricolage pour débutants et habitués : chaque chantier expliqué pas à pas."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [
+    "video",
+    "article"
+   ],
+   "where": null,
+   "link": "https://www.youtube.com/@batirsamaison",
+   "topics": [
+    "water"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "builditsolar",
+   "group": "learn",
+   "kind": "site",
+   "title": "Build It Solar",
+   "line": {
+    "en": "Gary Reysa's free plans and measurements for home-built solar heating, solar power and energy saving.",
+    "fr": "Les plans gratuits et les mesures de Gary Reysa pour chauffer, produire de l’électricité au soleil et économiser l’énergie soi-même."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [
+    "guide"
+   ],
+   "where": null,
+   "link": "https://www.builditsolar.com/",
+   "topics": [
+    "heat",
+    "sanitation",
+    "power",
+    "water",
+    "food"
+   ],
+   "checked": "2026-11-02"
+  },
+  {
+   "id": "basc",
+   "group": "learn",
+   "kind": "site",
+   "title": "Building America Solution Center",
+   "line": {
+    "en": "The US Department of Energy's guides for building and renovating efficient, durable homes.",
+    "fr": "Les guides du ministère de l’Énergie américain pour construire et rénover des maisons sobres et durables."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [
+    "guide"
+   ],
+   "where": null,
+   "link": "https://basc.pnnl.gov/",
+   "topics": [
+    "heat",
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "camelicot",
+   "group": "learn",
+   "kind": "channel",
+   "title": "Camélicot",
+   "line": {
+    "en": "A family that changed how it lives to match its values, and shows the everyday of that life.",
+    "fr": "Une famille qui a changé de mode de vie pour l’accorder à ses valeurs, et en montre le quotidien."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [
+    "video",
+    "how they live"
+   ],
+   "where": null,
+   "link": "https://www.youtube.com/@emmajibe",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "cell",
+   "group": "meet",
+   "kind": "organisation",
+   "title": "CELL",
+   "line": {
+    "en": "Luxembourg's citizen transition movement: community gardens, Repair Cafés, third places, energy cooperatives.",
+    "fr": "Le mouvement citoyen de transition du Luxembourg : jardins partagés, Repair Cafés, tiers-lieux, coopératives d’énergie."
+   },
+   "langs": [
+    "fr",
+    "en",
+    "de"
+   ],
+   "tags": [],
+   "where": {
+    "en": "Luxembourg",
+    "fr": "Luxembourg"
+   },
+   "link": "https://www.cell.lu/",
+   "topics": [
+    "food",
+    "power",
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "cat",
+   "group": "meet",
+   "kind": "place",
+   "title": "Centre for Alternative Technology",
+   "line": {
+    "en": "An eco-centre in Mid Wales: open days, short courses on building and energy, and free advice.",
+    "fr": "Un centre écologique au pays de Galles : journées portes ouvertes, stages courts sur le bâti et l’énergie, conseils gratuits."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": {
+    "en": "Machynlleth (Wales)",
+    "fr": "Machynlleth (pays de Galles)"
+   },
+   "link": "https://cat.org.uk/",
+   "topics": [
+    "building",
+    "power",
+    "heat"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "compagnons",
+   "group": "meet",
+   "kind": "network",
+   "title": "Compagnons Bâtisseurs",
+   "line": {
+    "en": "Help to repair and renovate your own home, participatory building sites, tool lending and shared workshops, in every French region.",
+    "fr": "Une aide pour réparer et rénover son logement soi-même, des chantiers participatifs, des outils prêtés et des ateliers partagés, dans toutes les régions."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [],
+   "where": {
+    "en": "France (mainland and overseas)",
+    "fr": "France (métropole et outre-mer)"
+   },
+   "link": "https://www.compagnonsbatisseurs.eu/",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "dimitrielledge",
+   "group": "learn",
+   "kind": "channel",
+   "title": "Dimitri Elledge",
+   "line": {
+    "en": "DIY for non-professionals: furniture in wood, workshop tips, and an old farmhouse renovated from A to Z.",
+    "fr": "Le bricolage pour les non-professionnels : meubles en bois, astuces d’atelier et un ancien corps de ferme rénové de A à Z."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [
+    "video"
+   ],
+   "where": null,
+   "link": "https://www.youtube.com/@dimitrielledge",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "diysolarforum",
+   "group": "ask",
+   "kind": "forum",
+   "title": "DIY Solar Power Forum",
+   "line": {
+    "en": "A large English forum on building your own solar system, with a beginners' corner.",
+    "fr": "Un grand forum anglophone pour construire son installation solaire, avec un coin débutants."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": {
+    "en": "worldwide",
+    "fr": "dans le monde entier"
+   },
+   "link": "https://diysolarforum.com/",
+   "topics": [
+    "power"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "econologie",
+   "group": "ask",
+   "kind": "forum",
+   "title": "Econologie forums",
+   "line": {
+    "en": "A large French forum on energy, insulation, heating, DIY and gardening, where self-builders share their projects.",
+    "fr": "Un grand forum francophone sur l’énergie, l’isolation, le chauffage, le bricolage et le jardin, où des autoconstructeurs partagent leurs projets."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [],
+   "where": {
+    "en": "France",
+    "fr": "France"
+   },
+   "link": "https://www.econologie.com/forums/",
+   "topics": [
+    "power",
+    "heat",
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "eko",
+   "group": "meet",
+   "kind": "organisation",
+   "title": "EKO!",
+   "line": {
+    "en": "Collaborative low-tech workshops with and for refugees and local people, in Briançon and Marseille.",
+    "fr": "Des ateliers low-tech collaboratifs, avec et pour les personnes réfugiées et les habitants, à Briançon et Marseille."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [],
+   "where": {
+    "en": "Briançon, Marseille, Lesbos",
+    "fr": "Briançon, Marseille, Lesbos"
+   },
+   "link": "https://asso-eko.org/",
+   "topics": [
+    "heat",
+    "food",
+    "sanitation"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "futura-habitat",
+   "group": "ask",
+   "kind": "forum",
+   "title": "Futura forums: insulation and heating",
+   "line": {
+    "en": "A large French forum where people ask about insulation, ventilation and heating their home.",
+    "fr": "Un grand forum francophone où l’on pose ses questions d’isolation, de ventilation et de chauffage."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [],
+   "where": {
+    "en": "France",
+    "fr": "France"
+   },
+   "link": "https://forums.futura-sciences.com/habitat-bioclimatique-isolation-chauffage/",
+   "topics": [
+    "heat"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "hearth",
+   "group": "ask",
+   "kind": "forum",
+   "title": "Hearth.com forums",
+   "line": {
+    "en": "An English forum on heating with wood and pellets: stoves, boilers, chimneys, firewood.",
+    "fr": "Un forum anglophone sur le chauffage au bois et aux granulés : poêles, chaudières, conduits, bois."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": {
+    "en": "worldwide",
+    "fr": "dans le monde entier"
+   },
+   "link": "https://www.hearth.com/talk/",
+   "topics": [
+    "heat"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "jebatismamaison",
+   "group": "learn",
+   "kind": "channel",
+   "title": "Je Bâtis Ma Maison",
+   "line": {
+    "en": "Planning and building an ecological, healthy house yourself, from the first sketch to the finishing work.",
+    "fr": "Concevoir et construire soi-même une maison écologique et saine, de la première esquisse aux finitions."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [
+    "video"
+   ],
+   "where": null,
+   "link": "https://www.youtube.com/@jebatismamaison",
+   "topics": [
+    "heat"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "humanure",
+   "group": "learn",
+   "kind": "person",
+   "title": "Joseph Jenkins (Humanure Handbook)",
+   "line": {
+    "en": "Joseph Jenkins' Humanure Handbook and loo plans, free to download, on composting toilet waste safely.",
+    "fr": "Le Humanure Handbook de Joseph Jenkins et ses plans de toilettes, en téléchargement libre, pour composter les excréments sans risque."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [
+    "guide",
+    "book"
+   ],
+   "where": null,
+   "link": "https://humanurehandbook.com/",
+   "topics": [
+    "sanitation"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "castors",
+   "group": "meet",
+   "kind": "network",
+   "title": "Les Castors",
+   "line": {
+    "en": "A self-builders' association: advice sessions, insurance for self-built houses, tool lending, participatory building sites.",
+    "fr": "Une association d’autoconstructeurs : permanences de conseil, assurances pour l’autoconstruction, prêt d’outils, chantiers participatifs."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [],
+   "where": {
+    "en": "France (from Lyon)",
+    "fr": "France (depuis Lyon)"
+   },
+   "link": "https://www.les-castors.fr/",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "outilsautonomie",
+   "group": "learn",
+   "kind": "organisation",
+   "title": "Les Outils de l'Autonomie",
+   "line": {
+    "en": "Build workshops and training in self-building: mass stoves, mass cookers, a Piggott wind turbine.",
+    "fr": "Des stages de fabrication et des formations à l’autoconstruction : poêle et cuisinière de masse, éolienne Piggott."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [
+    "workshop",
+    "guide"
+   ],
+   "where": null,
+   "link": "https://outils-autonomie.fr/",
+   "topics": [
+    "food",
+    "power",
+    "water",
+    "sanitation",
+    "heat"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "lestrucsdejerome",
+   "group": "learn",
+   "kind": "channel",
+   "title": "Les Trucs de Jérôme",
+   "line": {
+    "en": "An engineer renovating an old house shows the jobs he does himself: wood, metal, wiring, plumbing.",
+    "fr": "Un ingénieur qui rénove une vieille maison montre les travaux qu’il fait lui-même : bois, métal, électricité, plomberie."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [
+    "video"
+   ],
+   "where": null,
+   "link": "https://www.youtube.com/@lestrucsdejerome",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "lowtechlab",
+   "group": "learn",
+   "kind": "organisation",
+   "title": "Low-tech Lab",
+   "line": {
+    "en": "The French association that tests low-tech solutions and publishes them as open tutorials on its wiki.",
+    "fr": "L’association qui teste des solutions low-tech et les publie en tutoriels ouverts sur son wiki."
+   },
+   "langs": [
+    "fr",
+    "en"
+   ],
+   "tags": [
+    "wiki",
+    "article"
+   ],
+   "where": null,
+   "link": "https://lowtechlab.org/",
+   "topics": [],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "ltl-archipel",
+   "group": "meet",
+   "kind": "network",
+   "title": "Low-tech Lab local groups",
+   "line": {
+    "en": "The Low-tech Lab network's local groups, each with its own page on the wiki: workshops, repair and build days, in France and beyond.",
+    "fr": "Les groupes locaux du réseau Low-tech Lab, chacun avec sa page sur le wiki : ateliers, journées de réparation et de fabrication, en France et ailleurs."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [],
+   "where": {
+    "en": "France, Belgium, Switzerland, Luxembourg, Canada, Africa, Lebanon",
+    "fr": "France, Belgique, Suisse, Luxembourg, Canada, Afrique, Liban"
+   },
+   "link": "https://wiki.lowtechlab.org/wiki/Groups",
+   "topics": [],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "ltl-forum",
+   "group": "ask",
+   "kind": "forum",
+   "title": "Low-tech Lab wiki forum",
+   "line": {
+    "en": "Questions asked under the Low-tech Lab's tutorials themselves, by people building them; no account needed, answers can be slow.",
+    "fr": "Les questions posées sous les tutoriels du Low-tech Lab, par ceux qui les construisent ; pas besoin de compte, les réponses peuvent tarder."
+   },
+   "langs": [
+    "fr",
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://wiki.lowtechlab.org/wiki/Sp%C3%A9cial:AllDiscussions",
+   "topics": [],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "lowtechmagazine",
+   "group": "learn",
+   "kind": "site",
+   "title": "Low-tech Magazine (Kris De Decker)",
+   "line": {
+    "en": "Kris De Decker's long reads on old and simple technologies, with how-to articles on building them.",
+    "fr": "Les longs articles de Kris De Decker sur les techniques anciennes et simples, avec des pas-à-pas pour les construire."
+   },
+   "langs": [
+    "en",
+    "fr"
+   ],
+   "tags": [
+    "article"
+   ],
+   "where": null,
+   "link": "https://solar.lowtechmagazine.com/",
+   "topics": [],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "ltl-nearyou",
+   "group": "meet",
+   "kind": "network",
+   "title": "Low-tech near you (Low-tech Lab directory)",
+   "line": {
+    "en": "The Low-tech Lab's map and directory of about a thousand low-tech initiatives in some hundred countries.",
+    "fr": "La carte et l’annuaire du Low-tech Lab : un millier d’initiatives low-tech dans une centaine de pays."
+   },
+   "langs": [
+    "fr",
+    "en"
+   ],
+   "tags": [],
+   "where": {
+    "en": "worldwide",
+    "fr": "dans le monde entier"
+   },
+   "link": "https://lowtechlab.org/fr/les-outils/annuaire",
+   "topics": [],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "openenergymonitor",
+   "group": "learn",
+   "kind": "organisation",
+   "title": "OpenEnergyMonitor",
+   "line": {
+    "en": "An open-source project for monitoring a home's electricity, solar and heat: documentation, designs and a forum.",
+    "fr": "Un projet libre pour mesurer l’électricité, le solaire et la chaleur d’une maison : documentation, plans et un forum."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [
+    "guide",
+    "forum"
+   ],
+   "where": null,
+   "link": "https://docs.openenergymonitor.org/",
+   "topics": [
+    "power"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "opensourcelowtech",
+   "group": "learn",
+   "kind": "channel",
+   "title": "OpenSourceLowTech (Daniel Connell)",
+   "line": {
+    "en": "Daniel Connell designs low-tech devices from recycled materials and films how to build them: energy, water, heat.",
+    "fr": "Daniel Connell conçoit des low-tech en matériaux de récupération et filme leur fabrication : énergie, eau, chaleur."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [
+    "video"
+   ],
+   "where": null,
+   "link": "https://www.youtube.com/@OpenSourceLowTech",
+   "topics": [
+    "water",
+    "power",
+    "heat",
+    "food"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "permies",
+   "group": "ask",
+   "kind": "forum",
+   "title": "Permies",
+   "line": {
+    "en": "A large English-speaking forum on permaculture and homesteading, with boards on natural building and energy.",
+    "fr": "Un grand forum anglophone sur la permaculture et l’autonomie à la campagne, avec des fils sur la construction naturelle et l’énergie."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": {
+    "en": "worldwide",
+    "fr": "dans le monde entier"
+   },
+   "link": "https://permies.com/",
+   "topics": [
+    "building",
+    "power",
+    "heat",
+    "food",
+    "water"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "practicalaction",
+   "group": "learn",
+   "kind": "organisation",
+   "title": "Practical Action",
+   "line": {
+    "en": "An international charity whose knowledge centre publishes free technical briefs on simple technologies.",
+    "fr": "Une ONG internationale dont le centre de ressources publie des fiches techniques gratuites sur les techniques simples."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [
+    "guide"
+   ],
+   "where": null,
+   "link": "https://practicalaction.org/knowledge-centre/",
+   "topics": [
+    "water"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-buildingscience",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/buildingscience",
+   "line": {
+    "en": "How walls, roofs and air move heat and moisture; builders answer questions.",
+    "fr": "Comment murs, toits et air transportent chaleur et humidité ; des bâtisseurs répondent."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/buildingscience",
+   "topics": [
+    "building",
+    "heat"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-diy",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/DIY",
+   "line": {
+    "en": "The general DIY board.",
+    "fr": "Le grand forum généraliste du bricolage."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/DIY",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-diysolar",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/diySolar",
+   "line": {
+    "en": "Building your own solar power systems.",
+    "fr": "Construire soi-même son installation solaire."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/diySolar",
+   "topics": [
+    "power"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-homebuilding",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/homebuilding",
+   "line": {
+    "en": "Building a house, custom or DIY.",
+    "fr": "Construire sa maison, sur mesure ou soi-même."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/homebuilding",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-homeimprovement",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/HomeImprovement",
+   "line": {
+    "en": "The general home-improvement board.",
+    "fr": "Le grand forum généraliste des travaux."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/HomeImprovement",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-insulation",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/Insulation",
+   "line": {
+    "en": "Insulating a home: materials, details, mistakes.",
+    "fr": "Isoler une maison : matériaux, détails, erreurs."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/Insulation",
+   "topics": [
+    "heat",
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-naturalbuilding",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/NaturalBuilding",
+   "line": {
+    "en": "Building with earth, straw, wood and stone.",
+    "fr": "Construire en terre, paille, bois et pierre."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/NaturalBuilding",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-offgridprojects",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/OffGridProjects",
+   "line": {
+    "en": "Projects people built or installed for a simple, sustainable life.",
+    "fr": "Les projets que les gens ont construits ou installés pour une vie simple et durable."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/OffGridProjects",
+   "topics": [
+    "power",
+    "water",
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-passivehouse",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/PassiveHouse",
+   "line": {
+    "en": "Passive-house design and building.",
+    "fr": "Concevoir et construire une maison passive."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/PassiveHouse",
+   "topics": [
+    "heat",
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-renovations",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/renovations",
+   "line": {
+    "en": "Homeowners renovating their own homes.",
+    "fr": "Des propriétaires qui rénovent eux-mêmes."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/renovations",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-solardiy",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/SolarDIY",
+   "line": {
+    "en": "Do-it-yourself solar, panels to batteries.",
+    "fr": "Le solaire fait maison, des panneaux aux batteries."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/SolarDIY",
+   "topics": [
+    "power"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "r-zerowaste",
+   "group": "ask",
+   "kind": "subreddit",
+   "title": "r/ZeroWaste",
+   "line": {
+    "en": "Reducing household waste.",
+    "fr": "Réduire les déchets du foyer."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": null,
+   "link": "https://www.reddit.com/r/ZeroWaste",
+   "topics": [
+    "sanitation"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "repaircafe",
+   "group": "meet",
+   "kind": "network",
+   "title": "Repair Café",
+   "line": {
+    "en": "Free meetings where volunteers help you repair your own things (appliances, bikes, clothes); about repair, not building.",
+    "fr": "Des rencontres gratuites où des bénévoles aident à réparer ses objets (électroménager, vélos, vêtements) ; on y répare, on n’y construit pas."
+   },
+   "langs": [
+    "en",
+    "fr",
+    "nl"
+   ],
+   "tags": [],
+   "where": {
+    "en": "worldwide",
+    "fr": "dans le monde entier"
+   },
+   "link": "https://www.repaircafe.org/en/visit/",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-11-01"
+  },
+  {
+   "id": "sswm",
+   "group": "learn",
+   "kind": "site",
+   "title": "SSWM",
+   "line": {
+    "en": "A toolbox on sustainable sanitation and water: how each technique works, with courses and a library.",
+    "fr": "Une boîte à outils sur l’assainissement et l’eau durables : le fonctionnement de chaque technique, des cours et une bibliothèque."
+   },
+   "langs": [
+    "en",
+    "es"
+   ],
+   "tags": [
+    "guide",
+    "course"
+   ],
+   "where": null,
+   "link": "https://sswm.info/",
+   "topics": [
+    "sanitation",
+    "water"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "susana",
+   "group": "ask",
+   "kind": "forum",
+   "title": "SuSanA forum",
+   "line": {
+    "en": "The Sustainable Sanitation Alliance's forum: dry toilets, treatment wetlands, sanitation in practice.",
+    "fr": "Le forum de l’alliance pour l’assainissement durable : toilettes sèches, filtres plantés, assainissement en pratique."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": {
+    "en": "worldwide",
+    "fr": "dans le monde entier"
+   },
+   "link": "https://forum.susana.org/",
+   "topics": [
+    "sanitation"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "terrevivante",
+   "group": "learn",
+   "kind": "organisation",
+   "title": "Terre Vivante",
+   "line": {
+    "en": "A cooperative in Mens (Isère): the 4 Saisons magazine, books, and an ecological centre open to visits and courses.",
+    "fr": "Une coopérative à Mens (Isère) : le magazine 4 Saisons, des livres, et un centre écologique ouvert aux visites et aux stages."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [
+    "article",
+    "place"
+   ],
+   "where": null,
+   "link": "https://www.terrevivante.org/",
+   "topics": [
+    "heat",
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "transition",
+   "group": "meet",
+   "kind": "network",
+   "title": "Transition Network",
+   "line": {
+    "en": "About a thousand local Transition groups in 70 countries working on food, energy and repair close to home.",
+    "fr": "Un millier de groupes locaux de Transition dans 70 pays, sur l’alimentation, l’énergie et la réparation près de chez soi."
+   },
+   "langs": [
+    "en"
+   ],
+   "tags": [],
+   "where": {
+    "en": "worldwide",
+    "fr": "dans le monde entier"
+   },
+   "link": "https://maps.transitionnetwork.org/",
+   "topics": [],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "twiza",
+   "group": "meet",
+   "kind": "network",
+   "title": "Twiza",
+   "line": {
+    "en": "A network of participatory eco-building sites: join one near you to learn by building, or open your own.",
+    "fr": "Un réseau de chantiers participatifs d’écoconstruction : rejoindre un chantier près de chez soi pour apprendre en construisant, ou ouvrir le sien."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [],
+   "where": {
+    "en": "France",
+    "fr": "France"
+   },
+   "link": "https://fr.twiza.org/chantiers-participatifs/v2",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-10-21"
+  },
+  {
+   "id": "twiza-forum",
+   "group": "ask",
+   "kind": "forum",
+   "title": "Twiza forum",
+   "line": {
+    "en": "Self-builders of ecological homes helping each other: technical questions, budgets, and local threads by department.",
+    "fr": "Des autoconstructeurs d’habitat écologique qui s’entraident : questions techniques, budget, et fils locaux par département."
+   },
+   "langs": [
+    "fr"
+   ],
+   "tags": [],
+   "where": {
+    "en": "France",
+    "fr": "France"
+   },
+   "link": "https://forum.twiza.org/",
+   "topics": [
+    "building"
+   ],
+   "checked": "2026-11-01"
+  }
+ ]
+}

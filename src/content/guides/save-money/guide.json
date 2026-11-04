@@ -1,0 +1,64 @@
+{
+  "slug": {
+    "en": "save-money",
+    "fr": "economiser"
+  },
+  "order": 1,
+  "en": {
+    "door": "Lower my bills",
+    "title": "Build to save money",
+    "intro": "Five solutions that cut a bill from the first week. None of them needs anything special about your house, all of them work in a flat, and they go from the easiest to make to the most demanding."
+  },
+  "fr": {
+    "door": "Réduire mes factures",
+    "title": "Construire pour économiser",
+    "intro": "Cinq solutions qui réduisent une facture dès la première semaine. Aucune ne demande quoi que ce soit de particulier à votre logement, toutes conviennent à un appartement, et elles vont de la plus simple à réaliser à la plus exigeante."
+  },
+  "picks": [
+    {
+      "id": "SOL-123",
+      "en": {
+        "why": "Keeps the heat you already paid for, without replacing a single window. The bubble-wrap version costs almost nothing."
+      },
+      "fr": {
+        "why": "Retient la chaleur déjà payée, sans remplacer une seule fenêtre. La version papier bulle ne coûte presque rien."
+      }
+    },
+    {
+      "id": "SOL-214",
+      "en": {
+        "why": "The cheapest heat you will ever save is the heat that was leaking out. Do this before insulating, not after."
+      },
+      "fr": {
+        "why": "La chaleur la moins chère à économiser est celle qui s’échappait. À faire avant d’isoler, pas après."
+      }
+    },
+    {
+      "id": "SOL-215",
+      "en": {
+        "why": "Removes one of the largest electrical loads in the house outright, instead of making it more efficient."
+      },
+      "fr": {
+        "why": "Supprime purement et simplement l’un des plus gros postes électriques du logement, au lieu de l’optimiser."
+      }
+    },
+    {
+      "id": "SOL-242",
+      "en": {
+        "why": "Cuts the gas or electricity it takes to bring a pot to the boil and keep it there, for a scrap of felt."
+      },
+      "fr": {
+        "why": "Réduit le gaz ou l’électricité qu’il faut pour porter une casserole à ébullition et l’y maintenir, pour un reste de feutre."
+      }
+    },
+    {
+      "id": "SOL-186",
+      "en": {
+        "why": "Stops the draughts and the heat lost through the glass at night, with fabric and Velcro."
+      },
+      "fr": {
+        "why": "Arrête les courants d’air et la chaleur perdue par les vitres la nuit, avec du tissu et du velcro."
+      }
+    }
+  ]
+}

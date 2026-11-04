@@ -1,0 +1,13 @@
+{
+ "data_updated": "2026-11-04",
+ "counts": {
+  "functions": 15,
+  "subfunctions": 88,
+  "io_types": 52,
+  "solutions": 246,
+  "io_index": 506,
+  "bases": 24,
+  "coefficients": 77,
+  "fabric_classes": 56
+ }
+}

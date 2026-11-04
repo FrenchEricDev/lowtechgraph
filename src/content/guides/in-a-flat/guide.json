@@ -1,0 +1,64 @@
+{
+  "slug": {
+    "en": "in-a-flat",
+    "fr": "en-appartement"
+  },
+  "order": 2,
+  "en": {
+    "door": "I rent a flat",
+    "title": "Can I do this in my flat?",
+    "intro": "No garden, no roof access, and a landlord. Many solutions within this catalogue assume a house; these are some of the options that do not and will also work in an urban flat."
+  },
+  "fr": {
+    "door": "Je loue un appartement",
+    "title": "Puis-je faire cela dans un appartement ?",
+    "intro": "Pas de jardin, pas d’accès au toit, et un propriétaire. Une grande partie des solutions dans le catalogue nécessitent une maison ; voici certaines options qui marchent tout aussi bien dans un appartement."
+  },
+  "picks": [
+    {
+      "id": "SOL-123",
+      "en": {
+        "why": "Bubble wrap or a clip-in pane on the window you have: nothing to ask the landlord, and it comes down when you leave."
+      },
+      "fr": {
+        "why": "Du papier bulle ou une vitre amovible sur la fenêtre existante : rien à demander au propriétaire, et tout se retire au départ."
+      }
+    },
+    {
+      "id": "SOL-169",
+      "en": {
+        "why": "Needs a hob for ten minutes and nothing else. Cooking continues with no additional energy afterwards."
+      },
+      "fr": {
+        "why": "Demande dix minutes de chauffe et rien d’autre, la cuisson continue sans énergie additionnelle aussi longtemps que nécessaire."
+      }
+    },
+    {
+      "id": "SOL-110",
+      "en": {
+        "why": "Odourless, sealed, and sized for a kitchen cupboard. Will handle your waste efficiently."
+      },
+      "fr": {
+        "why": "Sans odeur, hermétique, rentre dans un placard de cuisine. Un bon moyen de gérer ses déchets ménagers."
+      }
+    },
+    {
+      "id": "SOL-186",
+      "en": {
+        "why": "An easy way to stay warmer in winter, and to save money on energy bills."
+      },
+      "fr": {
+        "why": "Rester au chaud l’hiver, et faire des économies sur les factures d’énergie ? Facile."
+      }
+    },
+    {
+      "id": "SOL-134",
+      "en": {
+        "why": "A wooden box that sits on the toilet you already have. Nothing in the bathroom changes."
+      },
+      "fr": {
+        "why": "Une caisse en bois posée sur les toilettes existantes. Rien ne change dans la salle de bain."
+      }
+    }
+  ]
+}

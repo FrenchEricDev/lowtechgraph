@@ -1,0 +1,15 @@
+{
+  "to": {
+    "view": "needs"
+  },
+  "en": {
+    "title": "Explore all the solutions by need",
+    "text": "Discover the full catalogue of low-tech solutions for the home, compare them to each other and find building tutorials.",
+    "cta": "Browse the housing needs"
+  },
+  "fr": {
+    "title": "Explorer toutes les solutions par besoin",
+    "text": "Découvrez le catalogue complet des solutions low-tech pour la maison, comparez-les entre elles, et trouvez des tutoriels pour les construire.",
+    "cta": "Parcourir les besoins domestiques"
+  }
+}

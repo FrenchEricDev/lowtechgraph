@@ -1,0 +1,2108 @@
+.app { min-height: 100%; display: flex; flex-direction: column; }
+
+/*
+ * The builder route fills the window exactly and never scrolls. A shell rule, since a child
+ * cannot know what the shell puts around it. The footer is compacted to one line, not hidden:
+ * its CC BY-SA line is the attribution for the catalogue content on the canvas.
+ */
+/* vh first, for a browser without dvh (B3). */
+.app--fullbleed { height: 100vh; height: 100dvh; overflow: hidden; }
+.app--fullbleed .main { flex: 1 1 auto; min-height: 0; }
+.app--fullbleed .site-foot {
+  display: flex; flex-wrap: wrap; gap: var(--s-2) 10px; align-items: baseline;
+  max-width: none; margin: 0; padding: 5px var(--s-4);
+  font-size: .72rem; line-height: 1.3;
+}
+.app--fullbleed .site-foot p { margin: 0; }
+
+/* header */
+/*
+ * Registered as a <length> so `--search-w` can transition; unsupported browsers snap instead of
+ * sliding.
+ */
+@property --search-w {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 340px;
+}
+
+.header {
+  position: sticky; top: 0; z-index: 10;
+  display: grid;
+  /*
+   * Side tracks size to their content and the middle is at most the field's width, shrinking
+   * when there is no room. The field is centred between the groups, not on the bar: with the
+   * nav, centring on the bar would make the nav overlap the search field below about 1400px.
+   */
+  grid-template-columns: auto minmax(0, var(--search-w)) auto;
+  transition: --search-w .18s ease;
+  align-items: center; gap: var(--s-3);
+  padding: var(--header-pad) var(--s-5);
+  background: var(--header-bg); color: var(--header-ink);
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  /* Collapsed, then the width of the two card columns once focused. */
+  --search-w: 340px;
+}
+.header.is-searching { --search-w: 1040px; }
+.header-left { justify-self: start; }
+.header-right { justify-self: end; }
+.header-left, .header-right { display: flex; align-items: center; gap: var(--s-3); min-width: 0; }
+.brand-name {
+  /*
+   * A wordmark that wraps grows the bar past --header-h and unsticks the desktop rail: truncate
+   * instead.
+   */
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.header .title {
+  text-align: left;
+  background: none; border: 0; color: var(--header-ink);
+  font-weight: 700; font-size: var(--t-brand); letter-spacing: .2px;
+  /* An <a>, so the underline is turned off explicitly. */
+  text-decoration: none; cursor: pointer;
+}
+.icon-btn {
+  width: var(--header-btn-h); height: var(--header-btn-h); border: 0; border-radius: var(--radius-sm);
+  background: var(--header-btn); color: var(--header-ink); font-size: 1.2rem; line-height: 1;
+  /* An anchor neither centres its glyph nor drops the underline by itself. */
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none; cursor: pointer;
+}
+.icon-btn.ghost { background: none; pointer-events: none; }
+/* Narrower than the icon buttons: two letters, not a glyph. */
+.lang-quick { width: auto; min-width: 38px; padding: 0 var(--s-4); font-size: var(--t-sm); font-weight: 700; letter-spacing: .04em; }
+
+/* layout */
+.main { flex: 1; display: flex; justify-content: center; }
+.view { width: 100%; max-width: var(--maxw); padding: var(--s-5) var(--s-5) var(--s-8); }
+.view h1 { font-size: var(--t-xl); line-height: var(--lh-tight); letter-spacing: var(--ls-display); margin: var(--s-3) 0 var(--s-2); }
+/* Headings in ink: green means what you can press, and low-tech; no longer "heading" (brief 12). */
+.view h2 { font-size: var(--t-lg); line-height: var(--lh-snug); margin: var(--s-6) 0 var(--s-3); color: var(--ink); }
+/* The label style: 12 px caps, its own rank, below the headings. */
+.view h3 { font-size: var(--t-xs); font-weight: 700; line-height: var(--lh-snug); text-transform: uppercase; letter-spacing: var(--ls-caps); color: var(--muted); margin: var(--s-5) 0 var(--s-3); }
+.lede, .summary { color: var(--ink); }
+.summary { margin: var(--s-2) 0 var(--s-3); }
+.muted { color: var(--muted); }
+.small { font-size: var(--t-sm); }
+.legend { font-size: var(--t-sm); color: var(--muted); margin: var(--s-3) 0 var(--s-4); }
+
+/* search */
+.search { display: flex; gap: var(--s-3); margin: var(--s-4) 0 var(--s-3); }
+.search input {
+  flex: 1; padding: var(--s-4) var(--s-4); border: 1px solid var(--field-line);
+  border-radius: var(--radius-sm); background: var(--surface); font-size: var(--t-base);
+}
+.search button, .btn {
+  padding: var(--s-4) var(--s-5); border: 0; border-radius: var(--radius-sm);
+  background: var(--accent); color: var(--on-accent); font-weight: 600;
+  text-decoration: none; display: inline-block;
+}
+/* A pressed state for fingers (brief 12): colour only, instant, so it shows the moment a finger lands. */
+.search button:active, .btn:active { background: var(--accent-ink); }
+
+/* lists / rows */
+.list { display: flex; flex-direction: column; gap: var(--s-3); }
+.row {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-4);
+  width: 100%; text-align: left;
+  padding: var(--s-4) var(--s-5); border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink);
+}
+.row:hover { border-color: var(--accent); }
+/*
+ * Rows and chips are anchors: own colour, no underline. Only .link and .link-btn look like
+ * links.
+ */
+a.row, a.chip { text-decoration: none; }
+.row-main { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+.row-name { font-weight: 600; }
+
+/* Need browser that unfolds in place (need, sub-function, solutions). */
+.browse-tree { display: flex; flex-direction: column; }
+.branch-row {
+  display: flex; align-items: center; gap: var(--s-4); width: 100%; text-align: left;
+  padding: var(--s-4) var(--s-3); border: 0; border-bottom: 1px solid var(--line);
+  background: none; color: var(--ink); cursor: pointer;
+}
+.branch-row:hover { background: var(--accent-bg-2); }
+.branch-row .row-name { flex: 1; }
+.branch-row.lvl2 { padding-left: var(--s-6); font-size: var(--t-md); }
+.branch-row.lvl2 .row-name { font-weight: 500; color: var(--accent-ink); }
+.branch-tri { width: 12px; color: var(--muted); font-size: var(--t-xs); flex: none; }
+.branch-leaves { display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-3) 0 var(--s-4) var(--s-6); }
+/* A disclosure's panel, so the row can name what it opens (aria-controls) without a box of its own. */
+.branch-panel { display: contents; }
+
+/* High-tech tag. */
+.benchmark-tag {
+  /*
+   * --benchmark-ink, not --benchmark: at this size --benchmark on --benchmark-bg is under
+   * 4.5:1.
+   */
+  font-size: var(--t-xs); font-weight: 700; color: var(--benchmark-ink);
+  background: var(--benchmark-bg); border: 1px solid var(--benchmark-line);
+  padding: var(--s-1) var(--s-3); border-radius: 999px; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: var(--s-2);
+}
+
+
+/* ranking block on the solution card */
+.rank-help { background: var(--accent-bg-2); border-radius: var(--radius-sm); padding: var(--s-4) var(--s-4); margin-top: var(--s-3); font-size: var(--t-sm); }
+.rank-help p { margin: 0 0 var(--s-3); }
+.rank-help p:last-child { margin: 0; }
+.rank-table-wrap { overflow-x: auto; margin: 0 0 var(--s-3); -webkit-overflow-scrolling: touch; }
+.rank-table { border-collapse: collapse; font-size: var(--t-sm); width: 100%; }
+.rank-table th, .rank-table td { text-align: left; padding: var(--s-2) var(--s-3); border-bottom: 1px solid var(--line); vertical-align: top; }
+.rank-table th { font-weight: 600; color: var(--muted); font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .3px; }
+.rank-table td:first-child { min-width: 110px; font-weight: 600; }
+.rank-table td { min-width: 90px; }
+.rank-table .cell-note { color: var(--muted); font-weight: 400; }
+.rank-table tr.is-self { background: var(--accent-bg-strong); }
+.rank-table tr.is-self td { border-color: var(--accent-line); }
+
+/* language switch in Settings */
+.lang-switch { display: flex; gap: var(--s-3); margin: var(--s-2) 0 var(--s-3); }
+.lang-btn {
+  flex: 1; padding: var(--s-4) var(--s-5); font-size: var(--t-md); font-weight: 600;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink);
+}
+.lang-btn:hover { border-color: var(--accent); }
+.lang-btn.is-on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+/* identity badges under the solution title */
+.badges { display: flex; flex-wrap: wrap; gap: var(--s-3); margin: var(--s-3) 0 var(--s-2); }
+.badge {
+  font-size: var(--t-xs); font-weight: 700; letter-spacing: .02em;
+  /* Vertical padding keeps these buttons above the 24px target minimum. */
+  padding: var(--s-2) var(--s-4); border-radius: 999px; border: 1px solid;
+  white-space: nowrap;
+  font-family: inherit; cursor: pointer;
+  display: inline-flex; align-items: center; gap: var(--s-2);
+}
+/* The ? is the affordance: without it a pill reads as a label. */
+.badge-q {
+  font-weight: 700; opacity: .55;
+  border: 1px solid currentColor; border-radius: 999px;
+  width: 13px; height: 13px; line-height: 11px; text-align: center; font-size: var(--t-xs);
+}
+.badge.is-open .badge-q { opacity: 1; }
+.badge.is-open { box-shadow: 0 0 0 2px var(--line-soft); }
+.badge-tip { margin: var(--s-3) 0 0; }
+.badge.is-passive { color: var(--accent-ink); background: var(--accent-bg); border-color: var(--accent-line); }
+/*
+ * Conditions and prerequisites take the neutral condition style (brief 12): raised paper, ink, a
+ * muted line, told apart by their drawn mark, never by a hue. Terracotta means high-tech only;
+ * rose means new build only.
+ */
+.badge.is-active  { color: var(--ink); background: var(--surface-2); border-color: var(--muted-line); }
+.badge .glyph { flex: none; }
+.badge.is-newbuild{ color: var(--newbuild-ink); background: var(--newbuild-bg); border-color: var(--newbuild-line); }
+/* Same palette as the new-build badge: both mean "needs a particular kind of building". */
+.badge.is-noflat{ color: var(--ink); background: var(--surface-2); border-color: var(--muted-line); }
+.badge.is-flatif{ color: var(--ink); background: var(--surface-2); border-color: var(--muted-line); }
+
+/* key-facts strip */
+.facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--s-1); margin: var(--s-5) 0 var(--s-3); padding: 0;
+  background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.fact { background: var(--surface); padding: var(--s-3) var(--s-4); }
+.fact dt {
+  font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .5px;
+  color: var(--muted); margin-bottom: var(--s-1);
+}
+.fact dd { margin: 0; font-size: var(--t-md); font-weight: 600; line-height: 1.35; }
+.facts.secondary { margin-top: var(--s-3); }
+.facts.secondary dd { font-weight: 500; }
+/* Regulation is a paragraph, not a value: it spans the grid. */
+.fact.wide { grid-column: 1 / -1; }
+.fact.wide dd { font-weight: 400; line-height: 1.5; }
+.facts-note { margin: 0 0 var(--s-2); }
+
+/* "More detail": a real control, unlike the ranking explainer's text link. */
+.detail-btn {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-4);
+  width: 100%; margin: var(--s-5) 0 0;
+  padding: var(--s-4) var(--s-5);
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink);
+  font-size: var(--t-md); font-weight: 600; text-align: left;
+}
+.detail-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+.detail-btn.is-open { border-color: var(--accent); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.detail-caret { color: var(--muted); font-size: var(--t-sm); }
+.detail-btn.is-open + .facts {
+  margin-top: 0; border-top: 0;
+  border-top-left-radius: 0; border-top-right-radius: 0;
+}
+
+/* Site requirements: a gate, not a spec. */
+.site-req {
+  display: flex; gap: var(--s-4); align-items: flex-start;
+  border: 1px solid var(--muted-line); background: var(--surface-2);
+  border-radius: var(--radius-sm); padding: var(--s-4) var(--s-5); margin: var(--s-5) 0;
+}
+.site-req-mark { flex: none; margin-top: var(--s-1); color: var(--ink); }
+.site-req h3 { margin: 0 0 var(--s-2); }
+.site-req p { margin: 0; font-size: var(--t-md); }
+
+/* breadcrumbs — one style for every level of the hierarchy */
+.crumbs {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1);
+  font-size: var(--t-sm); color: var(--muted); margin: 0 0 var(--s-3);
+  line-height: 1.4;
+}
+.crumbs .crumb { display: inline-flex; align-items: baseline; gap: var(--s-1); }
+.crumb-sep { color: var(--muted); opacity: .6; padding: 0 var(--s-2); }
+.crumbs .link { font-size: inherit; }
+.crumbs [aria-current="page"] { color: var(--ink); font-weight: 600; }
+.link, .link-btn {
+  background: none; border: 0; color: var(--accent-ink);
+  text-decoration: underline; cursor: pointer; font-size: inherit;
+  /*
+   * Vertical padding only, so every text control clears the 24px target without moving in the
+   * line.
+   */
+  padding: 3px 0;
+}
+.link-btn { display: block; margin: var(--s-3) 0; }
+
+/* solution card */
+.card-head { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
+.io-block { display: flex; gap: var(--s-6); flex-wrap: wrap; }
+.io-block > div { flex: 1; min-width: 160px; display: flex; flex-direction: column; gap: var(--s-2); }
+.io-block > div > h3 { margin-bottom: 0; }
+.io-block .chip.io-chip { display: flex; width: 100%; box-sizing: border-box; margin: 0; }
+.chip {
+  display: inline-block; margin: var(--s-1) var(--s-3) var(--s-1) 0;
+  padding: var(--s-2) var(--s-4); border: 1px solid var(--line); border-radius: 999px;
+  background: var(--surface); color: var(--accent-ink); font-size: var(--t-sm);
+}
+.chip:hover { border-color: var(--accent); }
+.links { padding-left: var(--s-5); }
+/*
+ * Tutorial link padding clears the 24px target (each is its own list item, so the inline
+ * exception does not apply). The label is shortened at render and the row is a flex line, so a
+ * long link ellipsises rather than pushing its badge down.
+ */
+.links a { font-size: var(--t-sm); padding-block: var(--s-2); word-break: break-word; }
+.actions { margin: var(--s-6) 0 var(--s-3); }
+/* One button at the foot: space-between would push it right. */
+.actions-foot { justify-content: flex-start; }
+
+.mistake { margin-top: var(--s-4); font-size: var(--t-md); }
+.mistake summary { color: var(--muted); cursor: pointer; padding: var(--s-1) 0; }
+.mistake-btns { padding: var(--s-3) 0; }
+
+/* autocomplete */
+.ac {
+  margin: -2px 0 var(--s-4); border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); overflow: hidden;
+}
+.ac-empty { padding: var(--s-4) var(--s-5); color: var(--muted); }
+.ac-group { border-top: 1px solid var(--line); }
+.ac-group:first-child { border-top: 0; }
+.ac-label {
+  padding: var(--s-3) var(--s-5); font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .5px;
+  color: var(--muted); background: var(--surface-2);
+}
+.ac-item, .ac-more {
+  display: flex; align-items: center; gap: var(--s-3); width: 100%; text-align: left;
+  padding: var(--s-4) var(--s-5); border: 0; background: none; color: var(--ink); font-size: var(--t-md);
+}
+.ac-item:hover, .ac-more:hover { background: var(--accent-bg); }
+.ac-more { color: var(--accent-ink); font-size: var(--t-sm); }
+
+/* iOS install hint */
+.ios-hint {
+  display: flex; align-items: center; gap: var(--s-4);
+  padding: var(--s-4) var(--s-5); margin-bottom: var(--s-4);
+  background: var(--accent-bg); border: 1px solid var(--line); border-radius: var(--radius);
+  font-size: var(--t-md);
+}
+.ios-hint span { flex: 1; }
+.ios-x { border: 0; background: none; font-size: 1.2rem; color: var(--muted); line-height: 1; }
+
+/* Settings. */
+.toggle { display: flex; align-items: center; gap: var(--s-4); font-weight: 600; margin: var(--s-4) 0; }
+.toggle input { width: 18px; height: 18px; }
+
+/* Desktop niceties. */
+@media (min-width: 800px) {
+  .view { padding-top: var(--s-6); }
+}
+
+/* Language marker on a tutorial link. */
+.lang-tag {
+  /* flex: none, so the badge is never the thing that shrinks. */
+  flex: none;
+  font-size: var(--t-xs); font-weight: 700; letter-spacing: .04em;
+  color: var(--muted); border: 1px solid var(--line); border-radius: var(--radius-xs); padding: 0 var(--s-2);
+}
+
+/* ---- home: foldable "what, why, how" intro. Reuses .detail-btn so the two disclosures look alike. */
+
+/* ---- home: foot (contribute / support) ---------------------------------- */
+.home-foot {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-4);
+  margin: var(--s-7) 0 var(--s-2); padding-top: var(--s-5);
+  border-top: 1px solid var(--line);
+}
+.home-foot-item {
+  display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3);
+}
+/* The support side sits against the right edge, mirroring "missing something?" on the left. */
+.home-foot-item:last-child { align-items: flex-end; text-align: right; }
+/* Stacked on a narrow screen, where a right-aligned block reads as a mistake. */
+@media (max-width: 560px) {
+  .home-foot { display: block; }
+  .home-foot-item { align-items: flex-start !important; text-align: left !important; }
+  .home-foot-item + .home-foot-item { margin-top: var(--s-5); }
+}
+.view .home-foot-item h2 {
+  margin: 0; font-size: var(--t-xs); font-weight: 700; line-height: var(--lh-snug);
+  text-transform: uppercase; letter-spacing: var(--ls-caps); color: var(--muted);
+}
+.btn.secondary {
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); font-weight: 600;
+}
+.btn.secondary:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+/* ---- long-form prose (the "why" page, the About blurb) ------------------ */
+.prose section { margin-top: var(--s-6); }
+.prose h2 { font-size: var(--t-lg); margin: 0 0 var(--s-3); }
+.prose p { line-height: 1.6; margin: 0 0 var(--s-4); }
+/* The About page's steps and differences: prose in list form, so the line height and the
+   spacing follow the paragraphs rather than the browser's default list. */
+.prose ol, .prose ul { margin: 0 0 var(--s-5); padding-left: 1.4em; }
+.prose li { line-height: 1.6; margin-bottom: var(--s-3); }
+.prose li::marker { color: var(--muted); }
+.prose p + h2, .prose ol + h2, .prose ul + h2 { margin-top: var(--s-6); }
+.about-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-6); }
+.why-closing {
+  margin-top: var(--s-6); padding-top: var(--s-5);
+  border-top: 1px solid var(--line); font-weight: 600;
+}
+.about-who p { line-height: 1.6; margin: 0 0 var(--s-4); }
+.about-signoff { font-style: italic; opacity: .8; }
+
+/* ---- the two always-visible home blocks */
+/* --surface-2, since the search field and rows inside sit on --surface. Height follows content. */
+.explore-sub {
+  margin: var(--s-5) 0 var(--s-3); font-size: var(--t-sm); font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ---- brand mark in the header. Raster, carrying its own cream badge, so it does not follow --header-ink. The <img> width and height match the file so the box is reserved before load. */
+.brand-mark {
+  height: 26px; width: auto; display: block;
+  border-radius: var(--radius-xs); flex: none;
+}
+.header .title {
+  display: flex; align-items: center; justify-content: flex-start; gap: var(--s-3);
+  padding: 0; min-width: 0;
+}
+/* Below 380px the mark alone stays: the wordmark would crowd the icon buttons. */
+@media (max-width: 380px) {
+  .brand-name { display: none; }
+  .brand-mark { height: 28px; }
+}
+
+/* ---- solution page actions: primary on the left, share on the right. */
+.actions { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); }
+.actions .secondary {
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); font-weight: 600;
+}
+.actions .secondary:hover { border-color: var(--accent); color: var(--accent-ink); }
+@media (max-width: 420px) {
+  .actions { flex-direction: column; align-items: stretch; }
+}
+
+/* ---- compare strip, high on a solution page: a plain line of text and a link. */
+.cmp { margin: var(--s-3) 0 var(--s-4); }
+
+/*
+ * The comparison (TODO F15): one card per option, every card the same rows in the same order
+ * so the eye can run across. The page's own option first, in the accent tint.
+ */
+.cmp-block { margin: var(--s-6) 0; }
+.cmp-block > h2 { margin-bottom: var(--s-2); }
+/* The title and its Filters button share a line, on a phone too: the title wraps, not the button. */
+.cmp-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.cmp-head h2 { flex: 1; min-width: 0; margin: 0; }
+.cmp-head .filter-change { flex: none; }
+.cmp-block > .filter-names { display: block; margin-top: var(--s-2); }
+/* This page's option in full, the others in a line each (Eric, 2026-11-01). */
+.cmp-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); margin-top: var(--s-3); }
+@media (max-width: 759px) { .cmp-split { grid-template-columns: 1fr; } }
+.cmp-this, .cmp-others { min-width: 0; }
+/* The card as tall as the list beside it, never below what its text needs; its content starts at
+   the top and follows the scroll down inside the card (Eric, 2026-11-01). */
+.cmp-this { display: flex; flex-direction: column; align-self: stretch; }
+.cmp-this .cmp-card { flex: 1; }
+.cmp-card-body { display: flex; flex-direction: column; gap: var(--s-4); }
+@media (min-width: 760px) { .cmp-this .cmp-card-body { position: sticky; top: calc(var(--header-h) + var(--s-4)); } }
+.cmp-this h3, .cmp-others h3 { margin: 0 0 var(--s-2); font-size: var(--t-md); }
+.cmp-others ul { list-style: none; margin: 0; padding: 0; }
+.cmp-others li { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); padding: var(--s-3) 0; border-top: 1px solid var(--line-soft); }
+.cmp-other-name { font-weight: 700; font-size: var(--t-md); }
+.cmp-all { display: inline-block; margin-top: var(--s-2); font-weight: 600; font-size: var(--t-md); }
+.cmp-card {
+  display: flex; flex-direction: column; gap: var(--s-4); padding: var(--s-4) var(--s-5);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+/* The option this page is about: tinted and ringed, so it reads as "you are here". */
+.cmp-card.is-self { background: var(--accent-bg-2); border: 1px solid var(--accent-line); }
+.cmp-card.is-unfit { background: var(--surface-2); border: 1px solid var(--line); }
+.cmp-card.is-unfit .cmp-dot.is-on { background: var(--muted); border-color: var(--muted); }
+.cmp-card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-3); }
+/* Two classes: `.view h3` (0,1,1) sets the small-caps section label on every page. */
+.cmp-card .cmp-name {
+  margin: 0; font-size: var(--t-base); line-height: 1.3; text-wrap: balance;
+  text-transform: none; letter-spacing: 0; color: var(--ink); font-weight: 700;
+}
+.cmp-self-tag, .cmp-unfit-tag {
+  font-size: var(--t-xs); font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .4px;
+}
+.cmp-self-tag { color: var(--accent-ink); }
+/* Outside the filters: a sentence on its own line under the name, room to say which filter. */
+.cmp-unfit-tag {
+  flex-basis: 100%; text-transform: none; letter-spacing: 0;
+  font-size: var(--t-sm); font-weight: 400; line-height: var(--lh-snug);
+}
+.cmp-layer { display: flex; flex-direction: column; gap: var(--s-2); }
+.cmp-layer-label {
+  font-size: var(--t-xs); font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .4px;
+}
+.cmp-fit { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s-2); font-size: var(--t-sm); }
+.cmp-fit li.is-ok::before { content: '✓'; color: var(--accent-ink); font-weight: 700; margin-right: 6px; }
+.cmp-fit li.is-no::before { content: '✗'; color: var(--muted); font-weight: 700; margin-right: 6px; }
+.cmp-fit li.is-no { color: var(--muted); }
+.cmp-fit details summary { cursor: pointer; color: var(--accent-ink); font-weight: 600; }
+.cmp-fit details p { margin: var(--s-2) 0 0; color: var(--ink); }
+.cmp-trade { margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: var(--t-sm); }
+.cmp-row { display: grid; grid-template-columns: 1fr auto; gap: var(--s-3); align-items: center; }
+.cmp-row dt { color: var(--muted); }
+.cmp-row dd { margin: 0; display: inline-flex; align-items: center; gap: var(--s-2); font-weight: 600; text-align: right; }
+.cmp-dots { display: inline-flex; gap: 3px; }
+.cmp-dot { width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--accent-line); }
+.cmp-dot.is-on { background: var(--accent-ink); border-color: var(--accent-ink); }
+.cmp-no { color: var(--muted); }
+.cmp-choose { margin: 0; font-size: var(--t-md); line-height: 1.45; }
+.cmp-choose .cmp-layer-label { display: block; margin-bottom: var(--s-1); }
+/* The only option for its need: one card, at the width of one carousel card. */
+.cmp-single { margin-top: var(--s-4); max-width: calc((100% - var(--s-4)) / 2); }
+@media (max-width: 760px) { .cmp-single { max-width: none; } }
+.cmp-intro { margin: 0; font-size: var(--t-md); font-weight: 600; }
+/*
+ * Inline, since the global `.link-btn` is display:block, which put the link on its own line;
+ * the margin goes with it.
+ */
+.cmp .link-btn {
+  display: inline; margin: 0;
+  font-size: inherit; font-weight: 600; white-space: nowrap;
+}
+
+/* The tutorial gap as something a reader can close, inline in the sentence. */
+/*
+ * A solution name in the comparison table: inherits the cell's type, so the column scans as a
+ * column.
+ */
+.rank-table .row-link {
+  /*
+   * No padding reset: the base rule is what gives every text control its 24px target. Inline,
+   * so the padding grows the hit box, not the row.
+   */
+  display: inline; margin: 0;
+  font-size: inherit; text-align: left;
+}
+
+/* A need whose options were all filtered out: kept, dimmed, and a link rather than a toggle. */
+/* In --muted, not at an opacity: .55 of ink fell to about 2.5:1 (B5). */
+.branch-row.is-empty, .branch-row.is-empty * { color: var(--muted); text-decoration: none; }
+
+/* ---- measure. No cap of its own (Eric, 2026-10-21): text runs to the edge of the column it is
+   in, and the column is the page's (--maxw), so every page wraps at the same place. */
+
+/* ---- master-detail on a wide screen. Below 1024px the rail is absent (the list is up the breadcrumb); above, the card grows a left column. */
+.rail { display: none; }
+
+@media (min-width: 1024px) {
+  .view.with-rail {
+    max-width: var(--maxw);
+    display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--s-7);
+    align-items: start;
+  }
+  .view.with-rail .detail { min-width: 0; }
+  .rail {
+    display: block; position: sticky;
+    /* Clears the sticky header rather than sliding under it. */
+    top: calc(var(--header-h) + 16px);
+    max-height: calc(100vh - var(--header-h) - 32px); max-height: calc(100dvh - var(--header-h) - 32px); overflow-y: auto;
+    padding-top: var(--s-6);   /* sits level with the crumbs, not with the card's edge */
+  }
+  .rail-head {
+    margin: 0 0 var(--s-1); font-size: var(--t-xs); text-transform: uppercase;
+    letter-spacing: .5px; color: var(--muted);
+  }
+  .rail-sub {
+    display: block; margin-bottom: var(--s-4);
+    font-size: var(--t-md); font-weight: 600; color: var(--accent-ink); text-decoration: none;
+  }
+  .rail-sub:hover { text-decoration: underline; }
+  .rail-list { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+  .rail-item {
+    display: block; padding: var(--s-3) var(--s-4); margin-left: -1px;
+    border-left: 2px solid transparent;
+    font-size: var(--t-sm); line-height: 1.35; color: var(--ink); text-decoration: none;
+  }
+  a.rail-item:hover { background: var(--accent-bg-2); border-left-color: var(--accent-line); }
+  /* The current item is marked by weight and a solid rule, not colour alone. */
+  .rail-item.is-current {
+    font-weight: 700; color: var(--accent-ink);
+    border-left-color: var(--accent); background: var(--accent-bg);
+  }
+}
+
+/*
+ * The tier explains itself on tap, but keeps reading as a muted note: the only new mark is the
+ * ?.
+ */
+.tier-chip {
+  background: none; border: 0; margin-left: var(--s-2);
+  font: inherit; font-size: var(--t-sm); color: var(--muted);
+  cursor: pointer; white-space: nowrap;
+  /* Vertical padding only, to clear the 24px target without leaving the line. */
+  display: inline-block; padding: var(--s-1) 0;
+}
+/* Matches .badge-q, inheriting instead of asserting: it sits in small muted prose. */
+.tier-q {
+  display: inline-block; margin-left: var(--s-2);
+  border: 1px solid currentColor; border-radius: 999px;
+  width: 12px; height: 12px; line-height: 10px; text-align: center;
+  font-size: var(--t-xs); opacity: .65;
+}
+.tier-chip[aria-expanded="true"] .tier-q { opacity: 1; }
+.tier-help { margin: var(--s-3) 0 0 var(--s-5); font-size: var(--t-sm); }
+.tier-help p { margin: 0 0 var(--s-3); }
+.tier-help ul { margin: 0 0 var(--s-3); padding-left: var(--s-5); }
+.tier-help li { margin-bottom: var(--s-1); }
+
+/*
+ * Retrofit note: between a list and its heading, a property of the list; tinted, because when
+ * active the list is not the whole list.
+ */
+.retrofit-note {
+  margin: 0 0 var(--s-4); padding: var(--s-3) var(--s-4);
+  font-size: var(--t-sm); color: var(--muted);
+  border: 1px solid var(--line); border-left: 4px solid var(--newbuild-line);
+  border-radius: var(--radius-sm); background: var(--newbuild-bg);
+}
+.retrofit-note .link-btn {
+  display: inline-block; margin: 0; font-size: inherit;
+  /* Padding for the 24px target on the action inside. */
+  padding: var(--s-1) 0;
+}
+/* When the filter leaves nothing, the note is the page's content: body size and ink. */
+.filters-note { margin: var(--s-3) 0; font-size: var(--t-sm); color: var(--muted); }
+.filters-note.is-empty {
+  font-size: var(--t-md); color: var(--ink); padding: var(--s-4) var(--s-5);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+/* The drawing's room while its code loads: the sheet is 840 by 560, plus its caption. */
+.plate-reserve {
+  margin: 20px 0 var(--s-6); border: 1px solid var(--warm-line); border-radius: var(--radius);
+  background: var(--sheet); box-shadow: var(--shadow-raised); aspect-ratio: 840 / 560; box-sizing: content-box; padding-bottom: 41px;
+}
+/* On a phone the drawing carries its numbered legend under it (brief 02): one line on most
+   plates (33 px), two on a few, so one line is held and the rest move by at most 28 px. */
+@media (max-width: 540px) { .plate-reserve:not(.guide-reserve) { padding-bottom: calc(41px + 33px); } }
+/* A guide's drawing (B10): its hint caption runs to two lines on a phone. */
+@media (max-width: 760px) { .guide-reserve { padding-bottom: 61px; } }
+.guide-reserve + .picks .pick-head { cursor: default; box-sizing: border-box; }
+/* "Compare them" lands under the sticky bar otherwise. */
+#ranking { scroll-margin-top: calc(var(--header-h) + var(--s-4)); }
+/* First in the page, seen only when a keyboard reaches it. */
+.skip-link {
+  position: absolute; left: var(--s-3); top: -100px; z-index: 100;
+  padding: var(--s-3) var(--s-4); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink); border: 2px solid var(--focus);
+}
+.skip-link:focus { top: var(--s-3); }
+.main:focus { outline: none; }
+.retrofit-note.is-empty { font-size: var(--t-md); color: var(--ink); padding: var(--s-4) var(--s-5); }
+
+/* On the text baseline, or the glyph rides high like a bullet. */
+.ios-glyph { vertical-align: -3px; margin: 0 var(--s-1); }
+
+.contribute .link-btn {
+  display: inline-block; margin: 0;
+  /* Not `inherit`: the action a reader is asked to take keeps body size and a 24px target. */
+  font-size: var(--t-md); padding: var(--s-1) 0;
+}
+
+/*
+ * ===========================================================================
+ * THE HOMEPAGE
+ * Hero carousel, then titled sections of cards. Existing tokens only, no new colour.
+ * ===========================================================================
+ */
+
+/*
+ * The measure cap is for running text: the home view opts out by widening, so the page keeps a
+ * right edge.
+ */
+/* The 70ch paragraph cap only fights the card grid. */
+.view.is-home .ccard-text { max-width: none; }
+
+/*
+ * Optional line above the carousel, not rendered when empty. Own auto margins, since .view p
+ * caps the measure and a capped centred block would sit left.
+ */
+/*
+ * The page's <h1>. Two-part selector: `.view h1` is (0,1,1) and would otherwise hold it to
+ * --t-xl.
+ */
+.is-home .home-title {
+  margin: var(--s-5) auto var(--s-2);
+  text-align: center; text-wrap: balance;
+  font-size: var(--t-2xl); line-height: 1.08; letter-spacing: -0.015em;
+  color: var(--ink); max-width: 18ch;
+}
+
+.home-tagline {
+  /*
+   * The measure cap is lifted beside .view p: this selector is (0,1,0) and would lose to `.view
+   * p` (0,1,1).
+   */
+  /* A subhead under .home-title: the two read as one block. */
+  margin: 0 auto var(--s-5);
+  text-align: center; text-wrap: balance;
+  font-size: var(--t-lg); color: var(--muted); line-height: 1.45;
+}
+
+/* ---- hero ---------------------------------------------------------------- */
+.hero {
+  position: relative;
+  margin: var(--s-3) 0 var(--s-7);
+  /* box-sizing is border-box globally, so the frame keeps the 2:1 ratio. */
+  border: 2px solid var(--hero-frame);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+/*
+ * Slides are stacked and crossfade: no transform arithmetic, never half-scrolled. The track
+ * holds the artwork's aspect ratio.
+ */
+/* pan-y, not none: horizontal gestures go to the swipe handler, vertical ones scroll the page. */
+.hero { touch-action: pan-y; }
+.hero-track { position: relative; aspect-ratio: 2 / 1; }
+/* A dragged image must not become a browser drag-and-drop ghost mid-swipe. */
+.hero-img { -webkit-user-drag: none; user-select: none; }
+.hero-slide {
+  position: absolute; inset: 0;
+  opacity: 0; transition: opacity .5s ease;
+  pointer-events: none;
+}
+.hero-slide.is-on { opacity: 1; pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) { .hero-slide { transition: none; } }
+
+.hero-link { display: block; width: 100%; height: 100%; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* No artwork yet: the title still shows where the slide goes. */
+.hero-fallback {
+  display: flex; align-items: center; padding: var(--s-6);
+  width: 100%; height: 100%;
+  font-size: var(--t-xl); color: var(--accent-ink); background: var(--accent-bg);
+}
+
+.hero-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  /* 44px, with their own surface, since they sit on artwork whose contrast we do not control. */
+  width: 44px; height: 44px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--t-xl);
+  color: var(--ink); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 50%; cursor: pointer;
+}
+.hero-arrow.prev { left: var(--s-4); }
+.hero-arrow.next { right: var(--s-4); }
+.hero-arrow:hover { background: var(--accent-bg); }
+
+.hero-dots {
+  position: absolute; left: 0; right: 0; bottom: var(--s-4);
+  display: flex; justify-content: center; gap: var(--s-3);
+  /*
+   * The dot strip is full width and last in the DOM: without this it takes the taps meant for
+   * the arrows and the slide link.
+   */
+  pointer-events: none;
+}
+.hero-dot {
+  /* A 10px dot in a 24px button: padding buys the target. */
+  width: 24px; height: 24px; padding: 7px; box-sizing: border-box;
+  background: none; border: 0; cursor: pointer;
+  pointer-events: auto;   /* the container opts out; each dot opts back in */
+}
+.hero-dot::before {
+  content: ''; display: block; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--line);
+}
+.hero-dot.is-on::before { background: var(--accent); border-color: var(--accent); }
+
+/*
+ * Narrow screens: the arrows leave the artwork and join the dots along the bottom, where the
+ * artwork is empty (below y=470 of 600). Below about 800px a 44px side arrow lands on the
+ * headline. 36px here, to fit two arrows and four dots.
+ */
+@media (max-width: 800px) {
+  .hero-arrow {
+    top: auto; bottom: var(--s-3); transform: none;
+    width: 36px; height: 36px; font-size: var(--t-lg);
+  }
+  .hero-arrow.prev { left: var(--s-3); }
+  .hero-arrow.next { right: var(--s-3); }
+  /* +6px puts the 24px dots on the 36px arrows' centre line. */
+  .hero-dots { bottom: calc(var(--s-3) + 6px); }
+}
+
+/* ---- card sections ------------------------------------------------------- */
+.csection { margin: var(--s-7) 0; }
+/*
+ * Two-part selector: `.csection-title` (0,1,0) loses to `.view h2` (0,1,1) whatever the source
+ * order.
+ */
+.view .csection-title {
+  text-align: center;
+  font-size: var(--t-xl); color: var(--ink);
+  margin: 0 0 var(--s-6);
+}
+
+/* Two columns: four cards read as a 2x2 block, and fewer still fill their row. */
+.ccards { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+@media (max-width: 700px) { .ccards { grid-template-columns: 1fr; } }
+
+.ccard {
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+}
+.ccard-visual { display: block; }
+.ccard-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ccard-img.is-empty { background: var(--surface-2); }
+
+.ccard-body {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: var(--s-3); padding: var(--s-5);
+  /* Grows, so the CTA sits at the bottom and cards in a row align. */
+  flex: 1;
+}
+/* .view h3 is an uppercase micro-label elsewhere; a card title overrides all four properties. */
+.view .ccard-title {
+  margin: 0; font-size: var(--t-lg); font-weight: 600;
+  text-transform: none; letter-spacing: normal; color: var(--ink);
+}
+/*
+ * Clamped to three lines by default. Clamp first, then measure the clamped box: an unclamped
+ * paragraph never overflows.
+ */
+.ccard-text {
+  margin: 0; color: var(--ink); line-height: 1.5;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.ccard-text.is-open {
+  display: block; -webkit-line-clamp: none; overflow: visible;
+}
+.ccard-more {
+  background: none; border: 0; cursor: pointer; padding: var(--s-1) 0;
+  font-size: var(--t-md); color: var(--accent-ink); text-decoration: underline;
+}
+/* Lower right, pushed by the body's growth, so buttons line up across cards. */
+.ccard-cta { margin-top: auto; margin-left: auto; }
+
+/* ---- guide pages --------------------------------------------------------- */
+/* A page whose copy is still placeholder says so. */
+.draft-note {
+  margin: var(--s-3) 0; padding: var(--s-3) var(--s-4);
+  font-size: var(--t-sm); color: var(--accent-ink);
+  background: var(--accent-bg); border: 1px dashed var(--accent-line);
+  border-radius: var(--radius);
+}
+.picks { list-style: none; margin: var(--s-5) 0 var(--s-6); padding: 0; display: grid; gap: var(--s-3); }
+.pick { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.pick.is-open { border-color: var(--accent-line); }
+.pick-head {
+  display: flex; align-items: center; gap: var(--s-4); width: 100%;
+  padding: var(--s-4) var(--s-5); border: 0; background: none; color: inherit;
+  font: inherit; text-align: left; cursor: pointer; border-radius: var(--radius);
+}
+.pick-n {
+  flex: none; display: inline-grid; place-items: center; width: 28px; height: 28px;
+  border-radius: 50%; background: var(--accent-bg); color: var(--accent-ink);
+  font-size: var(--t-sm); font-weight: 600; font-variant-numeric: tabular-nums;
+}
+.pick.is-open .pick-n { background: var(--accent); color: var(--on-accent); }
+.pick-name { flex: 1; font-size: var(--t-lg); font-weight: 600; color: var(--accent-ink); }
+.pick-tri { flex: none; color: var(--muted); }
+.pick-body { padding: 0 var(--s-5) var(--s-5) calc(var(--s-5) + 28px + var(--s-4)); }
+.pick-sum { margin: 0; font-size: var(--t-md); }
+.pick-actions {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-5);
+  margin-top: var(--s-4);
+}
+.pick-actions .pick-link { margin-top: 0; }
+.pick-actions .btn { padding: var(--s-3) var(--s-4); font-size: var(--t-sm); }
+.pick-link { display: inline-block; margin-top: var(--s-3); }
+/* After the list, before the closing box: the list's own close, so it hugs the list. */
+.guide-add-all { margin-top: calc(-1 * var(--s-3)); }
+@media (max-width: 560px) { .pick-body { padding-left: var(--s-5); } }
+.pick-why { margin: var(--s-3) 0 0; }
+.pick-why-label {
+  display: inline-block; margin-right: var(--s-2);
+  font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .5px;
+  color: var(--muted);
+}
+/* The guides index (D10 Q5): one tile per guide, the whole tile the link. */
+.guide-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--s-4); margin-top: var(--s-5); }
+.guide-tile {
+  display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-5);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--ink); text-decoration: none;
+}
+.guide-tile:hover { border-color: var(--accent); }
+.guide-tile-title { font-size: var(--t-lg); font-weight: 700; color: var(--accent-ink); text-wrap: balance; }
+.guide-tile-intro { font-size: var(--t-md); flex: 1; }
+.guide-tile-foot { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); }
+.guide-tile-go { font-size: var(--t-sm); font-weight: 600; color: var(--accent-ink); }
+/* What the site is, above a landing page's title (D10 Q2): quiet, one line on a desktop. */
+.site-line { margin: 0 0 var(--s-3); font-size: var(--t-sm); color: var(--muted); }
+
+/*
+ * Connecting mode (TODO F16). The bar sits under the header and sticks with it, so the memory of
+ * where the reader came from stays in view while they scroll a long list. Inverse colours, the
+ * same pair as the add message, so the two read as one system.
+ */
+.connect-bar {
+  position: sticky; top: var(--header-h); z-index: 9;
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2) var(--s-4);
+  padding: var(--s-3) var(--s-5); background: var(--ink); color: var(--bg);
+  font-size: var(--t-md); box-shadow: 0 4px 14px rgba(0, 0, 0, .18);
+}
+.connect-bar-text { flex: 1 1 16rem; font-weight: 600; }
+.connect-bar .btn.connect-btn { padding: var(--s-2) var(--s-4); font-size: var(--t-sm); }
+.connect-bar .btn.connect-btn.is-added { background: var(--accent-bg); color: var(--accent-ink); }
+.connect-bar-x {
+  flex: none; width: 36px; height: 36px; border: 0; border-radius: 50%;
+  background: none; color: var(--bg); font-size: 1.3rem; line-height: 1; cursor: pointer; opacity: .85;
+}
+.connect-bar-x:hover { opacity: 1; background: color-mix(in srgb, var(--bg) 15%, transparent); }
+.connect-bar-x:focus-visible { outline: 2px solid var(--bg); outline-offset: 1px; }
+/* In a list row it takes the add square's place, so it holds the row's height the same way. */
+.sol-line .connect-btn { flex: none; padding: var(--s-2) var(--s-4); font-size: var(--t-sm); white-space: nowrap; }
+.sol-line .connect-btn.is-added { background: var(--accent-bg); color: var(--accent-ink); border-color: var(--accent-line); }
+/* A solution's input or output: the resource, then how many sit on the other side. */
+.io-chip { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 1px; }
+.io-chip-count { font-size: var(--t-xs); color: var(--muted); font-weight: 400; }
+.io-chip-linked { font-size: var(--t-xs); color: var(--accent-ink); font-weight: 600; }
+
+.guide-more {
+  margin-top: var(--s-7); padding: var(--s-5);
+  background: var(--surface-2); border-radius: var(--radius);
+}
+.guide-more h2 { margin-top: 0; }
+
+/*
+ * ===========================================================================
+ * HEADER SEARCH
+ * Visible by default; focusing widens it, up to the width of the two card columns. Nothing here
+ * sets a height: the bar stays --header-h, which the desktop rail's sticky offset derives from.
+ * ===========================================================================
+ */
+
+.hsearch {
+  /* Fills its track, which is where the width actually lives. */
+  width: 100%; min-width: 0;
+}
+@media (prefers-reduced-motion: reduce) { .header { transition: none; } }
+
+/*
+ * Not position:relative: the dropdown is a child (for the click-outside test) but spans the
+ * whole bar, positioned against the sticky .header.
+ */
+.hsearch-form {
+  display: flex; align-items: center; gap: var(--s-3);
+  width: 100%; min-width: 0;
+  /* Matches .icon-btn's height, so the field never changes the bar's height. */
+  height: var(--header-btn-h); padding: 0 var(--s-4);
+  /* A paper field on the dark bar in both themes: --surface would go dark and disappear. */
+  background: var(--header-field); border-radius: var(--radius-sm);
+}
+.hsearch-glyph {
+  flex: none; width: 17px; height: 17px;
+  fill: none; stroke: var(--header-field-muted); stroke-width: 2; stroke-linecap: round;
+}
+.hsearch-form input {
+  flex: 1; min-width: 0; height: 100%;
+  border: 0; background: none; color: var(--header-field-ink);
+  font-size: var(--t-base);
+}
+.hsearch-form input::placeholder { color: var(--header-field-muted); }
+.hsearch-form input:focus { outline: none; }
+/* The whole field shows the focus ring, not the borderless input inside it. */
+.hsearch-form:focus-within { outline: 2px solid var(--header-ink); outline-offset: 2px; }
+.hsearch-close {
+  flex: none; width: 24px; height: 24px;   /* the WCAG 2.5.8 floor, and it is inside a field */
+  display: flex; align-items: center; justify-content: center;
+  border: 0; border-radius: var(--radius-xs); background: none;
+  color: var(--header-field-muted); font-size: var(--t-sm); cursor: pointer;
+}
+
+/* Hangs below the bar, spanning it, and scrolls inside itself on a phone. */
+.hsearch .ac {
+  position: absolute; top: 100%; left: var(--s-5); right: var(--s-5);
+  margin: var(--s-2) 0 0;
+  max-height: min(70vh, 520px); overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
+  /* Above the sticky bar's own children, and above anything in the page below it. */
+  z-index: 20;
+}
+
+/*
+ * Tight bars: below 780px, focusing hides the wordmark and the language control to make room;
+ * both return when the field collapses. The threshold is measured, not computed.
+ */
+@media (max-width: 780px) {
+  .header, .header.is-searching { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .header.is-searching .brand-name,
+  .header.is-searching .lang-quick { display: none; }
+}
+
+/*
+ * Phones: below 500px even that leaves the placeholder truncated, so while searching the side
+ * groups come off the bar and the field takes the full width. The close button inside the field
+ * is the way back.
+ */
+@media (max-width: 500px) {
+  /*
+   * At rest the field had about 50 px: a magnifier that did nothing and a 4 px input. It is now
+   * an icon button like its neighbours, the input laid invisibly over it, so a tap anywhere on
+   * it opens the full-width field below.
+   */
+  .header:not(.is-searching) .hsearch { justify-self: end; width: var(--header-btn-h); }
+  .header:not(.is-searching) .hsearch-form {
+    position: relative; justify-content: center; padding: 0; background: var(--header-btn);
+  }
+  .header:not(.is-searching) .hsearch-glyph { width: 20px; height: 20px; stroke: var(--header-ink); }
+  .header:not(.is-searching) .hsearch-form input {
+    position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer;
+  }
+  .header.is-searching { grid-template-columns: 1fr; }
+  .header.is-searching .header-left,
+  .header.is-searching .header-right { display: none; }
+  /* The glyph goes too: those 25px let the placeholder fit. */
+  .header.is-searching .hsearch-glyph { display: none; }
+}
+
+
+
+/* ---- the settings glyph */
+/* Same 24 viewBox and stroke as the search glyph, so the header icons read as one set. */
+.icon-glyph {
+  width: 18px; height: 18px;
+  fill: none; stroke: currentColor; stroke-width: 1.9;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ---- the global nav */
+/* Hidden under 900px, where the mobile menu carries it. */
+.hnav { display: flex; align-items: center; gap: var(--s-2); margin-left: var(--s-3); }
+@media (max-width: 900px) { .hnav { display: none; } }
+/* With the nav showing, the search box gives way: it never slides over My system and its count. */
+@media (min-width: 901px) { .header { grid-template-columns: max-content minmax(0, var(--search-w)) auto; } }
+
+.hnav-item {
+  display: inline-flex; align-items: center; height: var(--header-btn-h);
+  padding: 0 var(--s-3); border-radius: var(--radius-sm);
+  color: var(--header-ink); text-decoration: none; white-space: nowrap;
+  font-size: var(--t-md); line-height: 1;
+}
+.hnav-item:hover { background: var(--header-btn); }
+.hnav-item:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* The current page takes the fill (brief 10); no item is filled for its own sake. */
+.hnav-item[aria-current='page'] { background: var(--header-ink); color: var(--header-bg); font-weight: 600; }
+.hnav-item[aria-current='page']:hover { background: var(--header-ink); }
+/* My system's count sits inside its link, after the label, not on a corner. */
+.hnav-item.has-count { gap: var(--s-2); }
+.hnav-item.has-count .nav-badge { position: static; }
+.hnav-item[aria-current='page'] .nav-badge { background: var(--header-bg); color: var(--header-ink); }
+.icon-btn[aria-expanded='true'] { background: var(--header-ink); color: var(--header-bg); }
+/*
+ * Every control on the bar takes a light focus ring by rebinding the one focus token for the
+ * header.
+ */
+.header { --focus: var(--header-focus); }
+/*
+ * ...except the search suggestions, which render inside <header> on a paper panel and take the
+ * page's ring back.
+ */
+.header .ac { --focus: var(--accent-ink); }
+
+/* ---- the mobile menu */
+/*
+ * Two-part selectors: `.icon-btn` sets `display: inline-flex` at (0,1,0) earlier in the file,
+ * so a single class here loses and both controls render.
+ */
+.header .is-desktop-only { display: inline-flex; }
+.header .is-mobile-only { display: none; }
+@media (max-width: 900px) {
+  .header .is-desktop-only { display: none; }
+  .header .is-mobile-only { display: inline-flex; }
+}
+
+/*
+ * Anchored under the bar, not a full-screen overlay; absolute, not fixed, so the builder's
+ * canvas keeps every pixel.
+ */
+.hmenu {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--header-bg); border-top: 1px solid var(--header-btn);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  padding: var(--s-2) var(--s-3) var(--s-3);
+  display: flex; flex-direction: column;
+}
+.hmenu-item {
+  display: flex; align-items: center; width: 100%;
+  background: none; border: 0; font: inherit; text-align: left; cursor: pointer;
+  min-height: 46px; padding: 0 var(--s-3); border-radius: var(--radius-sm);
+  color: var(--header-ink); text-decoration: none; font-size: var(--t-base);
+}
+.hmenu-item:hover { background: var(--header-btn); }
+.hmenu-item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.hmenu-item[aria-current='page'] { background: var(--header-btn); font-weight: 600; }
+.hmenu-item.is-secondary {
+  margin-top: var(--s-2); padding-top: var(--s-2);
+  border-top: 1px solid var(--header-btn); border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  /*
+   * The bar's ink held back to .85 (4.90:1). Not --header-field-muted, which belongs to the
+   * white search field and measures 1.18:1 here.
+   */
+  color: var(--header-ink); opacity: .85;
+}
+
+/* ---- the count badges: active filters on the gear and the menu button, solutions placed on Build */
+/* Decorative: every control showing one also states the fact in its name or beside it. */
+.has-badge { position: relative; }
+.nav-badge {
+  position: absolute; top: -5px; right: -5px;
+  min-width: 18px; height: 18px; padding: 0 5px; box-sizing: border-box;
+  /*
+   * A count, in the bar's own ink (brief 12): it is a number of things added, not high-tech, so
+   * it no longer borrows terracotta (which also needed a ring to show on the sage bar).
+   */
+  border-radius: var(--radius-sm); background: var(--header-ink); color: var(--header-bg);
+  font-size: 11px; font-weight: 700; line-height: 18px; text-align: center;
+  font-variant-numeric: tabular-nums; letter-spacing: 0;
+  pointer-events: none;
+  /* A new number pops once: the badge is keyed on it, so each change replays this. */
+  animation: badge-pop .38s cubic-bezier(.3, 1.6, .5, 1);
+}
+@keyframes badge-pop {
+  0% { transform: scale(.4); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .nav-badge { animation: none; } }
+/* In the open menu the badge follows the label on its row rather than sitting on a corner. */
+.hmenu-item .nav-badge { position: static; margin-left: var(--s-3); background: var(--accent); color: var(--on-accent); }
+.hmenu-item.has-note { flex-wrap: wrap; align-content: center; }
+.hmenu-note {
+  flex-basis: 100%; font-size: var(--t-sm); line-height: 1.3; margin-top: var(--s-1);
+  /* No opacity of its own: nested opacities multiply (.85 x .85 falls under AA). */
+}
+
+/* ---- the filters (brief 05) */
+/* The bar above the needs index: the controls on one row, then the line. */
+.facetbar {
+  margin: var(--s-4) 0 var(--s-5);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: var(--s-3) var(--s-4);
+}
+.facetbar-head { display: flex; align-items: center; gap: var(--s-3); }
+.facet-desktop + .facetbar-head { margin-top: var(--s-3); padding-top: var(--s-3); border-top: 1px solid var(--line-soft); }
+.facetbar-head .filter-line { flex: 1; margin: 0; }
+.facetbar-count { font-size: var(--t-md); color: var(--muted); }
+.facet-clear { margin-left: auto; font-size: var(--t-md); }
+.facet-open { display: none; margin-left: auto; min-height: var(--ctl-lg); }
+
+.facet-controls { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-4); }
+.facet-toggles { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+
+/* A chip: the label is the control. --surface-2, since the panel is --surface. */
+.facet-chip {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  min-height: var(--ctl-md); padding: 0 var(--s-3);
+  border: 1px solid var(--line); border-radius: 999px;
+  background: var(--surface-2); color: var(--ink);
+  font: inherit; font-size: var(--t-md); cursor: pointer;
+}
+.facet-chip:hover { border-color: var(--accent); }
+.facet-chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* On: the same filled sage as a selected segment, one selected-state language (C). */
+.facet-chip.is-on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+/* What this control would leave, with every other facet still applied. */
+.facet-n { font-size: var(--t-sm); color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.facet-more {
+  display: inline-flex; align-items: center; gap: var(--s-2); min-height: var(--ctl-md);
+  padding: 0 var(--s-3); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink); font: inherit; font-size: var(--t-md); cursor: pointer;
+}
+.facet-more:hover { border-color: var(--accent); }
+.facet-more-n {
+  min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-sm); box-sizing: border-box;
+  background: var(--accent); color: var(--on-accent); font-size: 11px; font-weight: 700; line-height: 18px; text-align: center;
+}
+.facet-desktop .facet-ceiling { flex-basis: 100%; }
+
+/* max-width and wrap: a long French label with its four options ran past the page edge. */
+.facet-ceiling { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2); max-width: 100%; min-width: 0; }
+.facet-ceiling-label { font-size: var(--t-md); color: var(--muted); }
+.facet-seg {
+  /* The same switch as .seg (brief 12: one selected state for chips and segments). */
+  display: inline-flex; max-width: 100%; padding: 3px; gap: 3px;
+  border: 1px solid var(--field-line); border-radius: var(--radius-sm); background: var(--surface);
+}
+.facet-seg-item {
+  min-height: var(--ctl-md); padding: 0 var(--s-3);
+  border: 0; border-radius: var(--radius-xs); background: none; color: var(--ink);
+  font: inherit; font-size: var(--t-md); cursor: pointer; white-space: nowrap;
+}
+.facet-seg-item:hover { background: var(--surface-2); }
+.facet-seg-item:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+/*
+ * --on-accent, never #fff: white on the dark-theme accent is about 2.3:1, and a literal escapes
+ * qa-contrast.
+ */
+.facet-seg-item.is-on { background: var(--accent); color: var(--on-accent); font-weight: 600; }
+
+/* Settings mounts the controls, always open. */
+.facetbar.is-settings { margin: var(--s-3) 0 var(--s-4); }
+.facetbar.is-settings .facet-controls,
+.filter-sheet .facet-controls { flex-direction: column; align-items: stretch; }
+/* The label above its segments: the label is the long part, in French above all (Mb-6). */
+.facetbar.is-settings .facet-ceiling,
+.filter-sheet .facet-ceiling { flex-direction: column; align-items: flex-start; gap: var(--s-1); }
+
+/* The line above a filtered list: the count, each filter removable, Clear all. */
+.filter-line {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3);
+  margin: var(--s-3) 0 var(--s-4);
+}
+.filter-count {
+  font-size: var(--t-md); font-weight: 600; color: var(--ink);
+  /* A changed count takes emphasis and eases back: weight, never a moving number (Mo-F12). */
+  animation: count-stress var(--dur-slow) var(--ease-standard);
+}
+@keyframes count-stress { from { color: var(--accent-ink); text-shadow: 0 0 .5px currentColor; } }
+
+/* A list the filters have emptied. */
+.filter-empty {
+  margin: var(--s-4) 0; padding: var(--s-4) var(--s-5);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.view .filter-empty h2 { margin: 0 0 var(--s-2); font-size: var(--t-lg); }
+.filter-empty p { margin: 0 0 var(--s-3); }
+.filter-fixes { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.filter-fixes .btn { min-height: var(--ctl-lg); }
+.filter-empty .filter-line { margin-bottom: 0; }
+.show-hidden { margin-top: var(--s-3); min-height: var(--ctl-lg); }
+.nrow-count.is-hidden { font-style: italic; }
+
+/* The phone's sheet. */
+.settings-backdrop.is-full { inset: 0; z-index: 42; }
+.filter-sheet {
+  position: fixed; z-index: 43; left: 0; right: 0; bottom: 0; max-height: calc(100vh - 56px); max-height: calc(100dvh - 56px);
+  overflow-y: auto; overscroll-behavior: contain; box-sizing: border-box;
+  padding: 0 var(--s-5); background: var(--bg); color: var(--ink);
+  border-radius: var(--radius) var(--radius) 0 0; box-shadow: var(--shadow-overlay);
+  animation: sheet-rise var(--dur-base) var(--ease-enter);
+}
+.filter-sheet:focus { outline: none; }
+.filter-sheet .settings-head .facet-clear { margin-left: auto; }
+.filter-sheet-foot {
+  position: sticky; bottom: 0; margin: var(--s-4) calc(-1 * var(--s-5)) 0;
+  padding: var(--s-3) var(--s-5) calc(var(--s-3) + env(safe-area-inset-bottom, 0px));
+  background: var(--bg); border-top: 1px solid var(--line);
+}
+.filter-sheet-foot .btn { width: 100%; min-height: var(--ctl-lg); }
+@media (prefers-reduced-motion: reduce) { .filter-sheet, .filter-count { animation: none; } }
+
+@media (max-width: 760px) {
+  .facet-open { display: inline-flex; }
+  .facet-desktop { display: none; }
+  .facetbar-head { flex-wrap: wrap; }
+  /* 44px touch targets on a phone, the removable chips and Clear all too (cross-check). */
+  .facet-chip, .facet-seg-item { min-height: var(--ctl-lg); }
+  .filter-sheet .facet-toggles { flex-direction: column; align-items: stretch; gap: var(--s-2); }
+  .filter-sheet .facet-chip { justify-content: space-between; }
+  .facet-seg { flex: 0 1 auto; min-width: 0; overflow-x: auto; }
+  .facet-seg-item { flex: 0 0 auto; padding: 0 var(--s-3); }
+}
+
+/* ---- compact settings rows */
+/* A one-of-N choice shares one row with its heading. */
+.setting-row {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--s-2) var(--s-4);
+  margin: var(--s-5) 0 var(--s-1);
+}
+.setting-row h2 { margin: 0; }
+.setting-row .lang-switch { margin: 0; flex: 0 1 auto; }
+/* Content-width buttons. */
+.setting-row .lang-btn { flex: 0 0 auto; padding: var(--s-3) var(--s-4); }
+.setting-help { margin-top: 0; }
+@media (max-width: 760px) {
+  .setting-row .lang-btn { min-height: 44px; }
+}
+
+/* ---- adding to the builder from outside it (AddToTree.jsx) */
+.add-wrap { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-4); }
+/* Three classes: `.plan-block .primary` and `.btn.secondary` both set a fill at (0,2,0). */
+.add-wrap button.is-added {
+  background: var(--accent-bg); color: var(--accent-ink);
+  border: 1px solid var(--accent-line);
+}
+.add-wrap button:disabled.is-added { cursor: default; }
+.add-open { font-size: var(--t-sm); font-weight: 600; }
+/* Added: a status, with the way there and a worded Remove beside it (brief 01). */
+.add-wrap.is-in { gap: var(--s-2) var(--s-4); }
+.add-status {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  min-height: var(--ctl-md); font-weight: 700; color: var(--accent-ink);
+}
+.add-status:focus { outline: none; }
+.add-status:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-xs); }
+.add-after { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--s-1) var(--s-4); }
+.add-after .link, .add-after .link-btn {
+  display: inline-flex; align-items: center; min-height: var(--ctl-md); margin: 0;
+  font-size: var(--t-sm); font-weight: 600;
+}
+.add-remove { color: var(--ink); }
+@media (max-width: 760px) {
+  .add-after .link, .add-after .link-btn, .add-status { min-height: var(--ctl-lg); }
+}
+
+/* A list row and its add square side by side: the button cannot live inside the link. */
+.sol-line { display: flex; align-items: stretch; gap: var(--s-2); }
+.sol-line > .row { flex: 1; min-width: 0; }
+.add-plus {
+  flex: none; width: 48px; min-height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); color: var(--accent-ink);
+  font-size: 1.3rem; font-weight: 600; line-height: 1; cursor: pointer;
+}
+.add-plus:hover { border-color: var(--accent); }
+.add-plus.is-added { background: var(--accent-bg); border-color: var(--accent-line); font-size: 1.05rem; }
+/*
+ * A sibling of a solution already in the system: set back, with the reason in words. No opacity:
+ * at .45 the name fell to 2.2-2.7:1, and the reason lived in a tooltip a phone never shows.
+ */
+.sol-line.is-muted .row-name { font-weight: 400; color: var(--muted); }
+.sol-line.is-muted > .row, .sol-line.is-muted > .add-plus { background: transparent; }
+.row-note { flex-basis: 100%; font-size: var(--t-xs); color: var(--muted); }
+
+/* The chip that flies to Build (or the menu button). Placed and moved by the script. */
+.fly-chip {
+  position: fixed; z-index: 1000; pointer-events: none;
+  transform: translate(-50%, -50%);
+  padding: 3px 9px; border-radius: 999px;
+  background: var(--accent-ink); color: var(--on-accent);
+  font-size: 13px; font-weight: 700; line-height: 1.2; font-variant-numeric: tabular-nums;
+  box-shadow: 0 0 0 2px var(--header-dot-ring), 0 4px 12px rgba(0, 0, 0, .25);
+}
+/* Where it lands: a short bump, so the eye follows it home. */
+.is-bumped { animation: header-bump .45s ease-out; }
+@keyframes header-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .is-bumped { animation: none; } }
+
+/* The message at the foot of the screen: seven seconds, held open while pointed at or focused. */
+.add-toast-region {
+  position: fixed; z-index: 900; left: 50%; transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: max-content; max-width: calc(100vw - 32px);
+  pointer-events: none;
+}
+/* Bottom left on a wide screen, clear of the page's actions (brief 01, D). */
+@media (min-width: 761px) {
+  .add-toast-region { left: 24px; transform: none; }
+}
+.add-toast {
+  pointer-events: auto;
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2) var(--s-5);
+  padding: var(--s-3) var(--s-3) var(--s-3) var(--s-5); border-radius: var(--radius-sm);
+  background: var(--ink); color: var(--bg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+  font-size: var(--t-md);
+  animation: toast-in .22s ease-out;
+}
+.add-toast-go {
+  color: var(--bg); font-weight: 700; text-decoration: underline; text-underline-offset: 3px;
+  padding: var(--s-2) var(--s-3); border-radius: var(--radius-sm); white-space: nowrap;
+  /* Also a <button> (Undo): without these it takes the browser's white face and its text vanishes. */
+  background: none; border: 0; font: inherit; font-weight: 700; cursor: pointer;
+}
+.add-toast-go:focus-visible { outline: 2px solid var(--bg); outline-offset: 1px; }
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .add-toast { animation: none; } }
+
+/* ---- Settings: a panel docked right on a desktop, a sheet from the foot on a phone (brief 10) */
+.settings-backdrop {
+  /* Under the bar, which stays live: the gear (or the menu button) closes what it opened. */
+  position: fixed; inset: var(--header-h) 0 0 0; z-index: 40; background: rgba(20, 18, 14, .32);
+  animation: fade-in var(--dur-fast) var(--ease-standard);
+}
+.settings-panel {
+  position: fixed; z-index: 41; top: var(--header-h); right: 0; bottom: 0;
+  width: min(440px, 100vw); box-sizing: border-box; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--bg); color: var(--ink); box-shadow: var(--shadow-overlay);
+  padding: 0 var(--s-5) var(--s-6);
+  /* Grows out of the gear, at the top right. */
+  transform-origin: top right;
+  animation: settings-grow var(--dur-base) var(--ease-enter);
+}
+.settings-panel:focus { outline: none; }
+.settings-head {
+  position: sticky; top: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-3);
+  padding: var(--s-4) 0 var(--s-3); background: var(--bg);
+}
+.settings-head h2 { margin: 0; font-size: var(--t-lg); line-height: var(--lh-tight); }
+.settings-close {
+  flex: none; width: var(--ctl-lg); height: var(--ctl-lg); margin-right: calc(-1 * var(--s-3));
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 0; border-radius: var(--radius-sm); background: none; color: var(--ink); cursor: pointer;
+}
+.settings-close:hover { background: var(--surface-2); }
+.settings-sec { padding: var(--s-4) 0; border-top: 1px solid var(--line-soft); }
+.settings-sec h3 {
+  margin: 0 0 var(--s-3); font-size: var(--t-xs); font-weight: 700;
+  letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--muted);
+}
+.settings-sec p { margin: 0 0 var(--s-2); }
+.settings-sec > :last-child { margin-bottom: 0; }
+.settings-help { font-size: var(--t-sm); color: var(--muted); line-height: var(--lh-read); }
+.settings-help:last-child { margin-bottom: 0; }
+.settings-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin: var(--s-3) 0; }
+.settings-actions .btn { flex: 1 1 0; justify-content: center; min-height: var(--ctl-lg); }
+
+/* One selected style for both choices: the chosen one filled sage. */
+.seg {
+  display: inline-flex; padding: 3px; gap: 3px; margin-bottom: var(--s-2);
+  border: 1px solid var(--field-line); border-radius: var(--radius-sm); background: var(--surface);
+}
+/* Off in the regular weight, on filled sage and semibold: as the filter chips and segments. */
+.seg-item {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--ctl-md); padding: 0 var(--s-4); border: 0; border-radius: var(--radius-xs);
+  background: none; color: var(--ink); font: inherit;
+  text-decoration: none; cursor: pointer;
+}
+.seg-item:hover { background: var(--surface-2); }
+.seg-item.is-on { background: var(--accent); color: var(--on-accent); font-weight: 600; }
+
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes settings-grow { from { opacity: 0; transform: scale(.94); } }
+@keyframes sheet-rise { from { opacity: 0; transform: translateY(8px); } }
+/* Leaving (brief 10): back into the gear, or down the foot, faster than it came. */
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes settings-shrink { to { opacity: 0; transform: scale(.94); } }
+@keyframes sheet-drop { to { opacity: 0; transform: translateY(8px); } }
+.settings-backdrop.is-leaving { animation: fade-out var(--dur-fast) var(--ease-exit) forwards; pointer-events: none; }
+.settings-panel.is-leaving { animation: settings-shrink var(--dur-fast) var(--ease-exit) forwards; pointer-events: none; }
+
+@media (max-width: 900px) {
+  /* A sheet: the bar stays visible above it, the page behind. */
+  .settings-panel {
+    top: 72px; left: 0; width: auto; border-radius: var(--radius) var(--radius) 0 0;
+    animation-name: sheet-rise;
+  }
+  .settings-panel.is-leaving { animation-name: sheet-drop; }
+  .seg-item { min-height: var(--ctl-lg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .settings-backdrop, .settings-panel { animation: none; }
+}
+
+/* ---- not found: a way on, not only home */
+.notfound-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.notfound-search { margin: 0 0 var(--s-5); display: grid; gap: var(--s-2); max-width: 32rem; }
+.notfound-search label { font-weight: 600; }
+.notfound-search-row { display: flex; gap: var(--s-2); }
+.notfound-search input {
+  flex: 1; min-width: 0; min-height: var(--ctl-lg); padding: 0 var(--s-3);
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--ink); font: inherit;
+}
+.notfound-search .btn { min-height: var(--ctl-lg); }
+
+/* ---- the solution page (brief 01) */
+/* Section headings: real h2s (A-A13) in the label style. */
+.view h2.sec {
+  margin: var(--s-6) 0 var(--s-3); font-size: var(--t-xs); font-weight: 700;
+  letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--muted);
+  line-height: var(--lh-snug);
+}
+.view h2.sec .sec-count { letter-spacing: var(--ls-caps); }
+/* A reading section's count, after its title: quieter than the title. */
+.view h2:not(.sec) .sec-count { font-size: var(--t-md); font-weight: 400; color: var(--muted); }
+.site-req h2.sec { margin: 0 0 var(--s-2); color: var(--ink); }
+
+/* The same quiet type as the count beside a section title. */
+.view h1 .sol-tutorials { vertical-align: middle; font-size: var(--t-md); font-weight: 400; letter-spacing: normal; color: var(--muted); white-space: nowrap; }
+
+.plan-block .io-block h3 { margin: 0; }
+
+/* Build it: one box of rows, each a link with its maker under it. */
+.build-block { scroll-margin-top: calc(var(--header-h) + 16px); }
+#ranking { scroll-margin-top: calc(var(--header-h) + 16px); }
+.tut-box {
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface);
+  overflow: hidden;
+}
+/* The tutorials are links, so green's meaning holds (brief 12); "Getting it done" stays neutral. */
+.tut-box.is-build { background: var(--accent-bg-2); border-color: var(--accent-line); }
+.tut-lead { margin: 0; padding: var(--s-4) var(--s-5); font-size: var(--t-md); line-height: var(--lh-read); }
+.tut-lead + .tut-list { border-top: 1px solid var(--line-soft); }
+.tut-list { list-style: none; margin: 0; padding: 0; }
+.tut + .tut { border-top: 1px solid var(--line-soft); }
+.tut {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: var(--s-1) var(--s-3);
+  padding: var(--s-4) var(--s-5); align-items: baseline;
+}
+/* The format, a column of its own, centred against the two lines beside it. */
+.tut > .tut-fmt { grid-row: span 3; align-self: center; justify-self: start; }
+.tut > .tut-link, .tut > .tut-line, .tut > .tut-meta { grid-column: 2; }
+.tut-link { display: inline; color: var(--ink); text-decoration: none; }
+/* The whole row is the link: the link's own box stretched over it, "also in French" above that. */
+.tut { position: relative; }
+.tut-link::after { content: ''; position: absolute; inset: 0; }
+.tut-link:focus-visible { outline: none; }
+.tut-link:focus-visible::after { outline: 2px solid var(--accent); outline-offset: -2px; }
+.tut-meta a { position: relative; z-index: 1; }
+@media (hover: hover) {
+  .tut:hover { background: var(--accent-bg); }
+  .tut:hover .tut-title { color: var(--accent-ink); text-decoration: underline; }
+}
+.tut-title { font-style: italic; font-weight: 600; font-size: var(--t-md); line-height: var(--lh-snug); overflow-wrap: anywhere; }
+.tut-line { margin: var(--s-1) 0 0; font-size: var(--t-sm); color: var(--ink); }
+.tut-meta { margin: var(--s-1) 0 0; font-size: var(--t-sm); color: var(--muted); }
+.tut-meta a { color: var(--accent-ink); }
+.tut-fmt {
+  display: inline-flex; align-items: center; gap: 3px; padding: 0 5px;
+  border: 1px solid var(--line); border-radius: var(--radius-xs); font-size: var(--t-xs); font-weight: 600; color: var(--ink);
+}
+.tut-alt { padding: 0 var(--s-5) var(--s-4); }
+/*
+ * The tutorials control on a builder card and in the house drawing (Tutorials.jsx): a small
+ * button, and for several tutorials the solution page's rows opening under it, in the flow, so
+ * nothing covers them.
+ */
+.tut-pick-btn {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 32px; padding: var(--s-1) var(--s-3);
+  border: 1px solid var(--accent-line); border-radius: var(--radius-sm); background: var(--accent-bg-2);
+  color: var(--accent-ink); font: inherit; font-size: var(--t-sm); font-weight: 600; text-decoration: none; cursor: pointer;
+}
+.tut-pick-btn:hover { background: var(--accent-bg); border-color: var(--accent); }
+.tut-pick { display: block; }
+.tut-pick-list {
+  margin-top: var(--s-2); border: 1px solid var(--accent-line); border-radius: var(--radius-sm);
+  background: var(--surface); white-space: normal; text-align: left;
+}
+.tut-pick-list .tut { grid-template-columns: 40px minmax(0, 1fr); padding: var(--s-3); }
+.tut-pick-list .tut-title { font-size: var(--t-sm); }
+.tut-pick-list .tut-line, .tut-pick-list .tut-meta { font-size: var(--t-xs); }
+@media (hover: none) { .tut-pick-btn { min-height: 44px; } }
+.tut-alt h3 { margin: 0 0 var(--s-2); }
+.tut-alt ul { margin: 0; padding-left: var(--s-5); }
+.tut-alt li { padding: var(--s-1) 0; }
+.link-btn.is-inline { display: inline; margin: 0; }
+
+/* Combine it: the Build it box's light green, its resource chips staying on the plain surface; the add control is the biggest thing in it. */
+.plan-block {
+  margin: 0; padding: var(--s-4) var(--s-5);
+  background: var(--accent-bg-2); border: 1px solid var(--accent-line); border-radius: var(--radius);
+  display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3);
+}
+.plan-sub { margin: 0; }
+/* Takes and gives inside Combine it: the box's full width. */
+.plan-block .io-block { align-self: stretch; }
+.plan-block .btn { min-height: var(--ctl-lg); }
+@media (max-width: 760px) {
+  .plan-block { align-items: stretch; }
+  .plan-block .add-wrap:not(.is-in) .btn { width: 100%; }
+}
+.ref-matter { margin-top: var(--s-6); }
+.fact-note { display: block; margin-top: var(--s-2); font-size: var(--t-sm); color: var(--muted); }
+/* The foot's two actions (Eric, 2026-10-21), then what "Built one?" opens. */
+.share-sec { margin: var(--s-6) 0 0; }
+.share-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.share-row .btn { min-height: var(--ctl-lg); justify-content: center; text-align: center; }
+@media (max-width: 560px) { .share-row { grid-template-columns: 1fr; } }
+.built-panel {
+  margin-top: var(--s-3); padding: var(--s-4) var(--s-5); border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--line);
+}
+.built-panel > p { margin: 0 0 var(--s-3); }
+.built-panel > p:last-child { margin: var(--s-3) 0 0; }
+.built-places { list-style: none; margin: 0; padding: 0; }
+.built-places li { padding: var(--s-2) 0; }
+.built-places li + li { border-top: 1px solid var(--line-soft); }
+.built-places a { font-weight: 600; }
+.disclosure-body { padding: var(--s-4) var(--s-5); border: 1px solid var(--accent); border-top: 0;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm); background: var(--surface); }
+.disclosure-body p { margin: 0 0 var(--s-2); }
+.disclosure-body p:last-child { margin-bottom: 0; }
+
+/* ---- browsing and comparing (brief 08) */
+
+/* Table on a wide screen, rows or cards on a phone. Both are in the page; CSS picks. */
+.cmp-phone { display: none; }
+/* Five columns fit down to a tablet; below that, the rows. */
+@media (max-width: 759px) {
+  .cmp-desk { display: none; }
+  .cmp-phone { display: block; }
+}
+
+.sub-compare-h { margin: var(--s-6) 0 var(--s-3); }
+.cmp-placed { margin: var(--s-3) 0; font-size: var(--t-md); line-height: var(--lh-read); font-weight: 600; }
+.cmp-foot { margin-top: var(--s-3); }
+
+/* On the page, hairlines only: no box around it (Eric, 2026-11-01). */
+.ct-wrap { overflow-x: auto; margin-top: var(--s-3); }
+.seg.ct-aspect { margin: var(--s-3) 0 0; }
+.ct-wrap:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.ct { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
+.ct th, .ct td { padding: var(--s-3) var(--s-4) var(--s-3) 0; text-align: left; vertical-align: top; border-top: 1px solid var(--line-soft); }
+.ct thead th {
+  border-top: 0; font-size: var(--t-xs); font-weight: 700; letter-spacing: var(--ls-caps);
+  text-transform: uppercase; color: var(--muted); vertical-align: bottom; line-height: var(--lh-snug);
+}
+.ct tbody th { font-weight: 400; width: 24%; min-width: 9em; }
+.ct-name { font-weight: 700; font-size: var(--t-md); }
+.ct tbody th > * + * { margin-top: var(--s-1); }
+.ct tbody th .benchmark-tag { margin-left: var(--s-2); }
+.ct-why, .ct-choose { display: block; font-size: var(--t-sm); line-height: var(--lh-snug); }
+.ct-why, .ct-rules { color: var(--muted); }
+.ct-rules { display: block; font-size: var(--t-sm); line-height: var(--lh-snug); }
+.ct-choose b { font-weight: 700; }
+.ct-choose-cell { min-width: 14em; font-size: var(--t-md); line-height: var(--lh-snug); }
+/* The word always under the dots, whatever its length. */
+/* A check or a cross, in words for a screen reader; never terracotta, which means high-tech. */
+.ct-mark { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); }
+.cr-mark .ct-mark { flex-direction: row; align-items: center; }
+.ct-mark.is-yes { color: var(--accent-ink); }
+.ct-mark.is-no { color: var(--muted); }
+.ct-mark-note { color: var(--muted); font-size: var(--t-xs); line-height: var(--lh-snug); }
+.lvl { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); }
+/* Outside the filters: the paper ground and the reason in words, full contrast (brief 08). */
+.ct tr.is-out > * { background: var(--surface-2); }
+.ct-divider th {
+  background: var(--bg); font-size: var(--t-xs); font-weight: 700; letter-spacing: var(--ls-caps);
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* The phone's compact rows. */
+.cr-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.cr { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-2); padding: var(--s-3) 0 var(--s-4); border-top: 1px solid var(--line-soft); }
+.cr.is-out { background: var(--surface-2); padding-left: var(--s-3); padding-right: var(--s-3); }
+.cr-name { font-weight: 700; font-size: var(--t-base); }
+.cr-facts { align-self: stretch; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-3); font-size: var(--t-sm); }
+.cr-marks { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); font-size: var(--t-sm); }
+.cr-mark { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--s-1); }
+.cr-fact { display: flex; flex-direction: column; gap: var(--s-1); }
+.cr-label { color: var(--muted); line-height: var(--lh-snug); }
+/* A label on one line or two: the dots stay level across the row. */
+.cr-fact .lvl { margin-top: auto; }
+.cr-divider { margin-top: var(--s-6); }
+
+
+/* The needs index and the need page: hairline navigation rows (brief 12). */
+.browse-tree { display: grid; grid-template-columns: 1fr; gap: 0 var(--s-7); }
+@media (min-width: 900px) {
+  .browse-tree { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+.ncol { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.nblock { border-bottom: 1px solid var(--line); }
+.nrow {
+  display: flex; align-items: center; gap: var(--s-4); width: 100%; min-height: var(--ctl-lg);
+  padding: var(--s-3) var(--s-2); border: 0; background: none; color: var(--ink);
+  font: inherit; text-align: left; text-decoration: none; cursor: pointer;
+}
+.nrow:hover { background: var(--accent-bg-2); }
+.nrow.is-need { padding: var(--s-4) var(--s-2); }
+.nrow.is-need .nrow-name { font-weight: 700; font-size: var(--t-base); }
+.nrow-name { flex: 1; min-width: 0; }
+.nrow-count { color: var(--muted); font-size: var(--t-sm); font-variant-numeric: tabular-nums; }
+.nrow-chev { color: var(--muted); width: 1em; text-align: center; }
+.nparts { padding: 0 0 var(--s-3) calc(40px + var(--s-4) + var(--s-2)); }
+.nparts .nrow.is-sub { border-top: 1px solid var(--line-soft); padding-left: 0; }
+.nrow.is-sub .nrow-name { color: var(--accent-ink); font-weight: 600; }
+.nrow.is-sub.is-empty .nrow-name { color: var(--muted); font-weight: 400; }
+.nabout { display: inline-block; margin-top: var(--s-2); font-size: var(--t-sm); }
+@media (max-width: 760px) { .nparts { padding-left: var(--s-4); } }
+.nlist { border-top: 1px solid var(--line); }
+.nlist .nrow.is-sub { border-bottom: 1px solid var(--line); }
+/* A phone: the line takes the width, the Filter button goes under it, no rule above. */
+@media (max-width: 760px) {
+  .facet-desktop + .facetbar-head { margin-top: 0; padding-top: 0; border-top: 0; }
+  .facetbar-head .filter-line { flex: 1 1 100%; }
+  .facetbar-head .facet-open { margin-left: 0; }
+}
+
+/* ---- the filter line, second pass (Eric, 2026-10-20): the filters named, one Change */
+.filter-names { font-size: var(--t-md); color: var(--ink); }
+.filter-label { color: var(--muted); }
+.filter-name { font-weight: 600; }
+/* The filter hiding what the reader is looking at, on an emptied list. */
+.filter-name.is-stressed { background: var(--adq-yellow-bg); box-shadow: 0 0 0 1px var(--adq-yellow); border-radius: var(--radius-xs); padding: 0 3px; }
+.filter-change { min-height: var(--ctl-md); padding: 0 var(--s-4); font-size: var(--t-sm); }
+@media (max-width: 760px) { .filter-change { min-height: var(--ctl-lg); } }
+/* The needs index: on a wide screen its controls are right above, so Clear all, not Change;
+   on a phone, Change opens the sheet and Clear all is inside it. */
+@media (min-width: 761px) { .facetbar .filter-change { display: none; } }
+@media (max-width: 760px) { .facetbar-head .facet-clear { display: none; } }
+
+/* The filters panel on a wide screen: docked right under the bar, like Settings. */
+@media (min-width: 761px) {
+  .filter-sheet {
+    top: var(--header-h); left: auto; right: 0; bottom: 0; width: min(440px, 100vw);
+    max-height: none; border-radius: 0; transform-origin: top right;
+    animation-name: settings-grow;
+  }
+  .settings-backdrop.is-full { inset: var(--header-h) 0 0 0; }
+}
+/* On: the check and the label together on the left (no number to push to the right). */
+.filter-sheet .facet-chip.is-on { justify-content: flex-start; }
+
+/* ---- resources and connecting (brief 09) */
+/* The bar: the full sentence on a wide screen; one 44 px line on a phone, the sentence on a tap. */
+.connect-bar-text.is-short { display: none; }
+.connect-bar-go { color: var(--bg); font-weight: 700; font-size: var(--t-sm); text-decoration: underline; text-underline-offset: 3px; }
+.connect-bar-x { display: inline-flex; align-items: center; justify-content: center; width: var(--ctl-lg); height: var(--ctl-lg); }
+.connect-bar .add-status, .connect-bar .add-remove { color: var(--bg); }
+@media (max-width: 760px) {
+  .connect-bar { flex-wrap: nowrap; min-height: var(--ctl-lg); padding: 0 0 0 var(--s-4); gap: var(--s-2); }
+  .connect-bar-text.is-long, .connect-bar-go { display: none; }
+  .connect-bar-text.is-short {
+    display: block; flex: 1; min-width: 0; padding: var(--s-2) 0; border: 0; background: none;
+    color: var(--bg); font: inherit; font-weight: 600; font-size: var(--t-sm); text-align: left;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;
+  }
+  .connect-bar.is-full { flex-wrap: wrap; }
+  .connect-bar.is-full .connect-bar-text.is-short { white-space: normal; flex-basis: calc(100% - 56px); }
+}
+
+/* In connecting mode the rows put their action under the name on a phone, at 44 px. */
+.sol-line .connect-done { flex: none; align-self: center; }
+@media (max-width: 760px) {
+  .view.is-connecting .sol-line { flex-direction: column; align-items: stretch; gap: 0;
+    border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding-bottom: var(--s-3); }
+  .view.is-connecting .sol-line > .row { border: 0; background: none; }
+  .view.is-connecting .sol-line .connect-btn { margin: 0 var(--s-4); min-height: var(--ctl-lg); }
+  .view.is-connecting .sol-line .connect-done { align-self: stretch; padding: 0 var(--s-4); }
+}
+.res-about {
+  display: inline-flex; align-items: center; gap: var(--s-2); min-height: var(--ctl-md); margin: 0 0 var(--s-2);
+  padding: 0; border: 0; background: none; color: var(--accent-ink); font: inherit; font-weight: 600; cursor: pointer;
+}
+
+/* A resource's chip: a rounded rectangle, so three lines fit without clipping (U-N3). */
+.chip.io-chip { border-radius: var(--radius-sm); padding: var(--s-2) var(--s-4); }
+.io-chip-count b { font-weight: 700; color: var(--ink); }
+
+/* The resource page's sections. */
+.res-sec { margin-top: var(--s-5); }
+.res-lead { margin: calc(-1 * var(--s-2)) 0 var(--s-3); }
+.res-fold {
+  display: inline-flex; align-items: center; gap: var(--s-3); min-height: var(--ctl-lg);
+  padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit;
+  text-transform: inherit; cursor: pointer;
+}
+.res-fold-act { color: var(--accent-ink); text-transform: none; letter-spacing: 0; font-size: var(--t-sm); }
+.res-note {
+  margin: var(--s-4) 0; padding: var(--s-4) var(--s-5);
+  background: var(--surface-2); border: 1px solid var(--muted-line); border-radius: var(--radius-sm);
+}
+.view .res-note h2 { margin: 0 0 var(--s-2); font-size: var(--t-base); }
+.res-note p { margin: 0 0 var(--s-2); }
+.res-note > :last-child { margin-bottom: 0; }
+
+/* The two indexes, and the resources index in columns. */
+.index-switch { margin: 0 0 var(--s-4); }
+.res-index { columns: 3 16rem; column-gap: var(--s-7); }
+.res-group { break-inside: avoid; margin-bottom: var(--s-7); }
+/*
+ * A group: the guide's heading rank (20 px, ink, bold), and its list starts on a 2 px ink rule
+ * instead of the hairline, so a group reads as a new block even straight after another's last row.
+ */
+.view .res-group h2 { margin: 0 0 var(--s-2); }
+.res-group .nlist { border-top: 2px solid var(--ink); }
+
+/* ---- search (brief 07) */
+/* The close inside the field: 44 px, the hardest corner of a phone (Mb-13). */
+.hsearch-close { width: var(--ctl-lg); height: var(--ctl-lg); margin-right: calc(-1 * var(--s-4)); }
+.hsearch-form input[type='search']::-webkit-search-cancel-button { display: none; }
+/* The panel: a status line, the groups (two columns on a wide screen), "See all" pinned below. */
+.hsearch .ac { display: flex; flex-direction: column; overflow: hidden; }
+.ac-status {
+  flex: none; padding: var(--s-3) var(--s-5); font-size: var(--t-sm); color: var(--muted);
+  border-bottom: 1px solid var(--line-soft);
+}
+.ac-cols { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+@media (min-width: 761px) {
+  .ac-cols { display: grid; grid-template-columns: 1.2fr 1fr; }
+  .ac-col + .ac-col { border-left: 1px solid var(--line); }
+  .ac-col .ac-group:first-child { border-top: 0; }
+}
+.ac-item { min-height: var(--ctl-lg); }
+.ac-item:focus-visible, .ac-all:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.ac-all {
+  flex: none; display: flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: var(--ctl-lg); border: 0; border-top: 1px solid var(--line);
+  background: var(--surface-2); color: var(--accent-ink); font: inherit; font-weight: 600; cursor: pointer;
+}
+.ac-all:hover { background: var(--accent-bg); }
+
+/* Why a result matched, on one line with a mark. */
+.why { display: flex; align-items: center; gap: var(--s-2); font-size: var(--t-sm); color: var(--muted); font-weight: 400; }
+.why .glyph { color: var(--accent-ink); }
+
+/* The results page. */
+.search-again { display: flex; gap: var(--s-2); margin: 0 0 var(--s-4); max-width: 34rem; }
+.search-again input {
+  flex: 1; min-width: 0; min-height: var(--ctl-lg); padding: 0 var(--s-4);
+  border: 1px solid var(--field-line); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); font-size: var(--t-base);
+}
+.search-again .btn { min-height: var(--ctl-lg); }
+.sr-group { margin-top: var(--s-5); }
+.sr-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s-2); }
+.sr-row { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); }
+.sr-where { display: block; font-size: var(--t-sm); color: var(--muted); font-weight: 400; }
+.sr-lede { display: block; font-size: var(--t-sm); color: var(--ink); font-weight: 400; line-height: var(--lh-snug); }
+.sr-sol.is-out > .row { background: var(--surface-2); }
+.sr-nrow .nrow-name { display: flex; flex-direction: column; gap: var(--s-1); }
+.sr-res { line-height: 2; }
+.sr-all { font-weight: 600; }
+.sr-doors { margin: var(--s-4) 0; }
+
+/* ---- home, second pass (brief 06) */
+/* Centred, on one line wherever the page has the width (Eric, 2026-11-02). */
+.is-home .home-title { max-width: none; margin-top: var(--s-4); }
+/* The tagline takes the page's width, like every sentence (Eric, 2026-10-20). */
+/* The doors beside the house on a wide screen; on a phone the house first, cropped wide. */
+.home-start { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--s-6); align-items: start; }
+.view .home-doors h2 { margin-top: 0; }
+.door-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); }
+.door {
+  display: flex; flex-direction: column; justify-content: center; gap: var(--s-1); min-height: 72px;
+  padding: var(--s-3) var(--s-4); border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink); text-decoration: none;
+}
+.door:hover { border-color: var(--accent); }
+/* Six guides fill the grid: the way to all of them is a link under it. */
+.home-doors-all { display: inline-block; margin-top: var(--s-3); font-weight: 700; }
+.door-title { font-weight: 700; font-size: var(--t-base); line-height: var(--lh-snug); color: var(--accent-ink); }
+.door-sub { font-size: var(--t-sm); color: var(--muted); }
+.home-slides { display: grid; }
+.home-slide { grid-area: 1 / 1; min-width: 0; visibility: hidden; }
+.home-slide.is-on { visibility: visible; }
+.home-slide .home-house-link { height: 100%; }
+/* The same flat card as the tiles and the cards below. */
+.home-carousel .home-house {
+  display: flex; flex-direction: column; height: 100%; margin: 0;
+  border: 1px solid var(--line); box-shadow: none; background: var(--surface);
+}
+.home-carousel .home-house figcaption { flex: 1; border-top-color: var(--line); }
+/* The whole drawing at every width: its top and foot hold what makes some of them work. */
+.home-carousel .home-house .home-drawing { max-height: none; display: block; padding: var(--s-2); background: var(--accent-bg-strong); }
+/* The long caption where there is room, a short one on a phone. */
+.home-house-short { display: none; }
+/* The frame and its paper stay; only what is drawn and named changes. */
+.home-slide.is-turning .home-drawing svg > :not(.pl-paper), .home-slide.is-turning figcaption > span { animation: fade-in var(--dur-slow) var(--ease-standard); }
+@media (prefers-reduced-motion: reduce) { .home-slide.is-turning .home-drawing svg > :not(.pl-paper), .home-slide.is-turning figcaption > span { animation: none; } }
+.home-dots { display: flex; justify-content: center; height: 24px; margin-top: var(--s-1); }
+/* A 24 px target around an 8 px dot. */
+.home-dot { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.home-dot::before { content: ''; width: 8px; height: 8px; box-sizing: border-box; border-radius: 50%; border: 1.5px solid var(--muted); }
+.home-dot:hover::before { border-color: var(--accent); }
+.home-dot[aria-current]::before { background: var(--accent); border-color: var(--accent); }
+.home-dot:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; border-radius: 50%; }
+/* The drawing's own box, measured: a 3:2 sheet, then the caption and the dots. */
+.home-house-reserve { aspect-ratio: 3 / 2; box-sizing: border-box; margin: 0 0 92px; border: var(--s-2) solid var(--accent-bg-strong); border-radius: var(--radius); background: var(--sheet); }
+.home-sec { margin-top: var(--s-7); }
+/* A quiet note under the why: who the know-how comes from, now the community card leads there. */
+.home-sources { margin: var(--s-5) 0 0; font-size: var(--t-sm); color: var(--muted); }
+.home-path { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--s-4); }
+.home-path li { display: flex; }
+/* A card is one link; its button shows where it leads, at the same foot on all three. */
+.home-path-card {
+  flex: 1; display: grid; grid-template-rows: auto 1fr; gap: var(--s-3); padding: var(--s-3);
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface);
+  color: var(--ink); text-decoration: none;
+}
+.home-path-card:hover { border-color: var(--accent); }
+.home-path-card:hover .home-path-go { background: var(--accent-ink); }
+.home-path-card:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.home-path-text { display: flex; flex-direction: column; align-items: flex-start; }
+.home-path-text p { flex: 1; }
+.btn.home-path-go { margin-top: var(--s-3); padding: var(--s-2) var(--s-4); font-size: var(--t-sm); }
+/* The step's drawing (PathArt): what the step does, on a soft green panel, in theme tokens. */
+.home-path-art {
+  display: block; border-radius: var(--radius-sm);
+  overflow: hidden; background: var(--accent-bg); aspect-ratio: 3 / 2;
+}
+.home-path li.has-tour { position: relative; container-type: inline-size; }
+/* The animation's Pause, outside the card's link, at the drawing's bottom right beside the
+   caption: at the top it covered the drawn "Could this work out?" as the camera reached it. The
+   drawing is 3:2 of the card's inner width, hence the container units. */
+.home-tour-pause {
+  position: absolute; z-index: 2; right: calc(var(--s-3) + 8px);
+  top: calc(var(--s-3) + (100cqw - 2 * var(--s-3)) * 2 / 3 - 8px - 32px);
+  min-height: 32px; padding: 0 var(--s-3); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink); font: inherit; font-size: var(--t-sm); cursor: pointer;
+}
+.home-tour-pause:hover { border-color: var(--muted); }
+@media (hover: none) { .home-tour-pause { min-height: 44px; margin-top: -12px; } }
+.path-art .pa-sheet { fill: var(--accent-bg); }
+.path-art { display: block; width: 100%; height: 100%; }
+.path-art .pa-grid { fill: var(--ink); opacity: .14; }
+.path-art .pa-card { fill: var(--surface); stroke: var(--muted-line); stroke-width: 1.6; }
+.path-art .pa-card.is-self { fill: var(--accent-bg-2); stroke: var(--accent); stroke-width: 2.2; }
+.path-art .pa-inset { fill: var(--surface-2); stroke: var(--muted-line); stroke-width: 1.4; }
+.path-art .pa-ink { fill: var(--ink); opacity: .75; }
+.path-art .pa-soft { fill: var(--muted-line); }
+.path-art .pa-dot { fill: none; stroke: var(--accent-line); stroke-width: 1.6; }
+.path-art .pa-dot.is-on { fill: var(--accent-ink); stroke: var(--accent-ink); }
+.path-art .pa-num { fill: var(--surface); stroke: var(--accent); stroke-width: 1.8; }
+.path-art .pa-num.is-done { fill: var(--accent); }
+.path-art .pa-n { fill: var(--accent-ink); font: 600 11px "Source Sans 3", system-ui, sans-serif; text-anchor: middle; }
+.path-art .pa-tick { fill: none; stroke: var(--on-accent); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.path-art .pa-line { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linejoin: round; }
+.path-art .pa-line.is-accent { fill: var(--accent-bg); stroke: var(--accent); }
+.path-art .pa-link { fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.path-art .pa-link.is-loop { stroke-dasharray: 5 5; }
+.path-art .pa-head { fill: var(--accent); }
+.path-art .pa-verdict { fill: var(--adq-green-bg); stroke: var(--adq-green); stroke-width: 1.6; }
+.path-art .pa-tick.is-verdict { stroke: var(--adq-green); }
+.path-art .pa-verdict-ink { fill: var(--adq-green); }
+@media (max-width: 760px) {
+  .home-path { grid-template-columns: 1fr; }
+  .home-path-card { grid-template-columns: 132px minmax(0, 1fr); grid-template-rows: auto; align-items: start; }
+  /* The animated card keeps its drawing full width on top: at 132 px it could not be read. */
+  .home-path li.has-tour .home-path-card { grid-template-columns: minmax(0, 1fr); }
+}
+.view .home-path-title, #prerender .home-path-title { margin: 0; font-size: var(--t-base); font-weight: 700; color: var(--ink); text-transform: none; letter-spacing: normal; }
+.home-path p { margin: var(--s-2) 0 0; }
+@media (max-width: 760px) {
+  .home-start { grid-template-columns: 1fr; gap: var(--s-4); }
+  .home-carousel { order: -1; }
+  /* 190 px of the house on Eric's phone, centred on the rooms. */
+  .home-house .guide-drawing { max-height: 190px; overflow: hidden; display: flex; align-items: center; }
+  .home-house figcaption { display: none; }
+  .door { min-height: 64px; }
+  .door-title { font-size: var(--t-md); }
+}
+
+/* The install line, under the bar. */
+.install-line {
+  display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-2) var(--s-2) var(--s-5);
+  background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: var(--t-sm);
+}
+.install-text { flex: 1; }
+.install-text .ios-glyph { vertical-align: -3px; margin: 0 var(--s-1); }
+.install-btn { min-height: var(--ctl-md); }
+.install-x { flex: none; width: var(--ctl-lg); height: var(--ctl-lg); display: inline-flex; align-items: center;
+  justify-content: center; border: 0; background: none; color: var(--ink); cursor: pointer; border-radius: var(--radius-sm); }
+
+/* The guides index: a card per guide, its picks by name, and the way in. */
+.guide-tile { gap: var(--s-2); }
+.view .guide-tile-title { margin: 0; font-size: var(--t-lg); }
+.guide-tile-intro { margin: 0; }
+.guide-tile-picks { margin: var(--s-2) 0; padding-left: var(--s-5); font-size: var(--t-sm); flex: 1; }
+.guide-tile-picks li { padding: 1px 0; }
+.btn.guide-tile-go { align-self: flex-start; min-height: var(--ctl-lg); color: var(--ink); }
+@media (min-width: 900px) { .guide-index { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* A guide's foot once all its picks are in. */
+.guide-done { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-2); margin: var(--s-4) 0; }
+.guide-done p { margin: 0; }
+.guide-done .btn { min-height: var(--ctl-lg); }
+@media (max-width: 760px) {
+  /* The six doors on the first screen of a 750 px phone (Eric's), under the title and drawing. */
+  .is-home .home-title { font-size: var(--t-xl); margin-top: 0; }
+  .home-tagline { font-size: var(--t-base); margin-bottom: var(--s-3); }
+  .view .home-doors h2 { font-size: var(--t-base); margin-bottom: var(--s-2); }
+  .door { min-height: 56px; padding: var(--s-2) var(--s-3); }
+}
+@media (max-width: 760px) {
+  .home-house-reserve { order: -1; margin-bottom: 78px; }
+}
+/* Phones: the tiles held above the fold on a 750 px screen. */
+@media (max-width: 500px) {
+  .home-start { gap: var(--s-2); }
+  .door-grid { gap: var(--s-2); }
+  .home-tagline { margin-bottom: var(--s-2); }
+}
+
+/* ---- home, third pass (Eric, 2026-10-20) */
+/* The drawing is the link to its solution: it looks it, and says where it goes. */
+.home-house-link { display: block; color: inherit; text-decoration: none; border-radius: var(--radius); }
+.home-house-link:hover .home-house { border-color: var(--accent); }
+.home-house-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.home-house-link figcaption { color: var(--muted); }
+.home-house-name { font-weight: 700; color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) {
+  .home-house-link { order: -1; }
+  .home-house .home-drawing { max-height: 190px; overflow: hidden; display: flex; align-items: center; }
+}
+/* On a wide screen the drawing column is narrower, so the drawing stands about as tall as the doors. */
+@media (min-width: 761px) {
+  .home-start { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); align-items: start; }
+  .is-home .home-tagline { margin-bottom: var(--s-7); }
+}
+/* Why: the paragraph takes the width; "Read more" under it. */
+.home-sec.is-why, .view .home-why { max-width: none; }
+/* A guide card with one button: centred under the picks. */
+.btn.guide-tile-go { align-self: center; }
+@media (max-width: 760px) {
+  /* The caption says where the drawing leads: shown on a phone too, its name only. */
+  .home-house-link .home-house figcaption { display: block; font-size: var(--t-sm); padding: var(--s-2) var(--s-3); }
+  .home-house-link .home-house figcaption .home-house-rest { display: none; }
+  .home-house-link .home-house figcaption .home-house-short { display: inline; }
+}
+
+/* ---- People and places (brief 11, CM1): hairline lists, three columns on a desktop ---------- */
+.pp-controls { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-5); margin: var(--s-4) 0 var(--s-2); }
+.pp-controls .seg { margin-bottom: 0; }
+.pp-filter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); }
+.pp-filter-label { font-size: var(--t-sm); font-weight: 600; color: var(--muted); }
+.pp-filter-note { flex: 1 1 100%; margin: 0; font-size: var(--t-sm); color: var(--muted); }
+.pp-section { margin-top: var(--s-7); scroll-margin-top: calc(var(--header-h) + var(--s-4)); }
+/*
+ * A group reads as a new block (Eric, 2026-10-21: the titles were lost among the names): the
+ * guide's heading rank (20 px, ink, bold) with its line under it, and the list opening on a 2 px
+ * ink rule, as the resources index does.
+ */
+.view .pp-section h2 { display: flex; flex-direction: column; gap: var(--s-1); margin: 0 0 var(--s-3); }
+.pp-sub { font-size: var(--t-sm); font-weight: 400; color: var(--muted); }
+.pp-list {
+  margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--ink);
+  display: grid; grid-template-columns: 1fr; gap: 0 var(--s-6);
+}
+@media (min-width: 760px) { .pp-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1080px) { .pp-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pp-entry { display: flex; flex-direction: column; gap: var(--s-1); padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
+.pp-name {
+  align-self: flex-start; display: inline-flex; align-items: center; min-height: var(--ctl-md);
+  font-weight: 700; font-size: var(--t-base); color: var(--ink); text-decoration: none;
+}
+.pp-name:hover { text-decoration: underline; }
+.pp-out { color: var(--muted); font-weight: 400; }
+.pp-line { font-size: var(--t-sm); line-height: var(--lh-snug); color: var(--ink); }
+.pp-meta { font-size: var(--t-xs); color: var(--muted); }
+.pp-none { color: var(--muted); font-size: var(--t-sm); }
+.pp-hello { margin-top: var(--s-5); }
+.pp-hello-lead { margin: var(--s-1) 0 var(--s-2); }
+.pp-foot { margin-top: var(--s-5); font-size: var(--t-sm); color: var(--muted); }
+.pp-foot + .pp-foot { margin-top: var(--s-2); }
+/* A phone: each filter one row that scrolls sideways, so the list starts sooner. */
+@media (max-width: 760px) {
+  .pp-controls { gap: var(--s-3); }
+  .pp-filter { flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * var(--s-4)); padding: var(--s-1) var(--s-4); }
+  .pp-filter .facet-chip { flex: none; min-height: var(--ctl-lg); }
+}
+
+/* Under a solution's tutorials: where to ask (brief 01, CM1). */
+.who-to-ask { margin: var(--s-3) 0 0; font-size: var(--t-md); line-height: var(--lh-snug); }
+
+/* About: who built this, up beside the lede (brief 11, B). */
+.about-who-intro { margin: var(--s-4) 0; padding: var(--s-3) var(--s-4); border-left: 4px solid var(--accent-line); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; }
+.about-who-intro p { margin: 0 0 var(--s-1); }
+.about-offline { color: var(--muted); font-size: var(--t-sm); }
+#who { scroll-margin-top: calc(var(--header-h) + var(--s-4)); }
+
+/* ---- Why (brief 11, C): one round drawing per section ---------------------------------- */
+.why-sec { display: grid; grid-template-columns: 1fr; gap: var(--s-3); margin-top: var(--s-6); }
+.why-sec h2 { margin-top: 0; }
+.why-bubble { margin: 0; display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
+.why-bubble-link, .why-bubble-reserve {
+  display: block; width: 168px; height: 168px; border-radius: 50%; overflow: hidden;
+  border: 1px solid var(--warm-line); background: var(--sheet); box-shadow: var(--shadow-raised);
+}
+.why-bubble-sheet { display: block; width: 100%; height: 100%; }
+/* The plate's two colours live on figure.plate; this sheet is a span inside a link, so it sets them. */
+.why-bubble-sheet { --pl-accent: var(--accent); --pl-line: var(--accent-ink); }
+.why-bubble-sheet svg { display: block; width: 100%; height: 100%; }
+/* A crop of the section, not a magnified close-up: its strokes drawn heavier to match. */
+.why-bubble-sheet.is-section { --pl-k: 1.8; }
+/* Labels belong to the full sheet; at this size they would be specks. */
+.why-bubble .ov-txt, .why-bubble .ov-num, .why-bubble .dr-txt, .why-bubble .pl-num,
+.why-bubble .pl-leader, .why-bubble .ov-dot { display: none; }
+.why-bubble figcaption { font-size: var(--t-sm); text-align: center; max-width: 168px; }
+.why-bubble-reserve { justify-self: center; }
+@media (min-width: 760px) {
+  /* The drawing right, so every paragraph of the page starts on one left edge (Eric, 2026-10-21). */
+  .why-sec { grid-template-columns: minmax(0, 1fr) 168px; gap: var(--s-6); align-items: start; }
+  .why-sec > .why-bubble, .why-sec > .why-bubble-reserve { order: 2; }
+}
+
+/* Landing on a group of People and places ("Where to find help"): clear of the bar, and its
+   heading marked for a moment once the scroll arrives (--dur-linger). */
+.pp-section { scroll-margin-top: calc(var(--header-h) + var(--s-4)); }
+.pp-section.is-arrived > h2 { animation: pp-arrive var(--dur-linger) var(--ease-standard); }
+@keyframes pp-arrive { 0%, 60% { background: var(--accent-bg-strong); } 100% { background: transparent; } }
+@media (prefers-reduced-motion: reduce) { .pp-section.is-arrived > h2 { animation: none; } }
+
+/* ---- a sub-need page's drawing, top right (Eric, 2026-10-21); a guide card's house ------- */
+.sub-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
+.sub-head-drawing:empty { display: none; }
+.sub-head-drawing .home-house .ov-txt, .sub-head-drawing .home-house .ov-num,
+.guide-thumb .ov-txt, .guide-thumb .ov-num, .guide-thumb .pl-leader, .guide-thumb .ov-dot { display: none; }
+@media (min-width: 900px) {
+  .sub-head { grid-template-columns: minmax(0, 1fr) 320px; gap: var(--s-6); align-items: start; }
+  .sub-head-drawing { margin-top: var(--s-5); }
+}
+@media (max-width: 899px) {
+  .sub-head-drawing .home-drawing { max-height: 160px; overflow: hidden; display: flex; align-items: center; }
+}
+.guide-thumb, .guide-thumb-reserve {
+  margin: calc(-1 * var(--s-2)) 0 var(--s-2); border-radius: var(--radius-sm); background: var(--sheet);
+  border: 1px solid var(--warm-line); overflow: hidden; aspect-ratio: 3 / 2;
+}
+.guide-thumb { --pl-accent: var(--accent); --pl-line: var(--accent-ink); }
+.guide-thumb svg { display: block; width: 100%; height: 100%; }
+
+/* ---- the resource marks (F7): before a resource's name, in its own colour ---------------- */
+.res-mark { display: inline-block; vertical-align: -2px; margin-right: var(--s-2); flex: none; }
+.io-chip-name { display: inline-flex; align-items: center; }
+.view .res-group h2 { display: flex; align-items: center; }
+
+/* The full name under a need's or sub-need's everyday label (C2). */
+.view .long-name { margin: 0 0 var(--s-3); font-size: var(--t-sm); color: var(--muted); }

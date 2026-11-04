@@ -1,0 +1,351 @@
+/*
+ * ===========================================================================
+ * ILLUSTRATION PLATE on a solution page. The drawing takes the site's colours (--surface-2,
+ * --ink, --muted, --accent) and follows light and dark. Two weights carry it: the base in one
+ * ink, the solution in the accent at nearly twice the width.
+ * ===========================================================================
+ */
+
+figure.plate {
+  /* One hook for the solution colour; every .ov-* reads it. */
+  --pl-accent: var(--accent);
+  /* The solution's line, in the darker green (brief 02, agreed 2026-10-20). */
+  --pl-line: var(--accent-ink);
+  margin: 20px 0 var(--s-6);
+  /* The sheet (brief 12): the drawing is the one raised surface on a page at rest. */
+  border: 1px solid var(--warm-line);
+  border-radius: var(--radius);
+  background: var(--sheet);
+  box-shadow: var(--shadow-raised);
+  overflow: hidden;
+}
+.plate .plate-svg { display: block; width: 100%; height: auto; }
+figure.plate figcaption {
+  padding: 9px 14px 11px;
+  border-top: 1px solid var(--warm-line);
+  color: var(--muted);
+  font-size: var(--t-sm);
+  line-height: 1.4;
+}
+
+/* ONE FRAMING AT EVERY WIDTH since 2026-09-10: the whole sheet, scaled down (Eric: the
+   zoomed-in phone version was "less readable"; the illustrations are there to inspire, and the
+   house is what makes a plate readable as a place). The switch is kept, commented, for the day
+   that changes -- restore it together with the plate-narrow div in Plate.jsx:
+.plate-narrow { display: none; }
+@media (max-width: 600px) {
+  .plate-wide { display: none; }
+  .plate-narrow { display: block; }
+}
+*/
+
+/* ---- sheet ---------------------------------------------------------------- */
+.plate .pl-paper { fill: var(--sheet); }
+.plate .pl-line { stroke: var(--ink); fill: none; stroke-width: calc(1.5 * var(--pl-k, 1)); opacity: .55; }
+.plate .pl-hair { stroke: var(--ink); fill: none; stroke-width: calc(.85 * var(--pl-k, 1)); opacity: .5; }
+.plate .pl-num {
+  fill: var(--muted); font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+/*
+ * Everything outside the focus zone. Load-bearing: below about .28 the house stops being
+ * identifiable.
+ */
+.plate .pl-dim { opacity: .34; }
+
+/* ---- the guide page: several drawings on one sheet ------------------------ */
+.guide-house { position: relative; margin-top: var(--s-5); }
+.guide-drawing { cursor: pointer; }
+/*
+ * Nothing chosen yet (Eric, 2026-10-12, replacing "all faded until one is chosen", which left the
+ * sheet a ghost): the house is drawn at full weight and the solutions wait in grey. Choosing one
+ * brings it out in the accent and the house steps back to its usual weight.
+ */
+.guide-house .gh-layer.is-off { opacity: .22; }
+.guide-house.is-overview .gh-layer.is-off, .bh-sheet.is-overview .gh-layer.is-off { opacity: .5; --pl-accent: var(--muted); --pl-line: var(--muted); }
+.guide-house.is-overview .pl-line, .bh-sheet.is-overview .pl-line { opacity: .95; }
+.guide-house.is-overview .pl-hair, .bh-sheet.is-overview .pl-hair { opacity: .8; }
+.guide-house.is-overview .pl-dim, .bh-sheet.is-overview .pl-dim { opacity: 1; }
+.guide-house .gh-layer.is-off .ov-txt, .guide-house .gh-layer.is-off .ov-num,
+.guide-house .gh-layer.is-off .ov-num + .ov-line.hair[d*=" L"], .guide-house .gh-layer.is-off g:not([class]):not([mask]):not([clip-path]):has(> .ov-txt) > .ov-line { display: none; }
+/* no pick chosen: every drawing shows, its labels do not, or five sets of notes pile up. A label's
+   leader goes with it: in section it follows its .ov-num; on the site plan both share one bare <g>
+   (bare: the drawing layer is a <g> too, and holds a plate's lines and labels side by side). */
+.guide-house.is-overview .ov-txt, .guide-house.is-overview .ov-num,
+.guide-house.is-overview .ov-num + .ov-line.hair[d*=" L"], .guide-house.is-overview g:not([class]):not([mask]):not([clip-path]):has(> .ov-txt) > .ov-line { display: none; }
+.guide-views {
+  position: absolute; top: 10px; right: 10px; display: flex; gap: var(--s-2);
+  padding: 3px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+}
+.guide-views button {
+  border: 0; background: none; color: var(--ink); font: inherit; font-size: var(--t-sm);
+  padding: var(--s-2) 10px; border-radius: var(--radius-xs); cursor: pointer;
+}
+.guide-views button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+
+/* ---- the house ------------------------------------------------------------ */
+.plate .dr-line { stroke: var(--ink); fill: none; stroke-width: calc(1.5 * var(--pl-k, 1)); stroke-linejoin: round; }
+.plate .dr-line.hair { stroke-width: calc(.85 * var(--pl-k, 1)); }
+.plate .dr-line.fat { stroke-width: calc(2.2 * var(--pl-k, 1)); }
+.plate .dr-fill { fill: var(--sheet); stroke: var(--ink); stroke-width: calc(1.5 * var(--pl-k, 1)); }
+.plate .dr-dash { stroke: var(--ink); fill: none; stroke-width: calc(.85 * var(--pl-k, 1)); stroke-dasharray: 7 4 2 4; }
+/*
+ * The riser below the roof: a column in plan, so drawn hidden in section, with air and people
+ * passing round it.
+ */
+.plate .dr-hide { stroke: var(--ink); fill: none; stroke-width: calc(.85 * var(--pl-k, 1)); stroke-dasharray: 4 3; }
+.plate .dr-txt {
+  fill: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .13em;
+}
+.plate .dr-num {
+  fill: var(--muted); font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* The house inside the focus zone steps back so the solution reads first (brief 02). */
+.plate g[clip-path] .dr-line, .plate g[clip-path] .dr-fill, .plate g[clip-path] .dr-hide { opacity: .7; }
+
+/* ---- the solution --------------------------------------------------------- */
+/*
+ * Heavier than the house it sits in (brief 02, agreed 2026-10-20): a 3.4 line in the darker
+ * green, a .25 tint; the house inside the focus zone steps back (below).
+ */
+.plate .ov-line {
+  stroke: var(--pl-line, var(--pl-accent)); fill: none; stroke-width: calc(3.4 * var(--pl-k, 1));
+  stroke-linejoin: round; stroke-linecap: round;
+}
+.plate .ov-line.hair { stroke-width: calc(1.8 * var(--pl-k, 1)); }
+.plate .ov-fill { fill: var(--sheet); stroke: var(--pl-line, var(--pl-accent)); stroke-width: calc(3.4 * var(--pl-k, 1)); }
+.plate .ov-tint { fill: var(--pl-accent); opacity: .25; stroke: none; }
+/* A leader's end, on the object it names (brief 02, C). Hidden wherever its label is. */
+.guide-house .gh-layer.is-off :is(.pl-leader, .ov-dot), .guide-house.is-overview :is(.pl-leader, .ov-dot),
+.bh-vignette :is(.pl-leader, .ov-dot), .bh-sheet.is-overview :is(.pl-leader, .ov-dot) { display: none; }
+.plate .ov-dot { fill: var(--pl-line, var(--pl-accent)); stroke: none; }
+/* The site plates' fainter tint: a blind wedge inside a sight line, a field of buried lines. */
+.plate .ov-tint.soft { opacity: .12; }
+.plate .ov-dash { stroke: var(--pl-line, var(--pl-accent)); fill: none; stroke-width: calc(1.5 * var(--pl-k, 1)); stroke-dasharray: 6 5; }
+/* Hidden work has its own dash, distinct from rays and routes. */
+.plate .ov-hide { stroke: var(--pl-line, var(--pl-accent)); fill: none; stroke-width: calc(1.3 * var(--pl-k, 1)); stroke-dasharray: 5 3; }
+.plate .ov-txt {
+  fill: var(--pl-line, var(--pl-accent)); font-size: 11.5px; font-weight: 600; letter-spacing: .11em;
+}
+.plate .ov-num {
+  fill: var(--pl-accent); font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/*
+ * The kitchen plates draw the house again at 2.6x inside their bubble, so every weight and dash
+ * is divided by 2.6. Keep in step with KD.M.
+ */
+.plate .mag .dr-line, .plate .mag .dr-fill { stroke-width: calc(.577 * var(--pl-k, 1)); }
+.plate .mag .dr-line.hair { stroke-width: calc(.327 * var(--pl-k, 1)); }
+.plate .mag .dr-line.fat  { stroke-width: calc(.846 * var(--pl-k, 1)); }
+.plate .mag .dr-hide { stroke-width: calc(.327 * var(--pl-k, 1)); stroke-dasharray: 1.54 1.15; }
+.plate .mag .dr-dash { stroke-width: calc(.327 * var(--pl-k, 1)); stroke-dasharray: 2.69 1.54 .77 1.54; }
+.plate .mag .ov-line, .plate .mag .ov-fill { stroke-width: calc(1.31 * var(--pl-k, 1)); }
+.plate .mag .ov-line.hair { stroke-width: calc(.69 * var(--pl-k, 1)); }
+.plate .mag .ov-dash { stroke-width: calc(.577 * var(--pl-k, 1)); stroke-dasharray: 2.31 1.92; }
+.plate .mag .ov-hide { stroke-width: calc(.5 * var(--pl-k, 1)); stroke-dasharray: 1.92 1.15; }
+
+/* ---- the built house, in the builder (TODO S6) ------------------------------ */
+/* In the builder's toolbar, right of the buttons: it never covers the canvas. */
+.bh-vignette {
+  position: relative; flex: none; align-self: center;
+  width: 132px; padding: 0; margin: 0; display: block;
+  border: 1px solid var(--line); border-radius: var(--radius-xs); overflow: hidden;
+  background: var(--surface-2); color: var(--ink); cursor: pointer; font: inherit; text-align: left;
+}
+.bh-vignette:hover { border-color: var(--accent); }
+.bh-vignette:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.bh-vignette-drawing { display: block; }
+.bh-vignette-drawing svg { display: block; width: 100%; height: auto; }
+.bh-vignette-foot {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-2);
+  padding: var(--s-1) 6px 3px; background: color-mix(in srgb, var(--surface) 85%, transparent);
+  font-size: .62rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-ink);
+}
+.bh-count { font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--muted); }
+/* labels never show at vignette size, nor in the inset */
+.bh-vignette .ov-txt, .bh-vignette .ov-num,
+.bh-vignette .ov-num + .ov-line.hair[d*=" L"], .bh-vignette g:not([class]):not([mask]):not([clip-path]):has(> .ov-txt) > .ov-line,
+.bh-inset .ov-txt, .bh-inset .ov-num,
+.bh-inset .ov-num + .ov-line.hair[d*=" L"], .bh-inset g:not([class]):not([mask]):not([clip-path]):has(> .ov-txt) > .ov-line { display: none; }
+/*
+ * The landing (Eric, 2026-09-24: the old 10px pulse went unnoticed): the frame turns accent and
+ * thick, the vignette bumps like the Build link does, and a ring spreads out and fades.
+ */
+.bh-vignette.is-hit { animation: bh-hit 1.3s ease-out; }
+@keyframes bh-hit {
+  0% { transform: scale(1); border-color: var(--accent); box-shadow: 0 0 0 0 var(--accent); }
+  18% { transform: scale(1.08); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent); }
+  45% { transform: scale(1); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent), 0 0 0 10px color-mix(in srgb, var(--accent) 35%, transparent); }
+  100% { transform: scale(1); border-color: var(--line); box-shadow: 0 0 0 4px transparent, 0 0 0 22px transparent; }
+}
+/* hidden while its chip is in the air */
+.plate .gh-layer.is-pending { opacity: 0; }
+/* a new solution drops into its slot */
+.plate .gh-layer.is-new { animation: bh-drop .9s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes bh-drop {
+  0% { opacity: 0; transform: translateY(-28px); }
+  55% { opacity: 1; }
+  100% { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plate .gh-layer.is-new, .bh-vignette.is-hit { animation: none; }
+}
+@media (max-width: 560px) {
+  .bh-vignette { width: 96px; }
+  .bh-vignette-foot .bh-count { display: none; }
+}
+.bh-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.bh-backdrop {
+  position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
+  padding: var(--s-5); background: rgba(0, 0, 0, .45);
+}
+.bh-panel {
+  width: min(1180px, 100%); max-height: 100%; display: flex; flex-direction: column;
+  background: var(--surface); color: var(--ink); border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .3);
+}
+.bh-head {
+  display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  padding: 10px 14px; border-bottom: 1px solid var(--line);
+}
+.bh-head h2 { flex: 1; margin: 0; font-size: var(--t-md, 1rem); text-wrap: balance; }
+.bh-views { position: static; }
+.bh-close {
+  width: 36px; height: 36px; border: 0; border-radius: var(--radius-sm); background: none;
+  color: var(--ink); font-size: 1.5rem; line-height: 1; cursor: pointer;
+}
+.bh-close:hover { background: var(--surface-2); }
+.bh-body { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(240px, 1fr); min-height: 0; overflow: auto; }
+figure.plate.bh-sheet { position: relative; margin: 0; border: 0; border-radius: 0; }
+.bh-sheet .gh-layer.is-off { opacity: .22; }
+.bh-sheet .gh-layer.is-off .ov-txt, .bh-sheet .gh-layer.is-off .ov-num,
+.bh-sheet .gh-layer.is-off .ov-num + .ov-line.hair[d*=" L"], .bh-sheet .gh-layer.is-off g:not([class]):not([mask]):not([clip-path]):has(> .ov-txt) > .ov-line { display: none; }
+.bh-sheet.is-overview .ov-txt, .bh-sheet.is-overview .ov-num,
+.bh-sheet.is-overview .ov-num + .ov-line.hair[d*=" L"], .bh-sheet.is-overview g:not([class]):not([mask]):not([clip-path]):has(> .ov-txt) > .ov-line { display: none; }
+.bh-inset { cursor: pointer; }
+.bh-inset:hover .pl-line { stroke: var(--accent); }
+.bh-inset-label { font-size: 13px; font-weight: 700; fill: var(--muted); letter-spacing: .04em; }
+.bh-count-sheet {
+  position: absolute; top: 12px; left: 14px; padding: 3px 9px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line); font-size: var(--t-sm);
+}
+.bh-index { padding: var(--s-4) 14px var(--s-5); border-left: 1px solid var(--line); overflow: auto; }
+.bh-index h3 { margin: var(--s-2) 0 var(--s-3); font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.bh-index ul { list-style: none; margin: 0; padding: 0; }
+.bh-row + .bh-row { border-top: 1px solid var(--line); }
+.bh-row { padding-bottom: 7px; }
+.bh-row > button {
+  display: flex; align-items: baseline; flex-wrap: wrap; column-gap: var(--s-3); width: 100%; min-height: 32px; padding: 7px 6px 3px;
+  border: 0; background: none; color: var(--ink); font: inherit; text-align: left; cursor: pointer;
+}
+.bh-row > button:hover:not(:disabled) { background: var(--surface-2); }
+.bh-row > button:disabled { cursor: default; }
+.bh-row.is-on > button { background: var(--accent-bg); }
+.bh-row-name { font-weight: 600; font-size: var(--t-sm); }
+.bh-row.is-undrawn .bh-row-name { font-weight: 400; color: var(--muted); }
+.bh-row-sub { font-size: var(--t-xs); color: var(--muted); }
+/* Two buttons under the name (they were small links readers missed, 2026-11-03); an open
+   tutorials list takes the row's whole width. */
+.bh-row-links { display: flex; flex-wrap: wrap; gap: var(--s-2); padding: var(--s-1) 6px 0; white-space: nowrap; }
+.bh-row-links > .tut-pick.is-open { flex-basis: 100%; }
+.bh-row-btn {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 32px; padding: var(--s-1) var(--s-3);
+  border: 1px solid var(--accent-line); border-radius: var(--radius-sm); background: var(--accent-bg-2);
+  color: var(--accent-ink); font-size: var(--t-xs); font-weight: 600; text-decoration: none;
+}
+.bh-row-btn:hover { background: var(--accent-bg); border-color: var(--accent); }
+@media (hover: none) { .bh-row-btn { min-height: 44px; } }
+.bh-choices { margin-bottom: var(--s-4); padding: var(--s-3) 10px; border-radius: var(--radius-sm); background: var(--surface-2); border-left: 4px solid var(--adq-yellow); }
+.bh-choices p { margin: 0 0 6px; font-size: var(--t-sm); color: var(--muted); }
+.bh-choices ul { list-style: disc; margin: 0; padding-left: 1.1em; font-size: var(--t-sm); }
+.bh-choices li { margin: var(--s-1) 0; }
+.bh-note { margin: 10px 0 0; font-size: var(--t-xs); color: var(--muted); }
+@media (max-width: 760px) {
+  .bh-backdrop { padding: 0; }
+  .bh-panel { height: 100%; border-radius: 0; }
+  .bh-body { grid-template-columns: 1fr; }
+  .bh-index { border-left: 0; border-top: 1px solid var(--line); }
+  /* title and close on the first row, the view switch across the second */
+  .bh-head { display: grid; grid-template-columns: 1fr auto; }
+  .bh-head h2 { grid-column: 1; grid-row: 1; }
+  .bh-close { grid-column: 2; grid-row: 1; }
+  .bh-views { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
+}
+/* Detail bubbles (closeUp: a dashed circle, its leader, the disc, the magnified view -- matched as that
+   exact sequence, since dashed paths are also plain geometry) stay on their own plate: with several
+   plates on the sheet they cover the house. Only the chosen plate shows its bubble; the ring on
+   the object stays, to mark the spot. */
+.bh-vignette circle.ov-dash:has(+ .ov-line + .ov-fill) + .ov-line, .bh-vignette circle.ov-dash + .ov-line + .ov-fill, .bh-vignette .ov-fill + clipPath + g,
+.bh-inset circle.ov-dash:has(+ .ov-line + .ov-fill) + .ov-line, .bh-inset circle.ov-dash + .ov-line + .ov-fill, .bh-inset .ov-fill + clipPath + g,
+.bh-sheet.is-overview circle.ov-dash:has(+ .ov-line + .ov-fill) + .ov-line, .bh-sheet.is-overview circle.ov-dash + .ov-line + .ov-fill, .bh-sheet.is-overview .ov-fill + clipPath + g,
+.bh-sheet .is-off circle.ov-dash:has(+ .ov-line + .ov-fill) + .ov-line, .bh-sheet .is-off circle.ov-dash + .ov-line + .ov-fill, .bh-sheet .is-off .ov-fill + clipPath + g,
+.guide-house .is-off circle.ov-dash:has(+ .ov-line + .ov-fill) + .ov-line, .guide-house .is-off circle.ov-dash + .ov-line + .ov-fill, .guide-house .is-off .ov-fill + clipPath + g { display: none; }
+
+/*
+ * The vignette marks the new layer, not the frame (brief 03, Mo-F8; Mo-F7): it arrives in the
+ * accent with a heavier line, then settles to the normal weight over 1.2 s. The real drop stays
+ * on the open sheet, where it can be seen.
+ */
+.bh-vignette.is-hit { animation: none; }
+.bh-vignette .gh-layer.is-new { animation: none; }
+.bh-vignette .gh-layer :is(.ov-line, .ov-fill, .pl-line) { transition: stroke 1.2s var(--ease-standard), stroke-width 1.2s var(--ease-standard); }
+.bh-vignette .gh-layer.is-new :is(.ov-line, .ov-fill, .pl-line) { stroke: var(--accent); stroke-width: calc(6 * var(--pl-k, 1)); transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .bh-vignette .gh-layer :is(.ov-line, .ov-fill, .pl-line) { transition: none; }
+}
+
+/* ---- a narrow sheet: numbered labels and a legend (brief 02, B; agreed 2026-10-20) ---------- */
+/*
+ * Below 500 px the words leave the drawing: a numbered disc beside each part, the words listed
+ * under the sheet at text size. Strokes thicken by one factor (--pl-k, read by every
+ * stroke-width above). Only sheets that carry a legend switch; the home drawing and the
+ * builder's house keep their own rules.
+ */
+figure.plate { container: plate / inline-size; }
+.plate .pl-disc { display: none; }
+.plate .pl-disc circle { fill: var(--pl-line, var(--pl-accent)); stroke: var(--sheet); stroke-width: 3; }
+.plate .pl-disc .pl-disc-lead { fill: none; stroke: var(--pl-line, var(--pl-accent)); stroke-width: 2.4; }
+.plate .pl-disc circle.pl-disc-dot { stroke: none; }
+.plate .pl-disc text { fill: var(--sheet); font-size: 22px; font-weight: 700; }
+.plate-legend {
+  display: none; margin: 0; padding: var(--s-2) var(--s-3); list-style: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2) var(--s-3);
+  border-top: 1px solid var(--warm-line); font-size: var(--t-sm); line-height: var(--lh-snug);
+}
+.plate-legend li { display: flex; align-items: center; gap: var(--s-2); min-width: 0; }
+.plate-legend-n {
+  flex: none; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--pl-line, var(--pl-accent)); color: var(--sheet); font-size: var(--t-xs); font-weight: 700;
+}
+/* One label: one column, no point in a grid. */
+.plate-legend:has(> li:only-child) { grid-template-columns: 1fr; }
+@container plate (max-width: 499px) {
+  .has-legend .plate-svg { --pl-k: 1.8; }
+  .has-legend .pl-disc { display: inline; }
+  .has-legend .pl-word { display: none; }
+  /* A dimension stays on the drawing, large enough to read. */
+  .has-legend .pl-keep { font-size: 19px; }
+  .has-legend .plate-legend { display: grid; }
+}
+
+
+/* ---- the title block (brief 02, D): not on the page; for an image shared on its own ------- */
+.plate .pl-title-box { fill: var(--sheet); stroke: var(--ink); stroke-opacity: .55; stroke-width: calc(1 * var(--pl-k, 1)); }
+.plate .pl-title-rule { fill: none; stroke: var(--ink); stroke-opacity: .55; stroke-width: calc(.85 * var(--pl-k, 1)); }
+.plate .pl-title-name { fill: var(--ink); font-size: 13px; font-weight: 700; }
+.plate .pl-title-need { fill: var(--muted); font-size: 9px; font-weight: 600; letter-spacing: .1em; }
+.plate .pl-title-brand { fill: var(--pl-line, var(--pl-accent)); font-size: 9.5px; font-weight: 700; }
+
+/* A guide's card on the guides index (Eric, 2026-10-21): the picks on the house at about 300 px.
+   No words, no leaders, no close-up bubbles (they cover the house when plates share a sheet,
+   as on the vignette), and heavier strokes for the size. */
+.guide-thumb { --pl-k: 1.8; }
+.guide-thumb .ov-num + .ov-line.hair[d*=" L"], .guide-thumb g:not([class]):not([mask]):not([clip-path]):has(> .ov-txt) > .ov-line,
+.guide-thumb circle.ov-dash:has(+ .ov-line + .ov-fill) + .ov-line, .guide-thumb circle.ov-dash + .ov-line + .ov-fill,
+.guide-thumb .ov-fill + clipPath + g { display: none; }

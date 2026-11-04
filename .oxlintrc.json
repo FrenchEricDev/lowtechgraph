@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "oxc"],
+  "ignorePatterns": [".wrangler/**", "dist/**"],
+  "env": { "browser": true, "es2024": true },
+  "globals": { "__BUILD_STAMP__": "readonly" },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }],
+    "no-undef": "error"
+  },
+  "overrides": [
+    { "files": ["scripts/**", "vite.config.js"], "env": { "node": true, "browser": false } },
+    { "files": ["scripts/*.browser.js"], "env": { "browser": true, "node": false } },
+    { "files": ["worker/**"], "env": { "worker": true, "serviceworker": true } },
+    { "files": ["src/sw.js"], "env": { "worker": true, "serviceworker": true, "browser": false } }
+  ]
+}

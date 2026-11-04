@@ -1,0 +1,64 @@
+{
+  "slug": {
+    "en": "easy-and-fun",
+    "fr": "simple-et-plaisant"
+  },
+  "order": 5,
+  "en": {
+    "door": "A weekend project",
+    "title": "Easy and fun to build",
+    "intro": "Five things you could start this weekend. Ordinary tools, no specialist skills, and each one does something visible on the first day."
+  },
+  "fr": {
+    "door": "Un projet pour ce week-end",
+    "title": "Simple et fun à construire",
+    "intro": "Cinq choses à commencer ce week-end. Des outils ordinaires, aucune compétence de spécialiste, et un résultat visible dès le premier jour."
+  },
+  "picks": [
+    {
+      "id": "SOL-169",
+      "en": {
+        "why": "A box and some insulation. The physics does the rest and cooks for you."
+      },
+      "fr": {
+        "why": "Une caisse et de l’isolant. La physique fait le reste et cuisine pour vous."
+      }
+    },
+    {
+      "id": "SOL-242",
+      "en": {
+        "why": "A sleeve of felt or metal around the pot, and the water boils sooner the first time you try it."
+      },
+      "fr": {
+        "why": "Un manchon de feutre ou de métal autour de la casserole, et l’eau bout plus vite dès le premier essai."
+      }
+    },
+    {
+      "id": "SOL-090",
+      "en": {
+        "why": "Works the first sunny afternoon you try it."
+      },
+      "fr": {
+        "why": "Fonctionne dès le premier après-midi ensoleillé."
+      }
+    },
+    {
+      "id": "SOL-136",
+      "en": {
+        "why": "A few bricks or tin cans, and a hot, clean fire to cook on the same afternoon."
+      },
+      "fr": {
+        "why": "Quelques briques ou boîtes de conserve, et un feu chaud et propre pour cuisiner l’après-midi même."
+      }
+    },
+    {
+      "id": "SOL-166",
+      "en": {
+        "why": "Cheap to try, and what you dry keeps for months."
+      },
+      "fr": {
+        "why": "Peu coûteux, et le résultat se conserve pendant des mois."
+      }
+    }
+  ]
+}

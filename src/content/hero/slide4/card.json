@@ -1,0 +1,14 @@
+{
+  "to": {
+    "view": "guide",
+    "id": "in-a-flat"
+  },
+  "en": {
+    "title": "Can I also try this in a flat?",
+    "alt": "Can I do this in my flat? One flat inside a larger building, no roof access."
+  },
+  "fr": {
+    "title": "Est-ce que je peux essayer même en appartement ?",
+    "alt": "Puis-je faire cela dans mon appartement ? Un appartement dans un immeuble, sans accès au toit."
+  }
+}

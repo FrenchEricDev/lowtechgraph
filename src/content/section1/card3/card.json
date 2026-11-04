@@ -1,0 +1,16 @@
+{
+  "to": {
+    "view": "guide",
+    "id": "save-money"
+  },
+  "en": {
+    "title": "Build to save money",
+    "text": "Build solutions and get immediate payback.",
+    "cta": "{n} cost-cutting solutions"
+  },
+  "fr": {
+    "title": "Construire pour économiser",
+    "text": "Construisez des solutions immédiatement rentables.",
+    "cta": "{n} façons de faire des économies"
+  }
+}

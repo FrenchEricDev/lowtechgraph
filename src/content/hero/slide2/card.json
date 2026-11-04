@@ -1,0 +1,13 @@
+{
+  "to": {
+    "view": "needs"
+  },
+  "en": {
+    "title": "Explore all the solutions and find tutorials to build them",
+    "alt": "Explore all the solutions and find building tutorials. One need, many solutions compared on the same axes."
+  },
+  "fr": {
+    "title": "Explorez toutes les solutions et trouvez des tutoriels pour les construire",
+    "alt": "Explorez toutes les solutions et trouvez des tutoriels pour les construire. Un besoin, plusieurs solutions comparées sur les mêmes axes."
+  }
+}
