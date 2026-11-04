@@ -1097,7 +1097,7 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
   // it (the house card is far larger than the fallback). A node chained to the left is
   // re-anchored by its right edge, a gutter short of the node it feeds. Keyed on "every node
   // measured", which drops to false when a node is added.
-  const placing = useRef(new Map())   // id -> { want, rightEdge? }, until measured
+  const placing = useRef(new Map())   // id -> { want, anchor? }, until measured
   const allMeasured = useNodesInitialized()
   // On a phone the system opens centred on the card added last, at reading size (J-F7), not
   // fitted so small nothing reads. Once per visit to the builder.
@@ -1120,10 +1120,13 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
     for (const [id] of jobs) placing.current.delete(id)
     setNodes((ns) => {
       let out = ns
-      for (const [id, { want, rightEdge }] of jobs) {
+      for (const [id, { want, anchor }] of jobs) {
         const me = out.find((n) => n.id === id)
         if (!me) continue
-        const goal = rightEdge == null ? want : { x: rightEdge - sizeOf(me).w, y: want.y }
+        const goal = {
+          x: anchor?.right == null ? want.x : anchor.right - sizeOf(me).w,
+          y: anchor?.bottom == null ? want.y : anchor.bottom - sizeOf(me).h,
+        }
         const at = freeSpot(goal, out.filter((n) => n.id !== id), me)
         if (at.x !== me.position.x || at.y !== me.position.y) {
           out = out.map((n) => (n.id === id ? { ...n, position: at } : n))
@@ -1145,8 +1148,25 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
       rf.setCenter(n.internals.positionAbsolute.x + w / 2, n.internals.positionAbsolute.y + h / 2, { zoom: 1 })
     }))
   }, [nodes, allMeasured, setNodes, freeSpot, reveal])
-  // The gap between a node chained on the left and the node it feeds.
+  // The gap between a node chained before another and the node it feeds.
   const CHAIN_GUTTER = 80
+  // Where a card added from another card's input ('in') or output ('out') goes: left or right
+  // of it in landscape, above or below it in portrait, where the links attach top and bottom.
+  // `nth` is how many cards already hang off that side, so siblings fan out instead of piling.
+  // Returns the wanted position and, for a card placed before, the edge to anchor it by once
+  // its size is known.
+  const besideCard = useCallback((nodeId, pos, dir, nth = 0) => {
+    if (!portrait) {
+      return dir === 'out'
+        ? { pos: { x: pos.x + 320, y: pos.y + nth * 110 } }
+        : { pos: { x: pos.x - 320, y: pos.y + nth * 110 }, anchor: { right: pos.x - CHAIN_GUTTER } }
+    }
+    const h = rf.getInternalNode(nodeId)?.measured?.height ?? 200
+    const x = pos.x + nth * 290
+    return dir === 'out'
+      ? { pos: { x, y: pos.y + h + CHAIN_GUTTER } }
+      : { pos: { x, y: pos.y - 300 }, anchor: { bottom: pos.y - CHAIN_GUTTER } }
+  }, [portrait, rf])
 
   const onNodeDragStop = useCallback((_e, node) => {
     if (node) settleDropped(node)
@@ -1206,22 +1226,23 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
-  // `rightEdge`, when given, anchors the node by its right edge once its width is known.
-  const addNode = useCallback((sol, pos, rightEdge) => {
+  // `anchor`, when given ({ right } or { bottom }), places the node by that edge once its size
+  // is known.
+  const addNode = useCallback((sol, pos, anchor) => {
     snapshot()
     const id = newId()
-    placing.current.set(id, { want: pos, rightEdge })
+    placing.current.set(id, { want: pos, anchor })
     setNodes((ns) => ns.concat({ id, type: 'solution', position: freeSpot(pos, ns), data: { sol } }))
     setSaid(fill(ui.tree.saidAdded, { name: cat.tName(sol) }))
     return id
   }, [setNodes, snapshot, freeSpot])
 
-  const addResource = useCallback((ioId, pos, rightEdge) => {
+  const addResource = useCallback((ioId, pos, anchor) => {
     const rd = cat.resourceDescriptor(ioId)
     if (!rd) return null
     snapshot()          // after the guard, so a rejected id does not push an empty step
     const id = newId()
-    placing.current.set(id, { want: pos, rightEdge })
+    placing.current.set(id, { want: pos, anchor })
     // {io, name} matches the solution input/output shape; label is the node title.
     setNodes((ns) => ns.concat({
       id, type: 'resource', position: freeSpot(pos, ns),
@@ -1230,10 +1251,10 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
     return id
   }, [setNodes, snapshot, freeSpot])
 
-  const addDestination = useCallback((kind, pos, rightEdge) => {
+  const addDestination = useCallback((kind, pos, anchor) => {
     snapshot()
     const id = newId()
-    placing.current.set(id, { want: pos, rightEdge })
+    placing.current.set(id, { want: pos, anchor })
     setNodes((ns) => ns.concat({ id, type: 'destination', position: freeSpot(pos, ns), data: { dest: kind } }))
     return id
   }, [setNodes, snapshot, freeSpot])
@@ -1507,10 +1528,12 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
     if (existing) { snapshot(); cid = existing.id }
     else {
       const from = opt.mode === 'insert' ? nodes.find((x) => x.id === opt.edge.source) : null
+      const before = besideCard(target.id, target.position, 'in')
       const pos = from
-        ? { x: (from.position.x + target.position.x) / 2, y: (from.position.y + target.position.y) / 2 + 80 }
-        : { x: target.position.x - 320, y: target.position.y }
-      cid = addNode(opt.sol, pos, opt.mode === 'insert' ? undefined : target.position.x - CHAIN_GUTTER)
+        ? { x: (from.position.x + target.position.x) / 2 + (portrait ? 150 : 0),
+            y: (from.position.y + target.position.y) / 2 + (portrait ? 0 : 80) }
+        : before.pos
+      cid = addNode(opt.sol, pos, from ? undefined : before.anchor)
     }
     const stand = { data: { sol: opt.sol } }
     const mk = (s, t, ios) => ({ id: `e-${s}-${t}-${ios[0]}`, source: s, target: t,
@@ -1619,8 +1642,8 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
     } else {
       const childCount = edges.filter((e) =>
         (dir === 'out' ? e.source : e.target) === ask.nodeId).length
-      const pos = { x: ask.pos.x + (dir === 'out' ? 320 : -320), y: ask.pos.y + childCount * 110 }
-      targetId = addNode(sol, pos, dir === 'out' ? undefined : ask.pos.x - CHAIN_GUTTER)
+      const { pos, anchor } = besideCard(ask.nodeId, ask.pos, dir, childCount)
+      targetId = addNode(sol, pos, anchor)
     }
     const io = ask.io
     const source = dir === 'out' ? ask.nodeId : targetId
@@ -1642,9 +1665,9 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
   const pickHousehold = () => {
     const existing = nodes.find((n) => n.data?.dest === 'home')
     const childCount = edges.filter((e) => e.target === ask.nodeId).length
-    const pos = { x: ask.pos.x - 320, y: ask.pos.y + childCount * 110 }
+    const { pos, anchor } = besideCard(ask.nodeId, ask.pos, 'in', childCount)
     if (!existing) snapshot()
-    const houseId = existing ? existing.id : addDestination('home', pos, ask.pos.x - CHAIN_GUTTER)
+    const houseId = existing ? existing.id : addDestination('home', pos, anchor)
     const ios = allMatchingIos({ data: { dest: 'home' } },
                                nodes.find((n) => n.id === ask.nodeId))
     setEdges((es) => addEdge(
@@ -1657,8 +1680,8 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
   // Place a natural resource that produces the clicked input, and link it in.
   const pickResource = () => {
     const childCount = edges.filter((e) => e.target === ask.nodeId).length
-    const pos = { x: ask.pos.x - 320, y: ask.pos.y + childCount * 110 }
-    const resId = addResource(ask.io, pos, ask.pos.x - CHAIN_GUTTER)
+    const { pos, anchor } = besideCard(ask.nodeId, ask.pos, 'in', childCount)
+    const resId = addResource(ask.io, pos, anchor)
     if (!resId) return
     setEdges((es) => addEdge(
       // data.io and a translated label, like every other edge. A resource emits exactly one
@@ -1683,7 +1706,7 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
       : null
     if (existing) snapshot()
     const destId = existing ? existing.id
-      : addDestination(kind, { x: ask.pos.x + 320, y: ask.pos.y + childCount * 110 })
+      : addDestination(kind, besideCard(ask.nodeId, ask.pos, 'out', childCount).pos)
     const ios = allMatchingIos(nodes.find((n) => n.id === ask.nodeId),
                                { data: { dest: kind } })
     setEdges((es) => addEdge(
@@ -2221,6 +2244,7 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
           nodeSolution={(id) => nodes.find((n) => n.id === id)?.data.sol || null}
           onParallel={onParallel}
           onChain={(nodeId, io) => onIo(nodeId, 'out', io)}
+          onTryOthers={(solId) => { const n = nodes.find((x) => x.data.sol?.id === solId); if (n) setReplacing(n.id) }}
           systemLink={systemLink}
         />
       )}

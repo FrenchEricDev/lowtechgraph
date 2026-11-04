@@ -640,8 +640,9 @@ export const fr = {
       'Fonctionne sans réseau ni pompe : la gravité, la convection, un feu alimenté à la main, ' +
       'ou une énergie produite sur place.',
     activeTip:
-      'Nécessite le réseau (électricité ou gaz) ou une pompe pour fonctionner. Souvent le meilleur ' +
-      'choix, mais cela dépend d’un approvisionnement qui reste disponible.',
+      'Nécessite le réseau (électricité ou gaz) ou une pompe pour fonctionner. Le choix le plus courant, ' +
+      'et celui qui fonctionne le mieux tant que les réseaux tiennent, mais avec moins d’autonomie et ' +
+      'moins de résilience face aux coupures.',
     newBuildOnly: 'Construction neuve uniquement',
     notCollected: 'Pas encore renseigné',
     houseOnly: 'Pas en appartement',
@@ -1042,8 +1043,8 @@ export const fr = {
       unfedMore: 'Et {n} de plus sur le plan de travail.',
       nextSupply: 'Ajouter de quoi le fournir',
       nextReveal: 'Montrer {name} dans votre système',
-      nextCompare: 'Comparer d’autres options pour {need}',
-      nextUseLess: 'Comparer des façons de consommer moins : {need}',
+      nextCompare: 'Essayer d’autres façons de répondre à ce besoin : {need}',
+      nextUseLess: 'Essayer des façons qui consomment moins : {need}',
       nextField: 'Essayer une autre valeur : {field}',
       nextMainsOff: 'Voir ce qui se passe si le réseau s’arrête',
       nextMainsOn: 'Rétablir le réseau',

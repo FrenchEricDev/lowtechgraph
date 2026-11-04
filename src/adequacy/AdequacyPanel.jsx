@@ -109,7 +109,7 @@ function Mark({ verdict }) {
 // Above this a mail link can be cut short by the browser or the mail program.
 const MAIL_DETAILS_MAX = 1500
 
-export default function AdequacyPanel({ graph, data, ui, nameOf, ioNameOf, onClose, onReveal, supplyOptions, compareFor, go, nodeSolution, onParallel, onChain, systemLink }) {
+export default function AdequacyPanel({ graph, data, ui, nameOf, ioNameOf, onClose, onReveal, supplyOptions, compareFor, go, nodeSolution, onParallel, onChain, onTryOthers, systemLink }) {
   const t = ui.adequacy
   const c = t.check
   const [scenario, setScenario] = useState(loadScenario)
@@ -275,9 +275,12 @@ export default function AdequacyPanel({ graph, data, ui, nameOf, ioNameOf, onClo
       case 'use': return { label: c.nextUse, run: () => onChain(m.nodeId, m.io), kind: 'add' }
       case 'parallel': return { label: fill(c.nextParallel, { name: nameOf(m.solutionId) }), run: () => onParallel(m.solutionId), kind: 'add' }
       case 'field': return { label: c.nextFields[m.input] || fill(c.nextField, { field: (c.labels[m.input] || m.input).toLowerCase() }), run: () => fieldRef.current[m.input]?.focus(), kind: 'field' }
+      // The replace menu on the card, in the builder: the comparison page left the reader with no
+      // way back to swap the card, and another solution may not fix the shortfall, so the
+      // wording only offers to try (Eric, 2026-11-05).
       case 'compare': {
         const cmp = compareFor(m.solutionId)
-        return cmp ? { label: fill(c.nextCompare, { need: cmp.name }), run: () => go(cmp.route), kind: 'go' } : null
+        return cmp ? { label: fill(c.nextCompare, { need: cmp.name }), run: () => onTryOthers(m.solutionId), kind: 'swap', solutionId: m.solutionId } : null
       }
       default: return null
     }
@@ -433,7 +436,9 @@ export default function AdequacyPanel({ graph, data, ui, nameOf, ioNameOf, onClo
         const move = nextMove(fam, f)
         // The other side of the balance (brief 04): a second way on, only where a figure backs it.
         const less = (f.verdict === 'yellow' || f.verdict === 'red') && !f.drinkingCapped ? lessUsing(f, data) : null
-        const lessCmp = less && compareFor(less.solutionId)
+        // Not twice for one card: the move may already offer to swap it.
+        const lessCmp = less && !(move?.kind === 'swap' && move.solutionId === less.solutionId)
+          && compareFor(less.solutionId)
         const opts = move && move.key && picking === move.key ? supplyOptions(...move.key.split('|')) : []
         return (
           <section key={fam} className={`adq-fam adq-${f.verdict}` + (shown ? ' is-open' : '') + (changed[fam] ? ' is-changed' : '')}
@@ -463,12 +468,12 @@ export default function AdequacyPanel({ graph, data, ui, nameOf, ioNameOf, onClo
                 )}
                 {move && (
                   <button type="button" className="adq-next" aria-expanded={move.kind === 'pick' ? !!move.open : undefined} onClick={move.run}>
-                    {move.label} <span aria-hidden="true">{move.kind === 'pick' || move.kind === 'add' ? '+' : move.kind === 'field' ? '↓' : '→'}</span>
+                    {move.label} <span aria-hidden="true">{move.kind === 'pick' || move.kind === 'add' ? '+' : move.kind === 'field' ? '↓' : move.kind === 'swap' ? '⇄' : '→'}</span>
                   </button>
                 )}
                 {lessCmp && (
-                  <button type="button" className="adq-next" onClick={() => go(lessCmp.route)}>
-                    {fill(c.nextUseLess, { need: lessCmp.name })} <span aria-hidden="true">→</span>
+                  <button type="button" className="adq-next" onClick={() => onTryOthers(less.solutionId)}>
+                    {fill(c.nextUseLess, { need: lessCmp.name })} <span aria-hidden="true">⇄</span>
                   </button>
                 )}
                 {opts.length > 0 && (

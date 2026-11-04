@@ -17245,7 +17245,7 @@
    "name": "Closed-loop recirculating shower",
    "subfunction_id": "FN-11.1",
    "function_id": "FN-11",
-   "summary": "A shower that catches its own water as it drains, cleans it on the spot and sends it back through the shower head, adding only a little fresh water. Because the returning water is still hot, it saves energy as well as water: its maker claims about 90% less water. But it is proprietary, and if it breaks there is no shower at all.",
+   "summary": "A shower that catches its own water as it drains, cleans it on the spot and sends it back through the shower head, adding only a little fresh water. Because the returning water is still hot, it saves energy as well as water: in a trial in homes and hotels funded by the European Union and run by its maker, it used 71% less water and 64% less energy on average (90% and 80% at best). But it is proprietary, and if it breaks there is no shower at all.",
    "slug": "closed-loop-recirculating-shower",
    "slug_fr": "douche-a-recirculation-en-circuit-ferme",
    "inputs": [
@@ -17321,15 +17321,21 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Green Lodging News / Smithsonian / BuildWithRise, reporting Orbital Systems (manufacturer) figures",
+     "name": "EU LIFE ReUseWATER project, run by Orbital Systems with housing and hotel partners: results measured in use (European Commission)",
      "tier": "C",
-     "url": null,
+     "url": "https://webgate.ec.europa.eu/life/publicWebsite/project/LIFE21-ENV-SE-LIFE-ReUseWATER-101074249/demonstration-of-a-disruptive-all-in-one-water-recirculation-solution-significantly-reducing-water-and-energy-use-in-households-hotels-real-estate-etc",
+     "lang": null
+    },
+    {
+     "name": "New Atlas, reporting the maker’s figures and a measured ten-minute shower",
+     "tier": "C",
+     "url": "https://newatlas.com/orbital-systems-water-saving-shower/29820/",
      "lang": null
     }
    ],
    "fr": {
     "name": "Douche à recirculation en circuit fermé",
-    "description": "Une douche qui récupère son eau à l’évacuation, la nettoie sur place et la renvoie par le pommeau, en n’ajoutant qu’un peu d’eau neuve. Comme l’eau qui revient est encore chaude, elle économise l’énergie autant que l’eau : son fabricant annonce environ 90 % d’eau en moins. Mais elle est propriétaire, et si elle tombe en panne il n’y a plus de douche.",
+    "description": "Une douche qui récupère son eau à l’évacuation, la nettoie sur place et la renvoie par le pommeau, en n’ajoutant qu’un peu d’eau neuve. Comme l’eau qui revient est encore chaude, elle économise l’énergie autant que l’eau : lors d’un essai dans des logements et des hôtels, financé par l’Union européenne et mené par son fabricant, elle a consommé en moyenne 71 % d’eau et 64 % d’énergie en moins (90 % et 80 % au mieux). Mais elle est propriétaire, et si elle tombe en panne il n’y a plus de douche.",
     "lifespan": "10 à 15 ans pour le système pompe/filtration/UV/commande, un mécanisme propriétaire, réparable uniquement par un spécialiste selon sa propre description, probablement vers le bas de la fourchette des appareils comparables",
     "build_note": "boucle pompe + filtration, spécialiste",
     "efficiency_note": "recircule, eau et énergie les plus faibles par douche",

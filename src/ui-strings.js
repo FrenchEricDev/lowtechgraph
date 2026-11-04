@@ -777,8 +777,8 @@ const EN = {
       'Works without the grid or a pump: gravity, convection, a fire you feed by hand, or ' +
       'power you make yourself on site.',
     activeTip:
-      'Needs the grid (mains electricity or gas) or a pump to run. Often the more powerful option, but it depends on a ' +
-      'supply staying available.',
+      'Needs the grid (mains electricity or gas) or a pump to run. The most common choice, and the one that ' +
+      'works best while the networks hold, but with less autonomy and less resilience when they fail.',
     // Shown when a solution can only be done when building from scratch.
     newBuildOnly: 'New build only',
     newBuildOnlyTip: 'Part of the foundation, structure, shape or floor plan, so not something you can add to a house that already exists.',
@@ -1299,8 +1299,8 @@ const EN = {
       unfedRow: '{name} needs {io}: nothing linked supplies it.',
       unfedMore: 'And {n} more on the canvas.',
       nextReveal: 'Show {name} in your system',
-      nextCompare: 'Compare other options for {need}',
-      nextUseLess: 'Compare ways to use less: {need}',
+      nextCompare: 'Try other ways to meet this need: {need}',
+      nextUseLess: 'Try ways that use less: {need}',
       nextField: 'Try a different {field}',
       nextMainsOff: 'See what happens if the mains stop',
       nextMainsOn: 'Put the mains back',
