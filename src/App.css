@@ -919,6 +919,7 @@ a.row, a.chip { text-decoration: none; }
   background: var(--surface-2); border-radius: var(--radius);
 }
 .guide-more h2 { margin-top: 0; }
+.guide-more-btns { display: flex; flex-wrap: wrap; gap: var(--s-3); }
 
 /*
  * ===========================================================================

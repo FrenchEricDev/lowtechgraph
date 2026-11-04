@@ -255,9 +255,10 @@ const EN = {
     openSolution: 'Open the solution page',
     // Foot of the page: the whole point is to hand the reader back to the full catalogue.
     // {n} is the number of solutions in the catalogue.
-    moreHeading: 'This is a short list, not the whole catalogue',
-    moreBody: 'All the solutions for your home are in the catalogue, organized by need.',
+    moreHeading: 'This is just a short list of examples for this theme, not the whole catalogue',
+    moreBody: 'All the solutions for your home are in the catalogue, organized by housing need or by resource.',
     moreButton: 'See all {n} solutions',
+    otherGuides: 'Check out the other guides per theme',
     // Shown while a guide still carries placeholder copy, so an unfinished page is
     // never mistaken for a finished recommendation.
     placeholderNote: 'Draft: the picks and reasons on this page are placeholders.',

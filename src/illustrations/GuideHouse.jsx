@@ -4,7 +4,7 @@ import { ui, fill } from '../ui-strings.js'
 import { calm } from '../motion.js'
 import Nav from '../Nav.jsx'
 import { plateAt } from './plateHit.js'
-import { AddButton, AddAllButton } from '../AddToTree.jsx'
+import { AddButton } from '../AddToTree.jsx'
 import { plateFor, composedSvg } from './plates.js'
 import { sitePlateFor, composedSiteSvg } from './sitePlates.js'
 import { numberLabels, altText } from './plateLegend.js'
@@ -106,7 +106,8 @@ export default function GuideHouse({ picks, go, title }) {
                     </p>
                   )}
                   <div className="pick-actions">
-                    <Nav route={{ view: 'solution', id: sol.id }} go={go} className="link-btn pick-link">
+                    {/* The main action, so the green button (Eric, 2026-11-05). */}
+                    <Nav route={{ view: 'solution', id: sol.id }} go={go} className="btn pick-link">
                       {ui.guide.openSolution}
                     </Nav>
                     <AddButton sol={sol} go={go} className="btn secondary" />
@@ -117,8 +118,8 @@ export default function GuideHouse({ picks, go, title }) {
           )
         })}
       </ol>
-      {/* The whole list onto the builder at once, next to anything already there. */}
-      <AddAllButton sols={rows.map((r) => r.sol)} go={go} from={title} />
+      {/* No "add all of them" here: it read as the thing to do, and a guide's picks are
+          examples, rarely one system to build (Eric, 2026-11-05). */}
     </>
   )
 }

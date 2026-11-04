@@ -1517,9 +1517,12 @@ function GuideView({ id, go, lang }) {
       <section className="guide-more">
         <h2>{ui.guide.moreHeading}</h2>
         <p>{ui.guide.moreBody}</p>
-        <Nav route={{ view: 'needs' }} go={go} className="btn">
-          {fill(ui.guide.moreButton, { n: cat.catalogue.solutions.length })}
-        </Nav>
+        <div className="guide-more-btns">
+          <Nav route={{ view: 'guides' }} go={go} className="btn secondary">{ui.guide.otherGuides}</Nav>
+          <Nav route={{ view: 'needs' }} go={go} className="btn">
+            {fill(ui.guide.moreButton, { n: cat.catalogue.solutions.length })}
+          </Nav>
+        </div>
       </section>
     </div>
   )

@@ -5,23 +5,23 @@
   },
   "order": 2,
   "en": {
-    "door": "I rent a flat",
+    "door": "I live in a flat",
     "title": "Can I do this in my flat?",
-    "intro": "No garden, no roof access, and a landlord. Many solutions within this catalogue assume a house; these are some of the options that do not and will also work in an urban flat."
+    "intro": "No garden, no roof access, and neighbours on the other side of the walls. Many solutions within this catalogue assume a house; these are some of the options that do not and will also work in an urban flat."
   },
   "fr": {
-    "door": "Je loue un appartement",
+    "door": "J’habite en appartement",
     "title": "Puis-je faire cela dans un appartement ?",
-    "intro": "Pas de jardin, pas d’accès au toit, et un propriétaire. Une grande partie des solutions dans le catalogue nécessitent une maison ; voici certaines options qui marchent tout aussi bien dans un appartement."
+    "intro": "Pas de jardin, pas d’accès au toit, et des voisins de l’autre côté des murs. Une grande partie des solutions dans le catalogue nécessitent une maison ; voici certaines options qui marchent tout aussi bien dans un appartement."
   },
   "picks": [
     {
       "id": "SOL-123",
       "en": {
-        "why": "Bubble wrap or a clip-in pane on the window you have: nothing to ask the landlord, and it comes down when you leave."
+        "why": "Bubble wrap or a clip-in pane on the window you have: nothing to drill, and it comes down at the end of winter."
       },
       "fr": {
-        "why": "Du papier bulle ou une vitre amovible sur la fenêtre existante : rien à demander au propriétaire, et tout se retire au départ."
+        "why": "Du papier bulle ou une vitre amovible sur la fenêtre existante : rien à percer, et tout se retire à la fin de l’hiver."
       }
     },
     {

@@ -1,0 +1,63 @@
+{
+  "slug": {
+    "en": "renting",
+    "fr": "locataire"
+  },
+  "en": {
+    "door": "I rent my home",
+    "title": "What can I do as a tenant?",
+    "intro": "Everything here either moves with you or comes off and leaves the home as you found it, so there is little or nothing to ask the landlord. Most of it keeps people warm or shaded and leaves the building untouched."
+  },
+  "fr": {
+    "door": "Je suis locataire",
+    "title": "Que faire quand on est locataire ?",
+    "intro": "Tout ce qui suit part avec vous au déménagement, ou se retire en laissant le logement tel que vous l’avez trouvé : il n’y a donc rien ou presque à demander au propriétaire. La plupart de ces solutions gardent les gens au chaud ou à l’ombre, sans toucher au bâtiment."
+  },
+  "picks": [
+    {
+      "id": "SOL-239",
+      "en": {
+        "why": "A hooded chair or a folding screen keeps you warm in a cool room, and moves house with the rest of your furniture."
+      },
+      "fr": {
+        "why": "Un fauteuil à capuche ou un paravent vous garde au chaud dans une pièce fraîche, et déménage avec le reste de vos meubles."
+      }
+    },
+    {
+      "id": "SOL-174",
+      "en": {
+        "why": "Shade cloth on hooks outside the window keeps the summer heat out, and comes down in winter. If the hooks need drilling into the facade, ask first."
+      },
+      "fr": {
+        "why": "Une toile d’ombrage accrochée devant la fenêtre garde la chaleur d’été dehors, et se décroche l’hiver. Si les crochets doivent être percés dans la façade, demandez d’abord."
+      }
+    },
+    {
+      "id": "SOL-225",
+      "en": {
+        "why": "A table, a small heater and a thick blanket: it warms the people sitting at it, and needs only a socket."
+      },
+      "fr": {
+        "why": "Une table, un petit chauffage et une couverture épaisse : elle chauffe ceux qui sont assis autour, et ne demande qu’une prise."
+      }
+    },
+    {
+      "id": "SOL-214",
+      "en": {
+        "why": "Brush strips and foam tape on doors and windows stop the draughts, and peel off when you leave. Keep sealant for gaps you would fill anyway."
+      },
+      "fr": {
+        "why": "Des joints brosse et de la mousse adhésive sur les portes et fenêtres arrêtent les courants d’air, et s’enlèvent au départ. Gardez le mastic pour les trous que vous reboucheriez de toute façon."
+      }
+    },
+    {
+      "id": "SOL-199",
+      "en": {
+        "why": "A basin that takes the place of the cistern lid: you wash your hands in the water of the next flush. Keep the old lid, and put it back when you move."
+      },
+      "fr": {
+        "why": "Un lave-mains qui prend la place du couvercle de la chasse d’eau : l’eau qui lave vos mains sert à la chasse suivante. Gardez l’ancien couvercle, et remettez-le au départ."
+      }
+    }
+  ]
+}

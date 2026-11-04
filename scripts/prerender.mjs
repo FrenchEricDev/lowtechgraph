@@ -573,6 +573,7 @@ function guideBody(g, lang) {
     <p class="pr-lede">${esc(t.intro || '')}</p>
     ${listOf(picks)}
     <section><h2>${esc(ui.guide.moreHeading)}</h2><p>${esc(ui.guide.moreBody)}</p>
+    ${link(pathOf('guides', null, lang), ui.guide.otherGuides)}
     ${link(pathOf('needs', null, lang), fill(ui.guide.moreButton, { n: cat.solutions.length }))}</section>`
 }
 

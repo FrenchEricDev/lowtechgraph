@@ -175,9 +175,10 @@ export const fr = {
     viewSection: 'Dans la maison',
     viewSite: 'Autour de la maison',
     openSolution: 'Ouvrir la page de la solution',
-    moreHeading: 'C’est une petite sélection, pas le catalogue entier',
-    moreBody: 'Toutes les solutions pour votre logement sont dans le catalogue, classées par besoin.',
+    moreHeading: 'Ce n’est qu’une courte liste d’exemples sur ce thème, pas le catalogue entier',
+    moreBody: 'Toutes les solutions pour votre logement sont dans le catalogue, classées par besoin du logement ou par ressource.',
     moreButton: 'Voir les {n} solutions',
+    otherGuides: 'Voir les autres guides par thème',
     placeholderNote:
       'Brouillon : les propositions et les justifications de cette page sont provisoires.',
   },
