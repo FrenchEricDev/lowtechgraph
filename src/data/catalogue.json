@@ -43432,7 +43432,7 @@
    },
    {
     "code": "AO",
-    "regions": 21,
+    "regions": 20,
     "complete": true
    },
    {
@@ -43456,14 +43456,19 @@
     "complete": true
    },
    {
+    "code": "AW",
+    "regions": 1,
+    "complete": true
+   },
+   {
     "code": "AX",
     "regions": 3,
     "complete": true
    },
    {
     "code": "AZ",
-    "regions": 67,
-    "complete": false
+    "regions": 69,
+    "complete": true
    },
    {
     "code": "BA",
@@ -43508,6 +43513,11 @@
    {
     "code": "BJ",
     "regions": 12,
+    "complete": true
+   },
+   {
+    "code": "BL",
+    "regions": 1,
     "complete": true
    },
    {
@@ -43566,6 +43576,11 @@
     "complete": true
    },
    {
+    "code": "CC",
+    "regions": 1,
+    "complete": true
+   },
+   {
     "code": "CD",
     "regions": 26,
     "complete": true
@@ -43587,7 +43602,7 @@
    },
    {
     "code": "CI",
-    "regions": 15,
+    "regions": 14,
     "complete": true
    },
    {
@@ -43628,6 +43643,16 @@
    {
     "code": "CV",
     "regions": 22,
+    "complete": true
+   },
+   {
+    "code": "CW",
+    "regions": 1,
+    "complete": true
+   },
+   {
+    "code": "CX",
+    "regions": 1,
     "complete": true
    },
    {
@@ -43702,7 +43727,7 @@
    },
    {
     "code": "ET",
-    "regions": 15,
+    "regions": 14,
     "complete": true
    },
    {
@@ -43713,6 +43738,11 @@
    {
     "code": "FJ",
     "regions": 5,
+    "complete": true
+   },
+   {
+    "code": "FK",
+    "regions": 1,
     "complete": true
    },
    {
@@ -43758,6 +43788,11 @@
    {
     "code": "GH",
     "regions": 16,
+    "complete": true
+   },
+   {
+    "code": "GI",
+    "regions": 1,
     "complete": true
    },
    {
@@ -43902,7 +43937,7 @@
    },
    {
     "code": "KE",
-    "regions": 49,
+    "regions": 47,
     "complete": true
    },
    {
@@ -44016,12 +44051,22 @@
     "complete": true
    },
    {
+    "code": "MC",
+    "regions": 1,
+    "complete": true
+   },
+   {
     "code": "MD",
     "regions": 37,
     "complete": true
    },
    {
     "code": "ME",
+    "regions": 1,
+    "complete": true
+   },
+   {
+    "code": "MF",
     "regions": 1,
     "complete": true
    },
@@ -44057,7 +44102,7 @@
    },
    {
     "code": "MO",
-    "regions": 3,
+    "regions": 2,
     "complete": true
    },
    {
@@ -44131,9 +44176,14 @@
     "complete": true
    },
    {
+    "code": "NF",
+    "regions": 1,
+    "complete": true
+   },
+   {
     "code": "NG",
-    "regions": 17,
-    "complete": false
+    "regions": 37,
+    "complete": true
    },
    {
     "code": "NI",
@@ -44151,6 +44201,31 @@
     "complete": true
    },
    {
+    "code": "NP",
+    "regions": 7,
+    "complete": true
+   },
+   {
+    "code": "NR",
+    "regions": 9,
+    "complete": true
+   },
+   {
+    "code": "NU",
+    "regions": 1,
+    "complete": true
+   },
+   {
+    "code": "NZ",
+    "regions": 17,
+    "complete": true
+   },
+   {
+    "code": "OM",
+    "regions": 11,
+    "complete": true
+   },
+   {
     "code": "PA",
     "regions": 13,
     "complete": true
@@ -44161,8 +44236,23 @@
     "complete": true
    },
    {
+    "code": "PF",
+    "regions": 5,
+    "complete": true
+   },
+   {
+    "code": "PG",
+    "regions": 22,
+    "complete": true
+   },
+   {
     "code": "PH",
     "regions": 17,
+    "complete": true
+   },
+   {
+    "code": "PK",
+    "regions": 7,
     "complete": true
    },
    {
@@ -44171,8 +44261,23 @@
     "complete": true
    },
    {
+    "code": "PM",
+    "regions": 2,
+    "complete": true
+   },
+   {
+    "code": "PN",
+    "regions": 1,
+    "complete": true
+   },
+   {
     "code": "PR",
     "regions": 78,
+    "complete": true
+   },
+   {
+    "code": "PS",
+    "regions": 2,
     "complete": true
    },
    {
@@ -44181,8 +44286,23 @@
     "complete": true
    },
    {
+    "code": "PW",
+    "regions": 16,
+    "complete": true
+   },
+   {
     "code": "PY",
     "regions": 18,
+    "complete": true
+   },
+   {
+    "code": "QA",
+    "regions": 8,
+    "complete": true
+   },
+   {
+    "code": "RE",
+    "regions": 1,
     "complete": true
    },
    {
@@ -44196,17 +44316,57 @@
     "complete": true
    },
    {
+    "code": "RU",
+    "regions": 83,
+    "complete": true
+   },
+   {
+    "code": "RW",
+    "regions": 5,
+    "complete": true
+   },
+   {
+    "code": "SA",
+    "regions": 13,
+    "complete": true
+   },
+   {
+    "code": "SB",
+    "regions": 9,
+    "complete": true
+   },
+   {
+    "code": "SC",
+    "regions": 17,
+    "complete": true
+   },
+   {
+    "code": "SD",
+    "regions": 18,
+    "complete": true
+   },
+   {
     "code": "SE",
     "regions": 8,
     "complete": true
    },
    {
     "code": "SG",
-    "regions": 5,
+    "regions": 1,
+    "complete": true
+   },
+   {
+    "code": "SH",
+    "regions": 3,
     "complete": true
    },
    {
     "code": "SI",
+    "regions": 2,
+    "complete": true
+   },
+   {
+    "code": "SJ",
     "regions": 2,
     "complete": true
    },
@@ -44216,8 +44376,23 @@
     "complete": true
    },
    {
+    "code": "SL",
+    "regions": 5,
+    "complete": true
+   },
+   {
     "code": "SM",
     "regions": 9,
+    "complete": true
+   },
+   {
+    "code": "SN",
+    "regions": 14,
+    "complete": true
+   },
+   {
+    "code": "SO",
+    "regions": 18,
     "complete": true
    },
    {
@@ -44226,19 +44401,84 @@
     "complete": true
    },
    {
+    "code": "SS",
+    "regions": 10,
+    "complete": true
+   },
+   {
+    "code": "ST",
+    "regions": 2,
+    "complete": true
+   },
+   {
     "code": "SV",
     "regions": 14,
     "complete": true
    },
    {
+    "code": "SX",
+    "regions": 1,
+    "complete": true
+   },
+   {
+    "code": "SY",
+    "regions": 14,
+    "complete": true
+   },
+   {
+    "code": "SZ",
+    "regions": 4,
+    "complete": true
+   },
+   {
+    "code": "TC",
+    "regions": 1,
+    "complete": true
+   },
+   {
+    "code": "TD",
+    "regions": 23,
+    "complete": true
+   },
+   {
+    "code": "TG",
+    "regions": 5,
+    "complete": true
+   },
+   {
     "code": "TH",
-    "regions": 44,
-    "complete": false
+    "regions": 77,
+    "complete": true
+   },
+   {
+    "code": "TJ",
+    "regions": 5,
+    "complete": true
+   },
+   {
+    "code": "TK",
+    "regions": 3,
+    "complete": true
    },
    {
     "code": "TL",
+    "regions": 13,
+    "complete": true
+   },
+   {
+    "code": "TM",
+    "regions": 6,
+    "complete": true
+   },
+   {
+    "code": "TN",
+    "regions": 24,
+    "complete": true
+   },
+   {
+    "code": "TO",
     "regions": 5,
-    "complete": false
+    "complete": true
    },
    {
     "code": "TR",
@@ -44251,8 +44491,28 @@
     "complete": true
    },
    {
+    "code": "TV",
+    "regions": 6,
+    "complete": true
+   },
+   {
+    "code": "TW",
+    "regions": 4,
+    "complete": true
+   },
+   {
+    "code": "TZ",
+    "regions": 31,
+    "complete": true
+   },
+   {
     "code": "UA",
     "regions": 27,
+    "complete": true
+   },
+   {
+    "code": "UG",
+    "regions": 4,
     "complete": true
    },
    {
@@ -44266,14 +44526,29 @@
     "complete": true
    },
    {
+    "code": "UZ",
+    "regions": 14,
+    "complete": true
+   },
+   {
+    "code": "VA",
+    "regions": 1,
+    "complete": true
+   },
+   {
     "code": "VC",
     "regions": 6,
     "complete": true
    },
    {
     "code": "VE",
-    "regions": 24,
-    "complete": false
+    "regions": 25,
+    "complete": true
+   },
+   {
+    "code": "VG",
+    "regions": 1,
+    "complete": true
    },
    {
     "code": "VI",
@@ -44282,12 +44557,52 @@
    },
    {
     "code": "VN",
-    "regions": 31,
-    "complete": false
+    "regions": 34,
+    "complete": true
+   },
+   {
+    "code": "VU",
+    "regions": 6,
+    "complete": true
+   },
+   {
+    "code": "WF",
+    "regions": 3,
+    "complete": true
+   },
+   {
+    "code": "WS",
+    "regions": 10,
+    "complete": true
    },
    {
     "code": "XK",
     "regions": 1,
+    "complete": true
+   },
+   {
+    "code": "YE",
+    "regions": 22,
+    "complete": true
+   },
+   {
+    "code": "YT",
+    "regions": 17,
+    "complete": true
+   },
+   {
+    "code": "ZA",
+    "regions": 9,
+    "complete": true
+   },
+   {
+    "code": "ZM",
+    "regions": 10,
+    "complete": true
+   },
+   {
+    "code": "ZW",
+    "regions": 10,
     "complete": true
    }
   ]
