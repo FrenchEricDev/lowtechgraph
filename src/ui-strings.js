@@ -459,7 +459,9 @@ const EN = {
       'and share what you build from it on the same terms. That was a choice rather than an ' +
       'obligation. The descriptions here are written from scratch, but the openness of the ' +
       'sources this was learned from is worth passing on.',
-    licenceCode: 'The code is open source under AGPL-3.0.',
+    licenceCode: 'The code is open source under AGPL-3.0:',
+    // The public repository (2026-11-04), linked after licenceCode.
+    codeRepo: 'github.com/FrenchEricDev/lowtechgraph',
 
     whoP1:
       "Hey there, I'm Eric, I'm French, and I'm neither a low-tech specialist nor a developer.",

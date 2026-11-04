@@ -361,7 +361,8 @@ export const fr = {
       'adaptez-le, créditez-le, et partagez ce que vous en tirez aux mêmes conditions. ' +
       'C’était un choix, pas une obligation. Les descriptions sont écrites de zéro, mais ' +
       'l’ouverture des sources dont tout cela est issu mérite d’être transmise.',
-    licenceCode: 'Le code est open source sous licence AGPL-3.0.',
+    licenceCode: 'Le code est open source sous licence AGPL-3.0 :',
+    codeRepo: 'github.com/FrenchEricDev/lowtechgraph',
 
     whoP1:
       'Bonjour, je m’appelle Eric, je suis français, et je ne suis ni spécialiste du ' +

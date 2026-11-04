@@ -1213,7 +1213,7 @@ function AboutView({ go }) {
       <p><a className="link-btn" href="/catalogue.json">{S.dataLink}</a></p>
       <p>{S.sourcesText}</p>
       <p>{S.licenceContent}</p>
-      <p>{S.licenceCode}</p>
+      <p>{S.licenceCode} <a href="https://github.com/FrenchEricDev/lowtechgraph" target="_blank" rel="noopener">{S.codeRepo}</a>.</p>
       {/* Moved from Settings, 2026-09-25: Eric's own words, in the first person. */}
       <h2 id="who">{S.whoHeading}</h2>
       <div className="about-who">
