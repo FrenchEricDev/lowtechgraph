@@ -3395,7 +3395,7 @@
    "daily_life": "none",
    "choose_if": "",
    "cost": "medium",
-   "lifespan": "Metal roofing: 40-70 years; fibre-cement: 30-50 years",
+   "lifespan": "Metal roofing: 40-70 years (makers' figures); fibre-cement: about 25 years",
    "lifespan_band": "30 years or more",
    "renting": "lasting",
    "embodied_carbon": "medium",
@@ -3419,16 +3419,22 @@
    "tutorial_status": "trade",
    "sources": [
     {
-     "name": "No single source: the usual service life quoted by makers and fitters of metal and fibre-cement roofing, not checked against a study",
+     "name": "No single source: the usual service life quoted by makers and fitters of metal roofing, not checked against a study",
      "tier": "C",
      "url": null,
+     "lang": null
+    },
+    {
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: fibre-cement roofing, 25 years",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
    "fr": {
     "name": "Toiture résistante aux impacts",
     "description": "Une couverture en métal ou en fibrociment, assez solide pour encaisser les grêlons. Les plaques rigides répartissent le choc au lieu de se fendre comme des tuiles ou des ardoises fines. Le toit reste étanche après un orage de grêle et les pièces en dessous restent sèches.",
-    "lifespan": "Toiture métallique : 40 à 70 ans ; fibre-ciment : 30 à 50 ans",
+    "lifespan": "Toiture métallique : 40 à 70 ans (chiffres des fabricants) ; fibre-ciment : environ 25 ans",
     "build_note": "un travail de couvreur ; la décision porte sur le matériau, l'exécution est un métier"
    }
   },
@@ -5383,7 +5389,7 @@
    "name": "Earth tube / ground-coupled air pre-conditioning",
    "subfunction_id": "FN-02.12",
    "function_id": "FN-02",
-   "summary": "A pipe buried in the ground that fresh air passes through before it enters the house. The ground a metre or two down stays at a steady temperature, so the air comes out warmer in winter and cooler in summer. It takes the edge off both heating and cooling.",
+   "summary": "A pipe buried in the ground that fresh air passes through before it enters the house. The ground a metre or two down stays at a steady temperature, so the air comes out warmer in winter and cooler in summer. It takes the edge off both heating and cooling, but how much varies a lot with the soil and the climate, and the pipe must slope to drain its condensation, or mould can grow.",
    "slug": "earth-tube-ground-coupled-air-pre-conditioning",
    "slug_fr": "puits-canadien",
    "inputs": [
@@ -5463,15 +5469,15 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "xpair.com (Tier B) / US DOE energy.gov (Tier A)",
-     "tier": "B",
-     "url": null,
+     "name": "Wikipedia, \"Ground-coupled heat exchanger\" (the benefit varies widely with location, soil and its moisture; the tubes need a condensation drain and a slope of 2 to 3 degrees)",
+     "tier": "C",
+     "url": "https://en.wikipedia.org/wiki/Ground-coupled_heat_exchanger",
      "lang": null
     }
    ],
    "fr": {
     "name": "Puits canadien (préconditionnement de l’air par le sol)",
-    "description": "Un tuyau enterré dans lequel l’air neuf passe avant d’entrer dans la maison. Le sol, à un ou deux mètres de profondeur, garde une température stable : l’air ressort plus chaud en hiver et plus frais en été. Cela réduit à la fois le chauffage et la climatisation.",
+    "description": "Un tuyau enterré dans lequel l’air neuf passe avant d’entrer dans la maison. Le sol, à un ou deux mètres de profondeur, garde une température stable : l’air ressort plus chaud en hiver et plus frais en été. Cela réduit à la fois le chauffage et la climatisation, mais l’effet varie beaucoup selon le sol et le climat, et le tuyau doit être en pente pour évacuer la condensation, sinon des moisissures peuvent s’y développer.",
     "lifespan": "30 à 50 ans pour le conduit enterré lui-même si un matériau résistant à la corrosion est utilisé ; le ventilateur (le cas échéant) nécessite un remplacement plus précoce selon son propre cycle",
     "site_prerequisites": "Surface de terrain disponible pour le tracé enterré du conduit d’amenée d’air",
     "build_note": "conduit enterré, terrassement soigné",
@@ -5752,7 +5758,7 @@
    "daily_life": "occasional",
    "choose_if": "",
    "cost": "medium",
-   "lifespan": "Radiant/convective distribution piping: 30-50+ years; zone valves/thermostats: 10-15 years, replaceable independently",
+   "lifespan": "Distribution piping: 30-50+ years; thermostats: up to 35 years, though usually replaced sooner as they go out of date; zone valves: 10-15 years, replaceable on their own",
    "lifespan_band": "30 years or more",
    "renting": "lasting",
    "embodied_carbon": "low",
@@ -5788,16 +5794,22 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "No single source: the usual service life quoted by makers and fitters of zone valves and thermostats, not checked against a study",
+     "name": "No single source: the usual service life quoted by makers and fitters of heating pipes and zone valves, not checked against a study",
      "tier": "D",
      "url": null,
+     "lang": null
+    },
+    {
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: thermostats, 35 years, usually replaced earlier as technology improves",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
    "fr": {
     "name": "Chauffage par zones (un thermostat ou une vanne par pièce)",
     "description": "Un chauffage divisé en circuits séparés pour différentes pièces ou zones, chacun avec son thermostat ou sa vanne. Les pièces inoccupées peuvent rester fraîches pendant que les autres sont chauffées. On ne paie que pour chauffer les pièces où l’on se trouve vraiment. Il s’ajoute au chauffage existant et ne produit pas de chaleur lui-même.",
-    "lifespan": "Canalisations de distribution rayonnante/convective : 30-50 ans ou plus ; vannes de zone/thermostats : 10-15 ans, remplaçables indépendamment",
+    "lifespan": "Canalisations de distribution : 30 à 50 ans ou plus ; thermostats : jusqu’à 35 ans, mais souvent remplacés plus tôt parce qu’ils sont dépassés ; vannes de zone : 10 à 15 ans, remplaçables séparément",
     "build_note": "des circuits, des vannes et une régulation par zone ; la tuyauterie relève du métier et c'est la régulation qui pose problème"
    }
   },
@@ -8065,8 +8077,8 @@
    "daily_life": "none",
    "choose_if": "",
    "cost": "medium",
-   "lifespan": "30-50+ years for buried, insulated piping if installation quality (bedding, depth) is sound",
-   "lifespan_band": "30 years or more",
+   "lifespan": "About 25 years for buried PVC pipe, more if the bedding and depth are sound",
+   "lifespan_band": "15 to 30 years",
    "renting": "lasting",
    "embodied_carbon": "low",
    "footprint": "low",
@@ -8089,16 +8101,16 @@
    "tutorial_status": "trade",
    "sources": [
     {
-     "name": "No single source: the usual service life quoted by makers and fitters of buried water pipe, not checked against a study",
-     "tier": "D",
-     "url": null,
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: underground PVC piping, 25 years",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
    "fr": {
     "name": "Canalisations enterrées et isolées hors gel",
     "description": "Des tuyaux d’eau enterrés assez profond, ou isolés, pour que le gel du sol ne les atteigne jamais. Le sol autour reste hors gel même pendant les hivers rudes. Les tuyaux ne gèlent pas et n’éclatent pas : l’eau continue de couler pendant une vague de froid.",
-    "lifespan": "30-50 ans ou plus pour des canalisations enterrées et isolées si la qualité de pose (lit de pose, profondeur) est bonne",
+    "lifespan": "Environ 25 ans pour une canalisation PVC enterrée, davantage si le lit de pose et la profondeur sont bons",
     "site_prerequisites": "Une profondeur de sol sous la ligne de gel locale disponible pour l’enfouissement",
     "build_note": "une tranchée à profondeur imposée : c'est le seuil de gel local qui la fixe, pas la préférence"
    }
@@ -15285,7 +15297,7 @@
    "daily_life": "none",
    "choose_if": "you want earth walls, or even a dome, with almost no formwork and no timber.",
    "cost": "low",
-   "lifespan": "50-100+ years for a well-built earthbag structure with adequate plaster protection, per Cal-Earth/practitioner sources",
+   "lifespan": "No published figure: Cal-Earth says the filled bags alone last a few years and that plaster makes the building permanent; how long a plastered earthbag building lasts is not yet known",
    "lifespan_band": "30 years or more",
    "renting": "lasting",
    "embodied_carbon": "low",
@@ -15322,16 +15334,16 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General earthbag/superadobe practitioner durability consensus (Cal-Earth published guidance)",
+     "name": "Cal-Earth, \"SuperAdobe: Powerful Simplicity\" (the maker of the technique: the bags alone last a few years, plaster makes the structure permanent; no lifespan given)",
      "tier": "C",
-     "url": null,
+     "url": "https://calearth.org/pages/what-is-superadobe",
      "lang": null
     }
    ],
    "fr": {
     "name": "Superadobe (construction en sacs de terre)",
     "description": "De longs sacs ou tubes remplis de terre humide, posés en anneaux et tassés, rang après rang, pour monter un mur ou un dôme. Les sacs tiennent la terre pendant qu’elle durcit : presque aucun coffrage n’est nécessaire. On monte des murs solides avec la terre du terrain, à bas coût et avec des outils simples.",
-    "lifespan": "50 ans ou plus pour une structure en sacs de terre bien construite avec une protection d’enduit adéquate, selon les sources Cal-Earth et praticiens",
+    "lifespan": "Aucun chiffre publié : Cal-Earth indique que les sacs remplis ne durent que quelques années seuls et que l’enduit rend le bâtiment permanent ; la durée de vie d’un bâtiment en sacs de terre enduit n’est pas encore connue",
     "build_note": "sacs remplis de terre, montés en spirale",
     "regulation_fr": "Élément de structure ou d’emprise au sol : soumis au permis de construire pour un logement neuf. Les terrains ruraux sont en outre contraints par le zonage PLU de la commune, hors zone constructible, un logement neuf est généralement refusé.",
     "choose_if": "vous voulez des murs en terre, voire un dôme, presque sans coffrage et sans bois."
@@ -16286,7 +16298,7 @@
    "daily_life": "none",
    "choose_if": "you want storage you can empty almost fully, lasting thousands of cycles in little space.",
    "cost": "high",
-   "lifespan": "10-15+ years, rated for 3,000-6,000 cycles at 80-100% depth of discharge",
+   "lifespan": "10-15+ years; one maker rates 2,500 cycles at 80% depth of discharge and 5,000 at 50%, keeping at least 80% of the original capacity",
    "lifespan_band": "5 to 15 years",
    "renting": "movable",
    "embodied_carbon": "medium",
@@ -16322,16 +16334,16 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Battery industry comparison sites (RELiON, SolaxPower, Anern)",
+     "name": "Victron Energy, \"Lithium Battery Smart\" 12.8 V and 25.6 V datasheet (a maker's rating: 2,500 cycles at 80% depth of discharge, 3,000 at 70%, 5,000 at 50%)",
      "tier": "C",
-     "url": null,
+     "url": "https://www.victronenergy.de/upload/documents/Datasheet-12,8-&-25,6-Volt-lithium-iron-phosphate-batteries-Smart-EN.pdf",
      "lang": null
     }
    ],
    "fr": {
     "name": "Parc de batteries lithium (LiFePO4) avec BMS intégré",
     "description": "Un parc de batteries lithium fer phosphate avec une électronique intégrée qui protège chaque cellule. Il peut se vider presque entièrement et dure des milliers de cycles : plusieurs fois la capacité utile et la durée de vie de batteries au plomb, dans le même volume. Mais l’électronique scellée ne se répare pas soi-même.",
-    "lifespan": "10 à 15 ans ou plus, garantie pour 3 000-6 000 cycles à 80-100% de profondeur de décharge",
+    "lifespan": "10 à 15 ans ou plus ; un fabricant annonce 2 500 cycles à 80 % de profondeur de décharge et 5 000 à 50 %, en gardant au moins 80 % de la capacité d’origine",
     "build_note": "cellules prismatiques et BMS, vissés et câblés ; respecter l’ordre des fils d’équilibrage",
     "efficiency_note": "rendement aller-retour le plus élevé, décharge utile la plus profonde, le plus de cycles",
     "regulation_fr": "Les installations électriques fixes doivent respecter la norme NF C 15-100, et une attestation Consuel est requise avant la mise sous tension d’un nouveau raccordement. La production raccordée au réseau nécessite une convention de raccordement Enedis.",
@@ -16943,7 +16955,7 @@
    "name": "Induction cooktop",
    "subfunction_id": "FN-10.4",
    "function_id": "FN-10",
-   "summary": "A cooking hob that heats the pan itself with a magnetic field, instead of heating a flame or a plate that then heats the pan. Almost all the energy goes into the food, far more than with gas. It is the most efficient way to cook, but needs iron or steel pans, draws a lot of power at once, and its electronics need a specialist to repair.",
+   "summary": "A cooking hob that heats the pan itself with a magnetic field, instead of heating a flame or a plate that then heats the pan. Almost all the energy goes into the food, far more than with gas. It is far more efficient than gas and about as efficient as a good electric hob, but needs iron or steel pans, draws a lot of power at once, and its electronics need a specialist to repair.",
    "slug": "induction-cooktop",
    "slug_fr": "plaque-a-induction",
    "inputs": [
@@ -16984,7 +16996,7 @@
    "build_skill": "Basic",
    "consumables": "Minor",
    "daily_life": "none",
-   "choose_if": "you want the most efficient hob there is.",
+   "choose_if": "you want a hob that puts most of its energy into the food, far more than gas.",
    "cost": "medium",
    "lifespan": "10-11 years typical, roughly 10,000 working hours per manufacturer/industry figures",
    "lifespan_band": "5 to 15 years",
@@ -17018,11 +17030,11 @@
    ],
    "fr": {
     "name": "Plaque à induction",
-    "description": "Une plaque de cuisson qui chauffe directement la casserole par un champ magnétique, au lieu de chauffer une flamme ou une plaque. Presque toute l’énergie va dans les aliments, bien plus qu’au gaz. C’est la façon la plus efficace de cuisiner, mais il faut des casseroles en fonte ou en acier, elle appelle beaucoup de puissance d’un coup, et son électronique se répare chez un spécialiste.",
+    "description": "Une plaque de cuisson qui chauffe directement la casserole par un champ magnétique, au lieu de chauffer une flamme ou une plaque. Presque toute l’énergie va dans les aliments, bien plus qu’au gaz. Elle est bien plus efficace que le gaz et à peu près autant qu’une bonne plaque électrique, mais il faut des casseroles en fonte ou en acier, elle appelle beaucoup de puissance d’un coup, et son électronique se répare chez un spécialiste.",
     "lifespan": "10 à 11 ans typiquement, environ 10 000 heures de fonctionnement selon les chiffres du secteur et des fabricants",
     "build_note": "appareil à brancher",
     "efficiency_note": "efficacité énergie-vers-aliment la plus élevée",
-    "choose_if": "vous voulez la plaque de cuisson la plus efficace qui soit."
+    "choose_if": "vous voulez une plaque qui met l’essentiel de son énergie dans les aliments, bien plus que le gaz."
    }
   },
   {
