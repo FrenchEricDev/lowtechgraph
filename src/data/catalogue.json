@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04",
+ "generated": "2026-11-06",
  "counts": {
   "functions": 15,
   "subfunctions": 88,
@@ -2785,9 +2785,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Timber-frame/post-and-beam structural lifespan industry sources (Western Timber Frame; World Construction Today)",
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: timber frame homes, lifetime",
      "tier": "C",
-     "url": null,
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -2877,9 +2877,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Timber-frame/post-and-beam structural lifespan industry sources (Western Timber Frame; World Construction Today)",
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: timber frame homes, lifetime",
      "tier": "C",
-     "url": null,
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -2950,7 +2950,7 @@
    "tutorial_status": "trade",
    "sources": [
     {
-     "name": "Foundation engineering industry consensus (screwed/deep-pile foundation manufacturer and geotechnical guidance)",
+     "name": "No single source: the usual service life quoted by makers and fitters of steel and concrete piles, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -3035,7 +3035,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General light-structure foundation practice (project engineering judgment, not independently sourced)",
+     "name": "No outside source: the project's own judgement (light timber skids and point supports)",
      "tier": "D",
      "url": null,
      "lang": null
@@ -3187,7 +3187,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Structural hardware manufacturer durability data (general galvanized-steel-fastener industry consensus)",
+     "name": "No single source: the usual service life quoted by makers and fitters of galvanised steel connectors, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -3419,7 +3419,7 @@
    "tutorial_status": "trade",
    "sources": [
     {
-     "name": "Roofing material industry durability consensus (general metal/fibre-cement roofing lifespan data)",
+     "name": "No single source: the usual service life quoted by makers and fitters of metal and fibre-cement roofing, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -3555,7 +3555,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General door/window hardware industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of door and window locks and shutters, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -3745,7 +3745,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Foundation drainage industry consensus (general French-drain lifespan data)",
+     "name": "No single source: the usual service life quoted by makers and fitters of perforated drain pipe, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -4581,9 +4581,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Glazing industry lifespan sources (Glass & Glazing Federation guidance via Everest/Gowercroft consumer glazing sites)",
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: window glazing 10+ years, aluminium windows 15-20, wood windows 30+",
      "tier": "C",
-     "url": null,
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -4655,9 +4655,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Glazing industry lifespan sources (Glass & Glazing Federation guidance via Everest/Gowercroft consumer glazing sites)",
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: window glazing 10+ years, aluminium windows 15-20, wood windows 30+",
      "tier": "C",
-     "url": null,
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -4891,7 +4891,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General exterior shading-hardware industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of outside shading hardware, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -5259,9 +5259,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Heat pump lifespan industry sources (permies.com heater-lifespan wiki; general HVAC industry consensus)",
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: heat pumps, 16 years",
      "tier": "C",
-     "url": null,
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -5788,7 +5788,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "HVAC zoning-hardware industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of zone valves and thermostats, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -6180,7 +6180,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General natural-plaster industry/practitioner durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of clay plaster, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -6338,9 +6338,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General residential extractor-fan industry durability consensus",
-     "tier": "D",
-     "url": null,
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: exhaust fan, 10 years",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -6431,7 +6431,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "US EPA / general radon-mitigation industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of radon fans (the US EPA gives no figure), not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -6517,9 +6517,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General vapour-barrier industry durability consensus",
-     "tier": "D",
-     "url": null,
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: insulation and infiltration barriers, lifetime if not punctured and kept dry",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -6598,7 +6598,7 @@
     {
      "name": "EN 17037:2018+A1:2021 \"Daylight in buildings\", clause 5.1 and Annex A (daylight provision: a target illuminance of 300 lx over half of the room for at least half of the daylight hours). Standard, not freely available",
      "tier": "A",
-     "url": null,
+     "url": "https://standards.iteh.ai/catalog/standards/cen/1b0ef311-7fc5-4e72-9f64-f670cde0b05f/en-17037-2018a1-2021",
      "lang": null
     }
    ],
@@ -6788,7 +6788,7 @@
     {
      "name": "EN 17037:2018+A1:2021 \"Daylight in buildings\", clause 5.1 (daylight provision assessed over the depth of the room, which is what a clerestory or light shelf extends). Standard, not freely available",
      "tier": "A",
-     "url": null,
+     "url": "https://standards.iteh.ai/catalog/standards/cen/1b0ef311-7fc5-4e72-9f64-f670cde0b05f/en-17037-2018a1-2021",
      "lang": null
     }
    ],
@@ -6973,7 +6973,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General mechanical-equipment vibration-isolation industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of rubber and spring anti-vibration mounts, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -7049,9 +7049,9 @@
    "tutorial_status": "trade",
    "sources": [
     {
-     "name": "Water well/tank lifespan industry sources (Inspectapedia; Spring Creek Drilling; Poly Processing)",
+     "name": "InspectAPedia, \"Well Pump Life\" (pump and motor about 10 years; a submersible pump in clean water up to 15)",
      "tier": "C",
-     "url": null,
+     "url": "https://inspectapedia.com/water/Well_Pump_Life.php",
      "lang": null
     }
    ],
@@ -7687,7 +7687,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General water-pump industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of household pressure pumps, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -7805,7 +7805,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Solar thermal water heater industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of solar water heaters, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -8089,7 +8089,7 @@
    "tutorial_status": "trade",
    "sources": [
     {
-     "name": "General buried-pipe industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of buried water pipe, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -8161,7 +8161,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General plumbing-valve industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of brass isolation valves, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -8359,9 +8359,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Constructed-wetland treatment performance literature (NCBI vertical-flow constructed wetland studies)",
-     "tier": "B",
-     "url": null,
+     "name": "Arden and Ma, \"Constructed wetlands for greywater recycle and reuse: a review\", Science of the Total Environment (2018)",
+     "tier": "A",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7362998/",
      "lang": null
     }
    ],
@@ -8602,9 +8602,9 @@
    "tutorial_status": "trade",
    "sources": [
     {
-     "name": "Septic/wastewater system lifespan industry consensus",
+     "name": "InspectAPedia, \"Life Expectancy of a Septic Drainfield\" (USDA: at least 20 years if run and maintained properly)",
      "tier": "C",
-     "url": null,
+     "url": "https://inspectapedia.com/septic/Septic_Drainfield_Life.php",
      "lang": null
     }
    ],
@@ -8708,7 +8708,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General composting-toilet industry/practitioner durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of composting toilets, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -8811,9 +8811,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General toilet-fixture industry durability consensus",
-     "tier": "D",
-     "url": null,
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: toilets, lifetime; the parts inside the tank, 10 years",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -8904,7 +8904,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Septic/wastewater system lifespan industry consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of septic tanks, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -9163,7 +9163,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General composting-infrastructure durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of compost bays, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -9252,9 +9252,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General plumbing-fixture industry durability consensus",
-     "tier": "D",
-     "url": null,
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: cast iron and concrete waste pipe, 100 years",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -9461,9 +9461,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "MVHR and small-wind-turbine lifespan industry sources (Envirovent, Ventsolve, Automaxx, RenewableEnergyHub)",
-     "tier": "C",
-     "url": null,
+     "name": "US Department of Energy, Energy Saver, \"Small Wind Electric Systems\" (2021: an average useful life of 20 years)",
+     "tier": "A",
+     "url": "https://www.energy.gov/sites/default/files/2021-08/ES-Small%20Wind_081721.pdf",
      "lang": null
     }
    ],
@@ -9561,7 +9561,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General micro-hydro industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of micro-hydro turbines, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -9830,9 +9830,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General electrical-wiring industry durability consensus",
-     "tier": "D",
-     "url": null,
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: copper wiring, lifetime; electrical accessories, 10+ years",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -9997,7 +9997,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General backup-generator industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of backup generators, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -10366,9 +10366,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General refrigerator-appliance industry durability consensus",
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: standard refrigerators, 13 years",
      "tier": "C",
-     "url": null,
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -10970,7 +10970,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General manual-appliance durability consensus (Outils de l'Autonomie practitioner build reports)",
+     "name": "No single source: build reports from Outils de l'Autonomie and the usual life of simple pedal drives, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -11060,9 +11060,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General washing-machine appliance industry durability consensus",
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: washers, 10 years",
      "tier": "C",
-     "url": null,
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -11179,7 +11179,7 @@
    "tutorial_status": "no-build",
    "sources": [
     {
-     "name": "General furniture-hardware industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of fold-away bed mechanisms, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -12054,7 +12054,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General waste-bin/container industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of waste bins, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -12250,7 +12250,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General bokashi-composting practitioner/manufacturer durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of bokashi bins, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -12392,9 +12392,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Fiber Broadband Association longevity research (Businesswire coverage)",
+     "name": "Fiber Broadband Association, \"Fiber Has No Known Expiration Date According to Fiber Broadband Association Latest Research\" (18 March 2024; a trade association)",
      "tier": "B",
-     "url": null,
+     "url": "https://fiberbroadband.org/2024/03/18/fiber-has-no-known-expiration-date-according-to-fiber-broadband-association-latest-research/",
      "lang": null
     }
    ],
@@ -12474,7 +12474,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General cellular-router industry lifecycle consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of cellular routers, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -12552,7 +12552,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General emergency-radio/satellite-communicator industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of emergency radios and satellite messengers, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -12948,9 +12948,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General motion-lighting industry durability consensus",
-     "tier": "D",
-     "url": null,
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: lighting controls, 10+ years",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -13886,7 +13886,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General solar/light-tube manufacturer durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of light tubes, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -13983,7 +13983,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General acoustic-treatment industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of acoustic panels, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -14084,7 +14084,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General bio-sand-filter practitioner/NGO durability consensus (CAWST design manuals)",
+     "name": "No single source: the usual life of concrete biosand filters among the charities that build them (CAWST's manuals give no figure)",
      "tier": "C",
      "url": null,
      "lang": null
@@ -14430,7 +14430,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General composting-toilet industry/practitioner durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of dry toilets, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -14978,7 +14978,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General LoRa/mesh-radio hardware industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of LoRa radios, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -15068,9 +15068,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Rammed earth durability literature (ScienceDirect 20-yr rammed-earth weathering study)",
-     "tier": "B",
-     "url": null,
+     "name": "Bui, Morel, Venkatarama Reddy, Ghayad, \"Durability of rammed earth walls exposed for 20 years to natural weathering\", Building and Environment 44 (2009) 912-919 (extrapolated life of unstabilised walls beyond 60 years)",
+     "tier": "A",
+     "url": "https://doi.org/10.1016/j.buildenv.2008.07.001",
      "lang": null
     }
    ],
@@ -15403,7 +15403,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "APPROCHE-Paille / GREB practitioner durability consensus",
+     "name": "No single source: the experience of GREB builders (APPROCHE-Paille), not a published figure",
      "tier": "C",
      "url": null,
      "lang": null
@@ -15490,7 +15490,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General ITE paille sanglee practitioner durability consensus",
+     "name": "No single source: the experience of builders of strapped straw insulation, not a published figure",
      "tier": "D",
      "url": null,
      "lang": null
@@ -15958,7 +15958,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General MBR package-plant manufacturer durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of membrane bioreactor units, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -16396,7 +16396,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "General propane/heating-oil tank industry durability consensus",
+     "name": "No single source: the usual service life quoted by makers and fitters of propane and heating-oil tanks, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -16550,9 +16550,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "ScienceDirect peer-reviewed VIP conductivity aging study",
+     "name": "Bae, Kim, Kang, \"Development of Accelerated Test Method to Evaluate the Long-Term Thermal Performance of Fumed-Silica Vacuum Insulation Panels\", Materials 16 (2023) 6542 (a building service life of about 25 years as the target)",
      "tier": "A",
-     "url": null,
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10574328/",
      "lang": null
     }
    ],
@@ -16711,9 +16711,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Heat pump lifespan industry sources (permies.com heater-lifespan wiki; general HVAC industry consensus)",
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: heat pumps, 16 years",
      "tier": "C",
-     "url": null,
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -17010,9 +17010,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "ACEEE conference paper (nonprofit efficiency research)",
+     "name": "Sweeney, Dols, Fortenbery, Sharp (EPRI), \"Induction Cooking Technology Design and Assessment\", ACEEE Summer Study 2014 (up to 90% of the energy reaches the food, against about 74% for electric and 40% for gas)",
      "tier": "B",
-     "url": null,
+     "url": "https://www.aceee.org/wp-content/uploads/proceedings-1980-2020/2014/9-702.pdf",
      "lang": null
     }
    ],
@@ -17290,7 +17290,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "General solar-dryer practitioner/NGO durability consensus",
+     "name": "No single source: the usual life given by charities and builders of solar dryers, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -17392,9 +17392,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Lowimpact.org / Aprovecho",
+     "name": "Aprovecho Research Center, \"Retained Heat Cooking\" (about 50% savings in time and fuel)",
      "tier": "B",
-     "url": null,
+     "url": "https://aprovecho.org/biomass-alternatives/retained-heat-cooking/",
      "lang": null
     }
    ],
@@ -17515,7 +17515,7 @@
    "name": "Gravity-powered lamp",
    "subfunction_id": "FN-04.3",
    "function_id": "FN-04",
-   "summary": "A lamp powered by a slowly falling weight: you lift the weight and, as it sinks, it turns a small generator through gears. A few seconds of lifting give 20 to 30 minutes of soft light. It needs no battery, no grid and no sun, and gives off no fumes.",
+   "summary": "A lamp powered by a slowly falling weight: you lift the weight and, as it sinks, it turns a small generator through gears. A few seconds of lifting give about 20 to 25 minutes of soft light. It needs no battery, no grid and no sun, and gives off no fumes.",
    "slug": "gravity-powered-lamp",
    "slug_fr": "lampe-a-gravite",
    "inputs": [
@@ -17599,15 +17599,15 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Wikipedia (GravityLight/Deciwatt) + Al Jazeera coverage",
+     "name": "Wikipedia, \"GravityLight\" (Deciwatt; a falling weight turns gears and a generator, about 20 to 25 minutes of light per lift)",
      "tier": "C",
-     "url": null,
+     "url": "https://en.wikipedia.org/wiki/GravityLight",
      "lang": null
     }
    ],
    "fr": {
     "name": "Lampe à gravité",
-    "description": "Une lampe alimentée par un poids qui descend lentement : on remonte le poids et, en descendant, il fait tourner une petite génératrice par des engrenages. Quelques secondes suffisent pour 20 à 30 minutes de lumière douce. Ni pile, ni réseau, ni soleil, et aucune fumée.",
+    "description": "Une lampe alimentée par un poids qui descend lentement : on remonte le poids et, en descendant, il fait tourner une petite génératrice par des engrenages. Quelques secondes suffisent pour environ 20 à 25 minutes de lumière douce. Ni pile, ni réseau, ni soleil, et aucune fumée.",
     "lifespan": "10 à 15 ans pour le train d’engrenages et la LED ; un dispositif mécanique sans batterie à dégrader, l’une des entrées d’éclairage les plus durables",
     "build_note": "construction poids + engrenage + générateur",
     "efficiency_note": "quelques lumens pendant quelques minutes par levée, urgence uniquement",
@@ -19890,9 +19890,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "pv-magazine (open-source PV surplus routers) + OpenEnergyMonitor Mk2 PV Router documentation",
+     "name": "pv magazine, \"Open-source tools to build self-made management system for surplus PV power\" (Marie Beyer, 4 July 2025: the free F1ATB router, sending surplus solar power to a water heater)",
      "tier": "B",
-     "url": null,
+     "url": "https://www.pv-magazine.com/2025/07/04/open-source-tools-to-build-self-made-management-system-for-surplus-pv-power/",
      "lang": null
     }
    ],
@@ -20139,9 +20139,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "French public sanitation (assainissement collectif) connection practice",
-     "tier": "C",
-     "url": null,
+     "name": "Service-Public.fr, \"Assainissement des eaux usées domestiques\" (connection to the public sewer is compulsory where it exists)",
+     "tier": "A",
+     "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F447",
      "lang": null
     }
    ],
@@ -20275,9 +20275,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Designing Buildings wiki, Glare (establishes the discomfort/disability glare distinction this solution addresses; the article defines glare but prescribes no control measures, so it supports the need, not the technique)",
+     "name": "Designing Buildings wiki, \"Glare in buildings\" (defines discomfort and disability glare, the need this solution addresses; it prescribes no control measure, so it supports the need, not the technique)",
      "tier": "C",
-     "url": null,
+     "url": "https://www.designingbuildings.co.uk/wiki/Glare_in_buildings",
      "lang": null
     }
    ],
@@ -21909,9 +21909,9 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Project engineering judgement: the conventional baseline fixture",
-     "tier": "D",
-     "url": null,
+     "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: toilets, lifetime; the parts inside the tank need occasional maintenance",
+     "tier": "C",
+     "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
     }
    ],
@@ -21983,7 +21983,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Project engineering judgement: the conventional disposal route",
+     "name": "No outside source: the project's own judgement (the usual way household rubbish is collected)",
      "tier": "D",
      "url": null,
      "lang": null
@@ -22373,7 +22373,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Project engineering judgement: the conventional source of shaft power",
+     "name": "No outside source: the project's own judgement (the usual source of shaft power)",
      "tier": "D",
      "url": null,
      "lang": null
@@ -22455,7 +22455,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Project engineering judgement: the conventional source of shaft power",
+     "name": "No outside source: the project's own judgement (the usual source of shaft power)",
      "tier": "D",
      "url": null,
      "lang": null
