@@ -5,7 +5,9 @@
  * (terracotta, the high-tech option), newbuild (a constraint), resource (blue, a resource in
  * the builder), and the verdict family.
  *
- * Three theme states: an explicit choice stamps data-theme on <html>; "auto" stamps nothing and
+ * Three theme states, and a higher-contrast one over light (data-contrast="more"). Light is the
+ * only theme offered since 2026-11-06, and index.html stamps it; an explicit choice stamps
+ * data-theme on <html>; "auto" stamps nothing and
  * prefers-color-scheme decides. So the bare :root is the complete light palette, the media
  * query redefines only tokens (guarded so an explicit light choice wins), and
  * [data-theme="dark"] redefines them again. Never declare a colour only inside a media or
@@ -344,6 +346,35 @@
   --shadow-raised: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 18px rgba(0, 0, 0, .30);
   --shadow-overlay: 0 12px 32px rgba(0, 0, 0, .45);
   --warm-line: #6E5B3A;
+}
+
+/*
+ * Higher contrast (Settings, Eric 2026-11-06, after cortege.neru.tv's "Contraste renforcé": whiter
+ * text and stronger borders for full sun). In light, that is darker text and darker lines. Scoped to
+ * the light theme, the only one offered: in dark these values would darken the wrong way. Read by
+ * qa-contrast as a fourth state.
+ */
+:root[data-contrast="more"][data-theme="light"] {
+  --ink: #14130F;
+  --muted: #3B372D;
+  --line: #8C8272;
+  --line-soft: rgba(60, 55, 45, .55);
+  --muted-line: #8C8272;
+  --field-line: #4F493D;
+  --accent-ink: #2A3826;
+  --accent-line: #5F7356;
+  --focus: #1F2A1C;
+  --spare-ink: #484846;
+  --spare-line: #6A6A6C;
+  --benchmark-ink: #6B2E18;
+  --benchmark-line: #A76E4E;
+  --newbuild-ink: #4E2A26;
+  --newbuild-line: #A0726B;
+  --resource-ink: #1A4552;
+  --resource-line: #6E9AA8;
+  --warm-line: #9C8455;
+  --header-field-ink: #000000;
+  --header-field-muted: #45463F;
 }
 
 * { box-sizing: border-box; }

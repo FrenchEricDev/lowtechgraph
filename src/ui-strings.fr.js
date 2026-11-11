@@ -43,6 +43,8 @@ export const fr = {
     menuLabel: 'Menu',
     menuClose: 'Fermer le menu',
     settingsLabel: 'Réglages',
+    filtersLabel: 'Filtres',
+    settingsChanged: 'Différent des valeurs par défaut',
     homeLabel: 'Accueil',
     homeButtonLabel: '{name} : accueil',
     skipToContent: 'Aller au contenu',
@@ -161,7 +163,7 @@ export const fr = {
 
   guides: {
     title: 'Guides',
-    intro: 'Retrouvez ici nos guides : des combinaisons de solutions choisies à la main autour d’un thème ou d’un besoin commun.',
+    intro: 'Nos guides : des solutions choisies à la main autour d’un thème ou d’un besoin commun',
     picks: '{n} solutions',
     open: 'Ouvrir le guide',
   },
@@ -495,7 +497,7 @@ export const fr = {
       'déplace plus de chaleur par unité d’électricité que n’importe quelle solution ' +
       'low-tech. L’eau du réseau est plus sûre que la plupart des traitements sur site. ' +
       'Prétendre le contraire serait un mensonge. En revanche, la redondance est ' +
-      'une bonne idée pour tout ce qui compte vraiment : disposer d’une solution high-tech ' +
+      'une bonne idée pour tout ce qui est important : disposer d’une solution high-tech ' +
       'par défaut et d’une solution low-tech de secours, mobilisable au besoin, est une ' +
       'configuration qui peut sauver des vies.',
     notInsteadP2:
@@ -947,6 +949,8 @@ export const fr = {
     languageHelp: 'Change la langue de l’interface et, lorsqu’elle est disponible, celle du contenu du catalogue et des tutoriels.',
     languageEnglish: 'English',
     languageFrench: 'Français',
+    contrastLabel: 'Contraste renforcé',
+    contrastHelp: 'Textes plus foncés et contours plus marqués, en plein soleil ou sur un écran peu lumineux.',
 
     showBenchmarkLabel: 'Afficher les solutions high-tech',
     showBenchmarkHelp: 'Retirer les solutions high-tech du catalogue.',
@@ -1028,13 +1032,13 @@ export const fr = {
       greyCouldSupply: 'Rien de relié dans votre système ne fournit cela. {name} le pourrait, une fois relié.',
       greyNoDemand: 'Rien dans votre système n’utilise encore cela.',
       greyNoFigure: 'Nous n’avons pas encore de chiffre pour {list} : impossible de l’établir. Cela ne dit rien contre votre choix : il peut très bien fonctionner. Pour le comparer à d’autres options pour le même besoin, utilisez « remplacer » sur sa carte.',
-      greyFuel: 'Quelque chose ici brûle un combustible : indiquez plus bas combien vous en avez.',
+      greyFuel: 'Quelque chose ici brûle un combustible : indiquez plus haut combien vous en avez.',
       greyOther: "Nous n’avons pas assez de chiffres pour l’établir.",
       drinkingUnused: '{name} produit de l’eau potable, mais rien ne la reçoit : elle n’est donc pas comptée.',
       noDrinking: 'L’eau suffit, mais rien dans votre système ne la rend potable.',
       drinkingUnusedAlso: 'Par ailleurs, {name} produit de l’eau potable que rien ne reçoit : elle n’est pas comptée.',
       noDrinkingAlso: 'Par ailleurs, rien dans votre système ne rend l’eau potable.',
-      greyStream: 'Cela dépend de votre cours d’eau : indiquez son débit plus bas.',
+      greyStream: 'Cela dépend de votre cours d’eau : indiquez son débit plus haut.',
       greyStarved: 'Rien n’alimente {list} : rien n’en sort.',
       nextUse: 'Ajouter ce qui l’utilise',
       nextDrinking: 'La relier à une solution qui en a besoin, ou aux habitants du foyer',

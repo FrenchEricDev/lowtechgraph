@@ -21,6 +21,10 @@ const SolutionPlate = lazy(loadPlate)
 // loads, or the page jumped by its height (589 px on a desktop) a moment after first paint.
 // A stale entry costs only that jump on one page.
 const NO_PLATE = new Set(['SOL-042', 'SOL-105', 'SOL-138'])
+// The themes Settings offers. Light only since 2026-11-06 (Eric); 'auto' and 'dark' still work
+// and come back by adding them here, and removing data-theme="light" from index.html's <html>,
+// which stops the device's dark preference applying before the app loads.
+const THEMES = ['light']
 const GuideHouse = lazy(loadGuideHouse)
 const HouseCarousel = lazy(() => loadGuideHouse().then((m) => ({ default: m.HouseCarousel })))
 const SubDrawing = lazy(() => loadGuideHouse().then((m) => ({ default: m.SubDrawing })))
@@ -33,7 +37,7 @@ if (typeof window !== 'undefined') {
   else setTimeout(warm, 2000)
 }
 import NeedIcon from './illustrations/NeedIcon.jsx'
-import FacetBar, { activeCountOf, FilterLine, EmptyByFilters, FiltersHost, filterNames } from './FacetBar.jsx'
+import FacetBar, { activeCountOf, FilterLine, EmptyByFilters, FiltersHost, filterNames, openFilters } from './FacetBar.jsx'
 import Comparison, { CompareTable, CompareRows, AspectSwitch } from './Comparison.jsx'
 import { AddButton, AddPlus, AddToast, IoChip, ConnectBar, ConnectButton, keepConnectingOn,
          useConnecting, candidatesOf } from './AddToTree.jsx'
@@ -251,8 +255,12 @@ export default function App() {
   const skip = (e) => { e.preventDefault(); mainRef.current?.focus({ preventScroll: true }) }
 
   // Theme: 'auto' stamps nothing on <html> so prefers-color-scheme decides; 'light' or 'dark'
-  // stamp data-theme, which wins either way.
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'auto')
+  // stamp data-theme, which wins either way. Light only since 2026-11-06 (Eric): Auto and Dark
+  // are off the Settings panel, their code and tokens kept in case they come back (THEMES).
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    return THEMES.includes(saved) ? saved : 'light'
+  })
   useEffect(() => {
     localStorage.setItem('theme', theme)
     const el = document.documentElement
@@ -264,6 +272,18 @@ export default function App() {
       m.content = theme === 'auto' ? own : theme === 'dark' ? '#221F19' : '#4F6247'
     })
   }, [theme])
+
+  // Higher contrast (Eric, 2026-11-06, after cortege.neru.tv's "Contraste renforcé"): darker text
+  // and stronger lines, from the tokens in index.css. index.html stamps it before the first paint.
+  const [contrast, setContrast] = useState(() => localStorage.getItem('contrast') === 'more')
+  useEffect(() => {
+    localStorage.setItem('contrast', contrast ? 'more' : 'normal')
+    if (contrast) document.documentElement.setAttribute('data-contrast', 'more')
+    else document.documentElement.removeAttribute('data-contrast')
+  }, [contrast])
+  // The settings' own count, as the filters have theirs: what differs from the default. The
+  // language is not counted: it is the reader's own, and shows in every word.
+  const settingsCount = (contrast ? 1 : 0) + (theme !== 'light' ? 1 : 0)
 
 
   const filtersActive = cat.anyFilterActive(filters)
@@ -316,7 +336,7 @@ export default function App() {
       <div className="sr-only" role="status" aria-live="polite">{pageSaid}</div>
       <Header home={home} go={go} lang={lang}
               setLang={setLang} route={route} filters={filters}
-              filtersActive={filtersActive}
+              filtersActive={filtersActive} settingsCount={settingsCount}
               settingsOpen={settingsOpen} toggleSettings={toggleSettings} />
       {/* Under the bar, not inside a view: it follows the reader across two or three pages. */}
       <ConnectBar route={route} go={go} />
@@ -350,9 +370,9 @@ export default function App() {
       {/* The footer stays on the tree route, compacted: its CC BY-SA line is the attribution for the catalogue content the canvas shows. */}
       <SiteFooter go={go} compact={route.view === 'tree'} />
       {settingsOpen && (
-        <SettingsPanel go={go} route={route} onClose={closeSettings} leaving={settingsLeaving}
-                       filters={filters} setFilter={setFilter}
-                       lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} />
+        <SettingsPanel go={go} onClose={closeSettings} leaving={settingsLeaving}
+                       lang={lang} setLang={setLang} theme={theme} setTheme={setTheme}
+                       contrast={contrast} setContrast={setContrast} />
       )}
       {/* Not on the builder, where nothing is added from outside the canvas. */}
       {route.view !== 'tree' && <AddToast go={go} />}
@@ -392,9 +412,10 @@ function Badge({ n }) {
  * (middle-click, copy link, hreflang); the bar's height stays --header-h, which the desktop
  * rail's sticky offset derives from.
  */
-function Header({ home, go, lang, setLang, route, filters, filtersActive, settingsOpen, toggleSettings }) {
-  const other = lang === 'fr' ? 'en' : 'fr'
+function Header({ home, go, lang, route, filters, filtersActive, settingsCount, settingsOpen, toggleSettings }) {
   const filterCount = activeCountOf(filters)
+  const settingsName = ui.app.settingsLabel + (settingsCount ? ' — ' + ui.app.settingsChanged : '')
+  const filtersName = ui.app.filtersLabel + (filtersActive ? ' — ' + ui.app.filtersActive : '')
   const placed = useSyncExternalStore(subscribeTree, placedSolutionCount, () => 0)
   // The count joins the link's name, which still starts with the visible label.
   const buildLabel = placed
@@ -543,37 +564,41 @@ function Header({ home, go, lang, setLang, route, filters, filtersActive, settin
       )}
 
       <div className="header-right">
-        {/* The label is the language you would get. */}
-        {/* A seed has been placed by now: the other language must not place it again on a reload. */}
-        <Nav href={pathFor(route.view === 'tree' ? { view: 'tree' } : route, other)} onNavigate={() => setLang(other)}
-             className="icon-btn lang-quick" lang={other} hrefLang={other}
-             aria-label={fill(ui.app.switchLanguageLabel, { lang: ui.app['language_' + other] })}>
-          {other.toUpperCase()}
-        </Nav>
-        {/* A stroked SVG on the search glyph's 24 grid, not the emoji gear, whose font the OS picks. Radial strokes stay legible at 17px where a filled gear blurs. */}
-        {/* Desktop shows the gear; on mobile the menu button takes its slot. Both are in the DOM and CSS decides, so there is no hydration mismatch. */}
-        {/* A button, not a link: it opens a panel over the page. */}
+        {/* The language moved into Settings, as a list (Eric, 2026-11-06). Filters and Settings
+            are two controls with two counts: what the catalogue shows, and how the site looks. */}
+        {/* Stroked SVGs on the search glyph's 24 grid, not emoji, whose font the OS picks. */}
+        {/* Desktop shows both; on mobile the menu button takes their slot. Both are in the DOM and CSS decides. */}
+        {/* Buttons, not links: each opens a panel over the page. */}
+        <button type="button" data-filters-opener
+             className="icon-btn is-desktop-only has-badge"
+             title={filtersActive ? ui.app.filtersActive : ui.app.filtersLabel}
+             onClick={() => openFilters()}
+             aria-label={filtersName}>
+          <svg className="icon-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 6h16M7 12h10M10 18h4" />
+          </svg>
+          <Badge n={filterCount} />
+        </button>
         <button type="button" data-settings-opener
              className="icon-btn is-desktop-only has-badge"
-             title={filtersActive ? ui.app.filtersActive : undefined}
+             title={ui.app.settingsLabel}
              aria-expanded={settingsOpen} aria-controls="settings-panel"
              onClick={toggleSettings}
-             aria-label={filtersActive
-               ? ui.app.settingsLabel + ' — ' + ui.app.filtersActive
-               : ui.app.settingsLabel}>
+             aria-label={settingsName}>
           <svg className="icon-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <circle cx="12" cy="12" r="3.4" />
             <path d="M12 3.2v2.6M12 18.2v2.6M3.2 12h2.6M18.2 12h2.6
                      M5.8 5.8l1.85 1.85M16.35 16.35l1.85 1.85
                      M18.2 5.8l-1.85 1.85M7.65 16.35L5.8 18.2" />
           </svg>
-          <Badge n={filterCount} />
+          <Badge n={settingsCount} />
         </button>
-        <button ref={menuBtnRef} type="button" data-settings-opener
+        <button ref={menuBtnRef} type="button" data-settings-opener data-filters-opener
                 className="icon-btn is-mobile-only has-badge"
                 title={filtersActive ? ui.app.filtersActive : undefined}
                 aria-label={(menuOpen || settingsOpen ? ui.app.menuClose : ui.app.menuLabel)
-                  + (filtersActive ? ' — ' + ui.app.filtersActive : '')}
+                  + (filtersActive ? ' — ' + ui.app.filtersActive : '')
+                  + (settingsCount ? ' — ' + ui.app.settingsChanged : '')}
                 aria-expanded={menuOpen || settingsOpen} aria-controls={settingsOpen ? 'settings-panel' : 'hmenu'}
                 // With the Settings sheet open, the same button closes it.
                 onClick={() => (settingsOpen ? toggleSettings() : setMenuOpen((v) => !v))}>
@@ -582,7 +607,7 @@ function Header({ home, go, lang, setLang, route, filters, filtersActive, settin
               ? <path d="M5.5 5.5l13 13M18.5 5.5l-13 13" />
               : <path d="M4 7h16M4 12h16M4 17h16" />}
           </svg>
-          <Badge n={filterCount} />
+          <Badge n={filterCount + settingsCount} />
         </button>
       </div>
 
@@ -603,15 +628,23 @@ function Header({ home, go, lang, setLang, route, filters, filtersActive, settin
               <Badge n={placed} />
             </Nav>
           </nav>
-          {/* Settings sits in the mobile menu, after a rule: a preference, not a destination. */}
+          {/* Filters and Settings sit in the mobile menu, after a rule: preferences, not
+              destinations. Each has its own entry and its own count (Eric, 2026-11-06). */}
           <button type="button"
                className={'hmenu-item is-secondary' + (filtersActive ? ' has-note' : '')}
+               onClick={() => { setMenuOpen(false); openFilters() }}>
+            {ui.app.filtersLabel}
+            <Badge n={filterCount} />
+            {/* The badge is decorative; this states the same fact as text. */}
+            {filtersActive && <span className="hmenu-note">{ui.app.filtersActive}</span>}
+          </button>
+          <button type="button"
+               className={'hmenu-item is-secondary is-follow' + (settingsCount ? ' has-note' : '')}
                aria-controls="settings-panel"
                onClick={() => { setMenuOpen(false); toggleSettings() }}>
             {ui.app.settingsLabel}
-            <Badge n={filterCount} />
-            {/* The dot is decorative; this states the same fact as text. */}
-            {filtersActive && <span className="hmenu-note">{ui.app.filtersActive}</span>}
+            <Badge n={settingsCount} />
+            {settingsCount > 0 && <span className="hmenu-note">{ui.app.settingsChanged}</span>}
           </button>
         </div>
       )}
@@ -2229,7 +2262,7 @@ function SearchView({ q, go, filters, setFilter, lang }) {
  * Settings, as a panel docked right on a desktop and a sheet from the foot on a phone (brief 10).
  * One docked panel at a time. The language choices stay real links to the other language's URL.
  */
-function SettingsPanel({ go, route, onClose, leaving, filters, setFilter, lang, setLang, theme, setTheme }) {
+function SettingsPanel({ go, onClose, leaving, lang, setLang, theme, setTheme, contrast, setContrast }) {
   const box = useDialog(onClose, '[data-settings-opener]')
   return (
     <>
@@ -2244,24 +2277,33 @@ function SettingsPanel({ go, route, onClose, leaving, filters, setFilter, lang, 
           </button>
         </div>
 
+        {/* A list, not two links (Eric, 2026-11-06). The first visit follows the browser: French
+            if it asks for French, English otherwise (preferredLang). */}
         <section className="settings-sec">
-          <h3>{ui.settings.languageLabel}</h3>
-          <div className="seg" role="group" aria-label={ui.settings.languageLabel}>
-            {[['en', ui.settings.languageEnglish], ['fr', ui.settings.languageFrench]].map(([l, label]) => (
-              <Nav key={l} href={pathFor(route.view === 'tree' ? { view: 'tree' } : route, l)} onNavigate={() => setLang(l)}
-                   className={'seg-item' + (lang === l ? ' is-on' : '')}
-                   aria-current={lang === l ? 'true' : undefined} lang={l} hrefLang={l}>
-                {label}
-              </Nav>
-            ))}
-          </div>
+          <h3><label htmlFor="settings-lang">{ui.settings.languageLabel}</label></h3>
+          <select id="settings-lang" className="settings-select" value={lang}
+                  onChange={(e) => setLang(e.target.value)}>
+            <option value="en" lang="en">{ui.settings.languageEnglish}</option>
+            <option value="fr" lang="fr">{ui.settings.languageFrench}</option>
+          </select>
           <p className="settings-help">{ui.settings.languageHelp}</p>
         </section>
 
         <section className="settings-sec">
+          <label className="settings-switch">
+            <span className="settings-switch-name">{ui.settings.contrastLabel}</span>
+            <input type="checkbox" role="switch" checked={contrast}
+                   onChange={(e) => setContrast(e.target.checked)} />
+          </label>
+          <p className="settings-help">{ui.settings.contrastHelp}</p>
+        </section>
+
+        {/* Hidden while THEMES offers one choice (2026-11-06): the code stays for its return. */}
+        {THEMES.length > 1 && (
+        <section className="settings-sec">
           <h3>{ui.settings.themeLabel}</h3>
           <div className="seg" role="group" aria-label={ui.settings.themeLabel}>
-            {['auto', 'light', 'dark'].map((t) => (
+            {THEMES.map((t) => (
               <button key={t} type="button" className={'seg-item' + (theme === t ? ' is-on' : '')}
                       aria-pressed={theme === t} onClick={() => setTheme(t)}>
                 {ui.settings['theme' + t.charAt(0).toUpperCase() + t.slice(1)]}
@@ -2270,20 +2312,9 @@ function SettingsPanel({ go, route, onClose, leaving, filters, setFilter, lang, 
           </div>
           <p className="settings-help">{ui.settings.themeHelp}</p>
         </section>
+        )}
 
-        {/* The same FacetBar as the needs page, so labels and state cannot drift. "High-tech" and "retrofit" are the only terms that need an explanation. */}
-        <section className="settings-sec">
-          <h3>{ui.facets.settingsHeading}</h3>
-          <p className="settings-help">{ui.facets.settingsIntro}</p>
-          <FacetBar filters={filters} setFilter={setFilter}
-                    pool={cat.catalogue.solutions} variant="settings" />
-          <p className="settings-help">
-            <strong>{ui.facets.lowTechOnly}</strong>{ui.app.labelSep}{ui.settings.showBenchmarkHelp}
-          </p>
-          <p className="settings-help">
-            <strong>{ui.facets.retrofitOnly}</strong>{ui.app.labelSep}{ui.retrofit.settingsHelp}
-          </p>
-        </section>
+        {/* The filters left Settings for their own entry in the menu and the bar (2026-11-06). */}
 
         <section className="settings-sec">
           <p><Nav route={{ view: 'about' }} go={go} className="link">{ui.settings.aboutLink}</Nav></p>

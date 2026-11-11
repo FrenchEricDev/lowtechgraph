@@ -70,7 +70,6 @@
 }
 .icon-btn.ghost { background: none; pointer-events: none; }
 /* Narrower than the icon buttons: two letters, not a glyph. */
-.lang-quick { width: auto; min-width: 38px; padding: 0 var(--s-4); font-size: var(--t-sm); font-weight: 700; letter-spacing: .04em; }
 
 /* layout */
 .main { flex: 1; display: flex; justify-content: center; }
@@ -983,8 +982,7 @@ a.row, a.chip { text-decoration: none; }
  */
 @media (max-width: 780px) {
   .header, .header.is-searching { grid-template-columns: auto minmax(0, 1fr) auto; }
-  .header.is-searching .brand-name,
-  .header.is-searching .lang-quick { display: none; }
+  .header.is-searching .brand-name { display: none; }
 }
 
 /*
@@ -1125,6 +1123,8 @@ a.row, a.chip { text-decoration: none; }
 /* In the open menu the badge follows the label on its row rather than sitting on a corner. */
 .hmenu-item .nav-badge { position: static; margin-left: var(--s-3); background: var(--accent); color: var(--on-accent); }
 .hmenu-item.has-note { flex-wrap: wrap; align-content: center; }
+/* Settings follows Filters under the same rule: no second rule between them. */
+.hmenu-item.is-secondary.is-follow { margin-top: 0; padding-top: 0; border-top: 0; border-radius: var(--radius-sm); }
 .hmenu-note {
   flex-basis: 100%; font-size: var(--t-sm); line-height: 1.3; margin-top: var(--s-1);
   /* No opacity of its own: nested opacities multiply (.85 x .85 falls under AA). */
@@ -1410,6 +1410,30 @@ a.row, a.chip { text-decoration: none; }
 .settings-sec > :last-child { margin-bottom: 0; }
 .settings-help { font-size: var(--t-sm); color: var(--muted); line-height: var(--lh-read); }
 .settings-help:last-child { margin-bottom: 0; }
+/* The language list and the contrast switch (2026-11-06). */
+.settings-select {
+  display: block; width: 100%; max-width: 20rem; min-height: var(--ctl-lg); margin-bottom: var(--s-2);
+  padding: 0 var(--s-4); border: 1px solid var(--field-line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--ink); font: inherit;
+}
+.settings-sec h3 label { cursor: pointer; }
+.settings-switch {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-4);
+  min-height: var(--ctl-lg); margin-bottom: var(--s-2); cursor: pointer; font-weight: 600;
+}
+.settings-switch input {
+  appearance: none; -webkit-appearance: none; flex: none; position: relative; margin: 0;
+  width: 46px; height: 26px; border-radius: 13px; cursor: pointer;
+  border: 1px solid var(--field-line); background: var(--surface-2);
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+.settings-switch input::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--muted); transition: transform var(--dur-fast) var(--ease-standard);
+}
+.settings-switch input:checked { background: var(--accent); border-color: var(--accent); }
+.settings-switch input:checked::after { background: var(--on-accent); transform: translateX(20px); }
+.settings-switch input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .settings-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin: var(--s-3) 0; }
 .settings-actions .btn { flex: 1 1 0; justify-content: center; min-height: var(--ctl-lg); }
 

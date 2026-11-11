@@ -145,7 +145,7 @@
    "id": "FN-11",
    "name": "Personal hygiene & sanitation",
    "short": "Washing",
-   "summary": "Washing: bodies, hands, clothes and dishes. These are the everyday uses that set how much water and hot water a household actually draws, so they decide the size of the water and heating systems. The options differ in the water and energy each wash takes, and in how much of the work is done by hand.",
+   "summary": "Washing: bodies, hands, clothes and dishes. These are the everyday uses that set how much water and hot water a household draws, so they decide the size of the water and heating systems. The options differ in the water and energy each wash takes, and in how much of the work is done by hand.",
    "slug": "personal-hygiene-sanitation",
    "slug_fr": "hygiene-personnelle-et-sanitaires",
    "fr": {
@@ -1126,14 +1126,14 @@
    "name": "Preparation space",
    "short": "Space to prepare food",
    "function_id": "FN-10",
-   "summary": "The bench, the sink and the room around them: where food is actually prepared. It is a question of layout rather than of technique, which is why nothing is catalogued here; the decisions that answer it sit under space and occupancy.",
+   "summary": "The bench, the sink and the room around them: where food is prepared. It is a question of layout rather than of technique, which is why nothing is catalogued here; the decisions that answer it sit under space and occupancy.",
    "efficiency_basis": "",
    "slug": "preparation-space",
    "slug_fr": "espace-de-preparation",
    "fr": {
     "name": "Espace de préparation",
     "short": "Un espace pour cuisiner",
-    "description": "Le plan de travail, l’évier et la place autour : l’endroit où les aliments sont réellement préparés. C’est une question d’aménagement plutôt que de technique : rien n’est donc catalogué ici, et les décisions correspondantes figurent sous l’espace et l’occupation."
+    "description": "Le plan de travail, l’évier et la place autour : l’endroit où les aliments sont préparés. C’est une question d’aménagement plutôt que de technique : rien n’est donc catalogué ici, et les décisions correspondantes figurent sous l’espace et l’occupation."
    }
   },
   {
@@ -1141,14 +1141,14 @@
    "name": "Cooking energy supply",
    "short": "Cooking",
    "function_id": "FN-10",
-   "summary": "The energy that actually cooks the food, and the device that turns it into heat in a pot. Cooking is one of the few daily uses that cannot be postponed to a sunny day, which is why a household usually keeps more than one way of doing it. The options differ in the fuel, in how much of the heat reaches the food, and in whether they work on a grey day or in a power cut.",
+   "summary": "The energy that cooks the food, and the device that turns it into heat in a pot. Cooking is one of the few daily uses that cannot be postponed to a sunny day, which is why a household usually keeps more than one way of doing it. The options differ in the fuel, in how much of the heat reaches the food, and in whether they work on a grey day or in a power cut.",
    "efficiency_basis": "Ranked by fuel/energy-to-food efficiency. Induction is highest; rocket and gasifier stoves are high; an open wood fire is lower; a solar cooker is free but weather-limited.",
    "slug": "cooking-energy-supply",
    "slug_fr": "energie-de-cuisson",
    "fr": {
     "name": "Énergie de cuisson",
     "short": "La cuisson",
-    "description": "L’énergie qui cuit réellement les aliments, et l’appareil qui la transforme en chaleur dans une casserole. La cuisson est l’un des rares usages quotidiens qu’on ne peut pas reporter à un jour ensoleillé : un foyer garde donc en général plusieurs moyens. Les options diffèrent par le combustible, par la part de chaleur qui atteint les aliments, et selon qu’elles fonctionnent un jour gris ou sans courant.",
+    "description": "L’énergie qui cuit les aliments, et l’appareil qui la transforme en chaleur dans une casserole. La cuisson est l’un des rares usages quotidiens qu’on ne peut pas reporter à un jour ensoleillé : un foyer garde donc en général plusieurs moyens. Les options diffèrent par le combustible, par la part de chaleur qui atteint les aliments, et selon qu’elles fonctionnent un jour gris ou sans courant.",
     "efficiency_basis": "Classement par efficacité combustible/énergie vers aliment. L’induction est la plus efficace ; les fourneaux rocket et gazéificateurs sont élevés ; un feu de bois ouvert est plus faible ; un cuiseur solaire est gratuit mais dépendant de la météo."
    }
   },
@@ -1300,7 +1300,7 @@
    "fr": {
     "name": "Espace de vie extérieur et semi-extérieur (préau, terrasse)",
     "short": "Vivre dehors",
-    "description": "De la place dehors tout en restant abrité : un préau, une terrasse, un toit au-dessus d’une porte. C’est la pièce la moins chère d’une maison, puisqu’elle n’a besoin ni de chauffage ni, souvent, de murs — et l’été, elle remplace une pièce intérieure."
+    "description": "De la place dehors tout en restant abrité : un préau, une terrasse, un toit au-dessus d’une porte. C’est la pièce la moins chère d’une maison, puisqu’elle n’a besoin ni de chauffage ni, souvent, de murs, et l’été elle remplace une pièce intérieure."
    }
   },
   {
@@ -1458,14 +1458,14 @@
    "name": "Everyday connectivity",
    "short": "Everyday internet and phone",
    "function_id": "FN-15",
-   "summary": "The connection used every day, for work, school and paperwork that no longer exists on paper. In the countryside the choice is made by what actually reaches the site. The options differ in what carries the signal, in how much power they draw, and in what they cost each month.",
+   "summary": "The connection used every day, for work, school and paperwork that no longer exists on paper. In the countryside the choice comes down to which connections reach the site. The options differ in what carries the signal, in how much power they draw, and in what they cost each month.",
    "efficiency_basis": "",
    "slug": "everyday-connectivity",
    "slug_fr": "connectivite-du-quotidien",
    "fr": {
     "name": "Connectivité du quotidien",
     "short": "Internet et téléphone au quotidien",
-    "description": "La connexion de tous les jours, pour le travail, l’école et des démarches qui n’existent plus sur papier. À la campagne, le choix est dicté par ce qui atteint réellement le terrain. Les options diffèrent par ce qui porte le signal, par leur consommation, et par leur coût mensuel."
+    "description": "La connexion de tous les jours, pour le travail, l’école et des démarches qui n’existent plus sur papier. À la campagne, le choix dépend des connexions qui arrivent jusqu’au terrain. Les options diffèrent par ce qui porte le signal, par leur consommation, et par leur coût mensuel."
    }
   },
   {
@@ -1473,14 +1473,14 @@
    "name": "Emergency communication (grid/network-outage resilient)",
    "short": "Staying in touch in an outage",
    "function_id": "FN-15",
-   "summary": "A way to call for help, or to hear what is happening, when the power or the network is down — which is exactly when it matters. The options differ in whether they depend on any infrastructure at all, and in how they are powered when nothing else is.",
+   "summary": "A way to call for help, or to hear what is happening, when the power or the network is down, which is exactly when it matters. The options differ in whether they depend on any infrastructure at all, and in how they are powered when nothing else is.",
    "efficiency_basis": "",
    "slug": "emergency-communication",
    "slug_fr": "communication-d-urgence",
    "fr": {
     "name": "Communication d’urgence (résiliente aux coupures de réseau)",
     "short": "Garder le contact pendant une coupure",
-    "description": "Un moyen d’appeler à l’aide, ou de savoir ce qui se passe, quand le courant ou le réseau est coupé — c’est-à-dire précisément quand cela compte. Les options diffèrent selon qu’elles dépendent ou non d’une infrastructure, et par leur alimentation quand plus rien ne fonctionne."
+    "description": "Un moyen d’appeler à l’aide, ou de savoir ce qui se passe, quand le courant ou le réseau est coupé, c’est-à-dire précisément quand cela compte. Les options diffèrent selon qu’elles dépendent ou non d’une infrastructure, et par leur alimentation quand plus rien ne fonctionne."
    }
   },
   {
@@ -4748,7 +4748,7 @@
    ],
    "fr": {
     "name": "Vitrage sud dimensionné pour les apports d’hiver",
-    "description": "Des fenêtres au sud, dimensionnées et placées pour laisser entrer le soleil d’hiver. Le soleil est bas en hiver : sa lumière pénètre loin dans les pièces et les chauffe gratuitement. Bien conçues, ces fenêtres réduisent réellement la facture de chauffage.",
+    "description": "Des fenêtres au sud, dimensionnées et placées pour laisser entrer le soleil d’hiver. Le soleil est bas en hiver : sa lumière pénètre loin dans les pièces et les chauffe gratuitement. Bien conçues, ces fenêtres font nettement baisser la facture de chauffage.",
     "lifespan": "Correspond à la durée de vie du vitrage (un choix de dimensionnement/placement, pas un matériau séparé)",
     "site_prerequisites": "Une véritable exposition sud disponible sur le terrain",
     "build_note": "conception/dimensionnement, aucune construction spéciale",
@@ -5737,7 +5737,7 @@
    "name": "Heating zones (a thermostat or valve per room)",
    "subfunction_id": "FN-02.14",
    "function_id": "FN-02",
-   "summary": "Heating split into separate circuits for different rooms or zones, each with its own thermostat or valve. Rooms nobody is using can be left cool while the others are heated. You pay only to heat the spaces you are actually in. It works with whatever already heats the house and makes no heat itself.",
+   "summary": "Heating split into separate circuits for different rooms or zones, each with its own thermostat or valve. Rooms nobody is using can be left cool while the others are heated. You pay only to heat the rooms in use. It works with whatever already heats the house and makes no heat itself.",
    "slug": "zoned-radiant-or-convective-heating-circuits",
    "slug_fr": "circuits-de-chauffage-zones",
    "inputs": [],
@@ -5808,7 +5808,7 @@
    ],
    "fr": {
     "name": "Chauffage par zones (un thermostat ou une vanne par pièce)",
-    "description": "Un chauffage divisé en circuits séparés pour différentes pièces ou zones, chacun avec son thermostat ou sa vanne. Les pièces inoccupées peuvent rester fraîches pendant que les autres sont chauffées. On ne paie que pour chauffer les pièces où l’on se trouve vraiment. Il s’ajoute au chauffage existant et ne produit pas de chaleur lui-même.",
+    "description": "Un chauffage divisé en circuits séparés pour différentes pièces ou zones, chacun avec son thermostat ou sa vanne. Les pièces inoccupées peuvent rester fraîches pendant que les autres sont chauffées. On ne paie que pour chauffer les pièces occupées. Il s’ajoute au chauffage existant et ne produit pas de chaleur lui-même.",
     "lifespan": "Canalisations de distribution : 30 à 50 ans ou plus ; thermostats : jusqu’à 35 ans, mais souvent remplacés plus tôt parce qu’ils sont dépassés ; vannes de zone : 10 à 15 ans, remplaçables séparément",
     "build_note": "des circuits, des vannes et une régulation par zone ; la tuyauterie relève du métier et c'est la régulation qui pose problème"
    }
@@ -11284,7 +11284,7 @@
    "name": "Dedicated workshop/tool bay",
    "subfunction_id": "FN-12.6",
    "function_id": "FN-12",
-   "summary": "A space set aside for tools and repair work, with a bench, storage and room to work. Having a place to fix things means repairs actually get done. It makes it practical to maintain the house and its equipment yourself.",
+   "summary": "A space set aside for tools and repair work, with a bench, storage and room to work. With a place set up for it, repairs get done instead of put off. It makes it practical to maintain the house and its equipment yourself.",
    "slug": "dedicated-workshop-tool-bay",
    "slug_fr": "atelier-dedie",
    "inputs": [],
@@ -11325,7 +11325,7 @@
    "sources": [],
    "fr": {
     "name": "Atelier dédié",
-    "description": "Un espace réservé aux outils et aux réparations, avec un établi, du rangement et de la place pour travailler. Avoir un endroit pour réparer fait que les réparations se font vraiment. Il devient pratique d’entretenir soi-même la maison et ses équipements.",
+    "description": "Un espace réservé aux outils et aux réparations, avec un établi, du rangement et de la place pour travailler. Avoir un endroit pour réparer permet de faire les réparations au lieu de les repousser. Il devient pratique d’entretenir soi-même la maison et ses équipements.",
     "lifespan": "Correspond à la durée de vie de la structure (une pièce dédiée, pas un composant physique)",
     "build_note": "un espace réservé ; ce qu'on y met appartient au foyer"
    }
@@ -15908,7 +15908,7 @@
    "name": "Membrane bioreactor (MBR) greywater recycling package unit",
    "subfunction_id": "FN-07.2",
    "function_id": "FN-07",
-   "summary": "A packaged machine that cleans the used water from sinks and showers with bacteria and then a fine membrane filter. The water that comes out is clean enough to flush toilets indoors, not just to water the garden. It needs power all the time and specialist servicing.",
+   "summary": "A packaged machine that cleans the used water from sinks and showers with bacteria and then a fine membrane filter. The water that comes out is clean enough to flush toilets indoors as well as to water the garden. It needs power all the time and specialist servicing.",
    "slug": "membrane-bioreactor-greywater-recycling-package-unit",
    "slug_fr": "bioreacteur-a-membranes-pour-recyclage-des-eaux-grises",
    "inputs": [
@@ -15978,7 +15978,7 @@
    ],
    "fr": {
     "name": "Bioréacteur à membranes pour recyclage des eaux grises",
-    "description": "Une machine compacte qui épure les eaux des éviers et des douches avec des bactéries puis une membrane filtrante fine. L’eau qui en sort est assez propre pour alimenter les toilettes, et pas seulement arroser. Elle a besoin de courant en permanence et d’un entretien par un spécialiste.",
+    "description": "Une machine compacte qui épure les eaux des éviers et des douches avec des bactéries puis une membrane filtrante fine. L’eau qui en sort est assez propre pour alimenter les toilettes comme pour arroser. Elle a besoin de courant en permanence et d’un entretien par un spécialiste.",
     "lifespan": "15 à 20 ans pour l’unité compacte ; les membranes nécessitent un remplacement périodique (l’encrassement est le principal mode de défaillance, selon sa propre description)",
     "build_note": "unité compacte, pose spécialisée",
     "efficiency_note": "filtration membranaire, la qualité d’effluent la plus élevée et la plus constante",

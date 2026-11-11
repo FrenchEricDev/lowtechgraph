@@ -6,12 +6,12 @@
   "order": 3,
   "en": {
     "door": "If the mains go off",
-    "title": "Build for resilience",
+    "title": "Become more resilient",
     "intro": "What still works when the grid, the mains or the weekly delivery does not. These are chosen for what they do on the bad day, not on the average one."
   },
   "fr": {
     "door": "Si les réseaux sont coupés",
-    "title": "Construire pour la résilience",
+    "title": "Gagner en résilience",
     "intro": "Ce qui fonctionne encore quand le réseau, l’eau courante ou la livraison hebdomadaire s’arrêtent. Une sélection pour réussir à gérer une crise."
   },
   "picks": [

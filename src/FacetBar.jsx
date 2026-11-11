@@ -243,7 +243,7 @@ export function FacetHead({ filters, setFilter, open, onToggle, controls }) {
  */
 function FilterSheet({ filters, setFilter, pool, onClose }) {
   const F = ui.facets
-  const box = useDialog(onClose, '.filter-change, .facet-open')
+  const box = useDialog(onClose, '.filter-change, .facet-open, [data-filters-opener]')
   const n = cat.visibleSolutions(pool, filters).length
   return (
     <>

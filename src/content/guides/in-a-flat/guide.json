@@ -6,12 +6,12 @@
   "order": 2,
   "en": {
     "door": "I live in a flat",
-    "title": "Can I do this in my flat?",
+    "title": "Solutions for a flat",
     "intro": "No garden, no roof access, and neighbours on the other side of the walls. Many solutions within this catalogue assume a house; these are some of the options that do not and will also work in an urban flat."
   },
   "fr": {
     "door": "J’habite en appartement",
-    "title": "Puis-je faire cela dans un appartement ?",
+    "title": "Des solutions pour un appartement",
     "intro": "Pas de jardin, pas d’accès au toit, et des voisins de l’autre côté des murs. Une grande partie des solutions dans le catalogue nécessitent une maison ; voici certaines options qui marchent tout aussi bien dans un appartement."
   },
   "picks": [

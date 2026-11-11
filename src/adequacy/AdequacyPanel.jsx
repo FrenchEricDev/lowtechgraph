@@ -18,7 +18,8 @@ import { SCENARIO_KEY } from '../treeStore'
  *   3. what was counted, and what was not and why, in one quiet line;
  *   4. "How this was worked out": the balance, what makes up each side, why it is a range, what
  *      was assumed, the sources. Behind a disclosure, never in view by default.
- * Then the reader's situation: every setting the figures depend on, unset ones in grey.
+ * Above all four, the reader's situation: every setting the figures depend on, unset ones in
+ * grey, so the inputs come before the answer (Eric, 2026-11-06).
  * Numbers come from engine.js, sentences from ui-strings; the engine is unchanged.
  */
 
@@ -420,121 +421,9 @@ export default function AdequacyPanel({ graph, data, ui, nameOf, ioNameOf, onClo
       <div className="sr-only" role="status" aria-live="polite">{said}</div>
       {families.length > 0 && anyDefault && <p className="adq-top">{c.topDefaults}</p>}
 
-      {families.length === 0 && spares.length === 0 && (
-        result.unlinked.length > 0 ? (
-          <section className="adq-fam adq-grey is-open">
-            <h3 className="adq-fam-head"><Mark verdict="grey" /><span className="adq-verdict-word">{c.nothingLinkedTitle}</span></h3>
-            <p className="adq-sentence">{c.nothingLinkedBody}</p>
-            <button type="button" className="adq-next" onClick={() => onReveal(result.unlinked.map((u) => u.nodeId))}>{c.nothingLinkedShow} →</button>
-            <p className="adq-counted">{fill(c.notCountedLinked, { list: listOf(c, [...new Set(result.unlinked.map((u) => nameOf(u.solutionId)))]) })}</p>
-          </section>
-        ) : unfedShown.length === 0 && <p className="adq-none">{advisory.length > 0 ? t.onlyFabric : t.nothingToAssess}</p>
-      )}
-
-      {families.map(([fam, f], idx) => {
-        const shown = typing ? false : (fold ? (open[fam] ?? idx === 0) : true)
-        const move = nextMove(fam, f)
-        // The other side of the balance (brief 04): a second way on, only where a figure backs it.
-        const less = (f.verdict === 'yellow' || f.verdict === 'red') && !f.drinkingCapped ? lessUsing(f, data) : null
-        // Not twice for one card: the move may already offer to swap it.
-        const lessCmp = less && !(move?.kind === 'swap' && move.solutionId === less.solutionId)
-          && compareFor(less.solutionId)
-        const opts = move && move.key && picking === move.key ? supplyOptions(...move.key.split('|')) : []
-        return (
-          <section key={fam} className={`adq-fam adq-${f.verdict}` + (shown ? ' is-open' : '') + (changed[fam] ? ' is-changed' : '')}
-                   aria-labelledby={'adq-h-' + fam}>
-            <h3 className="adq-fam-head" id={'adq-h-' + fam}>
-              {fold || typing ? (
-                <button type="button" className="adq-fam-toggle" aria-expanded={shown}
-                        onClick={() => { setTyping(false); setOpen((o) => ({ ...o, [fam]: !(o[fam] ?? idx === 0) })) }}>
-                  <span className="adq-fam-name">{t.families[fam] || fam}</span>
-                  <Mark verdict={f.verdict} /><span className="adq-verdict-word">{t.verdicts[f.verdict]}</span>
-                  {changed[fam] && <span className="adq-changed">{changed[fam]}</span>}
-                  <span className="adq-caret" aria-hidden="true">{shown ? '▾' : '▸'}</span>
-                </button>
-              ) : (
-                <>
-                  <span className="adq-fam-name">{t.families[fam] || fam}</span>
-                  <Mark verdict={f.verdict} /><span className="adq-verdict-word">{t.verdicts[f.verdict]}</span>
-                  {changed[fam] && <span className="adq-changed">{changed[fam]}</span>}
-                </>
-              )}
-            </h3>
-            {shown && (
-              <>
-                <p className="adq-sentence">{sentence(fam, f)}</p>
-                {f.drinking && f.drinking.state !== 'ok' && !f.drinkingCapped && (
-                  <p className="adq-sentence">{f.drinking.state === 'unused' ? fill(c.drinkingUnusedAlso, { name: nameOf(f.drinking.solutionId) }) : c.noDrinkingAlso}</p>
-                )}
-                {move && (
-                  <button type="button" className="adq-next" aria-expanded={move.kind === 'pick' ? !!move.open : undefined} onClick={move.run}>
-                    {move.label} <span aria-hidden="true">{move.kind === 'pick' || move.kind === 'add' ? '+' : move.kind === 'field' ? '↓' : move.kind === 'swap' ? '⇄' : '→'}</span>
-                  </button>
-                )}
-                {lessCmp && (
-                  <button type="button" className="adq-next" onClick={() => onTryOthers(less.solutionId)}>
-                    {fill(c.nextUseLess, { need: lessCmp.name })} <span aria-hidden="true">⇄</span>
-                  </button>
-                )}
-                {opts.length > 0 && (
-                  <ul className="adq-picks">
-                    {opts.map((o) => (
-                      <li key={o.key}><button type="button" className="btn secondary" onClick={() => { o.apply(); setPicking(null) }}>{fill(c.supplyPick, { name: o.name })}</button></li>
-                    ))}
-                  </ul>
-                )}
-                {countedLine(f) && <p className="adq-counted">{countedLine(f)}</p>}
-                {f.verdict !== 'supplied' && (
-                  <>
-                    <button type="button" className="adq-worked" aria-expanded={!!worked[fam]}
-                            onClick={() => setWorked((w) => ({ ...w, [fam]: !w[fam] }))}>
-                      {c.worked} <span aria-hidden="true">{worked[fam] ? '▾' : '▸'}</span>
-                    </button>
-                    {worked[fam] && <Working fam={fam} f={f} />}
-                  </>
-                )}
-              </>
-            )}
-          </section>
-        )
-      })}
-
-      {unfedShown.length > 0 && (
-        <section className="adq-fam adq-grey is-open" aria-labelledby="adq-unfed">
-          <h3 className="adq-fam-head" id="adq-unfed"><Mark verdict="grey" /><span className="adq-verdict-word">{c.unfedHeading}</span></h3>
-          {unfedShown.map((u) => {
-            const key = u.nodeId + '|' + u.io
-            const opts = supplyOptions(u.nodeId, u.io)
-            return (
-              <div key={key}>
-                <p className="adq-sentence">{fill(c.unfedRow, { name: nameOf(u.solutionId), io: ioNameOf(u.io) })}</p>
-                {opts.length > 0 && (
-                  <button type="button" className="adq-next" aria-expanded={picking === key} onClick={() => setPicking(picking === key ? null : key)}>
-                    {c.nextSupply} <span aria-hidden="true">+</span>
-                  </button>
-                )}
-                {picking === key && (
-                  <ul className="adq-picks">
-                    {opts.map((o) => (
-                      <li key={o.key}><button type="button" className="btn secondary" onClick={() => { o.apply(); setPicking(null) }}>{fill(c.supplyPick, { name: o.name })}</button></li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            )
-          })}
-          {unfedOpen.length > unfedShown.length && <p className="adq-counted">{fill(c.unfedMore, { n: unfedOpen.length - unfedShown.length })}</p>}
-        </section>
-      )}
-
-      {spares.map(([fam, f]) => (
-        <section key={fam} className="adq-fam adq-spare is-open">
-          <h3 className="adq-fam-head"><span className="adq-fam-name">{t.families[fam] || fam}</span><span className="adq-verdict-word">{t.spareLabel}</span></h3>
-          <p className="adq-sentence">{t.spareReads.replace('{low}', fmt(f.spare[0])).replace('{high}', fmt(f.spare[1])).replace('{unit}', unitOf(f.unit) || '')}</p>
-        </section>
-      ))}
-
-      {/* Every setting the system's figures depend on, none behind "more" (Eric, 2026-10-18). */}
+      {/* Every setting the system's figures depend on, none behind "more" (Eric, 2026-10-18).
+          First, before any verdict: an answer before the reader has entered anything made no sense
+          (Eric, 2026-11-06). */}
       {(result.scaleInputs.length > 0 || result.fuelInputs.length > 0 || result.fabricInputs.length > 0 ||
         result.climateInputs.length > 0 || result.hasMains) && (
         <section className="adq-situation" aria-labelledby="adq-sit">
@@ -620,6 +509,121 @@ export default function AdequacyPanel({ graph, data, ui, nameOf, ioNameOf, onClo
           <p className="adq-note">{c.situationNote}</p>
         </section>
       )}
+
+
+      {families.length === 0 && spares.length === 0 && (
+        result.unlinked.length > 0 ? (
+          <section className="adq-fam adq-grey is-open">
+            <h3 className="adq-fam-head"><Mark verdict="grey" /><span className="adq-verdict-word">{c.nothingLinkedTitle}</span></h3>
+            <p className="adq-sentence">{c.nothingLinkedBody}</p>
+            <button type="button" className="adq-next" onClick={() => onReveal(result.unlinked.map((u) => u.nodeId))}>{c.nothingLinkedShow} →</button>
+            <p className="adq-counted">{fill(c.notCountedLinked, { list: listOf(c, [...new Set(result.unlinked.map((u) => nameOf(u.solutionId)))]) })}</p>
+          </section>
+        ) : unfedShown.length === 0 && <p className="adq-none">{advisory.length > 0 ? t.onlyFabric : t.nothingToAssess}</p>
+      )}
+
+      {families.map(([fam, f], idx) => {
+        const shown = typing ? false : (fold ? (open[fam] ?? idx === 0) : true)
+        const move = nextMove(fam, f)
+        // The other side of the balance (brief 04): a second way on, only where a figure backs it.
+        const less = (f.verdict === 'yellow' || f.verdict === 'red') && !f.drinkingCapped ? lessUsing(f, data) : null
+        // Not twice for one card: the move may already offer to swap it.
+        const lessCmp = less && !(move?.kind === 'swap' && move.solutionId === less.solutionId)
+          && compareFor(less.solutionId)
+        const opts = move && move.key && picking === move.key ? supplyOptions(...move.key.split('|')) : []
+        return (
+          <section key={fam} className={`adq-fam adq-${f.verdict}` + (shown ? ' is-open' : '') + (changed[fam] ? ' is-changed' : '')}
+                   aria-labelledby={'adq-h-' + fam}>
+            <h3 className="adq-fam-head" id={'adq-h-' + fam}>
+              {fold || typing ? (
+                <button type="button" className="adq-fam-toggle" aria-expanded={shown}
+                        onClick={() => { setTyping(false); setOpen((o) => ({ ...o, [fam]: !(o[fam] ?? idx === 0) })) }}>
+                  <span className="adq-fam-name">{t.families[fam] || fam}</span>
+                  <Mark verdict={f.verdict} /><span className="adq-verdict-word">{t.verdicts[f.verdict]}</span>
+                  {changed[fam] && <span className="adq-changed">{changed[fam]}</span>}
+                  <span className="adq-caret" aria-hidden="true">{shown ? '▾' : '▸'}</span>
+                </button>
+              ) : (
+                <>
+                  <span className="adq-fam-name">{t.families[fam] || fam}</span>
+                  <Mark verdict={f.verdict} /><span className="adq-verdict-word">{t.verdicts[f.verdict]}</span>
+                  {changed[fam] && <span className="adq-changed">{changed[fam]}</span>}
+                </>
+              )}
+            </h3>
+            {shown && (
+              <>
+                <p className="adq-sentence">{sentence(fam, f)}</p>
+                {f.drinking && f.drinking.state !== 'ok' && !f.drinkingCapped && (
+                  <p className="adq-sentence">{f.drinking.state === 'unused' ? fill(c.drinkingUnusedAlso, { name: nameOf(f.drinking.solutionId) }) : c.noDrinkingAlso}</p>
+                )}
+                {move && (
+                  <button type="button" className="adq-next" aria-expanded={move.kind === 'pick' ? !!move.open : undefined} onClick={move.run}>
+                    {move.label} <span aria-hidden="true">{move.kind === 'pick' || move.kind === 'add' ? '+' : move.kind === 'field' ? '↑' : move.kind === 'swap' ? '⇄' : '→'}</span>
+                  </button>
+                )}
+                {lessCmp && (
+                  <button type="button" className="adq-next" onClick={() => onTryOthers(less.solutionId)}>
+                    {fill(c.nextUseLess, { need: lessCmp.name })} <span aria-hidden="true">⇄</span>
+                  </button>
+                )}
+                {opts.length > 0 && (
+                  <ul className="adq-picks">
+                    {opts.map((o) => (
+                      <li key={o.key}><button type="button" className="btn secondary" onClick={() => { o.apply(); setPicking(null) }}>{fill(c.supplyPick, { name: o.name })}</button></li>
+                    ))}
+                  </ul>
+                )}
+                {countedLine(f) && <p className="adq-counted">{countedLine(f)}</p>}
+                {f.verdict !== 'supplied' && (
+                  <>
+                    <button type="button" className="adq-worked" aria-expanded={!!worked[fam]}
+                            onClick={() => setWorked((w) => ({ ...w, [fam]: !w[fam] }))}>
+                      {c.worked} <span aria-hidden="true">{worked[fam] ? '▾' : '▸'}</span>
+                    </button>
+                    {worked[fam] && <Working fam={fam} f={f} />}
+                  </>
+                )}
+              </>
+            )}
+          </section>
+        )
+      })}
+
+      {unfedShown.length > 0 && (
+        <section className="adq-fam adq-grey is-open" aria-labelledby="adq-unfed">
+          <h3 className="adq-fam-head" id="adq-unfed"><Mark verdict="grey" /><span className="adq-verdict-word">{c.unfedHeading}</span></h3>
+          {unfedShown.map((u) => {
+            const key = u.nodeId + '|' + u.io
+            const opts = supplyOptions(u.nodeId, u.io)
+            return (
+              <div key={key}>
+                <p className="adq-sentence">{fill(c.unfedRow, { name: nameOf(u.solutionId), io: ioNameOf(u.io) })}</p>
+                {opts.length > 0 && (
+                  <button type="button" className="adq-next" aria-expanded={picking === key} onClick={() => setPicking(picking === key ? null : key)}>
+                    {c.nextSupply} <span aria-hidden="true">+</span>
+                  </button>
+                )}
+                {picking === key && (
+                  <ul className="adq-picks">
+                    {opts.map((o) => (
+                      <li key={o.key}><button type="button" className="btn secondary" onClick={() => { o.apply(); setPicking(null) }}>{fill(c.supplyPick, { name: o.name })}</button></li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )
+          })}
+          {unfedOpen.length > unfedShown.length && <p className="adq-counted">{fill(c.unfedMore, { n: unfedOpen.length - unfedShown.length })}</p>}
+        </section>
+      )}
+
+      {spares.map(([fam, f]) => (
+        <section key={fam} className="adq-fam adq-spare is-open">
+          <h3 className="adq-fam-head"><span className="adq-fam-name">{t.families[fam] || fam}</span><span className="adq-verdict-word">{t.spareLabel}</span></h3>
+          <p className="adq-sentence">{t.spareReads.replace('{low}', fmt(f.spare[0])).replace('{high}', fmt(f.spare[1])).replace('{unit}', unitOf(f.unit) || '')}</p>
+        </section>
+      ))}
 
       {/* Level 4 for the whole panel: the fabric, the summer, every source, the figures not used. */}
       <button type="button" className="adq-worked adq-all" aria-expanded={showAll} onClick={() => setShowAll((v) => !v)}>

@@ -5,7 +5,7 @@
 // Every colour in this app comes from a token in index.css and every theme is that same
 // token set redefined, so the whole question reduces to arithmetic over three blocks:
 // the bare :root (light), the prefers-color-scheme override, and the [data-theme="dark"]
-// stamp. That is checkable on every build, for nothing, in both themes at once.
+// stamp, plus a fourth since 2026-11-06: higher contrast over light. That is checkable on every build, for nothing, in both themes at once.
 //
 // WHAT IT CANNOT SEE, and this matters: it checks the PAIRS listed below, not every pair
 // the app actually renders. If a component puts --muted on --accent-bg and nobody adds
@@ -112,11 +112,14 @@ function block(re) {
 const light = block(/:root\s*\{([\s\S]*?)\n\}/)
 const darkMedia = block(/@media \(prefers-color-scheme: dark\)\s*\{\s*:root:not\(\[data-theme="light"\]\)\s*\{([\s\S]*?)\n  \}/)
 const darkStamp = block(/:root\[data-theme="dark"\]\s*\{([\s\S]*?)\n\}/)
+// The higher-contrast state over light (Settings, 2026-11-06).
+const moreContrast = block(/:root\[data-contrast="more"\]\[data-theme="light"\]\s*\{([\s\S]*?)\n\}/)
 
 const problems = []
 if (!light) problems.push('could not read the :root token block from index.css')
 if (!darkMedia) problems.push('could not read the prefers-color-scheme: dark block')
 if (!darkStamp) problems.push('could not read the [data-theme="dark"] block')
+if (!moreContrast) problems.push('could not read the [data-contrast="more"] block')
 
 // --- colour maths -------------------------------------------------------------
 // Alpha, for the one kind of background this app composes: translucent white over the
@@ -176,6 +179,7 @@ const THEMES = light ? [
   ['light', { ...light }],
   ['dark (OS preference)', { ...light, ...(darkMedia || {}) }],
   ['dark (explicit toggle)', { ...light, ...(darkStamp || {}) }],
+  ['light, higher contrast', { ...light, ...(moreContrast || {}) }],
 ] : []
 
 const rows = []

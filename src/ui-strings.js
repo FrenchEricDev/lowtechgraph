@@ -81,6 +81,10 @@ const EN = {
     menuLabel: 'Menu',
     menuClose: 'Close menu',
     settingsLabel: 'Settings',
+    // Filters have their own entry beside Settings (2026-11-06). settingsChanged goes into the
+    // names of Settings and the menu button when a setting differs from the default.
+    filtersLabel: 'Filters',
+    settingsChanged: 'Changed from the default',
     homeLabel: 'Home',
     homeButtonLabel: '{name}: home',
     skipToContent: 'Skip to the content',
@@ -236,7 +240,7 @@ const EN = {
 
   guides: {
     title: 'Guides',
-    intro: 'Our guides: hand-picked combinations of solutions for a common theme or need.',
+    intro: 'Our guides: hand-picked solutions around a common theme or need',
     picks: '{n} solutions',
     open: 'Open the guide',
   },
@@ -1161,6 +1165,10 @@ const EN = {
     languageEnglish: 'English',
     languageFrench: 'Français',
 
+    // After cortege.neru.tv's "Contraste renforcé" (Eric, 2026-11-06).
+    contrastLabel: 'Higher contrast',
+    contrastHelp: 'Darker text and stronger outlines, for bright sun or a dim screen.',
+
     showBenchmarkLabel: 'Show high-tech solutions',
     showBenchmarkHelp: 'Remove the high-tech solutions from the catalogue.',
 
@@ -1279,10 +1287,10 @@ const EN = {
       greyNoSupply: 'Nothing in your system supplies this yet.',
       greyCouldSupply: 'Nothing linked in your system supplies this. {name} could, once it is linked.',
       greyNoDemand: 'Nothing in your system uses this yet.',
-      greyStream: 'This depends on your stream: say how strong it is below.',
+      greyStream: 'This depends on your stream: say how strong it is above.',
       greyStarved: 'Nothing is feeding {list}, so nothing comes out of it.',
       greyNoFigure: 'We have no figure yet for {list}, so this cannot be worked out. That says nothing against your choice: it may well work. If you want to compare it with other options for the same need, use “replace” on its card.',
-      greyFuel: 'Something here burns fuel: say how much you have below.',
+      greyFuel: 'Something here burns fuel: say how much you have above.',
       greyOther: "We do not have enough figures to work this out.",
       // Enough litres, but not enough drinking water (C10).
       drinkingUnused: '{name} makes potable water, but nothing takes it, so we do not count it.',

@@ -368,8 +368,6 @@ function crumbTrail(lang, parts, { home = true } = {}) {
 // The search field and Settings need the app; the menu button leads to the page foot's links.
 function pageNav(lang, altPaths) {
   const item = (view, label) => `<a href="${esc(pathOf(view, null, lang))}" class="hnav-item">${esc(label)}</a>`
-  const other = LANGS.find((l) => l !== lang)
-  const otherPath = (altPaths && altPaths[other]) || segPath(other)
   return `
     <header class="header">
       <div class="header-left">
@@ -381,7 +379,6 @@ function pageNav(lang, altPaths) {
         ].join('')}</nav>
       </div>
       <div class="header-right">
-        <a href="${esc(otherPath)}" class="icon-btn lang-quick" lang="${other}" hreflang="${other}">${other.toUpperCase()}</a>
         <a href="#pr-foot" class="icon-btn is-mobile-only" aria-label="${esc(ui.app.menuLabel)}"><svg class="icon-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></a>
       </div>
     </header>`
@@ -390,9 +387,14 @@ function pageNav(lang, altPaths) {
 // Appended to every prerendered page: the reader-facing footer, plus the statement
 // addressed to automated readers. Both belong in the static HTML specifically because
 // that is what a crawler or an LLM fetcher receives.
-function pageFoot(lang) {
+// The other language's page, for a reader without the app: the app's language list is in
+// Settings since 2026-11-06, and the bar no longer carries a language link.
+function pageFoot(lang, altPaths) {
+  const other = LANGS.find((l) => l !== lang)
+  const otherPath = (altPaths && altPaths[other]) || segPath(other)
   return `
     <footer class="pr-foot" id="pr-foot">
+      <p><a href="${esc(otherPath)}" lang="${other}" hreflang="${other}">${other === 'fr' ? 'Français' : 'English'}</a></p>
       <p>${link(pathOf('about', null, lang), ui.app.navAbout)} · ${link(pathOf('people', null, lang), ui.people.nav)} · ${link(pathOf('why', null, lang), ui.app.navWhy)} · ${link(pathOf('legal', null, lang), ui.app.navLegal)}</p>
       <p>${esc(fill(ui.footer.lastUpdated, { date: info.data_updated }))}</p>
       <p>${esc(ui.footer.licence)}</p>
@@ -805,9 +807,9 @@ function writePage({ kind, entity, lang, body, title, desc, altPaths, name, crum
     <script type="application/ld+json">${JSON.stringify(jsonLd(kind, entity, lang, url, title, desc, name || title, crumbs))}</script>`
 
   // The page's own content as the main landmark (B7), between the site's nav and its foot.
-  body = pageNav(lang, altPaths) + `<div class="pr-page"><main>${body}</main>${pageFoot(lang)}</div>`
+  body = pageNav(lang, altPaths) + `<div class="pr-page"><main>${body}</main>${pageFoot(lang, altPaths)}</div>`
   let html = template
-    .replace('<html lang="en">', `<html lang="${lang}">`)
+    .replace('<html lang="en" data-theme="light">', `<html lang="${lang}" data-theme="light">`)
     .replace('<title>webapp</title>', head.trim())
     .replace('<div id="root"></div>',
       `<div id="prerender">${body}</div>\n    <div id="root"></div>`)
@@ -1002,7 +1004,9 @@ for (const lang of LANGS) {
   urls.push(writePage({
     kind: 'guides', entity: null, lang, body: guidesBody(lang),
     title: pageTitle(ui.guides.title), name: ui.guides.title,
-    desc: trim(ui.guides.intro, DESC_MAX),
+    // The intro alone is under the 70-character floor since 2026-11-06: the guides' own titles
+    // follow it, which are also what a search for one of them would match.
+    desc: trim(`${ui.guides.intro}. ${guides.map((g) => (g[lang] || g.en || {}).title).filter(Boolean).join(', ')}.`, DESC_MAX),
     crumbs: [{ name: ui.app.name, path: segPath(lang) },
              { name: ui.guides.title, path: pathOf('guides', null, lang) }],
     altPaths: Object.fromEntries(LANGS.map((l) => [l, pathOf('guides', null, l)])),
@@ -1114,7 +1118,7 @@ for (const lang of LANGS) {
         link(pathOf('about', null, lang), ui.app.navAbout)].join(' · ')}</p></main>`
       : ''
     const html = template
-      .replace('<html lang="en">', `<html lang="${lang}">`)
+      .replace('<html lang="en" data-theme="light">', `<html lang="${lang}" data-theme="light">`)
       .replace('<title>webapp</title>', head)
       .replace('<div id="root"></div>', body ? `<div id="prerender">${body}</div>
     <div id="root"></div>` : '<div id="root"></div>')
