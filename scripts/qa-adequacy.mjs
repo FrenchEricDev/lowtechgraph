@@ -1091,6 +1091,14 @@ check('a family fed from the mains is SUPPLIED, not computed', () => {
   }
 })
 
+// C11 (2026-11-13): the mains reaches a family only through a RATIO converting from it. The
+// reversible heat pump had none, so a mains-fed one never read supplied, on its cooling or anywhere.
+check('a mains-fed reversible heat pump supplies its cooling', () => {
+  const cool = runWired(['SOL-079', 'SOL-160']).families.cooling
+  if (!cool) throw new Error('no cooling family on a mains-fed reversible heat pump')
+  eq(cool.verdict, VERDICT.SUPPLIED, 'cooling verdict')
+})
+
 check('turning the mains off makes the rest stand on its own', () => {
   const on = runWired(['SOL-195', 'SOL-092', 'SOL-216']).families.water
   const off = runWired(['SOL-195', 'SOL-092', 'SOL-216'], { mainsOff: true }).families.water

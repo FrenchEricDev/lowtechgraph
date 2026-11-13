@@ -296,6 +296,24 @@ for (const required of ['/catalogue.json', '/sitemap.xml', '/robots.txt', '/llms
   }
 }
 
+// --- each regulation note links where its rule was read (B16, 2026-11-13) -------------------
+// The link lives in the prerendered facts and in the app's details; the pages are what a reader
+// and an agent get, so the check reads them. Not checked: that the page still says what the note says.
+{
+  const linked = cat.solutions.filter((s) => s.regulation_url)
+  if (linked.length < 90) fail('regulation links', `only ${linked.length} notes carry a link; expected about 95`)
+  for (const s of linked) {
+    for (const [lang, slug] of [['en', s.slug], ['fr', s.slug_fr]]) {
+      const pages = allFiles.filter((f) => relOf(f).startsWith(`/${lang}/`) && relOf(f).endsWith(`/${slug}.html`))
+      if (!pages.length) { fail('regulation links', `${s.id}: no ${lang} page`); continue }
+      const href = s.regulation_url.replace(/&/g, '&amp;')
+      if (!pages.some((f) => fs.readFileSync(f, 'utf8').includes(`href="${href}"`))) {
+        fail('regulation links', `${s.id} ${lang}: link missing`)
+      }
+    }
+  }
+}
+
 // --- report ------------------------------------------------------------------
 const total = [...problems.values()].reduce((n, l) => n + l.length, 0)
 if (!total) {

@@ -746,6 +746,7 @@ export const fr = {
     gettingDoneHeading: 'Comment la faire réaliser',
     diyAlternatives: 'Les options pour ce besoin que vous pouvez construire vous-même',
     regulationHeading: 'Règles en France',
+    regulationSource: 'Source : {host}',
   },
 
   comparison: {

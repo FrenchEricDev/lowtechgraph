@@ -677,7 +677,10 @@ export default function AdequacyPanel({ graph, data, ui, nameOf, ioNameOf, onClo
                       .map((s, i) => <span key={s.source}>{i ? ' · ' : ''}<a href={s.source_url} target="_blank" rel="noopener noreferrer">{s.source}</a> ({s.licence})</span>)}</li>
                 )}
                 {result.fuelInputs.map((fu) => (
-                  <li key={fu.io}>{fill(t.fuelDensity, { low: fu.density.low, high: fu.density.high, unit: unitOf(fu.unit), condition: (fr() && fu.density.condition_fr) || fu.density.condition, tier: fu.density.tier })}</li>
+                  <li key={fu.io}>{fill(t.fuelDensity, { low: fu.density.low, high: fu.density.high, unit: unitOf(fu.unit), condition: (fr() && fu.density.condition_fr) || fu.density.condition, tier: fu.density.tier })}
+                    {fu.density.source && <> · {fu.density.source_url
+                      ? <a href={fu.density.source_url} target="_blank" rel="noopener noreferrer">{fu.density.source}</a>
+                      : fu.density.source}</>}</li>
                 ))}
               </ul>
             </section>

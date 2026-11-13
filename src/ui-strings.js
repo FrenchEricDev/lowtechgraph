@@ -909,6 +909,8 @@ const EN = {
     gettingDoneHeading: 'Getting it done',
     diyAlternatives: 'Options for this need you can build yourself',
     regulationHeading: 'Rules in France',
+    // The page the note's rule was read on (B16, 2026-11-13); {host} is its site.
+    regulationSource: 'Source: {host}',
   },
 
   // ===========================================================================

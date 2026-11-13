@@ -39,6 +39,13 @@ import { needIconSvg } from '../src/illustrations/needIcons.js'
 import { siteCounts, ABOUT_STEPS, ABOUT_DIFFS } from '../src/siteCounts.js'
 import { FEEDBACK_EMAIL } from '../src/platform.js'
 import { buildLlms } from './llms.mjs'
+import { pageMarkdown } from './to-markdown.mjs'
+
+const firstSentence = (t) => {
+  const s = String(t || '').replace(/\s+/g, ' ').trim()
+  const m = s.match(/^(.+?[.!?])(\s|$)/)
+  return m ? m[1] : s
+}
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(HERE, '..')
@@ -218,8 +225,12 @@ function factRows(sol, lang) {
     [ui.solutionPage.factRepairSkill, cap(tEnum(sol.repair_skill, lang))],
     [ui.solutionPage.factRegulation, L(sol, 'regulation_fr', lang)],
   ].filter(([, v]) => v)
+  // The regulation note's source (B16, 2026-11-13), linked after its text.
+  const regSource = sol.regulation_url
+    ? ` <a href="${esc(sol.regulation_url)}">${esc(fill(ui.solutionPage.regulationSource,
+      { host: new URL(sol.regulation_url).host.replace(/^www\./, '') }))}</a>` : ''
   return `<dl class="pr-facts">${rows.map(([k, v]) =>
-    `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`
+    `<div><dt>${esc(k)}</dt><dd>${esc(v)}${k === ui.solutionPage.factRegulation ? regSource : ''}</dd></div>`).join('')}</dl>`
 }
 
 // Whether a solution needs a supply to run, and whether it can go into an existing
@@ -791,6 +802,7 @@ function writePage({ kind, entity, lang, body, title, desc, altPaths, name, crum
     <link rel="canonical" href="${esc(url)}">
     ${alts}
     <link rel="alternate" hreflang="x-default" href="${esc(SITE + (xDefault || altPaths.fr))}">
+    <link rel="alternate" type="text/markdown" href="${esc(p)}.md">
     <meta property="og:type" content="article">
     <!-- the bare name, not the site-suffixed <title>: og:site_name now supplies
          "Lowtech Graph" above the card, so the suffix would print it twice -->
@@ -805,6 +817,17 @@ function writePage({ kind, entity, lang, body, title, desc, altPaths, name, crum
     <meta property="og:image:alt" content="${esc(ui.prerender.ogAlt)}">
     <meta name="twitter:card" content="summary_large_image">
     <script type="application/ld+json">${JSON.stringify(jsonLd(kind, entity, lang, url, title, desc, name || title, crumbs))}</script>`
+
+  // The same page as Markdown, beside the HTML (I3): <path>.md, which the worker also serves
+  // at <path> to a request asking for text/markdown. Converted from this body, so the two
+  // cannot say different things.
+  const mdFile = path.join(DIST, p.replace(/^\//, '') + '.md')
+  fs.mkdirSync(path.dirname(mdFile), { recursive: true })
+  fs.writeFileSync(mdFile, pageMarkdown({
+    body, url, lang, siteName: ui.app.name,
+    alternates: Object.fromEntries(LANGS.map((l) => [l, SITE + altPaths[l]])),
+    licence: firstSentence(fill(ui.about.licenceContent, COUNTS)),
+  }))
 
   // The page's own content as the main landmark (B7), between the site's nav and its foot.
   body = pageNav(lang, altPaths) + `<div class="pr-page"><main>${body}</main>${pageFoot(lang, altPaths)}</div>`

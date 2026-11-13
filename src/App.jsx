@@ -761,6 +761,9 @@ function Disclosure({ label, openLabel, children }) {
   )
 }
 
+// The site a link goes to, for a link that names its source by site rather than by title.
+const hostOf = (url) => { try { return new URL(url).host.replace(/^www\./, '') } catch { return url } }
+
 // Second-tier facts: needed when comparing closely, noise on a first read.
 function MoreDetail({ sol }) {
   const cap = (v) => (v ? v.charAt(0).toUpperCase() + v.slice(1) : '')
@@ -793,7 +796,15 @@ function MoreDetail({ sol }) {
         {rules && (
           <div className="fact wide">
             <dt>{ui.solutionPage.regulationHeading}</dt>
-            <dd>{rules}<span className="fact-note">{ui.solutionPage.regulationNote}</span></dd>
+            <dd>{rules}
+              {sol.regulation_url && (
+                <span className="fact-note">
+                  <a href={sol.regulation_url} target="_blank" rel="noopener noreferrer">
+                    {fill(ui.solutionPage.regulationSource, { host: hostOf(sol.regulation_url) })}
+                  </a>
+                </span>
+              )}
+              <span className="fact-note">{ui.solutionPage.regulationNote}</span></dd>
           </div>
         )}
       </dl>

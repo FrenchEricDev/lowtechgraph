@@ -1,5 +1,5 @@
 {
- "data_updated": "2026-11-06",
+ "data_updated": "2026-11-13",
  "counts": {
   "functions": 15,
   "subfunctions": 88,
@@ -7,7 +7,7 @@
   "solutions": 246,
   "io_index": 506,
   "bases": 24,
-  "coefficients": 77,
+  "coefficients": 78,
   "fabric_classes": 56
  }
 }
