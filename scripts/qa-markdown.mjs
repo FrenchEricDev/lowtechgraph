@@ -57,8 +57,15 @@ await check('a solution twin carries its name, tutorials, facts and sources, wit
 // --- the worker, against dist/ ------------------------------------------------
 const TYPES = { '.html': 'text/html; charset=utf-8', '.md': 'text/markdown', '.json': 'application/json',
   '.txt': 'text/plain', '.xml': 'application/xml', '.png': 'image/png' }
+// Cloudflare applies dist/_redirects before any file: the stand-in does too, for exact paths,
+// or the root's redirect goes untested (it did, until 2026-11-13).
+const REDIRECTS = new Map(fs.readFileSync(path.join(DIST, '_redirects'), 'utf8').split('\n')
+  .map((l) => l.trim()).filter((l) => l && !l.startsWith('#')).map((l) => l.split(/\s+/))
+  .map(([from, to, code]) => [from, { to, code: Number(code) || 302 }]))
 const ASSETS = {
   async fetch(req) {
+    const hit = REDIRECTS.get(new URL(req.url).pathname)
+    if (hit) return new Response(null, { status: hit.code, headers: { location: hit.to } })
     const p = decodeURIComponent(new URL(req.url).pathname).replace(/\/$/, '') || '/index'
     const tries = path.extname(p) ? [p] : [p + '.html', p + '/index.html']
     for (const t of tries) {
@@ -78,8 +85,14 @@ const BROWSER = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 const sol = cat.solutions[0]
 const solPath = '/en/solution/' + sol.slug
 
+await check('the bare root redirects, and its redirect carries the Link header', async () => {
+  const r = await get('/', BROWSER)
+  must(r.status === 302 && r.headers.get('location') === '/fr?l=auto', `/: ${r.status} ${r.headers.get('location')}`)
+  must(r.headers.get('link') === LINK_HEADER, '/: the redirect has no Link header')
+})
+
 await check('a browser gets HTML with the three Link relations and Vary: Accept', async () => {
-  for (const p of ['/', '/en', '/fr', solPath]) {
+  for (const p of ['/en', '/fr', solPath]) {
     const r = await get(p, BROWSER)
     must(r.status === 200, `${p}: ${r.status}`)
     must(r.headers.get('content-type').startsWith('text/html'), `${p}: ${r.headers.get('content-type')}`)

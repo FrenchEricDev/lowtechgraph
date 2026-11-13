@@ -108,7 +108,10 @@ export default {
     }
     if (!response) {
       response = await env.ASSETS.fetch(request)
-      if ((response.headers.get('content-type') || '').startsWith('text/html')) {
+      // The bare root is a redirect (public/_redirects), and it is the address an agent's scan
+      // reads first: it carries the Link header too (found live, 2026-11-13).
+      const redirect = response.status >= 300 && response.status < 400
+      if (redirect || (response.headers.get('content-type') || '').startsWith('text/html')) {
         response = new Response(response.body, response)
         response.headers.append('link', LINK_HEADER)
         // The same URL answers HTML or Markdown by the Accept header, so a cache keyed on
