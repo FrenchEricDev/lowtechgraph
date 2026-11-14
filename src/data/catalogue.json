@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13",
+ "generated": "2026-11-14",
  "counts": {
   "functions": 15,
   "subfunctions": 88,
@@ -5214,7 +5214,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Wood stove lifespan industry/practitioner sources (Hearth.com forums; permies.com heater-lifespan wiki; Fireplace Universe)",
+     "name": "No single source: the usual service life quoted by makers and fitters of wood stoves, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -5822,20 +5822,8 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [
-    {
-     "url": "https://solar.lowtechmagazine.com/2015/03/radiant-conductive-heating-systems/",
-     "lang": "en",
-     "format": "text",
-     "title": "Radiant & Conductive Heating Systems",
-     "maker": "Kris De Decker",
-     "site": "Low-tech Magazine",
-     "line": "Overview: masonry heaters and radiant heating"
-    }
-   ],
-   "tutorial_lines_fr": {
-    "https://solar.lowtechmagazine.com/2015/03/radiant-conductive-heating-systems/": "Vue d’ensemble : poêles de masse et chauffage radiant"
-   },
+   "tutorials": [],
+   "tutorial_lines_fr": null,
    "tutorial_status": null,
    "sources": [
     {
@@ -7454,7 +7442,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Water well/tank lifespan industry sources (Inspectapedia; Spring Creek Drilling; Poly Processing)",
+     "name": "No single source: the usual service life quoted by makers and fitters of water tanks and cisterns, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -7536,9 +7524,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Water filtration component lifespan industry sources (CleanWaterStore; SimplePure RO guide; ESP Water Products UV guide)",
-     "tier": "C",
-     "url": null,
+     "name": "ESP Water Products (a seller of UV parts), UV technical help: lamps replaced about once a year, at around 9,000 hours; the 10-15 years for the housing is the makers' usual figure, not checked",
+     "tier": "D",
+     "url": "https://www.espwaterproducts.com/uv-technical-help",
      "lang": null
     }
    ],
@@ -8448,6 +8436,12 @@
      "tier": "A",
      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7362998/",
      "lang": null
+    },
+    {
+     "name": "Low-tech Lab, Low-tech Home experimentation report (Lévêque and Chabot, 2020): a 0.5 m² planted filter for two people's greywater (about 40 L a day) left slightly more bacterial activity at the outlet than the regulations allow",
+     "tier": "B",
+     "url": "https://lowtechlab.org/fr/le-low-tech-lab/les-actions/habitat-low-tech",
+     "lang": null
     }
    ],
    "fr": {
@@ -8536,7 +8530,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Water filtration component lifespan industry sources (CleanWaterStore; SimplePure RO guide; ESP Water Products UV guide)",
+     "name": "No single source: the usual service life quoted by makers and fitters of sand filters, not checked against a study",
      "tier": "D",
      "url": null,
      "lang": null
@@ -8800,6 +8794,12 @@
      "name": "No single source: the usual service life quoted by makers and fitters of composting toilets, not checked against a study",
      "tier": "D",
      "url": null,
+     "lang": null
+    },
+    {
+     "name": "Low-tech Lab, Low-tech Home experimentation report (Lévêque and Chabot, 2020): a sawdust bucket toilet used for ten months by two people; over ten years 168 kgCO2e against 418 for flush toilets and wastewater treatment",
+     "tier": "B",
+     "url": "https://lowtechlab.org/fr/le-low-tech-lab/les-actions/habitat-low-tech",
      "lang": null
     }
    ],
@@ -9462,6 +9462,12 @@
      "tier": "A",
      "url": "https://www.osti.gov/servlets/purl/2432497/",
      "lang": null
+    },
+    {
+     "name": "Low-tech Lab, Low-tech Home experimentation report (Lévêque and Chabot, 2020): an off-grid 580 Wp array was half of the house's ten-year footprint for its low-tech systems; at average French use, off-grid PV would emit about six times the grid's figure",
+     "tier": "B",
+     "url": "https://lowtechlab.org/fr/le-low-tech-lab/les-actions/habitat-low-tech",
+     "lang": null
     }
    ],
    "fr": {
@@ -9808,7 +9814,7 @@
      "format": "text",
      "title": "A Small, Portable PV System for Camping, Emergencies, ...",
      "site": "Build It Solar",
-     "line": "One person’s project: a small portable solar system"
+     "line": "One part: wiring a small 12 V battery system (a portable kit)"
     },
     {
      "url": "https://www.builditsolar.com/Projects/PV/PortableSolarGen/PortableSolarGen.htm",
@@ -9816,7 +9822,7 @@
      "format": "text",
      "title": "Portable Solar Generator",
      "site": "Build It Solar",
-     "line": "One person’s project: a portable solar generator"
+     "line": "One part: wiring a small 12 V battery system (a portable generator)"
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Fonctionnement,_entretien_et_r%C3%A9g%C3%A9n%C3%A9ration_de_batteries_au_plomb",
@@ -9830,8 +9836,8 @@
     }
    ],
    "tutorial_lines_fr": {
-    "https://www.builditsolar.com/Projects/PV/PortablePV/PortablePV.htm": "Projet personnel : une petite installation solaire portable",
-    "https://www.builditsolar.com/Projects/PV/PortableSolarGen/PortableSolarGen.htm": "Projet personnel : un générateur solaire portable",
+    "https://www.builditsolar.com/Projects/PV/PortablePV/PortablePV.htm": "Une partie : câbler une petite installation sur batterie 12 V (un kit portable)",
+    "https://www.builditsolar.com/Projects/PV/PortableSolarGen/PortableSolarGen.htm": "Une partie : câbler une petite installation sur batterie 12 V (un générateur portable)",
     "https://wiki.lowtechlab.org/wiki/Fonctionnement,_entretien_et_r%C3%A9g%C3%A9n%C3%A9ration_de_batteries_au_plomb": "Entretien : entretenir et régénérer des batteries au plomb"
    },
    "tutorial_status": null,
@@ -10669,7 +10675,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Wood stove lifespan industry/practitioner sources (Hearth.com forums; permies.com heater-lifespan wiki; Fireplace Universe)",
+     "name": "No single source: the usual service life quoted by makers and fitters of wood cookstoves, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -10772,9 +10778,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Outils de l'Autonomie, cuisiniere solaire (Dolios, dual-parabola)",
+     "name": "Outils de l'Autonomie, cuisinière solaire (Dolios, dual-parabola), with its build guide",
      "tier": "C",
-     "url": null,
+     "url": "https://outils-autonomie.fr/cuisiniere-solaire/",
      "lang": null
     }
    ],
@@ -11774,7 +11780,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Timber cladding/charred-wood lifespan industry sources (The Larch Cladding Company, Timber Cladding Specialists)",
+     "name": "No single source: the usual service life quoted by makers and fitters of timber and charred-wood cladding, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -12384,6 +12390,12 @@
      "tier": "D",
      "url": null,
      "lang": null
+    },
+    {
+     "name": "Low-tech Lab, Low-tech Home experimentation report (Lévêque and Chabot, 2020): bokashi tried and given up (it smelled, and they grew nothing in pots); judged useful for people growing in pots or without soil",
+     "tier": "B",
+     "url": "https://lowtechlab.org/fr/le-low-tech-lab/les-actions/habitat-low-tech",
+     "lang": null
     }
    ],
    "fr": {
@@ -12729,7 +12741,7 @@
    "daily_life": "none",
    "choose_if": "you want to shape walls freely by hand, with no bricks or moulds, from the clay on your land.",
    "cost": "low",
-   "lifespan": "Several hundred years if roof, foundation, and plaster are kept in good condition (documented cob buildings in Devon, UK date from the 14th-19th centuries)",
+   "lifespan": "Several hundred years if roof, foundation, and plaster are kept in good condition (documented cob buildings in Devon, UK date from the 15th-19th centuries)",
    "lifespan_band": "30 years or more",
    "renting": "lasting",
    "embodied_carbon": "low",
@@ -12775,16 +12787,16 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Rammed earth/cob/CEB/adobe durability literature (ScienceDirect 20-yr rammed-earth weathering study; This Cob House; Colorado Earth FAQ)",
+     "name": "Institute of Historic Building Conservation (IHBC), guidance note on cob (archived copy): cob walls from the late 15th century survive and are still in use",
      "tier": "B",
-     "url": null,
+     "url": "https://web.archive.org/web/2023/https://www.ihbc.org.uk/guidance_notes/docs/Cob_Paper/cobindex.html",
      "lang": null
     }
    ],
    "fr": {
     "name": "Mur porteur en terre monolithique (bauge)",
     "description": "Des murs épais montés à la main avec un mélange d’argile, de sable et de paille, couche après couche, sans briques ni coffrage. Les murs portent le toit et stockent la chaleur. Ils n’utilisent presque rien d’acheté, mais sont lents à monter et doivent être protégés de la pluie pendant qu’ils sèchent.",
-    "lifespan": "Plusieurs siècles si la toiture, les fondations et l’enduit sont maintenus en bon état (des bâtiments en bauge documentés dans le Devon, Royaume-Uni, datent du 14e au 19e siècle)",
+    "lifespan": "Plusieurs siècles si la toiture, les fondations et l’enduit sont maintenus en bon état (des bâtiments en bauge documentés dans le Devon, Royaume-Uni, datent du 15e au 19e siècle)",
     "build_note": "murs en terre montés à la main, lent",
     "regulation_fr": "Élément de structure ou d’emprise au sol : soumis au permis de construire pour un logement neuf. Les terrains ruraux sont en outre contraints par le zonage PLU de la commune, hors zone constructible, un logement neuf est généralement refusé.",
     "choose_if": "vous voulez façonner librement vos murs à la main, sans briques ni moules, avec l’argile de votre terrain."
@@ -12855,7 +12867,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Rammed earth/cob/CEB/adobe durability literature (ScienceDirect 20-yr rammed-earth weathering study; This Cob House; Colorado Earth FAQ)",
+     "name": "No single source: the usual service life quoted by makers and fitters of compressed earth blocks, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -13359,7 +13371,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Natural-fibre insulation lifespan sources (SheepWool Insulation FAQ; Engineer Fix; ResearchGate natural-fibre insulation LCA review)",
+     "name": "No single source: the usual service life quoted by makers and fitters of light straw-clay infill, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -13763,9 +13775,15 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Wood stove lifespan industry/practitioner sources (Hearth.com forums; permies.com heater-lifespan wiki; Fireplace Universe)",
+     "name": "No single source: the usual service life quoted by makers and fitters of rocket mass heaters, not checked against a study",
      "tier": "C",
      "url": null,
+     "lang": null
+    },
+    {
+     "name": "Low-tech Lab, Low-tech Home experimentation report (Lévêque and Chabot, 2020): a 60 L semi-removable rocket mass stove (Poêlito) burned about 2 kg of wood per hour of fire and radiated for 4 to 6 hours after a 1 to 2 hour fire",
+     "tier": "B",
+     "url": "https://lowtechlab.org/fr/le-low-tech-lab/les-actions/habitat-low-tech",
      "lang": null
     }
    ],
@@ -15318,7 +15336,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Cob/adobe durability literature (This Cob House; Colorado Earth FAQ)",
+     "name": "No single source: the usual service life quoted by makers and fitters of adobe and mudbrick walls, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -15949,7 +15967,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Water treatment industry comparison sites (APEC Water, Culligan, et al.)",
+     "name": "No single source: the usual service life quoted by makers and fitters of reverse-osmosis units, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -16038,7 +16056,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Smart leak-detection valve industry sites (StreamLabs, Phyn, FloLogic, Moen Flo)",
+     "name": "No single source: the usual service life quoted by makers and fitters of leak-detection shut-off valves, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -16396,7 +16414,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "Aquatiris / BioMicrobics (commercial) + Environmental Finance Center Network",
+     "name": "No single source: the usual service life quoted by makers and fitters of aerobic treatment units, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -16646,7 +16664,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "BioCycle trade journalism + Reencle manufacturer content",
+     "name": "No single source: the usual service life quoted by makers and fitters of electric food-waste composters, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -16794,7 +16812,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "HomeAdvisor / SageGlass / architect trade press",
+     "name": "No single source: the usual service life quoted by makers and fitters of electrochromic glazing, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -16986,7 +17004,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "PMC/Springer peer-reviewed anaerobic digestion studies",
+     "name": "No single source: the usual service life quoted by makers and fitters of household biodigesters, not checked against a study; field surveys report many abandoned early",
      "tier": "A",
      "url": null,
      "lang": null
@@ -17095,7 +17113,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "PMC/Springer peer-reviewed anaerobic digestion studies",
+     "name": "No single source: the burner follows ordinary gas-appliance cycles; the vessel is SOL-161's",
      "tier": "A",
      "url": null,
      "lang": null
@@ -17574,6 +17592,12 @@
      "tier": "B",
      "url": "https://aprovecho.org/biomass-alternatives/retained-heat-cooking/",
      "lang": null
+    },
+    {
+     "name": "Low-tech Lab, Low-tech Home experimentation report (Lévêque and Chabot, 2020): a cork-lined drawer haybox saved about a quarter of cooking energy per meal in their use, half for stews; the expanded cork was over 90% of its footprint",
+     "tier": "B",
+     "url": "https://lowtechlab.org/fr/le-low-tech-lab/les-actions/habitat-low-tech",
+     "lang": null
     }
    ],
    "fr": {
@@ -17867,7 +17891,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "BroadbandNow / US Mobile Starlink reviews",
+     "name": "No single source: the usual service life quoted by makers and fitters of satellite internet terminals, not checked against a study",
      "tier": "C",
      "url": null,
      "lang": null
@@ -19319,12 +19343,12 @@
      "format": "text",
      "title": "Doug's Thermal Shade Design",
      "site": "Build It Solar",
-     "line": "Plans: a thermal window shade"
+     "line": "Another design: a thermal window shade"
     }
    ],
    "tutorial_lines_fr": {
     "https://wiki.lowtechlab.org/wiki/Rideaux_coupe-froid/en": "Fabrication complète : des rideaux anti-courants d’air",
-    "https://www.builditsolar.com/Projects/Conservation/ThermalShades/ReflectexShade.htm": "Plans : un store thermique"
+    "https://www.builditsolar.com/Projects/Conservation/ThermalShades/ReflectexShade.htm": "Autre modèle : un store thermique"
    },
    "tutorial_status": null,
    "sources": [
@@ -19502,7 +19526,7 @@
    "cost": "medium",
    "lifespan": "Matches structure/cabinetry lifespan (built-in joinery and vent detailing, not a separately wearing product)",
    "lifespan_band": "as long as the building",
-   "renting": "lasting",
+   "renting": "removable",
    "embodied_carbon": "low",
    "footprint": "medium",
    "dispatchability": "Continuous process",
@@ -19552,6 +19576,12 @@
      "name": "Low-tech Lab wiki, pantry storage tutorial, citing ADEME food-waste figures",
      "tier": "B",
      "url": "https://wiki.lowtechlab.org/wiki/Garde-Manger/en",
+     "lang": null
+    },
+    {
+     "name": "Low-tech Lab, Low-tech Home experimentation report (Lévêque and Chabot, 2020): a four-zone pantry let two people keep a 40 L fridge off except for a month in summer, about 8 kWh a year against 200 for an average fridge",
+     "tier": "B",
+     "url": "https://lowtechlab.org/fr/le-low-tech-lab/les-actions/habitat-low-tech",
      "lang": null
     }
    ],
@@ -19644,12 +19674,12 @@
      "format": "text",
      "title": "Building a Simple Solar Air Heating Collector",
      "site": "Build It Solar",
-     "line": "One person’s project: a simple solar air collector"
+     "line": "Another design: a simple solar air collector"
     }
    ],
    "tutorial_lines_fr": {
     "https://wiki.lowtechlab.org/wiki/Chauffage_solaire_version_ardoise/en": "Fabrication complète : un capteur solaire à air",
-    "https://www.builditsolar.com/Projects/SpaceHeating/GregAircol/AirCol.htm": "Projet personnel : un capteur solaire à air simple"
+    "https://www.builditsolar.com/Projects/SpaceHeating/GregAircol/AirCol.htm": "Autre modèle : un capteur solaire à air simple"
    },
    "tutorial_status": null,
    "sources": [
@@ -19660,9 +19690,9 @@
      "lang": null
     },
     {
-     "name": "A wall-mounted solar air collector built for about two dollars a square foot",
-     "tier": "C",
-     "url": "https://www.builditsolar.com/Projects/SpaceHeating/GregAircol/AirCol.htm",
+     "name": "Low-tech Lab, Low-tech Home experimentation report (Lévêque and Chabot, 2020): a 2 m² slate air heater on the south wall of a 14 m² house, no maintenance in ten months, warm air only from late morning",
+     "tier": "B",
+     "url": "https://lowtechlab.org/fr/le-low-tech-lab/les-actions/habitat-low-tech",
      "lang": null
     }
    ],
@@ -20254,7 +20284,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "French public water service connection practice (mains supply, metering and billing)",
+     "name": "No outside source: the project's own judgement (the connection lasts as long as the network; the utility replaces the meter)",
      "tier": "C",
      "url": null,
      "lang": null
@@ -20409,7 +20439,7 @@
    "tutorial_status": "not-diy",
    "sources": [
     {
-     "name": "French gas distribution connection practice (GRDF network connection and metering)",
+     "name": "No outside source: the project's own judgement (the connection lasts as long as the network; the operator replaces the meter and regulator)",
      "tier": "C",
      "url": null,
      "lang": null
@@ -23534,11 +23564,11 @@
      "format": "text",
      "title": "Construct a Cozy Hideaway with These Built-In Bed Plans",
      "site": "Mother Earth News",
-     "line": "Plans: a built-in bed"
+     "line": "One part: the enclosed bed (no curtain)"
     }
    ],
    "tutorial_lines_fr": {
-    "https://www.motherearthnews.com/diy/homemade-built-in-bed-zmaz08djzgoe/": "Plans : un lit intégré"
+    "https://www.motherearthnews.com/diy/homemade-built-in-bed-zmaz08djzgoe/": "Une partie : le lit encastré (sans rideau)"
    },
    "tutorial_status": null,
    "sources": [
@@ -24181,8 +24211,20 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://solar.lowtechmagazine.com/2015/03/radiant-conductive-heating-systems/",
+     "lang": "en",
+     "format": "text",
+     "title": "Radiant & Conductive Heating Systems",
+     "maker": "Kris De Decker",
+     "site": "Low-tech Magazine",
+     "line": "Overview: heating people rather than rooms (radiant panels, heated seats)"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://solar.lowtechmagazine.com/2015/03/radiant-conductive-heating-systems/": "Vue d’ensemble : chauffer les personnes plutôt que les pièces (panneaux radiants, sièges chauffants)"
+   },
    "tutorial_status": null,
    "sources": [
     {
