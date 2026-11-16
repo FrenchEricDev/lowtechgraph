@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-14",
+ "generated": "2026-11-15",
  "counts": {
   "functions": 15,
   "subfunctions": 88,
   "io_types": 52,
-  "solutions": 246,
-  "io_index": 506,
+  "solutions": 247,
+  "io_index": 509,
   "bases": 24,
   "coefficients": 78,
   "fabric_classes": 56
@@ -18059,10 +18059,20 @@
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Antoineblanc",
      "site": "Low-tech Lab wiki",
      "line": "Full build: sun shades for windows and skylights"
+    },
+    {
+     "url": "https://solar.lowtechmagazine.com/2025/07/how-to-mount-a-balcony-awning/",
+     "lang": "en",
+     "format": "text",
+     "title": "How to Mount a Balcony Awning",
+     "maker": "Kris De Decker",
+     "site": "Low-tech Magazine",
+     "line": "One person’s project: a balcony awning"
     }
    ],
    "tutorial_lines_fr": {
-    "https://wiki.lowtechlab.org/wiki/Pare-soleil_pour_fen%C3%AAtres,_velux,_baies_vitr%C3%A9es": "Fabrication complète : des pare-soleil pour fenêtres et velux"
+    "https://wiki.lowtechlab.org/wiki/Pare-soleil_pour_fen%C3%AAtres,_velux,_baies_vitr%C3%A9es": "Fabrication complète : des pare-soleil pour fenêtres et velux",
+    "https://solar.lowtechmagazine.com/2025/07/how-to-mount-a-balcony-awning/": "Projet personnel : un auvent de balcon"
    },
    "tutorial_status": null,
    "sources": [
@@ -19344,11 +19354,21 @@
      "title": "Doug's Thermal Shade Design",
      "site": "Build It Solar",
      "line": "Another design: a thermal window shade"
+    },
+    {
+     "url": "https://solar.lowtechmagazine.com/2025/06/dressing-and-undressing-the-home/",
+     "lang": "en",
+     "format": "text",
+     "title": "How to Dress and Undress your Home",
+     "maker": "Kris De Decker",
+     "site": "Low-tech Magazine",
+     "line": "Explainer: curtains and bed curtains that keep the heat in"
     }
    ],
    "tutorial_lines_fr": {
     "https://wiki.lowtechlab.org/wiki/Rideaux_coupe-froid/en": "Fabrication complète : des rideaux anti-courants d’air",
-    "https://www.builditsolar.com/Projects/Conservation/ThermalShades/ReflectexShade.htm": "Autre modèle : un store thermique"
+    "https://www.builditsolar.com/Projects/Conservation/ThermalShades/ReflectexShade.htm": "Autre modèle : un store thermique",
+    "https://solar.lowtechmagazine.com/2025/06/dressing-and-undressing-the-home/": "Explication : rideaux et rideaux de lit qui gardent la chaleur"
    },
    "tutorial_status": null,
    "sources": [
@@ -19885,11 +19905,21 @@
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Biosphere_Experience",
      "site": "Low-tech Lab wiki",
      "line": "Full build: a solar cooking pot"
+    },
+    {
+     "url": "https://solar.lowtechmagazine.com/2025/10/how-to-build-an-electric-heating-element-from-scratch/",
+     "lang": "en",
+     "format": "text",
+     "title": "How to Assemble an Electric Heating Element from Scratch",
+     "maker": "Kris De Decker",
+     "site": "Low-tech Magazine",
+     "line": "One part: a heating element run straight from a solar panel"
     }
    ],
    "tutorial_lines_fr": {
     "https://solar.lowtechmagazine.com/2025/10/how-to-build-a-solar-powered-electric-oven/": "Mode d’emploi : un four électrique alimenté au solaire",
-    "https://wiki.lowtechlab.org/wiki/Biosph%C3%A8re_Urbaine_:_Cocotte_solaire": "Fabrication complète : une cocotte solaire"
+    "https://wiki.lowtechlab.org/wiki/Biosph%C3%A8re_Urbaine_:_Cocotte_solaire": "Fabrication complète : une cocotte solaire",
+    "https://solar.lowtechmagazine.com/2025/10/how-to-build-an-electric-heating-element-from-scratch/": "Une partie : une résistance chauffante branchée directement sur un panneau solaire"
    },
    "tutorial_status": null,
    "sources": [
@@ -23078,10 +23108,20 @@
      "maker": "Kris De Decker",
      "site": "Low-tech Magazine",
      "line": "How-to: a solar-powered foot stove"
+    },
+    {
+     "url": "https://solar.lowtechmagazine.com/2025/10/how-to-build-an-electric-heating-element-from-scratch/",
+     "lang": "en",
+     "format": "text",
+     "title": "How to Assemble an Electric Heating Element from Scratch",
+     "maker": "Kris De Decker",
+     "site": "Low-tech Magazine",
+     "line": "One part: a heating element run straight from a solar panel"
     }
    ],
    "tutorial_lines_fr": {
-    "https://solar.lowtechmagazine.com/2025/11/winter-is-coming-build-a-solar-powered-foot-stove/": "Mode d’emploi : une chaufferette solaire pour les pieds"
+    "https://solar.lowtechmagazine.com/2025/11/winter-is-coming-build-a-solar-powered-foot-stove/": "Mode d’emploi : une chaufferette solaire pour les pieds",
+    "https://solar.lowtechmagazine.com/2025/10/how-to-build-an-electric-heating-element-from-scratch/": "Une partie : une résistance chauffante branchée directement sur un panneau solaire"
    },
    "tutorial_status": null,
    "sources": [
@@ -23565,10 +23605,20 @@
      "title": "Construct a Cozy Hideaway with These Built-In Bed Plans",
      "site": "Mother Earth News",
      "line": "One part: the enclosed bed (no curtain)"
+    },
+    {
+     "url": "https://solar.lowtechmagazine.com/2025/06/dressing-and-undressing-the-home/",
+     "lang": "en",
+     "format": "text",
+     "title": "How to Dress and Undress your Home",
+     "maker": "Kris De Decker",
+     "site": "Low-tech Magazine",
+     "line": "Explainer: curtains and bed curtains that keep the heat in"
     }
    ],
    "tutorial_lines_fr": {
-    "https://www.motherearthnews.com/diy/homemade-built-in-bed-zmaz08djzgoe/": "Une partie : le lit encastré (sans rideau)"
+    "https://www.motherearthnews.com/diy/homemade-built-in-bed-zmaz08djzgoe/": "Une partie : le lit encastré (sans rideau)",
+    "https://solar.lowtechmagazine.com/2025/06/dressing-and-undressing-the-home/": "Explication : rideaux et rideaux de lit qui gardent la chaleur"
    },
    "tutorial_status": null,
    "sources": [
@@ -25102,6 +25152,101 @@
     "site_prerequisites": "Aucune.",
     "build_note": "une bouteille, une grille et du sel",
     "choose_if": "un placard ou une petite pièce reste humide et vous voulez en retirer l’humidité sans électricité."
+   }
+  },
+  {
+   "id": "SOL-249",
+   "name": "Electric blanket or heated mattress topper",
+   "subfunction_id": "FN-02.15",
+   "function_id": "FN-02",
+   "summary": "A blanket or mattress topper with heating wires inside, plugged into a socket. It warms the bed itself: a typical one is rated around 100 W, where a fan heater draws about 2 kW. Never use it with a hot-water bottle, folded, or once it is ten years old.",
+   "slug": "electric-blanket",
+   "slug_fr": "couverture-chauffante",
+   "inputs": [
+    {
+     "io": "IO-03",
+     "name": "AC electricity"
+    },
+    {
+     "io": "IO-18",
+     "name": "DC electricity"
+    }
+   ],
+   "input_groups": [
+    [
+     "IO-03",
+     "IO-18"
+    ]
+   ],
+   "outputs": [
+    {
+     "io": "IO-45",
+     "name": "Personal heat"
+    }
+   ],
+   "ratings": {
+    "build": 1,
+    "maintain": 3,
+    "efficiency": null,
+    "build_skill": "None",
+    "burden": 2,
+    "build_note": "bought, not built; do not repair the wiring",
+    "efficiency_note": "heats the bed you lie in, not the air of the room"
+   },
+   "benchmark": false,
+   "power": "Active",
+   "maintenance": "occasional",
+   "repair_skill": "none",
+   "build_skill": "None",
+   "consumables": "None",
+   "daily_life": "daily",
+   "choose_if": "you want a warm bed in a cold bedroom without heating the room.",
+   "cost": "low",
+   "lifespan": "About ten years: replace it then even if it looks fine, and at once if it shows scorch marks",
+   "lifespan_band": "5 to 15 years",
+   "renting": "movable",
+   "embodied_carbon": "low",
+   "footprint": "low",
+   "dispatchability": "On-demand/controllable",
+   "site_prerequisites": "A socket by the bed. Works in a rented flat, since nothing is fixed to the building",
+   "new_build_only": false,
+   "flat_feasible": true,
+   "flat_blocker": null,
+   "societal": "",
+   "regulation_fr": "",
+   "regulation_url": null,
+   "provides_pressure": false,
+   "conduit_for": [],
+   "host_provides": null,
+   "host_required": null,
+   "input_via": {},
+   "input_warn": {},
+   "needs_pressure": false,
+   "tutorials": [],
+   "tutorial_lines_fr": null,
+   "tutorial_status": "no-build",
+   "sources": [
+    {
+     "name": "Smart Energy GB, How to use an electric blanket: running cost from the power rating (a 100 W example), safe use, replace every ten years",
+     "tier": "B",
+     "url": "https://www.smartenergygb.org/smart-living/smart-energy-tips/how-to-use-an-electric-blanket",
+     "lang": null
+    },
+    {
+     "name": "Electrical Safety First (a UK charity), March 2026: electric blanket fires at a five-year high, and how to use one safely",
+     "tier": "B",
+     "url": "https://www.electricalsafetyfirst.org.uk/media-centre/press-releases/2026/03/concerns-as-electric-blanket-fires-hit-five-year-high",
+     "lang": null
+    }
+   ],
+   "fr": {
+    "name": "Couverture ou surmatelas chauffant",
+    "description": "Une couverture ou un surmatelas parcouru de fils chauffants, branché sur une prise. Il chauffe le lit lui-même : un modèle courant est donné pour environ 100 W, là où un radiateur soufflant tire environ 2 kW. Ne l’utilisez jamais avec une bouillotte, plié, ou passé dix ans.",
+    "lifespan": "Environ dix ans : remplacez-le alors même s’il paraît intact, et tout de suite s’il porte des traces de brûlure",
+    "site_prerequisites": "Une prise près du lit. Convient en location, rien n’est fixé au logement",
+    "build_note": "s’achète, ne se fabrique pas ; ne réparez pas les fils",
+    "efficiency_note": "chauffe le lit où l’on dort, pas l’air de la pièce",
+    "choose_if": "vous voulez un lit chaud dans une chambre froide sans chauffer la pièce."
    }
   }
  ],
@@ -27635,6 +27780,21 @@
    "sol": "SOL-248",
    "io": "IO-52",
    "role": "produces"
+  },
+  {
+   "sol": "SOL-249",
+   "io": "IO-03",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-249",
+   "io": "IO-18",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-249",
+   "io": "IO-45",
+   "role": "produces"
   }
  ],
  "bases": [
@@ -28087,11 +28247,11 @@
    "basis": "per flush",
    "condition": "A certified dual-flush toilet, small and full flush together.",
    "condition_fr": "Des toilettes à double chasse certifiées, petite et grande chasse ensemble.",
-   "source": "Trade press reporting the NF certification rule (3/6 L); corroborated against the Agences de l'Eau 6-12 L range for older stock",
-   "source_url": null,
-   "tier": "C",
+   "source": "Defra, WC Suite Performance Specifications (May 2026): a dual flush of 6 litres at most, the reduced flush no more than two-thirds of it (the same rule as EN 14055 class 2)",
+   "source_url": "https://assets.publishing.service.gov.uk/media/69f2095f2fae53a037096851/_2_WC_Suite_Performance_Specifications.pdf",
+   "tier": "B",
    "precision": "P2",
-   "notes": "TIER C AND SHOULD BE UPGRADED. NF EN 997 was not read directly and Legifrance returns 403 to automated fetches. The figure is widely attested and consistent with the installed-stock range, but it has not met the Tier A/B bar. | Condition as first written: NF-certified dual-flush unit, small and full flush",
+   "notes": "Condition as first written: NF-certified dual-flush unit, small and full flush | B3, 2026-11-15: tier B on Defra's WC Suite Performance Specifications (May 2026), which state the rule; NF EN 997 itself is still unread (paywalled; Légifrance refuses scripts).",
    "engine_use": true,
    "converts_from": null,
    "reference_zone": null
@@ -28171,7 +28331,7 @@
    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013R0813",
    "tier": "A",
    "precision": "P2",
-   "notes": "The first RATIO the engine can actually exercise on real catalogue data: its input pool is electricity, which solar PV can fill. Seasonal-vs-nameplate is the condition and must not be dropped -- a nameplate COP at 7 degC flatters a real winter. | Condition as first written: SEASONAL coefficient of performance (SCOP) under the EN 14825 average-climate profile, NOT a nameplate COP at one test point. 2.5 is the regulatory floor implied by the 100 pc minimum seasonal space heating efficiency at a conversion coefficient of 2.5; 4.0 corresponds to about 160 pc.",
+   "notes": "The first RATIO the engine can actually exercise on real catalogue data: its input pool is electricity, which solar PV can fill. Seasonal-vs-nameplate is the condition and must not be dropped -- a nameplate COP at 7 degC flatters a real winter. | Condition as first written: SEASONAL coefficient of performance (SCOP) under the EN 14825 average-climate profile, NOT a nameplate COP at one test point. 2.5 is the regulatory floor implied by the 100 pc minimum seasonal space heating efficiency at a conversion coefficient of 2.5; 4.0 corresponds to about 160 pc. | B3, 2026-11-15, measured in use: Fraunhofer ISE (Nov 2025, 49 air-to-water units in existing German homes) 2.6-4.9, mean 3.4, https://www.ise.fraunhofer.de/content/dam/ise/en/documents/press-releases/2025/3025_ISE_PR_Heat-Pumps-Provide-Climate-Friendly-Heating-in-Existing-Buildings.pdf ; ADEME's French study of 100 units (Oct 2025) a mean of 2.9 for air-to-water, read in press reports only. Both inside the range.",
    "engine_use": true,
    "converts_from": "IO-03",
    "reference_zone": null
@@ -28281,17 +28441,17 @@
    "io_type_id": "IO-18",
    "role": "out",
    "kind": "RATIO",
-   "low": 0.92,
-   "high": 0.98,
+   "low": 0.88,
+   "high": 0.97,
    "unit": "kWh out / kWh in",
    "basis": "dimensionless ratio",
    "condition": "What comes back out for what went in, over a full charge and discharge. A whole system, with its inverter, returns about 0.86.",
    "condition_fr": "Ce qui ressort pour ce qui est entré, sur une charge et une décharge complètes. Un système complet, avec son onduleur, restitue environ 0,86.",
-   "source": "Solar and battery industry comparison sites for the battery alone; Mongird et al. (PNNL, for the US DOE), Energy Storage Technology and Cost Characterization Report, 2019, Table ES.1: lithium-ion system round trip 0.86, power conversion included",
-   "source_url": "https://www.energy.gov/sites/prod/files/2019/07/f65/Storage%20Cost%20and%20Performance%20Characterization%20Report_Final.pdf",
-   "tier": "C",
+   "source": "HTW Berlin and aquu, Stromspeicher-Inspektion 2026: battery efficiency measured by independent laboratories on 12 home storage systems, 87.9 to 97.1 percent, half of them above 95.7",
+   "source_url": "https://solar.htw-berlin.de/wp-content/uploads/HTW-aquu-Stromspeicher-Inspektion-2026.pdf",
+   "tier": "B",
    "precision": "P2",
-   "notes": "Same caveat as the lead-acid row. The gap between the two chemistries, roughly 10-20 points of round-trip loss, is the decision-relevant part and is agreed across sources. | Condition as first written: ROUND-TRIP over a full charge and discharge cycle. LiFePO4 with an integrated BMS. | B17, 2026-11-13: the only neutral figure is for a system (0.86); the battery-alone range stays vendor-sourced, tier C.",
+   "notes": "Same caveat as the lead-acid row. The gap between the two chemistries, roughly 10-20 points of round-trip loss, is the decision-relevant part and is agreed across sources. | Condition as first written: ROUND-TRIP over a full charge and discharge cycle. LiFePO4 with an integrated BMS. | B3, 2026-11-15: the battery-alone range is now laboratory-measured (HTW Berlin and aquu, Stromspeicher-Inspektion 2026, 12 home systems, 87.9-97.1 pc); the cell chemistry of each system was not confirmed in the text read. The system figure in the condition is PNNL's (Mongird et al. 2019, Table ES.1): https://www.energy.gov/sites/prod/files/2019/07/f65/Storage%20Cost%20and%20Performance%20Characterization%20Report_Final.pdf",
    "engine_use": true,
    "converts_from": "IO-18",
    "reference_zone": null

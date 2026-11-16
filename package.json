@@ -15,7 +15,8 @@
     "qa:contrast": "node scripts/qa-contrast.mjs",
     "qa:adequacy": "node scripts/qa-adequacy.mjs",
     "qa:host": "node scripts/qa-host.mjs",
-    "qa:markdown": "node scripts/qa-markdown.mjs"
+    "qa:markdown": "node scripts/qa-markdown.mjs",
+    "qa:journeys": "node scripts/qa-journeys.mjs"
   },
   "dependencies": {
     "@xyflow/react": "^12.11.3",
@@ -27,6 +28,7 @@
     "@types/react-dom": "~19.2.4",
     "@vitejs/plugin-react": "^6.0.4",
     "oxlint": "^1.93.0",
+    "playwright": "^1.65.1",
     "vite": "^8.3.8",
     "vite-plugin-pwa": "^1.3.0",
     "workbox-core": "^7.4.1",

@@ -37,3 +37,4 @@ dist-ssr
 
 # Wrangler's local dev state and bundles: machine-specific, never part of the site.
 .wrangler
+qa-output/
