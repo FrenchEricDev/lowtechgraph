@@ -274,7 +274,15 @@
   pointer-events: none; animation: tree-hint-in .3s ease-out;
 }
 @keyframes tree-hint-in { from { opacity: 0; } to { opacity: 1; } }
+/* The Add button pulses with the chip, the same three beats (Eric, 2026-11-19): a ring grows out
+   of it, so the next step reads as "link, or add more". */
+.btn.is-hinted { animation: btn-hint 1.4s ease-in-out 3; }
+@keyframes btn-hint {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent); }
+  45% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 0%, transparent); }
+}
 @media (prefers-reduced-motion: reduce) {
+  .btn.is-hinted { animation: none; outline: 2px solid var(--accent); outline-offset: 2px; }
   .tio.is-hinted { animation: none; outline: 2px solid var(--accent); outline-offset: 2px; }
   .tree-hint { animation: none; }
 }

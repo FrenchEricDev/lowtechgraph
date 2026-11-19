@@ -1878,12 +1878,14 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
         <div className={'tree-toolbar' + (folded ? ' is-folded' : '')} ref={barRef}>
           <span className="tree-add-row is-desktop-only">
             <span className="tree-tools-label">{ui.tree.addLabel}</span>
-            <button className="btn sm" onClick={() => setAdding(true)} title={ui.tree.kindSolutionLine}><Glyph name="wrench" />{ui.tree.addSolutionButton}</button>
+            {/* It pulses with the connect tip's chip (Eric, 2026-11-19): a card that links only to the
+                house (insulation) has nothing to link to yet, and the next step is to add more. */}
+            <button className={'btn sm' + (hint ? ' is-hinted' : '')} onClick={() => setAdding(true)} title={ui.tree.kindSolutionLine}><Glyph name="wrench" />{ui.tree.addSolutionButton}</button>
             <button className="btn sm" onClick={() => setResourceModal(true)} title={ui.tree.kindResourceLine}><Glyph name="leaf" />{ui.tree.addResourceButton}</button>
             <button className="btn sm" onClick={() => setMainsModal(true)} title={ui.tree.kindMainsLine}><Glyph name="plug" size={18} />{ui.tree.addMainsButton}</button>
             <button className="btn sm" onClick={() => setDestModal(true)} title={ui.tree.kindDestLine}><Glyph name="arrive" />{ui.tree.addDestinationButton}</button>
           </span>
-          <ToolMenu label={ui.tree.add} glyph="+" className="btn sm tree-add" title={ui.tree.tipAdd} tray
+          <ToolMenu label={ui.tree.add} glyph="+" className={'btn sm tree-add' + (hint ? ' is-hinted' : '')} title={ui.tree.tipAdd} tray
                     wrapClass="is-mobile-only" head={ui.tree.addTitle}
                     items={[
                       { key: 'sol', title: ui.tree.kindSolution, line: ui.tree.kindSolutionLine, glyph: 'wrench', run: () => setAdding(true) },

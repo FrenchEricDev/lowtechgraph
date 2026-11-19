@@ -1607,8 +1607,9 @@ const EN = {
     zoomIn: 'Zoom in',
     zoomOut: 'Zoom out',
     // The tip over a canvas with cards and no link (S3): tap on a touch screen, click elsewhere.
-    hintConnect: 'Click what a card takes or gives to link it to another solution',
-    hintConnectTouch: 'Tap what a card takes or gives to link it to another solution',
+    // Link, or add more (Eric, 2026-11-19): a card may have nothing on the canvas to link to yet.
+    hintConnect: 'Click what a card takes or gives to link it, or add more solutions to your system',
+    hintConnectTouch: 'Tap what a card takes or gives to link it, or add more solutions to your system',
     // The button beside a link the reader has tapped (S2).
     removeLink: 'Remove this link',
     linkLabel: 'Link from {from} to {to}: {io}. Enter selects it, Delete removes it.',
