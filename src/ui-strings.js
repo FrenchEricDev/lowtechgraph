@@ -141,15 +141,8 @@ const EN = {
     // word, kept on purpose (Eric, 2026-11-19): it says the people built it, not only wrote about it.
     sourcesBody: 'Note: Each solution points to the tutorials and people who have actually built it. The sources our catalogue links to the most are: {names}.',
     examplesHeading: 'Examples of low-tech solutions',
-    pathHeading: 'From an idea to something built',
-    pathCompare: 'Compare solutions',
-    pathCompareBody: 'Every need, every option side by side: cost, skill, upkeep, what it changes in your days.',
     pathCompareGo: 'Browse the solutions',
-    pathTeach: 'Learn from people who built it',
-    pathTeachBody: 'Find out who made the tutorials we present, what else the community built, and where to meet everyone online or offline.',
     pathTeachGo: 'Explore the community',
-    pathFit: 'Combine solutions',
-    pathFitBody: 'Connect solutions together, based on what they produce and require, to create a circularity-inspired system.',
     pathFitGo: 'Open My system',
     whyHeading: 'Why use low-tech solutions at home?',
     readMore: 'Read more',
@@ -822,6 +815,10 @@ const EN = {
 
     // --- site requirements callout ---
     siteHeading: 'What your site needs',
+    // The description's three parts (F20, Eric 2026-11-19).
+    descWhat: 'What it is',
+    descHow: 'How it works',
+    descBrings: 'What it brings',
 
     // --- second-tier detail, collapsed by default ---
     detailsOpen: 'More details',

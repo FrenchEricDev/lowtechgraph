@@ -185,6 +185,15 @@ const sortWord = (entity, lang) => {
   return entity?.short ? n.replace(/^(?:(?:a|an|the|le|la|les|un|une|des|du|de)\s+|l’|d’)+/i, '') : n
 }
 export const tSummary = (entity, lang = CURRENT_LANG) => L(entity, 'description', lang)
+// A solution's description in its three parts, What it is / How it works / Why choose it (F20,
+// 2026-11-19): the export says where the second and third start (desc_cut), so the text is not
+// shipped twice. Null where there is no cut, and the page shows the description whole.
+export function tParts(entity, lang = CURRENT_LANG) {
+  const d = L(entity, 'description', lang)
+  const c = lang === 'fr' && entity?.fr?.description ? entity.fr.desc_cut : entity?.desc_cut
+  if (!d || !c) return null
+  return [d.slice(0, c[0]).trim(), d.slice(c[0], c[1]).trim(), d.slice(c[1]).trim()]
+}
 
 // Alphabetical in the reading language.
 export const sortByName = (list, lang = CURRENT_LANG) =>

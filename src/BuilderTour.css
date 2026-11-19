@@ -82,16 +82,3 @@
 @media (hover: none) { .bt-pause { min-height: 44px; } }
 .bt-steps { margin: 0; padding-left: 1.4em; font-size: var(--t-md); color: var(--ink); display: grid; gap: 2px; }
 
-/* The camera version (the home page's card): the box is the card's 3:2 frame, the stage glides
-   inside it, and the caption rides at its foot. */
-.bt.is-camera { display: block; height: 100%; }
-.bt.is-camera .bt-box { height: 100%; border: 0; border-radius: 0; }
-.bt.is-camera .bt-stage { transition: transform .8s cubic-bezier(.4, 0, .2, 1); }
-.bt.is-camera .bt-steps { display: none; }
-.bt-overlay {
-  position: absolute; left: 8px; right: 84px; bottom: 8px; padding: 4px 10px; border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--surface) 92%, transparent); border: 1px solid var(--line);
-  font-size: var(--t-sm); line-height: 1.3; color: var(--ink);
-}
-.bt-overlay.is-verdict { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-@media (prefers-reduced-motion: reduce) { .bt.is-camera .bt-stage { transition: none; } }

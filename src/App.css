@@ -81,6 +81,16 @@
 .view h3 { font-size: var(--t-xs); font-weight: 700; line-height: var(--lh-snug); text-transform: uppercase; letter-spacing: var(--ls-caps); color: var(--muted); margin: var(--s-5) 0 var(--s-3); }
 .lede, .summary { color: var(--ink); }
 .summary { margin: var(--s-2) 0 var(--s-3); }
+/* The description in its three parts (F20, Eric 2026-11-19; catalogue.js tParts), each
+   labelled. Stacked on a phone; the label in a column of its own where there is room. */
+.sum-parts { margin: var(--s-3) 0 var(--s-4); padding: 0; display: grid; gap: var(--s-3); max-width: 46rem; }
+.sum-part { display: grid; gap: 2px; }
+.sum-part dt { font-size: var(--t-xs); font-weight: 700; color: var(--accent-ink); text-transform: uppercase; letter-spacing: var(--ls-caps); }
+.sum-part dd { margin: 0; }
+@media (min-width: 760px) {
+  .sum-part { grid-template-columns: 9.5rem minmax(0, 1fr); gap: var(--s-4); align-items: baseline; }
+  .sum-part + .sum-part { padding-top: var(--s-3); border-top: 1px solid var(--line-soft); }
+}
 .muted { color: var(--muted); }
 .small { font-size: var(--t-sm); }
 .legend { font-size: var(--t-sm); color: var(--muted); margin: var(--s-3) 0 var(--s-4); }
@@ -439,6 +449,16 @@ a.row, a.chip { text-decoration: none; }
 /* This page's option in full, the others in a line each (Eric, 2026-11-01). */
 .cmp-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); margin-top: var(--s-3); }
 @media (max-width: 759px) { .cmp-split { grid-template-columns: 1fr; } }
+/* Phone: "This solution" and "The N others" as two tabs, one panel in the same place (Eric,
+   2026-11-19). The tab names the panel, so its heading goes. Wide: both, side by side, no tabs. */
+.cmp-tabs { display: none; }
+@media (max-width: 759px) {
+  .cmp-tabs { display: flex; width: 100%; box-sizing: border-box; margin: var(--s-3) 0 0; }
+  .cmp-tabs .seg-item { flex: 1; padding: 0 var(--s-2); }
+  .cmp-split.is-tab-this .cmp-others, .cmp-split.is-tab-others .cmp-this { display: none; }
+  .cmp-split .cmp-this > h3, .cmp-split .cmp-others > h3 { display: none; }
+  .cmp-split { margin-top: var(--s-3); }
+}
 .cmp-this, .cmp-others { min-width: 0; }
 /* The card as tall as the list beside it, never below what its text needs; its content starts at
    the top and follows the scroll down inside the card (Eric, 2026-11-01). */
@@ -1893,20 +1913,6 @@ a.row, a.chip { text-decoration: none; }
   .home-examples { order: -1; }
   .home-frame.home-tour-frame { padding: var(--s-4); }
 }
-.home-path { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--s-4); }
-.home-path li { display: flex; }
-/* A card is one link; its button shows where it leads, at the same foot on all three. */
-.home-path-card {
-  flex: 1; display: grid; grid-template-rows: auto 1fr; gap: var(--s-3); padding: var(--s-3);
-  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface);
-  color: var(--ink); text-decoration: none;
-}
-.home-path-card:hover { border-color: var(--accent); }
-.home-path-card:hover .home-path-go { background: var(--accent-ink); }
-.home-path-card:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-.home-path-text { display: flex; flex-direction: column; align-items: flex-start; }
-.home-path-text p { flex: 1; }
 /* The ways onward under the site tour (F19, SiteTour.jsx), here rather than with the tour's
    own styles: they are in the static page, drawn before the tour's code arrives. */
 .st-reserve { height: calc(min(1.3, (100vw - 32px - 2 * var(--s-4) - 2px) / 360) * 256px + 130px); margin-bottom: var(--s-3); }
@@ -1916,54 +1922,6 @@ a.row, a.chip { text-decoration: none; }
   .st-reserve { height: 345px; }
   .st-actions { grid-template-columns: repeat(3, max-content); }
 }
-.btn.home-path-go { margin-top: var(--s-3); padding: var(--s-2) var(--s-4); font-size: var(--t-sm); }
-/* The step's drawing (PathArt): what the step does, on a soft green panel, in theme tokens. */
-.home-path-art {
-  display: block; border-radius: var(--radius-sm);
-  overflow: hidden; background: var(--accent-bg); aspect-ratio: 3 / 2;
-}
-.home-path li.has-tour { position: relative; container-type: inline-size; }
-/* The animation's Pause, outside the card's link, at the drawing's bottom right beside the
-   caption: at the top it covered the drawn "Could this work out?" as the camera reached it. The
-   drawing is 3:2 of the card's inner width, hence the container units. */
-.home-tour-pause {
-  position: absolute; z-index: 2; right: calc(var(--s-3) + 8px);
-  top: calc(var(--s-3) + (100cqw - 2 * var(--s-3)) * 2 / 3 - 8px - 32px);
-  min-height: 32px; padding: 0 var(--s-3); border: 1px solid var(--line); border-radius: var(--radius-sm);
-  background: var(--surface); color: var(--ink); font: inherit; font-size: var(--t-sm); cursor: pointer;
-}
-.home-tour-pause:hover { border-color: var(--muted); }
-@media (hover: none) { .home-tour-pause { min-height: 44px; margin-top: -12px; } }
-.path-art .pa-sheet { fill: var(--accent-bg); }
-.path-art { display: block; width: 100%; height: 100%; }
-.path-art .pa-grid { fill: var(--ink); opacity: .14; }
-.path-art .pa-card { fill: var(--surface); stroke: var(--muted-line); stroke-width: 1.6; }
-.path-art .pa-card.is-self { fill: var(--accent-bg-2); stroke: var(--accent); stroke-width: 2.2; }
-.path-art .pa-inset { fill: var(--surface-2); stroke: var(--muted-line); stroke-width: 1.4; }
-.path-art .pa-ink { fill: var(--ink); opacity: .75; }
-.path-art .pa-soft { fill: var(--muted-line); }
-.path-art .pa-dot { fill: none; stroke: var(--accent-line); stroke-width: 1.6; }
-.path-art .pa-dot.is-on { fill: var(--accent-ink); stroke: var(--accent-ink); }
-.path-art .pa-num { fill: var(--surface); stroke: var(--accent); stroke-width: 1.8; }
-.path-art .pa-num.is-done { fill: var(--accent); }
-.path-art .pa-n { fill: var(--accent-ink); font: 600 11px "Source Sans 3", system-ui, sans-serif; text-anchor: middle; }
-.path-art .pa-tick { fill: none; stroke: var(--on-accent); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.path-art .pa-line { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linejoin: round; }
-.path-art .pa-line.is-accent { fill: var(--accent-bg); stroke: var(--accent); }
-.path-art .pa-link { fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-.path-art .pa-link.is-loop { stroke-dasharray: 5 5; }
-.path-art .pa-head { fill: var(--accent); }
-.path-art .pa-verdict { fill: var(--adq-green-bg); stroke: var(--adq-green); stroke-width: 1.6; }
-.path-art .pa-tick.is-verdict { stroke: var(--adq-green); }
-.path-art .pa-verdict-ink { fill: var(--adq-green); }
-@media (max-width: 760px) {
-  .home-path { grid-template-columns: 1fr; }
-  .home-path-card { grid-template-columns: 132px minmax(0, 1fr); grid-template-rows: auto; align-items: start; }
-  /* The animated card keeps its drawing full width on top: at 132 px it could not be read. */
-  .home-path li.has-tour .home-path-card { grid-template-columns: minmax(0, 1fr); }
-}
-.view .home-path-title, #prerender .home-path-title { margin: 0; font-size: var(--t-base); font-weight: 700; color: var(--ink); text-transform: none; letter-spacing: normal; }
-.home-path p { margin: var(--s-2) 0 0; }
 @media (max-width: 760px) {
   .home-start { grid-template-columns: 1fr; gap: var(--s-4); }
   .home-carousel { order: -1; }

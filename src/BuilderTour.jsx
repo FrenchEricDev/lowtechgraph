@@ -59,34 +59,27 @@ function Picker({ ioId, chosen, also, optRef, open, picked, style }) {
   )
 }
 
-// A target's middle in stage units, from layout offsets: the camera's transform, mid-glide, would
-// throw a measured rectangle off.
+// A target's middle in stage units, from layout offsets: the stage's scale would throw a measured
+// rectangle off.
 function middleIn(el, root) {
   let x = el.offsetWidth / 2, y = el.offsetHeight / 2
   for (let n = el; n && n !== root; n = n.offsetParent) { x += n.offsetLeft; y += n.offsetTop }
   return { x, y }
 }
 
-/*
- * `camera`: for a narrow 3:2 frame (the home page's card). The scene is filmed closer, about
- * CAMERA_W stage units wide, and the frame glides after the pointer, held inside the stage; it
- * pulls back to the whole system for the verdict. The caption rides on the drawing, and the
- * Pause button is placed by the page (`paused` comes from outside), since the card is a link.
- */
-const CAMERA_W = 300
-
-export default function BuilderTour({ camera = false, paused: pausedFrom }) {
+// The home page's camera version (a 3:2 card, the frame gliding after the pointer) was removed
+// 2026-11-19 with the card: archive/docs/F19-k-path-cards/.
+export default function BuilderTour() {
   const still = calm()
   const [step, setStep] = useState(still ? 99 : 0)
-  const [pausedHere, setPaused] = useState(false)
-  const paused = camera ? !!pausedFrom : pausedHere
+  const [paused, setPaused] = useState(false)
   const [size, setSize] = useState({ w: STAGE_W, h: STAGE_H })
   const [dot, setDot] = useState(null)
   const box = useRef(null)
   const stage = useRef(null)
   const refs = { add: useRef(null), giveA: useRef(null), opt1: useRef(null), giveB: useRef(null), opt2: useRef(null), check: useRef(null) }
 
-  // The box's own size; the inline version scales the whole stage to its width, never past 1.
+  // The box's own size: the stage scales to its width, never past 1.
   useLayoutEffect(() => {
     const el = box.current
     if (!el) return
@@ -117,24 +110,14 @@ export default function BuilderTour({ camera = false, paused: pausedFrom }) {
   const at = (s) => step >= s
   const pressing = [2, 5, 6, 9, 10, 13].includes(step)
   const T = ui.tour
-  const caption = step >= 99 ? null : step >= 13 && camera ? T.verdict : step >= 12 ? T.step4 : step >= 7 ? T.step3 : step >= 4 ? T.step2 : T.step1
+  const caption = step >= 99 ? null : step >= 12 ? T.step4 : step >= 7 ? T.step3 : step >= 4 ? T.step2 : T.step1
   const n = step >= 12 ? 4 : step >= 7 ? 3 : step >= 4 ? 2 : 1
 
-  // The camera: close on the pointer; the whole stage before the first press and for the verdict.
-  let view = `scale(${k})`
-  if (camera) {
-    const wide = step === 0 || step >= 13 || !dot
-    const z = wide ? Math.min(size.w / STAGE_W, size.h / STAGE_H) : size.w / CAMERA_W
-    const vw = size.w / z, vh = size.h / z
-    const cx = wide ? STAGE_W / 2 : dot.x, cy = wide ? STAGE_H / 2 : dot.y
-    const clamp = (v, lo, hi) => (hi < lo ? (lo + hi) / 2 : Math.max(lo, Math.min(hi, v)))
-    const tx = clamp(cx - vw / 2, 0, STAGE_W - vw), ty = clamp(cy - vh / 2, 0, STAGE_H - vh)
-    view = `scale(${z}) translate(${-tx}px, ${-ty}px)`
-  }
+  const view = `scale(${k})`
 
   return (
-    <figure className={'bt' + (camera ? ' is-camera' : '')} aria-label={T.label}>
-      <div className="bt-box" ref={box} style={camera ? undefined : { height: STAGE_H * k }} aria-hidden="true">
+    <figure className="bt" aria-label={T.label}>
+      <div className="bt-box" ref={box} style={{ height: STAGE_H * k }} aria-hidden="true">
         <div className="bt-stage" ref={stage} style={{ width: STAGE_W, height: STAGE_H, transform: view }}>
           <span ref={refs.add} className={'bt-btn is-add' + (step === 2 ? ' is-press' : '')}>+ {ui.tree.addSolutionButton}</span>
           <span ref={refs.check} className={'bt-btn is-check' + (at(13) ? ' is-press' : '')}>{ui.adequacy.button}</span>
@@ -151,16 +134,15 @@ export default function BuilderTour({ camera = false, paused: pausedFrom }) {
                   style={{ left: 120, top: 132 }} />
           <Picker ioId={POTABLE} chosen={C} also={others(ALSO_POTABLE)} optRef={refs.opt2} open={step === 9 || step === 10} picked={step === 10}
                   style={{ left: 300, top: 52 }} />
-          {!camera && <div className={'bt-verdict' + (at(13) ? ' is-on' : '')}>{T.verdict}</div>}
+          <div className={'bt-verdict' + (at(13) ? ' is-on' : '')}>{T.verdict}</div>
           {dot && <span className={'bt-dot' + (pressing ? ' is-press' : '')} style={{ left: dot.x, top: dot.y }} />}
         </div>
-        {camera && caption && <span className={'bt-overlay' + (at(13) ? ' is-verdict' : '')}>{n}/4 · {caption}</span>}
       </div>
       {still ? (
         <ol className="bt-steps">
           <li>{T.step1}</li><li>{T.step2}</li><li>{T.step3}</li><li>{T.step4}</li>
         </ol>
-      ) : !camera && (
+      ) : (
         <figcaption className="bt-cap">
           <span className="bt-n">{n}/4</span>
           <span className="bt-cap-text">{caption}</span>

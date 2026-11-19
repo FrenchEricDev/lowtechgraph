@@ -14,3 +14,15 @@ export function loadLanguage(lang) {
     .then(([s, c]) => { provideFrench(s.fr); mergeFrench(c.default); ready = true })
   return french
 }
+
+// The catalogue's long English text (Q2, 2026-11-19; vite.config.js LONG_EN): descriptions,
+// choose-it-if, site needs, rules, lifespan, sources. Every page but the home page needs it, in
+// either language, so main.jsx waits for it there; on the home page it is fetched just after the
+// first paint, so it is usually in before the first click. Merged into the same entity objects.
+let long = null
+let longIn = false
+export const longReady = () => longIn
+export function loadLong() {
+  long ||= import('virtual:catalogue-en').then((c) => { mergeFrench(c.default); longIn = true })
+  return long
+}

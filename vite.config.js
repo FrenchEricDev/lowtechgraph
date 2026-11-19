@@ -104,6 +104,20 @@ function splitFrench(entity) {
   }
   return [core, fr]
 }
+/* THE LONG ENGLISH TEXT, a fourth view (Q2, Eric 2026-11-19): the first load had 0.7 KB left
+   once the descriptions grew into their three parts (F20). The fields only a catalogue page reads
+   (descriptions, choose-it-if, site needs, rules, lifespan, sources) leave the core and ship in
+   their own chunk, as the French did (B2): fetched right after the home page's first paint, and
+   before the first render of any other page (src/language.js). Search matches descriptions once
+   it has arrived; names are in the core. Both languages need it: the French falls back to it,
+   and the sources and the cut are not translated. */
+const LONG_EN = {
+  solutions: ['summary', 'desc_cut', 'choose_if', 'site_prerequisites', 'regulation_fr', 'regulation_url',
+              'lifespan', 'sources'],
+  subfunctions: ['summary', 'efficiency_basis'],
+  functions: ['summary'],
+  io_types: ['summary'],
+}
 /* THE SITE TOUR'S VERDICT (F19-j, 2026-11-18): the home page's animation shows the water check
    on its rain-to-shower system (src/siteTourSystem.js). The engine is run here, on the same data,
    so the home page ships three numbers instead of the engine and the climate tables. */
@@ -118,7 +132,7 @@ function tourVerdict(file, ctx) {
 }
 function catalogueViews() {
   const file = path.resolve('src/data/catalogue.json')
-  const ids = { core: 'virtual:catalogue-core', diagnostic: 'virtual:catalogue-diagnostic', fr: 'virtual:catalogue-fr' }
+  const ids = { core: 'virtual:catalogue-core', diagnostic: 'virtual:catalogue-diagnostic', fr: 'virtual:catalogue-fr', en: 'virtual:catalogue-en' }
   return {
     name: 'catalogue-views',
     resolveId(id) { return Object.values(ids).includes(id) || id === TOUR ? '\0' + id : null },
@@ -134,8 +148,26 @@ function catalogueViews() {
         if (!Array.isArray(v)) { if (id === '\0' + ids.core) part[k] = v; continue }
         // Collections: the core keeps each entity without its long French; the French view keeps
         // only that, keyed by the entity's id (natural resources by their io).
-        if (id === '\0' + ids.core) part[k] = v.map((e) => (e && typeof e === 'object' ? splitFrench(e)[0] : e))
-        else {
+        // The long English (LONG_EN) leaves the core for its own view, the same way.
+        const long = LONG_EN[k] || []
+        if (id === '\0' + ids.core) {
+          part[k] = v.map((e) => {
+            if (!e || typeof e !== 'object') return e
+            const core = splitFrench(e)[0]
+            for (const f of long) delete core[f]
+            return core
+          })
+        } else if (id === '\0' + ids.en) {
+          if (!long.length) continue
+          const byId = {}
+          for (const e of v) {
+            if (!e || typeof e !== 'object') continue
+            const en = {}
+            for (const f of long) if (e[f] !== undefined) en[f] = e[f]
+            if (Object.keys(en).length) byId[e.id ?? e.io] = en
+          }
+          part[k] = byId
+        } else {
           const byId = {}
           for (const e of v) {
             if (!e || typeof e !== 'object') continue

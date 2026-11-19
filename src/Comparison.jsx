@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 import * as cat from './catalogue'
 import { ui, fill } from './ui-strings'
 import Nav from './Nav'
@@ -232,10 +232,26 @@ function OptionCard({ sol, self, go, filters }) {
   )
 }
 
+// Whether the tabs show (the same width as the CSS): the tab roles are given only then, so a
+// wide screen's two columns are not announced as tabs nobody can see.
+const NARROW = '(max-width: 759px)'
+const onWidth = (fn) => {
+  const m = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia(NARROW) : null
+  m?.addEventListener('change', fn)
+  return () => m?.removeEventListener('change', fn)
+}
+const isNarrow = () => typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia(NARROW).matches
+
 export default function Comparison({ sol, go, filters }) {
   const C = ui.comparison
   const sibs = cat.solsBySubfunction[sol.subfunction_id] || []
   const [showHidden, setShowHidden] = useState(false)
+  // On a phone the two halves are two tabs, one shown at a time in the same place (Eric,
+  // 2026-11-19: stacked, the others ran several screens under this solution's card). A wide
+  // screen keeps them side by side and hides the tabs (CSS).
+  const [tab, setTab] = useState('this')
+  const narrow = useSyncExternalStore(onWidth, isNarrow, () => false)
+  const panel = (k) => (narrow ? { role: 'tabpanel', id: 'cmp-panel-' + k, 'aria-labelledby': 'cmp-tab-' + k } : {})
 
   // The only option for its need: nothing to compare, but its own card is still the one place
   // on the page that shows its cost, skill, upkeep and the rest (the facts table went, 2026-09-24).
@@ -254,6 +270,15 @@ export default function Comparison({ sol, go, filters }) {
   const hidden = others.length - inside.length
   // The ones in the filters first, the ones outside them last, once asked for.
   const ordered = showHidden ? [...inside, ...others.filter((p) => !fitsAll(p))] : inside
+  const othersTitle = ordered.length === 0 ? C.othersNone : ordered.length === 1 ? C.othersOne : fill(C.othersMany, { n: ordered.length })
+  const tabs = [['this', C.thisSolution], ['others', ordered.length === 0 ? fill(C.othersMany, { n: 0 }) : othersTitle]]
+  // Arrow keys move between the two tabs, as a tab list does.
+  const onTabKey = (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
+    const next = tab === 'this' ? 'others' : 'this'
+    setTab(next)
+    document.getElementById('cmp-tab-' + next)?.focus()
+  }
   return (
     <section className="cmp-block" id="ranking">
       {/* No "showing" count: the list says what the filters left, and offers the rest (Eric, 2026-11-01). */}
@@ -266,13 +291,22 @@ export default function Comparison({ sol, go, filters }) {
       <ActiveFilters filters={filters} />
       {/* This page's option in full, the others in a line each: is this the right one? The full
           comparison is the sub-need page's table (Eric, 2026-11-01). */}
-      <div className="cmp-split">
-        <div className="cmp-this">
+      {narrow && <div className="seg cmp-tabs" role="tablist" aria-label={C.assessHeading} onKeyDown={onTabKey}>
+        {tabs.map(([k, label]) => (
+          <button key={k} type="button" role="tab" id={'cmp-tab-' + k} aria-controls={'cmp-panel-' + k}
+                  aria-selected={tab === k} tabIndex={tab === k ? 0 : -1}
+                  className={'seg-item' + (tab === k ? ' is-on' : '')} onClick={() => setTab(k)}>
+            {label}
+          </button>
+        ))}
+      </div>}
+      <div className={'cmp-split' + (narrow ? ' is-tab-' + tab : '')}>
+        <div className="cmp-this" {...panel('this')}>
           <h3>{C.thisSolution}</h3>
           <OptionCard sol={sol} self go={go} filters={filters} />
         </div>
-        <div className="cmp-others">
-          <h3>{ordered.length === 0 ? C.othersNone : ordered.length === 1 ? C.othersOne : fill(C.othersMany, { n: ordered.length })}</h3>
+        <div className="cmp-others" {...panel('others')}>
+          <h3>{othersTitle}</h3>
           <ul>
             {ordered.map((p) => {
               const clause = cat.L(p, 'choose_if')

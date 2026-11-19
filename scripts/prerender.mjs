@@ -95,6 +95,12 @@ const tLong = (e, lang) => L(e, 'name', lang) || e?.name || ''
 const longLine = (e, lang) => (tLong(e, lang).toLowerCase() === tName(e, lang).toLowerCase() ? ''
   : `<p class="pr-long">${esc(tLong(e, lang))}</p>`)
 const tSummary = (e, lang) => L(e, 'description', lang)
+// As src/catalogue.js tParts: the description in its three parts, or null (F20).
+const tParts = (e, lang) => {
+  const d = L(e, 'description', lang)
+  const c = lang === 'fr' && e?.fr?.description ? e.fr.desc_cut : e?.desc_cut
+  return d && c ? [d.slice(0, c[0]).trim(), d.slice(c[0], c[1]).trim(), d.slice(c[1]).trim()] : null
+}
 
 const ENUM_FR = {
   low: 'faible', medium: 'moyen', high: 'élevé', 'low-medium': 'faible à moyen',
@@ -330,7 +336,9 @@ function solutionBody(sol, lang) {
          tutorial straight after the description because it is what the page is FOR. */''}
     ${L(sol, 'site_prerequisites', lang)
       ? `<h2>${esc(ui.solutionPage.siteHeading)}</h2><p>${esc(L(sol, 'site_prerequisites', lang))}</p>` : ''}
-    <p class="pr-lede">${esc(tSummary(sol, lang))}</p>
+    ${tParts(sol, lang)
+      ? `<dl class="summary sum-parts">${tParts(sol, lang).map((t, i) => `<div class="sum-part"><dt>${esc([ui.solutionPage.descWhat, ui.solutionPage.descHow, ui.solutionPage.descBrings][i])}</dt><dd>${esc(t)}</dd></div>`).join('')}</dl>`
+      : `<p class="pr-lede">${esc(tSummary(sol, lang))}</p>`}
     <div class="pr-tutorials">
       <h2>${esc(ui.solutionPage.tutorialsHeading)}</h2>
       ${tuts || `<p>${esc(tutorialStatusText(ui, sol.tutorial_status)
@@ -508,9 +516,6 @@ function resourcesBody(lang) {
     }).join('')}`
 }
 
-// As the app (App.jsx, TODO F19-k): the "From an idea to something built" cards are hidden since
-// 2026-11-19; the site tour and its three links stand in their place.
-const SHOW_PATH_CARDS = false
 function homeBody(lang) {
   // Mirrors the app's home page (brief 06, second pass): the doors in the reader's words, each
   // to its guide, then where the know-how comes from, the path, and why. A crawler and a JS-less
@@ -543,11 +548,6 @@ function homeBody(lang) {
       <div class="home-frame home-tour-frame"><div class="st-reserve" aria-hidden="true"></div>
       <div class="st-actions">${[['needs', H.pathCompareGo, 'btn'], ['tree', H.pathFitGo, 'btn secondary'], ['people', H.pathTeachGo, 'btn secondary']]
         .map(([view, label, cls]) => `<a class="${cls}" href="${esc(pathOf(view, null, lang))}">${esc(label)}</a>`).join('')}</div></div></section>
-    ${SHOW_PATH_CARDS ? `<section class="home-sec"><h2>${esc(H.pathHeading)}</h2><ul class="home-path">${[
-      ['needs', H.pathCompare, H.pathCompareBody, H.pathCompareGo],
-      ['people', H.pathTeach, H.pathTeachBody, H.pathTeachGo],
-      ['tree', H.pathFit, H.pathFitBody, H.pathFitGo],
-    ].map(([view, t, b, label]) => `<li><a class="home-path-card" href="${esc(pathOf(view, null, lang))}"><div class="home-path-art"></div><div class="home-path-text"><h3 class="home-path-title">${esc(t)}</h3><p>${esc(b)}</p><span class="btn home-path-go">${esc(label)}</span></div></a></li>`).join('')}</ul></section>` : ''}
     <section class="home-sec is-why"><h2>${esc(H.whyHeading)}</h2><p class="home-frame home-why">${esc(ui.why.lede.replace(/\.$/, ''))}… ${link(pathOf('why', null, lang), H.readMore)}</p></section>
     <div class="home-foot"><p class="home-sources">${esc(fill(H.sourcesBody, { names: '' })).replace(/\.$/, '')}${top.join(' · ')}.</p></div>`
 }

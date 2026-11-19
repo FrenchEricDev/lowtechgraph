@@ -47,12 +47,10 @@ import { guide, guideIds } from './content'
 import { applyUpdateIfPending } from './sw-update'
 import buildInfo from './data/build-info.json'
 import { siteCounts, ABOUT_STEPS, ABOUT_DIFFS } from './siteCounts'
-import PathArt from './illustrations/PathArt.jsx'
-import BuilderTour from './BuilderTour.jsx'
 import PeopleView, { topicOfNeed, PEOPLE, entryMeta, WhereToFindHelp } from './People.jsx'
 import './App.css'
 import { calm } from './motion.js'
-import { loadLanguage, languageReady } from './language.js'
+import { loadLanguage, languageReady, loadLong, longReady } from './language.js'
 
 // All user-facing wording lives in ui-strings.js. The en. Tipeee host serves an English payment
 // page to French readers too.
@@ -182,6 +180,10 @@ export default function App() {
   // draw again.
   const [, redraw] = useState(0)
   if (!languageReady(lang)) loadLanguage(lang).then(() => redraw((x) => x + 1), () => {})
+  // Every page but the home page reads the long English text (Q2): on the rare click that beats
+  // it in, the page waits for it, then draws.
+  const longOk = longReady() || route.view === 'home' || route.view === 'settings'
+  if (!longOk) loadLong().then(() => redraw((x) => x + 1), () => {})
 
   // The catalogue filters: one sticky object applied everywhere. Two filters shipped as
   // separate localStorage keys: they are read once and folded in, and left in place so a
@@ -344,6 +346,7 @@ export default function App() {
       <ConnectBar route={route} go={go} />
       <InstallLine route={route} />
       <main className="main" id="main" tabIndex={-1} ref={mainRef}>
+        {!longOk ? <div className="view" aria-busy="true" /> : <>
         {route.view === 'notfound' && <NotFound home={home} go={go} />}
         {(route.view === 'home' || route.view === 'settings') && <Home {...ctx} />}
         {route.view === 'why' && <WhyView {...ctx} />}
@@ -368,6 +371,7 @@ export default function App() {
             <TreeBuilder filters={filters} setFilter={setFilter} go={go} lang={lang} seed={route.add} />
           </Suspense>
         )}
+        </>}
       </main>
       {/* The footer stays on the tree route, compacted: its CC BY-SA line is the attribution for the catalogue content the canvas shows. */}
       <SiteFooter go={go} compact={route.view === 'tree'} />
@@ -1371,8 +1375,6 @@ const TOUR_WAYS = [
   ['pathFitGo', { view: 'tree' }, [4, 5]],
   ['pathTeachGo', { view: 'people' }, [6]],
 ]
-// The "From an idea to something built" cards, hidden 2026-11-19 (TODO F19-k).
-const SHOW_PATH_CARDS = false
 
 // Water, heat, hot water, the envelope, sanitation: one drawing each, on the same house.
 const HOME_DRAWINGS = ['SOL-053', 'SOL-126', 'SOL-059', 'SOL-124', 'SOL-069']
@@ -1381,9 +1383,6 @@ function Home({ go, lang }) {
   const H = ui.home
   const doors = guideIds().map((id) => guide(id, lang)).filter((g) => g && g.onHome && g.door && g.picks.length)
   const houseSols = HOME_DRAWINGS.map((id) => cat.solById[id]).filter(Boolean)
-  // The builder card plays the four-step animation (S8, Eric 2026-11-04); its Pause sits beside
-  // the card's link, as a button cannot go inside one.
-  const [tourPaused, setTourPaused] = useState(false)
   const tourWays = (scene) => TOUR_WAYS.map(([label, route, scenes]) => (
     <Nav key={label} route={route} go={go} className={'btn' + (scenes.includes(scene) ? '' : ' secondary')}>{H[label]}</Nav>
   ))
@@ -1419,7 +1418,8 @@ function Home({ go, lang }) {
 
       {/* The site in seven steps (F19, Eric 2026-11-18), with the ways onward under it: the tour
           shows what can be done, the three links lead there, the one for the step on screen lit
-          (Eric 2026-11-19, in place of the "From an idea to something built" cards below). */}
+          (Eric 2026-11-19). It replaced the "From an idea to something built" cards, recorded for a
+          return in archive/docs/F19-k-path-cards/. */}
       <section className="home-sec" aria-labelledby="tour-h">
         <h2 id="tour-h">{ui.siteTour.heading}</h2>
         {/* The links are in the static page too, under the space held for the tour. */}
@@ -1431,34 +1431,6 @@ function Home({ go, lang }) {
         </div>
       </section>
 
-      {/* HIDDEN 2026-11-19 (Eric): the three cards say what the tour above now shows. Kept, not
-          drawn, until the new home page is settled; TODO F19-k: remove it, with PathArt, the
-          camera BuilderTour and their styles, if the tour and its links stay. */}
-      {SHOW_PATH_CARDS && <section className="home-sec" aria-labelledby="path-h">
-        <h2 id="path-h">{H.pathHeading}</h2>
-        <ul className="home-path">
-          {[[H.pathCompare, H.pathCompareBody, 'compare', { view: 'needs' }, H.pathCompareGo],
-            [H.pathTeach, H.pathTeachBody, 'steps', { view: 'people' }, H.pathTeachGo],
-            [H.pathFit, H.pathFitBody, 'system', { view: 'tree' }, H.pathFitGo]].map(([t, b, art, route, goLabel]) => (
-            <li key={t} className={art === 'system' ? 'has-tour' : undefined}>
-              {art === 'system' && !calm() && (
-                <button type="button" className="home-tour-pause" aria-pressed={tourPaused}
-                        onClick={() => setTourPaused((v) => !v)}>
-                  {tourPaused ? ui.tour.play : ui.tour.pause}
-                </button>
-              )}
-              <Nav route={route} go={go} className="home-path-card">
-                <div className="home-path-art">{art === 'system' ? <BuilderTour camera paused={tourPaused} /> : <PathArt step={art} />}</div>
-                <div className="home-path-text">
-                  <h3 className="home-path-title">{t}</h3>
-                  <p>{b}</p>
-                  <span className="btn home-path-go">{goLabel}</span>
-                </div>
-              </Nav>
-            </li>
-          ))}
-        </ul>
-      </section>}
 
       <section className="home-sec is-why" aria-labelledby="why-h">
         <h2 id="why-h">{H.whyHeading}</h2>
@@ -1941,7 +1913,17 @@ function SolutionView({ id, go, filters, setFilter, landing }) {
         </div>
       )}
 
-      <p className="summary">{cat.tSummary(s)}</p>
+      {/* The description in its three parts, each labelled (F20, Eric 2026-11-19). */}
+      {cat.tParts(s) ? (
+        <dl className="summary sum-parts">
+          {cat.tParts(s).map((text, i) => (
+            <div key={i} className="sum-part">
+              <dt>{[S.descWhat, S.descHow, S.descBrings][i]}</dt>
+              <dd>{text}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : <p className="summary">{cat.tSummary(s)}</p>}
       <SiteLine show={landing} />
 
       <Suspense fallback={NO_PLATE.has(s.id) ? null : <div className="plate-reserve" aria-hidden="true" />}>

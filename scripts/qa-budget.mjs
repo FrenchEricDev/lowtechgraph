@@ -15,7 +15,11 @@ const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const DIST = path.join(ROOT, 'dist')
 
 // Measured 2026-10-26 (after B2): JS 262 KB, CSS 15 KB, the French extra 109 KB.
-const BUDGET_KB = { js: 290, css: 18, frExtra: 130 }
+// 2026-11-19 (Q2): the long English text left the first load for its own chunk (vite.config.js
+// LONG_EN), fetched just after the home page's first paint and before any other page: JS fell
+// from 290 to 200 KB (budget lowered to 220, a tenth above); that chunk measured 86 KB, budget 100. A reader landing on any page
+// but the home page downloads both: the honest first load there is the two added.
+const BUDGET_KB = { js: 220, css: 18, frExtra: 130, enLong: 100 }
 
 const html = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8')
 const refs = (re) => [...html.matchAll(re)].map((m) => m[1]).filter((u) => u.startsWith('/assets/'))
@@ -29,7 +33,10 @@ const french = assets.filter((f) => /^ui-strings\.fr-.*\.js$|^_virtual_catalogue
 const problems = []
 if (!scripts.length) problems.push('found no entry script in dist/index.html')
 if (french.length !== 2) problems.push(`expected the two French chunks, found ${french.length}`)
-const size = { js: scripts.reduce((n, s) => n + gz(s), 0), css: styles.reduce((n, s) => n + gz(s), 0), frExtra: french.reduce((n, s) => n + gz(s), 0) }
+const enLong = assets.filter((f) => /^_virtual_catalogue-en-.*\.js$/.test(f)).map((f) => '/assets/' + f)
+if (enLong.length !== 1) problems.push(`expected one long-English chunk, found ${enLong.length}`)
+const size = { js: scripts.reduce((n, s) => n + gz(s), 0), css: styles.reduce((n, s) => n + gz(s), 0), frExtra: french.reduce((n, s) => n + gz(s), 0),
+  enLong: enLong.reduce((n, s) => n + gz(s), 0) }
 for (const [k, budget] of Object.entries(BUDGET_KB)) {
   if (kb(size[k]) > budget) problems.push(`${k}: ${kb(size[k])} KB compressed, budget ${budget} KB`)
 }
@@ -40,5 +47,6 @@ if (problems.length) {
   process.exit(1)
 }
 console.log(`qa-budget: first load ${kb(size.js)} KB of JS (budget ${BUDGET_KB.js}) and ${kb(size.css)} KB of CSS `
-  + `(budget ${BUDGET_KB.css}), compressed; a French reader adds ${kb(size.frExtra)} KB (budget ${BUDGET_KB.frExtra}) -- OK`)
+  + `(budget ${BUDGET_KB.css}), compressed; a French reader adds ${kb(size.frExtra)} KB (budget ${BUDGET_KB.frExtra}); `
+  + `any page but the home page adds the long English, ${kb(size.enLong)} KB (budget ${BUDGET_KB.enLong}) -- OK`)
 console.log(`  ${scripts.length} scripts and ${styles.length} stylesheet on the entry page; fonts, drawings and the builder load later.`)

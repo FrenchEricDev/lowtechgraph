@@ -83,15 +83,8 @@ export const fr = {
     // « réellement » kept on purpose, as "actually" in English (Eric, 2026-11-19).
     sourcesBody: 'Note : chaque solution renvoie aux tutoriels et aux personnes qui l’ont réellement construite. Les sources vers lesquelles notre catalogue renvoie le plus : {names}.',
     examplesHeading: 'Exemples de solutions low-tech',
-    pathHeading: 'D’une idée à une réalisation',
-    pathCompare: 'Comparer les solutions',
-    pathCompareBody: 'Chaque besoin, chaque option côte à côte : coût, savoir-faire, entretien, ce que cela change à vos journées.',
     pathCompareGo: 'Parcourir les solutions',
-    pathTeach: 'Apprendre de ceux qui l’ont construit',
-    pathTeachBody: 'Découvrez qui a fait les tutoriels que nous présentons, ce que la communauté a construit d’autre, et où retrouver tout le monde, en ligne ou en personne.',
     pathTeachGo: 'Explorer la communauté',
-    pathFit: 'Combiner les solutions',
-    pathFitBody: 'Reliez les solutions entre elles, selon ce qu’elles produisent et ce dont elles ont besoin, pour créer un système inspiré de la circularité.',
     pathFitGo: 'Ouvrir Mon système',
     whyHeading: 'Pourquoi utiliser des solutions low-tech chez soi ?',
     readMore: 'Lire la suite',
@@ -679,6 +672,9 @@ export const fr = {
     factsRelativeNote: 'À noter : le coût, le carbone et l’emprise sont des appréciations larges au regard de modes constructifs comparables, et non des valeurs mesurées.',
 
     siteHeading: 'Ce que votre terrain doit permettre',
+    descWhat: 'Ce que c’est',
+    descHow: 'Comment ça marche',
+    descBrings: 'Ce que cela apporte',
 
     detailsOpen: 'Plus de détails',
     detailsClose: 'Masquer les détails',
