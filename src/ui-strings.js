@@ -130,15 +130,17 @@ const EN = {
     cardCollapse: 'Show less',
 
     // ---- The home page, second pass (brief 06, Eric 2026-10-18) -----------
-    startHeading: 'Where do you want to start?',
+    startHeading: 'Start from a goal',
     // The doors' own words are in each guide's file (src/content/guides/<guide>/guide.json, "door").
     doorGuide: 'Guide · {n} solutions',
-    doorGuides: 'Browse the guides',
-    carouselShort: 'One of the low-tech solutions for your home.',
+    doorGuides: 'Browse all our guides',
     carouselLabel: 'Choose a solution to show',
     carouselShow: 'Show {name}',
     // Eric's sentence (2026-10-18): the sources are named, not linked; the links sit beside the tutorials.
-    sourcesBody: 'Each solution points to the people who have done it. The sources our catalogue uses most: {names}.',
+    // Eric's wording 2026-11-19, under the bar above the foot. "actually" is a writing-check Block
+    // word, kept on purpose (Eric, 2026-11-19): it says the people built it, not only wrote about it.
+    sourcesBody: 'Note: Each solution points to the tutorials and people who have actually built it. The sources our catalogue links to the most are: {names}.',
+    examplesHeading: 'Examples of low-tech solutions',
     pathHeading: 'From an idea to something built',
     pathCompare: 'Compare solutions',
     pathCompareBody: 'Every need, every option side by side: cost, skill, upkeep, what it changes in your days.',
@@ -1858,6 +1860,21 @@ const EN = {
     verdict: 'Checked against the rain, sun and cold where you live',
     pause: 'Pause',
     play: 'Play',
+  },
+
+  // The site in seven steps, on the home page (F19). Captions as decided by Eric 2026-11-15.
+  siteTour: {
+    label: 'What you can do on this site, in seven steps',
+    heading: 'Our platform at a glance',
+    searchWord: 'rainwater',
+    s1: 'Search for what you want to do',
+    s2: 'Keep what fits your home',
+    s3: 'Compare the ways to meet a need',
+    s4: 'Find a tutorial to build it',
+    s5: 'Link solutions into your system',
+    s6: 'Check it against the weather where you live',
+    s7: 'Find people to build it with',
+    goTo: 'Show step {n}',
   },
 
   // ===========================================================================

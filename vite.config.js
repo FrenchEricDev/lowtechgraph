@@ -5,6 +5,8 @@ import path from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { assess, DEFAULT_SCENARIO } from './src/adequacy/engine.js'
+import { GRAPH, DEPT } from './src/siteTourSystem.js'
 
 // Keep in sync with ui.app.name in src/ui-strings.js — this is the name shown on the phone
 // home screen / install prompt, and the title on the offline shell. Chosen 2026-08-19; the
@@ -102,13 +104,26 @@ function splitFrench(entity) {
   }
   return [core, fr]
 }
+/* THE SITE TOUR'S VERDICT (F19-j, 2026-11-18): the home page's animation shows the water check
+   on its rain-to-shower system (src/siteTourSystem.js). The engine is run here, on the same data,
+   so the home page ships three numbers instead of the engine and the climate tables. */
+const TOUR = 'virtual:site-tour-verdict'
+function tourVerdict(file, ctx) {
+  ctx.addWatchFile(file)
+  const all = JSON.parse(fs.readFileSync(file, 'utf8'))
+  const water = assess(GRAPH, { ...DEFAULT_SCENARIO, department: DEPT }, all).families?.water
+  const dept = (all.departments?.departments || []).find((d) => d.code === DEPT)
+  const out = { verdict: water?.verdict || 'grey', band: water?.band || null, dept: { code: DEPT, name: dept?.name || '' } }
+  return `export default ${JSON.stringify(out)}`
+}
 function catalogueViews() {
   const file = path.resolve('src/data/catalogue.json')
   const ids = { core: 'virtual:catalogue-core', diagnostic: 'virtual:catalogue-diagnostic', fr: 'virtual:catalogue-fr' }
   return {
     name: 'catalogue-views',
-    resolveId(id) { return Object.values(ids).includes(id) ? '\0' + id : null },
+    resolveId(id) { return Object.values(ids).includes(id) || id === TOUR ? '\0' + id : null },
     load(id) {
+      if (id === '\0' + TOUR) return tourVerdict(file, this)
       if (!Object.values(ids).some((x) => id === '\0' + x)) return null
       this.addWatchFile(file)
       const all = JSON.parse(fs.readFileSync(file, 'utf8'))

@@ -37,7 +37,8 @@ const name = (id) => cat.tName(cat.solById[id]) || id
 const io = (id) => cat.tName(cat.ioById[id]) || id
 const others = (ids) => ids.filter((id) => cat.solById[id]).map(name)
 
-function MiniCard({ sol, takes, gives, giveRef, hot, style, on, fit }) {
+// Also drawn by the site tour (SiteTour.jsx, F19), scene 5.
+export function MiniCard({ sol, takes, gives, giveRef, hot, style, on, fit }) {
   const T = ui.treeNode
   return (
     <div className={'bt-card' + (on ? ' is-on' : '') + (fit ? ' is-fit' : '')} style={style}>

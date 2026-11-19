@@ -1866,8 +1866,6 @@ a.row, a.chip { text-decoration: none; }
 .home-carousel .home-house figcaption { flex: 1; border-top-color: var(--line); }
 /* The whole drawing at every width: its top and foot hold what makes some of them work. */
 .home-carousel .home-house .home-drawing { max-height: none; display: block; padding: var(--s-2); background: var(--accent-bg-strong); }
-/* The long caption where there is room, a short one on a phone. */
-.home-house-short { display: none; }
 /* The frame and its paper stay; only what is drawn and named changes. */
 .home-slide.is-turning .home-drawing svg > :not(.pl-paper), .home-slide.is-turning figcaption > span { animation: fade-in var(--dur-slow) var(--ease-standard); }
 @media (prefers-reduced-motion: reduce) { .home-slide.is-turning .home-drawing svg > :not(.pl-paper), .home-slide.is-turning figcaption > span { animation: none; } }
@@ -1879,10 +1877,22 @@ a.row, a.chip { text-decoration: none; }
 .home-dot[aria-current]::before { background: var(--accent); border-color: var(--accent); }
 .home-dot:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; border-radius: 50%; }
 /* The drawing's own box, measured: a 3:2 sheet, then the caption and the dots. */
-.home-house-reserve { aspect-ratio: 3 / 2; box-sizing: border-box; margin: 0 0 92px; border: var(--s-2) solid var(--accent-bg-strong); border-radius: var(--radius); background: var(--sheet); }
+.home-house-reserve { aspect-ratio: 3 / 2; box-sizing: border-box; margin: 0 0 68px; border: var(--s-2) solid var(--accent-bg-strong); border-radius: var(--radius); background: var(--sheet); }
 .home-sec { margin-top: var(--s-7); }
 /* A quiet note under the why: who the know-how comes from, now the community card leads there. */
 .home-sources { margin: var(--s-5) 0 0; font-size: var(--t-sm); color: var(--muted); }
+/* Home, 2026-11-19 (Eric): every block in a light frame, the doors' own card look. */
+.home-frame { box-sizing: border-box; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: var(--s-5); }
+.view .home-why.home-frame { margin: 0; }
+/* The carousel titled like the doors beside it. */
+.view .home-examples h2 { margin-top: 0; }
+/* Where the know-how comes from: the first line under the bar, above "Missing something?". */
+.home-foot .home-sources { flex-basis: 100%; margin: 0 0 var(--s-2); }
+@media (max-width: 560px) { .home-foot .home-sources { margin-bottom: var(--s-5); } }
+@media (max-width: 760px) {
+  .home-examples { order: -1; }
+  .home-frame.home-tour-frame { padding: var(--s-4); }
+}
 .home-path { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--s-4); }
 .home-path li { display: flex; }
@@ -1897,6 +1907,15 @@ a.row, a.chip { text-decoration: none; }
 .home-path-card:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .home-path-text { display: flex; flex-direction: column; align-items: flex-start; }
 .home-path-text p { flex: 1; }
+/* The ways onward under the site tour (F19, SiteTour.jsx), here rather than with the tour's
+   own styles: they are in the static page, drawn before the tour's code arrives. */
+.st-reserve { height: calc(min(1.3, (100vw - 32px - 2 * var(--s-4) - 2px) / 360) * 256px + 130px); margin-bottom: var(--s-3); }
+.st-actions { display: grid; gap: var(--s-2); }
+.st-actions .btn { justify-content: center; text-align: center; transition: background .2s, color .2s, border-color .2s; }
+@media (min-width: 760px) {
+  .st-reserve { height: 345px; }
+  .st-actions { grid-template-columns: repeat(3, max-content); }
+}
 .btn.home-path-go { margin-top: var(--s-3); padding: var(--s-2) var(--s-4); font-size: var(--t-sm); }
 /* The step's drawing (PathArt): what the step does, on a soft green panel, in theme tokens. */
 .home-path-art {
@@ -1982,12 +2001,15 @@ a.row, a.chip { text-decoration: none; }
 @media (max-width: 760px) {
   /* The six doors on the first screen of a 750 px phone (Eric's), under the title and drawing. */
   .is-home .home-title { font-size: var(--t-xl); margin-top: 0; }
-  .home-tagline { font-size: var(--t-base); margin-bottom: var(--s-3); }
-  .view .home-doors h2 { font-size: var(--t-base); margin-bottom: var(--s-2); }
+  /* Lines filled rather than balanced (Eric, 2026-11-19): balanced, the tagline stood about 330 px
+     wide under a 380 px title on his phone. Same number of lines either way. */
+  .home-tagline { font-size: var(--t-base); margin-bottom: var(--s-3); text-wrap: pretty; }
+  /* The page's heading size, as every other block (Eric, 2026-11-19; it was a size down). */
+  .view .home-doors h2, .view .home-examples h2 { margin-bottom: var(--s-2); }
   .door { min-height: 56px; padding: var(--s-2) var(--s-3); }
 }
 @media (max-width: 760px) {
-  .home-house-reserve { order: -1; margin-bottom: 78px; }
+  .home-house-reserve { margin-bottom: 56px; }
 }
 /* Phones: the tiles held above the fold on a 750 px screen. */
 @media (max-width: 500px) {
@@ -2007,9 +2029,11 @@ a.row, a.chip { text-decoration: none; }
   .home-house-link { order: -1; }
   .home-house .home-drawing { max-height: 190px; overflow: hidden; display: flex; align-items: center; }
 }
-/* On a wide screen the drawing column is narrower, so the drawing stands about as tall as the doors. */
+/* On a wide screen the carousel's column is sized so the block stands as tall as the doors beside
+   it (Eric, 2026-11-19): 304 px, a 3:2 sheet 300 px wide under its title, name and dots, measured
+   in EN and FR. Taller doors or a longer title change the sum. */
 @media (min-width: 761px) {
-  .home-start { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); align-items: start; }
+  .home-start { grid-template-columns: minmax(0, 1fr) 300px; align-items: start; }
   .is-home .home-tagline { margin-bottom: var(--s-7); }
 }
 /* Why: the paragraph takes the width; "Read more" under it. */
@@ -2019,8 +2043,6 @@ a.row, a.chip { text-decoration: none; }
 @media (max-width: 760px) {
   /* The caption says where the drawing leads: shown on a phone too, its name only. */
   .home-house-link .home-house figcaption { display: block; font-size: var(--t-sm); padding: var(--s-2) var(--s-3); }
-  .home-house-link .home-house figcaption .home-house-rest { display: none; }
-  .home-house-link .home-house figcaption .home-house-short { display: inline; }
 }
 
 /* ---- People and places (brief 11, CM1): hairline lists, three columns on a desktop ---------- */

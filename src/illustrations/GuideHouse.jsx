@@ -130,7 +130,7 @@ export default function GuideHouse({ picks, go, title }) {
  * collided, and a drawing that looked clickable led nowhere). Brief 02 will draw the house with
  * a person in it.
  */
-export function HouseDrawing({ sol, go, caption, shortCaption }) {
+export function HouseDrawing({ sol, go }) {
   const plate = plateFor(sol.id)
   if (!plate) return null
   const t = (en, fr) => (cat.getLang() === 'fr' ? fr : en)
@@ -139,7 +139,7 @@ export function HouseDrawing({ sol, go, caption, shortCaption }) {
     <Nav route={{ view: 'solution', id: sol.id }} go={go} className="home-house-link">
       <figure className="plate home-house">
         <div className="home-drawing" aria-hidden="true" dangerouslySetInnerHTML={{ __html: html }} />
-        <figcaption><span className="home-house-name">{cat.tName(sol)}</span>{caption && <span className="home-house-rest"> · {caption}</span>}{shortCaption && <span className="home-house-short"> · {shortCaption}</span>}</figcaption>
+        <figcaption><span className="home-house-name">{cat.tName(sol)}</span></figcaption>
       </figure>
     </Nav>
   )
@@ -156,7 +156,6 @@ const ROTATE_MS = 6000
  */
 export function HouseCarousel({ sols, go }) {
   const H = ui.home
-  const C = ui.comparison
   const [index, setIndex] = useState(0)
   const [stopped, setStopped] = useState(false)
   const [waiting, setWaiting] = useState(false)
@@ -177,7 +176,9 @@ export function HouseCarousel({ sols, go }) {
       <div className="home-slides">
         {sols.map((s, i) => (
           <div key={s.id} className={'home-slide' + (i === index ? (turned ? ' is-on is-turning' : ' is-on') : '')}>
-            <HouseDrawing sol={s} go={go} caption={`${C.chooseIf} ${cat.L(s, 'choose_if')}`} shortCaption={H.carouselShort} />
+            {/* The name alone since the carousel has its title (Eric, 2026-11-19): with its "Choose it
+                if" sentence it stood 90 px taller than the doors beside it. */}
+            <HouseDrawing sol={s} go={go} />
           </div>
         ))}
       </div>

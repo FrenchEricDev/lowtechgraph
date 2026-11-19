@@ -387,6 +387,7 @@ function pageNav(lang, altPaths) {
           item('needs', ui.app.navBrowse),
           item('guides', ui.app.navGuides),
           item('tree', ui.app.navBuild),
+          item('people', ui.people.nav),
         ].join('')}</nav>
       </div>
       <div class="header-right">
@@ -507,6 +508,9 @@ function resourcesBody(lang) {
     }).join('')}`
 }
 
+// As the app (App.jsx, TODO F19-k): the "From an idea to something built" cards are hidden since
+// 2026-11-19; the site tour and its three links stand in their place.
+const SHOW_PATH_CARDS = false
 function homeBody(lang) {
   // Mirrors the app's home page (brief 06, second pass): the doors in the reader's words, each
   // to its guide, then where the know-how comes from, the path, and why. A crawler and a JS-less
@@ -531,15 +535,21 @@ function homeBody(lang) {
     <p class="home-tagline">${esc(H.tagline || H.intro)}</p>
     <div class="home-start">
       <section class="home-doors"><h2>${esc(H.startHeading)}</h2><div class="door-grid">${guides.map(door).join('')}</div><a class="link home-doors-all" href="${esc(pathOf('guides', null, lang))}">${esc(H.doorGuides)} →</a></section>
-      <div class="home-house-reserve" aria-hidden="true"></div>
+      <section class="home-examples"><h2>${esc(H.examplesHeading)}</h2><div class="home-house-reserve" aria-hidden="true"></div></section>
     </div>
     </div>
-    <section class="home-sec"><h2>${esc(H.pathHeading)}</h2><ul class="home-path">${[
+    <section class="home-sec"><h2>${esc(ui.siteTour.heading)}</h2>
+      <ol class="sr-only">${[1, 2, 3, 4, 5, 6, 7].map((n) => `<li>${esc(ui.siteTour['s' + n])}</li>`).join('')}</ol>
+      <div class="home-frame home-tour-frame"><div class="st-reserve" aria-hidden="true"></div>
+      <div class="st-actions">${[['needs', H.pathCompareGo, 'btn'], ['tree', H.pathFitGo, 'btn secondary'], ['people', H.pathTeachGo, 'btn secondary']]
+        .map(([view, label, cls]) => `<a class="${cls}" href="${esc(pathOf(view, null, lang))}">${esc(label)}</a>`).join('')}</div></div></section>
+    ${SHOW_PATH_CARDS ? `<section class="home-sec"><h2>${esc(H.pathHeading)}</h2><ul class="home-path">${[
       ['needs', H.pathCompare, H.pathCompareBody, H.pathCompareGo],
       ['people', H.pathTeach, H.pathTeachBody, H.pathTeachGo],
       ['tree', H.pathFit, H.pathFitBody, H.pathFitGo],
-    ].map(([view, t, b, label]) => `<li><a class="home-path-card" href="${esc(pathOf(view, null, lang))}"><div class="home-path-art"></div><div class="home-path-text"><h3 class="home-path-title">${esc(t)}</h3><p>${esc(b)}</p><span class="btn home-path-go">${esc(label)}</span></div></a></li>`).join('')}</ul></section>
-    <section><h2>${esc(H.whyHeading)}</h2><p>${esc(ui.why.lede)}</p><p>${link(pathOf('why', null, lang), H.readMore)}</p><p class="home-sources">${esc(fill(H.sourcesBody, { names: '' })).replace(/\.$/, '')}${top.join(' · ')}.</p></section>`
+    ].map(([view, t, b, label]) => `<li><a class="home-path-card" href="${esc(pathOf(view, null, lang))}"><div class="home-path-art"></div><div class="home-path-text"><h3 class="home-path-title">${esc(t)}</h3><p>${esc(b)}</p><span class="btn home-path-go">${esc(label)}</span></div></a></li>`).join('')}</ul></section>` : ''}
+    <section class="home-sec is-why"><h2>${esc(H.whyHeading)}</h2><p class="home-frame home-why">${esc(ui.why.lede.replace(/\.$/, ''))}… ${link(pathOf('why', null, lang), H.readMore)}</p></section>
+    <div class="home-foot"><p class="home-sources">${esc(fill(H.sourcesBody, { names: '' })).replace(/\.$/, '')}${top.join(' · ')}.</p></div>`
 }
 
 // The same line the app prints for a reader arriving from outside (D10 Q2, brief 01). Why

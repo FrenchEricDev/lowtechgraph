@@ -31,6 +31,8 @@ const SubDrawing = lazy(() => loadGuideHouse().then((m) => ({ default: m.SubDraw
 const GuideThumb = lazy(() => loadGuideHouse().then((m) => ({ default: m.GuideThumb })))
 // Why's drawings (brief 11, C): the plates, loaded with the page that needs them.
 const WhyBubble = lazy(() => import('./illustrations/WhyBubble.jsx'))
+// The home page's site tour (F19): its own chunk, as the first load is near its budget.
+const SiteTour = lazy(() => import('./SiteTour.jsx'))
 if (typeof window !== 'undefined') {
   const warm = () => { loadPlate(); loadGuideHouse() }
   if ('requestIdleCallback' in window) window.requestIdleCallback(warm, { timeout: 4000 })
@@ -534,6 +536,11 @@ function Header({ home, go, lang, route, filters, filtersActive, settingsCount, 
             {ui.app.navBuild}
             <Badge n={placed} />
           </Nav>
+          {/* The community, a main page since the home page's tour ends there (Eric, 2026-11-19). */}
+          <Nav route={{ view: 'people' }} go={go} className="hnav-item"
+               aria-current={route.view === 'people' ? 'page' : undefined}>
+            {ui.people.nav}
+          </Nav>
         </nav>
       </div>
 
@@ -626,6 +633,10 @@ function Header({ home, go, lang, route, filters, filtersActive, settingsCount, 
                  aria-current={route.view === 'tree' ? 'page' : undefined} aria-label={buildLabel}>
               {ui.app.navBuild}
               <Badge n={placed} />
+            </Nav>
+            <Nav route={{ view: 'people' }} go={go} className="hmenu-item"
+                 aria-current={route.view === 'people' ? 'page' : undefined}>
+              {ui.people.nav}
             </Nav>
           </nav>
           {/* Filters and Settings sit in the mobile menu, after a rule: preferences, not
@@ -1133,10 +1144,12 @@ function SiteFooter({ go, compact }) {
   )
 }
 
-// Foot of the home page: the two things a reader can do for the project.
-function HomeFoot() {
+// Foot of the home page: the two things a reader can do for the project, under a note on where
+// the know-how comes from (Eric, 2026-11-19: under the bar, not floating under the why).
+function HomeFoot({ note }) {
   return (
     <div className="home-foot">
+      {note && <p className="home-sources">{note}</p>}
       <div className="home-foot-item">
         <h2>{ui.home.contributeHeading}</h2>
         <button className="btn secondary"
@@ -1352,6 +1365,15 @@ function topSources(n = 6) {
   return [...by.values()].sort((a, b) => b.n - a.n).slice(0, n)
 }
 
+// The ways onward under the site tour: [label in ui.home, route, the tour's scenes it is about].
+const TOUR_WAYS = [
+  ['pathCompareGo', { view: 'needs' }, [0, 1, 2, 3]],
+  ['pathFitGo', { view: 'tree' }, [4, 5]],
+  ['pathTeachGo', { view: 'people' }, [6]],
+]
+// The "From an idea to something built" cards, hidden 2026-11-19 (TODO F19-k).
+const SHOW_PATH_CARDS = false
+
 // Water, heat, hot water, the envelope, sanitation: one drawing each, on the same house.
 const HOME_DRAWINGS = ['SOL-053', 'SOL-126', 'SOL-059', 'SOL-124', 'SOL-069']
 
@@ -1362,6 +1384,9 @@ function Home({ go, lang }) {
   // The builder card plays the four-step animation (S8, Eric 2026-11-04); its Pause sits beside
   // the card's link, as a button cannot go inside one.
   const [tourPaused, setTourPaused] = useState(false)
+  const tourWays = (scene) => TOUR_WAYS.map(([label, route, scenes]) => (
+    <Nav key={label} route={route} go={go} className={'btn' + (scenes.includes(scene) ? '' : ' secondary')}>{H[label]}</Nav>
+  ))
   return (
     <div className="view is-home">
       {/* The static page and the hydrated page render the same heading string. */}
@@ -1381,16 +1406,35 @@ function Home({ go, lang }) {
           </div>
           <Nav route={{ view: 'guides' }} go={go} className="link home-doors-all">{H.doorGuides} →</Nav>
         </section>
+        {/* Titled like the doors beside it (Eric, 2026-11-19). */}
         {houseSols.length > 0 && (
-          <Suspense fallback={<div className="home-house-reserve" aria-hidden="true" />}>
-            <HouseCarousel sols={houseSols} go={go} />
-          </Suspense>
+          <section className="home-examples" aria-labelledby="examples-h">
+            <h2 id="examples-h">{H.examplesHeading}</h2>
+            <Suspense fallback={<div className="home-house-reserve" aria-hidden="true" />}>
+              <HouseCarousel sols={houseSols} go={go} />
+            </Suspense>
+          </section>
         )}
       </div>
 
-      {/* The three ways onward, each a whole-card link (Eric, 2026-11-02: replaces the 2026-10-21
-          "manual, no links"): the needs, the community, My system. */}
-      <section className="home-sec" aria-labelledby="path-h">
+      {/* The site in seven steps (F19, Eric 2026-11-18), with the ways onward under it: the tour
+          shows what can be done, the three links lead there, the one for the step on screen lit
+          (Eric 2026-11-19, in place of the "From an idea to something built" cards below). */}
+      <section className="home-sec" aria-labelledby="tour-h">
+        <h2 id="tour-h">{ui.siteTour.heading}</h2>
+        {/* The links are in the static page too, under the space held for the tour. */}
+        {/* One rounded frame round the drawing, its steps and its links (Eric, 2026-11-19). */}
+        <div className="home-frame home-tour-frame">
+          <Suspense fallback={<><div className="st-reserve" aria-hidden="true" /><div className="st-actions">{tourWays(0)}</div></>}>
+            <SiteTour actions={tourWays} />
+          </Suspense>
+        </div>
+      </section>
+
+      {/* HIDDEN 2026-11-19 (Eric): the three cards say what the tour above now shows. Kept, not
+          drawn, until the new home page is settled; TODO F19-k: remove it, with PathArt, the
+          camera BuilderTour and their styles, if the tour and its links stay. */}
+      {SHOW_PATH_CARDS && <section className="home-sec" aria-labelledby="path-h">
         <h2 id="path-h">{H.pathHeading}</h2>
         <ul className="home-path">
           {[[H.pathCompare, H.pathCompareBody, 'compare', { view: 'needs' }, H.pathCompareGo],
@@ -1414,16 +1458,15 @@ function Home({ go, lang }) {
             </li>
           ))}
         </ul>
-      </section>
+      </section>}
 
       <section className="home-sec is-why" aria-labelledby="why-h">
         <h2 id="why-h">{H.whyHeading}</h2>
-        <p className="home-why">{ui.why.lede}</p>
-        <Nav route={{ view: 'why' }} go={go} className="link">{H.readMore} →</Nav>
-        <p className="home-sources">{fill(H.sourcesBody, { names: topSources().map((x) => (x.site === 'Low-tech Lab wiki' ? 'Low-tech Lab' : x.site)).join(' · ') })}</p>
+        {/* In a light box like every other block, the page's lede cut short (Eric, 2026-11-19). */}
+        <p className="home-frame home-why">{ui.why.lede.replace(/\.$/, '')}… <Nav route={{ view: 'why' }} go={go} className="link">{H.readMore} →</Nav></p>
       </section>
 
-      <HomeFoot />
+      <HomeFoot note={fill(H.sourcesBody, { names: topSources().map((x) => (x.site === 'Low-tech Lab wiki' ? 'Low-tech Lab' : x.site)).join(' · ') })} />
     </div>
   )
 }

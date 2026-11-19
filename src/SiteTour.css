@@ -1,0 +1,121 @@
+/*
+ * The site in seven steps (SiteTour.jsx, F19). The builder tour's look (BuilderTour.css: the box,
+ * the cards, the finger) plus a few site pieces a size down: a field, a panel of rows, a table.
+ */
+.st { margin: 0; display: grid; gap: var(--s-3); }
+.st-box { position: relative; }
+
+.st-field, .st-panel, .st-title, .st-table { position: absolute; }
+.st-field {
+  display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 10px; font-size: 14px;
+  background: var(--surface); border: 2px solid var(--accent); border-radius: var(--radius-sm); color: var(--ink);
+}
+.st-field svg { color: var(--muted); }
+.st-caret { width: 1px; height: 16px; margin-left: -6px; background: var(--ink); }
+
+.st-panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .10); overflow: hidden;
+}
+.st-head { padding: 6px 10px; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); }
+.st-row { padding: 7px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st-row:last-child { border-bottom: 0; }
+.st-row.is-lit { background: var(--accent-bg); color: var(--accent-ink); font-weight: 600; }
+.st-check { display: flex; align-items: center; gap: 8px; }
+.st-box-mark {
+  flex: none; width: 14px; height: 14px; display: inline-grid; place-items: center;
+  border: 1.5px solid var(--muted); border-radius: 3px; background: var(--surface);
+}
+.st-box-mark.is-on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.st-foot { padding: 7px 10px; font-weight: 700; border-top: 1px solid var(--line); background: var(--bg); }
+
+.st-title { font-size: 15px; font-weight: 700; line-height: 1.25; color: var(--ink); }
+.st-title.is-in { position: static; padding: 8px 10px 2px; }
+
+.st-table { table-layout: fixed; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); font-size: 11.5px; }
+.st-table th, .st-table td { padding: 6px 7px; text-align: left; vertical-align: top; line-height: 1.25; border-bottom: 1px solid var(--line); overflow: hidden; text-overflow: ellipsis; }
+.st-table th { hyphens: auto; }
+.st-table th:first-child { width: 36%; }
+.st-table th:nth-child(2), .st-table th:nth-child(3) { width: 23%; }
+.st-table th { font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.st-table tr.is-ours td:first-child { font-weight: 700; }
+.st-table .is-lit { background: var(--accent-bg); color: var(--accent-ink); }
+.st-table th.is-lit { color: var(--accent-ink); }
+
+.st-tut { display: grid; gap: 1px; white-space: normal; }
+.st-tut-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st-tut-site { font-size: 10.5px; font-weight: 400; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.st-label { padding: 6px 10px 3px; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.st-select {
+  margin: 0 10px; height: 30px; padding: 0 10px; display: flex; align-items: center; justify-content: space-between;
+  border: 2px solid var(--accent); border-radius: var(--radius-sm); background: var(--surface); font-weight: 600;
+}
+.st-verdict {
+  margin: 12px 10px 6px; padding: 6px 8px; display: flex; align-items: center; gap: 6px; font-size: 13px;
+  border-left: 4px solid var(--v); background: var(--v-bg); border-radius: var(--radius-xs);
+}
+.st-verdict svg { color: var(--v); }
+.st-v-word { color: var(--v); font-weight: 700; }
+.st-band { margin: 0 10px 10px; color: var(--muted); font-size: 11.5px; line-height: 1.35; }
+
+/* The timeline (F19-c): a scene fades in, its pieces fade or light up on their beat, the links
+   draw themselves, the finger fades in before it glides. */
+.st-scene { position: absolute; inset: 0; animation: st-in .35s ease; }
+@keyframes st-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .st-scene { animation: none; } }
+.st-fade { opacity: 0; transition: opacity .3s ease; }
+.st-fade.is-on { opacity: 1; }
+.st-row, .st-table td, .st-table th, .st-box-mark { transition: background .2s, color .2s, border-color .2s; }
+.st-link { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .5s ease; }
+.st-link.is-on { stroke-dashoffset: 0; }
+.st-select { transition: transform .15s ease, box-shadow .15s ease; }
+.st-select.is-press { transform: translateY(1px) scale(.98); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
+.st-box .bt-dot { transition: left .55s cubic-bezier(.4, 0, .2, 1), top .55s cubic-bezier(.4, 0, .2, 1), transform .15s, opacity .25s; }
+.st-box .bt-dot.is-off { opacity: 0; }
+
+/* With reduced motion: the seven finished frames, each with its caption. */
+.st-stills { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s-5); }
+.st-still { display: grid; gap: var(--s-2); max-width: 468px; }
+
+
+/* The words beside the drawing. Phone: one caption and seven dots. Wide: the seven captions. */
+.st-side { display: grid; gap: var(--s-2); align-content: start; }
+.st-room { position: relative; }
+/* The step's caption, in the frame's foot (phone, and the still list): part of the drawing, read
+   at a glance. Two lines held, so the frame keeps its height from step to step. */
+.st-foot-cap {
+  margin: 0; display: flex; align-items: center; gap: var(--s-2); padding: 8px 12px;
+  min-height: calc(2 * 1.3em + 16px); line-height: 1.3; border-top: 1px solid var(--line);
+  background: var(--surface); font-size: var(--t-md); font-weight: 700; color: var(--ink);
+}
+.st-foot-n {
+  flex: none; padding: 2px 7px; border-radius: 999px; background: var(--accent); color: var(--on-accent);
+  font-size: var(--t-xs); font-variant-numeric: tabular-nums;
+}
+.st-foot-text { animation: st-in .35s ease; }
+@media (prefers-reduced-motion: reduce) { .st-foot-text { animation: none; } }
+
+.st-list { display: none; margin: 0; padding: 0; list-style: none; }
+.st-item {
+  width: 100%; display: flex; gap: var(--s-2); align-items: baseline; padding: 6px var(--s-2); text-align: left;
+  border: 0; border-left: 3px solid transparent; background: none; color: var(--muted); font: inherit; font-size: var(--t-md); cursor: pointer;
+}
+.st-item.is-on { border-left-color: var(--accent); color: var(--ink); font-weight: 600; background: var(--accent-bg); }
+.st-item-n { flex: none; width: 1.2em; font-size: var(--t-xs); font-weight: 700; font-variant-numeric: tabular-nums; }
+.st-controls { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.st-dots { display: flex; gap: 2px; }
+/* A 24px target (WCAG 2.5.8) around a 10px dot. */
+.st-dot { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.st-dot::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.st-dot.is-on::after { background: var(--accent); }
+
+@media (min-width: 760px) {
+  .st { grid-template-columns: minmax(0, 468px) minmax(0, 1fr); gap: var(--s-5); align-items: start; }
+  .st-dots, .st-box:not(.is-still) .st-foot-cap { display: none; }
+  .st .st-actions { grid-column: 1 / -1; }
+
+  .st-list { display: grid; gap: 2px; }
+  .st-sr { display: none; }
+  .st-stills { grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); }
+}

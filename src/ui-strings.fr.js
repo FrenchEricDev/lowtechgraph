@@ -75,13 +75,14 @@ export const fr = {
     cardExpand: 'Lire la suite',
     cardCollapse: 'Réduire',
 
-    startHeading: 'Par où voulez-vous commencer ?',
+    startHeading: 'Partez d’un objectif',
     doorGuide: 'Guide · {n} solutions',
-    doorGuides: 'Parcourir les guides',
-    carouselShort: 'Une des solutions low-tech pour votre logement.',
+    doorGuides: 'Parcourir tous nos guides',
     carouselLabel: 'Choisir une solution à montrer',
     carouselShow: 'Montrer {name}',
-    sourcesBody: 'Chaque solution renvoie aux personnes qui l’ont réalisée. Les sources les plus utilisées de notre catalogue : {names}.',
+    // « réellement » kept on purpose, as "actually" in English (Eric, 2026-11-19).
+    sourcesBody: 'Note : chaque solution renvoie aux tutoriels et aux personnes qui l’ont réellement construite. Les sources vers lesquelles notre catalogue renvoie le plus : {names}.',
+    examplesHeading: 'Exemples de solutions low-tech',
     pathHeading: 'D’une idée à une réalisation',
     pathCompare: 'Comparer les solutions',
     pathCompareBody: 'Chaque besoin, chaque option côte à côte : coût, savoir-faire, entretien, ce que cela change à vos journées.',
@@ -1599,6 +1600,20 @@ export const fr = {
     verdict: 'Comparé à la pluie, au soleil et au froid de chez vous',
     pause: 'Pause',
     play: 'Lecture',
+  },
+
+  siteTour: {
+    label: 'Ce que vous pouvez faire sur ce site, en sept étapes',
+    heading: 'Notre plateforme en un coup d’œil',
+    searchWord: 'eau de pluie',
+    s1: 'Cherchez ce que vous voulez faire',
+    s2: 'Gardez ce qui convient à votre logement',
+    s3: 'Comparez les façons de répondre à un besoin',
+    s4: 'Trouvez un tutoriel pour le construire',
+    s5: 'Reliez les solutions en un système',
+    s6: 'Vérifiez-le avec le climat de chez vous',
+    s7: 'Trouvez des gens avec qui le construire',
+    goTo: 'Afficher l’étape {n}',
   },
 
   treeExport: {
