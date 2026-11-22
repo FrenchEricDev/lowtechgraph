@@ -2111,3 +2111,21 @@ a.row, a.chip { text-decoration: none; }
 
 /* The full name under a need's or sub-need's everyday label (C2). */
 .view .long-name { margin: 0 0 var(--s-3); font-size: var(--t-sm); color: var(--muted); }
+
+/* ---- Room to breathe on a wide screen (Eric, 2026-11-21: "quite crowded") ------------------
+   Last in the file so it wins over the per-block margins above. A phone keeps its tighter rhythm:
+   there the first screen is counted in pixels. Measured before: 32 px between home blocks, 24
+   between a solution page's sections, 8 under a heading. */
+@media (min-width: 761px) {
+  .is-home .home-tagline { margin-bottom: var(--s-8); }
+  .home-sec { margin-top: calc(var(--s-8) + var(--s-5)); }
+  .home-foot { margin-top: calc(var(--s-8) + var(--s-5)); padding-top: var(--s-6); }
+  .view.is-home h2, .view .home-doors h2, .view .home-examples h2 { margin-bottom: var(--s-4); }
+  .view h2 { margin-bottom: var(--s-4); }
+  .view .lede { margin-bottom: var(--s-6); }
+  .cmp-block { margin: var(--s-8) 0; }
+  .cmp-block > h2 { margin-bottom: var(--s-3); }
+  .build-block, .plan-sec, .ref-matter { margin-top: var(--s-8); }
+  .site-req { margin-top: var(--s-6); margin-bottom: var(--s-6); }
+  .sum-parts { margin: var(--s-5) 0 var(--s-6); }
+}
