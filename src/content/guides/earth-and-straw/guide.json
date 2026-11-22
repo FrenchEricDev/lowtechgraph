@@ -1,0 +1,54 @@
+{
+  "slug": {
+    "en": "earth-and-straw",
+    "fr": "terre-et-paille"
+  },
+  "en": {
+    "door": "Build with earth and straw",
+    "title": "Local materials: earth and straw",
+    "intro": "Walls, finishes and an oven from clay, sand and straw dug or grown near the house. Four that go together, from a plaster on an existing wall to a new cob house wrapped in straw."
+  },
+  "fr": {
+    "door": "Construire en terre et en paille",
+    "title": "Matériaux locaux : la terre et la paille",
+    "intro": "Des murs, des enduits et un four en argile, en sable et en paille, extraits ou cultivés près de la maison. Quatre solutions qui vont ensemble, de l’enduit sur un mur existant à la maison en bauge enveloppée de paille."
+  },
+  "picks": [
+    {
+      "id": "SOL-041",
+      "en": {
+        "why": "Clay plaster on an inside wall: earth from the site, and a room that evens out its own humidity. The easy way in."
+      },
+      "fr": {
+        "why": "Un enduit terre sur un mur intérieur : de la terre du terrain, et une pièce qui régule elle-même son humidité. La porte d’entrée la plus simple."
+      }
+    },
+    {
+      "id": "SOL-244",
+      "en": {
+        "why": "A first earth build, outdoors and small enough to learn on, that bakes in the heat its walls store."
+      },
+      "fr": {
+        "why": "Une première construction en terre, dehors et assez petite pour apprendre, qui cuit dans la chaleur stockée par ses parois."
+      }
+    },
+    {
+      "id": "SOL-115",
+      "en": {
+        "why": "Walls of clay, sand and straw built up by hand with no moulds: they carry the roof and store heat."
+      },
+      "fr": {
+        "why": "Des murs d’argile, de sable et de paille montés à la main, sans coffrage : ils portent le toit et stockent la chaleur."
+      }
+    },
+    {
+      "id": "SOL-146",
+      "en": {
+        "why": "Straw bales strapped to the outside of the wall and rendered over: the insulation a thick earth wall lacks."
+      },
+      "fr": {
+        "why": "Des bottes de paille sanglées contre l’extérieur du mur puis enduites : l’isolation qui manque à un mur de terre épais."
+      }
+    }
+  ]
+}

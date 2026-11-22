@@ -903,6 +903,26 @@ const EN = {
     languageName: { en: 'English', fr: 'French' },
     alsoIn: 'also in {lang}',
     formatName: { text: 'text', video: 'video', pdf: 'PDF' },
+    // F9: when a solution has both, the videos are listed apart from what is read.
+    // R1 trial: the drawing, a photo and a video as tabs.
+    media: {
+      label: 'How it looks', drawing: 'Drawing', photo: 'Photo', video: 'Video',
+      photoBy: 'Photo: {author}', photoSource: 'source',
+      videoBy: 'By {maker}', play: 'Play the video',
+      videoNote: 'It plays from YouTube, which then sees your visit.',
+    },
+    tutorialsToRead: 'To read',
+    tutorialsToWatch: 'To watch',
+    // B4: the Low-tech Lab wiki's own figures for a page, on a line of their own. The cost is
+    // the author's, for their build, so it is said as theirs and never as a price.
+    tutTime: {
+      minute: ['{n} minute', '{n} minutes'], hour: ['{n} hour', '{n} hours'],
+      day: ['{n} day', '{n} days'], week: ['{n} week', '{n} weeks'], month: ['{n} month', '{n} months'],
+    },
+    tutLevel: { 'very-easy': 'very easy', easy: 'easy', medium: 'medium difficulty', hard: 'hard', 'very-hard': 'very hard' },
+    tutCost: 'materials about {cost} for the author’s build',
+    tutDraft: 'the author marks it as a draft',
+    tutFigures: 'The tutorial’s own figures',
     opensNewTab: '(opens in a new tab)',
     // Not a DIY project: another heading, and the options for the same need that are.
     gettingDoneHeading: 'Getting it done',
@@ -1060,7 +1080,7 @@ const EN = {
     // The resources index and the breadcrumb.
     indexTitle: 'Solutions by resource',
     indexIntro: 'Everything a home takes in, passes on or gives out. Open one to see what makes it and what uses it.',
-    crumb: 'Resources',
+    crumb: 'Solutions by resource',  // F18: the page's own title, not the old name
     byNeed: 'By need',
     byResource: 'By resource',
     groups: { energy: 'Energy', water: 'Water', material: 'Materials', air: 'Air', building: 'The building', signal: 'Light and signal' },
@@ -1826,7 +1846,11 @@ const EN = {
     close: 'Close',
     notDrawn: '+{n} not drawn',
     notDrawnWhy: 'Some solutions have no drawing: a choice of material or a way of assembling is not an object you can point at.',
-    indexTitle: 'Your solutions',
+    indexTitle: 'Your solutions, by need',
+    // S7: the list as a plan. Remove takes the card off the canvas.
+    rowFacts: 'Cost: {cost} · Skill to build: {skill}',
+    remove: 'Remove',
+    removeNamed: 'Remove {name} from your system',
     justAdded: 'Added to the drawing: {name}',
     conflictsTitle: 'Potential conflicts',
     conflictsLead: 'These solutions could compete for the same space.',

@@ -1,11 +1,11 @@
 {
- "data_updated": "2026-11-21",
+ "data_updated": "2026-11-22",
  "counts": {
   "functions": 15,
-  "subfunctions": 88,
+  "subfunctions": 89,
   "io_types": 52,
-  "solutions": 247,
-  "io_index": 509,
+  "solutions": 251,
+  "io_index": 517,
   "bases": 24,
   "coefficients": 78,
   "fabric_classes": 56

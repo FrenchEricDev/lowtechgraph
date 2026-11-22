@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-21",
+ "generated": "2026-11-22",
  "counts": {
   "functions": 15,
-  "subfunctions": 88,
+  "subfunctions": 89,
   "io_types": 52,
-  "solutions": 247,
-  "io_index": 509,
+  "solutions": 251,
+  "io_index": 517,
   "bases": 24,
   "coefficients": 78,
   "fabric_classes": 56
@@ -1543,6 +1543,22 @@
     "short": "La vaisselle",
     "description": "Laver la vaisselle et les ustensiles après les repas. Environ un dixième de l'eau du foyer y passe, et elle doit être potable : la réglementation française autorise l'eau de pluie à l'intérieur pour les WC, le lavage des sols et le linge, pas pour la vaisselle. Le choix se fait entre un appareil et un évier, et fait rare, l'appareil gagne largement sur l'eau, parce qu'une machine fait recirculer sa charge d'eau alors qu'un robinet jette chaque litre une seule fois.",
     "efficiency_basis": "Classement par eau consommée pour une même vaisselle, l'axe que les mesures documentent réellement et celui qui contraint une maison alimentée par une cuve. L'énergie est un second axe et va dans le même sens ici, puisque l'essentiel de l'énergie d'une vaisselle sert à chauffer l'eau. Le lavage à la main n'est pas une technique mais un éventail : l'étude qui situe la moyenne autour de 100 litres par charge relève 33 litres au mieux et 440 au pire, et toute la différence tient à savoir si le robinet coule."
+   }
+  },
+  {
+   "id": "FN-02.16",
+   "name": "Heat distribution (emitters)",
+   "short": "Getting the heat to the rooms",
+   "function_id": "FN-02",
+   "summary": "Carrying the heat a boiler, a heat pump or a solar loop makes into the rooms that need it. The lower the water temperature an emitter can work with, the better a heat pump or a solar collector does, so the choice here decides what can heat the house.",
+   "efficiency_basis": "Ranked by the lowest water temperature it can heat a room with: the cooler the water, the better a heat pump or a solar collector works.",
+   "slug": "heat-distribution",
+   "slug_fr": "distribution-de-la-chaleur",
+   "fr": {
+    "name": "Distribution de la chaleur (émetteurs)",
+    "short": "Amener la chaleur dans les pièces",
+    "description": "Amener dans les pièces la chaleur que produit une chaudière, une pompe à chaleur ou un capteur solaire. Plus un émetteur se contente d’une eau peu chaude, mieux fonctionne une pompe à chaleur ou un capteur solaire : ce choix décide donc de ce qui peut chauffer la maison.",
+    "efficiency_basis": "Classé selon la température d’eau la plus basse avec laquelle il chauffe une pièce : plus l’eau est fraîche, mieux fonctionne une pompe à chaleur ou un capteur solaire."
    }
   }
  ],
@@ -4063,8 +4079,8 @@
     }
    ],
    "ratings": {
-    "build": 1,
-    "maintain": 1,
+    "build": 2,
+    "maintain": 2,
     "efficiency": 2,
     "build_skill": "Basic",
     "burden": 1,
@@ -4157,8 +4173,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 2,
+    "build": 3,
+    "maintain": 3,
     "efficiency": 4,
     "build_skill": "Intermediate",
     "burden": 2,
@@ -4203,7 +4219,17 @@
      "maker": "Denis Fréhel",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:DenisFRL",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a clay-straw insulation panel"
+     "line": "Full build: a clay-straw insulation panel",
+     "time": [
+      3,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      100,
+      "EUR"
+     ],
+     "draft": true
     }
    ],
    "tutorial_lines_fr": {
@@ -4254,8 +4280,8 @@
     }
    ],
    "ratings": {
-    "build": 1,
-    "maintain": 1,
+    "build": 2,
+    "maintain": 2,
     "efficiency": 2,
     "build_skill": "Basic",
     "burden": 1,
@@ -4300,7 +4326,12 @@
      "maker": "Low-Tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:GoldofBengal",
      "site": "Low-tech Lab wiki",
-     "line": "Steps: washing and processing sheep’s wool"
+     "line": "Steps: washing and processing sheep’s wool",
+     "time": [
+      3,
+      "day"
+     ],
+     "level": "medium"
     }
    ],
    "tutorial_lines_fr": {
@@ -4350,8 +4381,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 1,
+    "build": 3,
+    "maintain": 2,
     "efficiency": 3,
     "build_skill": "Intermediate",
     "burden": 1,
@@ -4459,8 +4490,8 @@
     }
    ],
    "ratings": {
-    "build": 1,
-    "maintain": 1,
+    "build": 2,
+    "maintain": 2,
     "efficiency": 2,
     "build_skill": "Basic",
     "burden": 1,
@@ -5426,7 +5457,16 @@
      "maker": "Low-Tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:GoldofBengal",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a masonry heater"
+     "line": "Full build: a masonry heater",
+     "time": [
+      1,
+      "month"
+     ],
+     "level": "hard",
+     "cost": [
+      3900,
+      "EUR"
+     ]
     },
     {
      "url": "https://www.youtube.com/watch?v=mmSr_eUJfdg",
@@ -6110,8 +6150,20 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://www.homebuilding.co.uk/advice/how-to-fit-thermostatic-radiator-valves",
+     "lang": "en",
+     "format": "text",
+     "title": "How to fit thermostatic radiator valves",
+     "maker": "Steve Jenkins",
+     "site": "Homebuilding & Renovating",
+     "line": "One part: fitting a thermostatic valve on a radiator"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://www.homebuilding.co.uk/advice/how-to-fit-thermostatic-radiator-valves": "Une partie : poser un robinet thermostatique sur un radiateur"
+   },
    "tutorial_status": null,
    "sources": [
     {
@@ -6424,7 +6476,16 @@
      "maker": "Palgb",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Palgb",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: heat-recovery ventilation"
+     "line": "Full build: heat-recovery ventilation",
+     "time": [
+      14,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      1600,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -7609,7 +7670,13 @@
      "maker": "Bababa",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Bababa",
      "site": "Low-tech Lab wiki",
-     "line": "Sizing: rainwater storage for autonomy"
+     "line": "Sizing: rainwater storage for autonomy",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "medium",
+     "draft": true
     },
     {
      "url": "https://www.ctahr.hawaii.edu/hawaiirain/downloads/5_flush.pdf",
@@ -7627,7 +7694,16 @@
      "maker": "L'Atelier Low Tech",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:L%27Atelier_Low_Tech",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: rainwater harvesting"
+     "line": "Full build: rainwater harvesting",
+     "time": [
+      30,
+      "minute"
+     ],
+     "level": "very-easy",
+     "cost": [
+      10,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Jauge_de_niveau_pour_r%C3%A9cup%C3%A9rateur_d'eau",
@@ -7637,7 +7713,12 @@
      "maker": "Slandais",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Slandais",
      "site": "Low-tech Lab wiki",
-     "line": "One part: a level gauge for a rainwater tank"
+     "line": "One part: a level gauge for a rainwater tank",
+     "time": [
+      15,
+      "minute"
+     ],
+     "level": "very-easy"
     }
    ],
    "tutorial_lines_fr": {
@@ -7854,7 +7935,16 @@
      "maker": "ENIB réservoir deau1",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:ENIB_r%C3%A9servoir_deau1",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a water tank"
+     "line": "Full build: a water tank",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "easy",
+     "cost": [
+      35,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Jauge_de_niveau_pour_r%C3%A9cup%C3%A9rateur_d'eau",
@@ -7864,7 +7954,12 @@
      "maker": "Slandais",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Slandais",
      "site": "Low-tech Lab wiki",
-     "line": "One part: a level gauge for a rainwater tank"
+     "line": "One part: a level gauge for a rainwater tank",
+     "time": [
+      15,
+      "minute"
+     ],
+     "level": "very-easy"
     }
    ],
    "tutorial_lines_fr": {
@@ -7959,8 +8054,20 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://www.thisoldhouse.com/plumbing/how-to-install-a-whole-house-water-filter",
+     "lang": "en",
+     "format": "text",
+     "title": "How To Install a Whole House Water Filter",
+     "maker": "Richard Trethewey",
+     "site": "This Old House",
+     "line": "One part: the filter housings on the main pipe"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://www.thisoldhouse.com/plumbing/how-to-install-a-whole-house-water-filter": "Une partie : les filtres sur l’arrivée d’eau"
+   },
    "tutorial_status": null,
    "sources": [
     {
@@ -8316,7 +8423,16 @@
      "maker": "Low-Tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:GoldofBengal",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a thermosiphon solar water heater"
+     "line": "Full build: a thermosiphon solar water heater",
+     "time": [
+      4,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      20,
+      "EUR"
+     ]
     },
     {
      "url": "https://www.youtube.com/watch?v=DHW392drALI",
@@ -8820,7 +8936,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a greywater reed bed"
+     "line": "Full build: a greywater reed bed",
+     "time": [
+      10,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      100,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -8924,7 +9049,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a greywater reed bed"
+     "line": "Full build: a greywater reed bed",
+     "time": [
+      10,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      100,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Phytoépuration_eaux_usées",
@@ -8934,7 +9068,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a reed bed for all wastewater"
+     "line": "Full build: a reed bed for all wastewater",
+     "time": [
+      8,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      6500,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -9315,7 +9458,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a family dry toilet"
+     "line": "Full build: a family dry toilet",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      80,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Toilettes_s%C3%A8ches_familiales/fr",
@@ -9325,7 +9477,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a family dry toilet"
+     "line": "Full build: a family dry toilet",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      80,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -9982,8 +10143,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 2,
+    "build": 3,
+    "maintain": 3,
     "efficiency": null,
     "build_skill": "Intermediate",
     "burden": 4,
@@ -10028,7 +10189,13 @@
      "maker": "Bababa",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Bababa",
      "site": "Low-tech Lab wiki",
-     "line": "Sizing: an off-grid solar installation"
+     "line": "Sizing: an off-grid solar installation",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "medium",
+     "draft": true
     },
     {
      "url": "https://solar.lowtechmagazine.com/2023/12/how-to-build-a-small-solar-power-system/",
@@ -10047,7 +10214,16 @@
      "maker": "Scholar Grid Project",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Scholar_Grid_Project",
      "site": "Low-tech Lab wiki",
-     "line": "Repair: a solar panel with broken glass"
+     "line": "Repair: a solar panel with broken glass",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      30,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -10110,8 +10286,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 3,
+    "build": 3,
+    "maintain": 4,
     "efficiency": null,
     "build_skill": "Intermediate",
     "burden": 5,
@@ -10217,8 +10393,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 3,
+    "build": 3,
+    "maintain": 4,
     "efficiency": null,
     "build_skill": "Intermediate",
     "burden": 5,
@@ -10321,8 +10497,8 @@
     }
    ],
    "ratings": {
-    "build": 3,
-    "maintain": 2,
+    "build": 4,
+    "maintain": 3,
     "efficiency": null,
     "build_skill": "Specialist",
     "burden": 4,
@@ -10464,7 +10640,12 @@
      "maker": "Scholar Grid Project",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Scholar_Grid_Project",
      "site": "Low-tech Lab wiki",
-     "line": "Upkeep: maintaining and reviving lead batteries"
+     "line": "Upkeep: maintaining and reviving lead batteries",
+     "time": [
+      14,
+      "day"
+     ],
+     "level": "medium"
     }
    ],
    "tutorial_lines_fr": {
@@ -10574,7 +10755,7 @@
    "needs_pressure": false,
    "tutorials": [],
    "tutorial_lines_fr": null,
-   "tutorial_status": null,
+   "tutorial_status": "trade",
    "sources": [
     {
      "name": "NAHB / Bank of America Home Equity, \"Study of Life Expectancy of Home Components\" (February 2007), Table 1: copper wiring, lifetime; electrical accessories, 10+ years",
@@ -11042,7 +11223,17 @@
      "maker": "Dynamo EMSE",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Dynamo_EMSE",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a semi-underground cellar"
+     "line": "Full build: a semi-underground cellar",
+     "time": [
+      3,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      5,
+      "EUR"
+     ],
+     "draft": true
     },
     {
      "url": "https://www.builditsolar.com/Projects/Sunspace/CPSRootCellar6321P.pdf",
@@ -11368,7 +11559,16 @@
      "maker": "Low-Tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:GoldofBengal",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: the Patsari improved cookstove"
+     "line": "Full build: the Patsari improved cookstove",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      70,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -11480,7 +11680,16 @@
      "maker": "EKO!",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:EKO!",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a parabolic solar cooker"
+     "line": "Full build: a parabolic solar cooker",
+     "time": [
+      3,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      13,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -11597,7 +11806,16 @@
      "maker": "Low Tech Developer",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low_Tech_Developer",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a solar shower from two radiators"
+     "line": "Full build: a solar shower from two radiators",
+     "time": [
+      5,
+      "day"
+     ],
+     "level": "hard",
+     "cost": [
+      300,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -11815,7 +12033,16 @@
      "maker": "Mobilab Songo",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Anton",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a pedal-powered washing machine"
+     "line": "Full build: a pedal-powered washing machine",
+     "time": [
+      8,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      10,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -13238,7 +13465,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: bokashi kitchen compost"
+     "line": "Full build: bokashi kitchen compost",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      5,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Compost_Bokashi_de_cuisine/fr",
@@ -13248,7 +13484,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: bokashi kitchen compost"
+     "line": "Full build: bokashi kitchen compost",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      5,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -14180,8 +14425,8 @@
     }
    ],
    "ratings": {
-    "build": 1,
-    "maintain": 1,
+    "build": 2,
+    "maintain": 2,
     "efficiency": 2,
     "build_skill": "Basic",
     "burden": 1,
@@ -14276,8 +14521,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 1,
+    "build": 3,
+    "maintain": 2,
     "efficiency": 4,
     "build_skill": "Intermediate",
     "burden": 1,
@@ -14369,7 +14614,7 @@
    "name": "Secondary glazing (retrofit inner pane)",
    "subfunction_id": "FN-02.6",
    "function_id": "FN-02",
-   "summary": "A second, inner layer added to an existing window instead of replacing it. The considered version is a pane of acrylic, polycarbonate or film held in a frame inside the reveal, which keeps the view. The crude version is bubble wrap misted onto the glass, which gives up the view, so it suits a window nobody looks through. Either way it traps a layer of still air against the window: the gain is the trapped air, not the material. The window loses less heat without being replaced, and bubble wrap costs almost nothing and goes up in minutes.",
+   "summary": "A second, inner layer added to an existing window instead of replacing it. The considered version is a pane of acrylic, polycarbonate or film held in a frame inside the reveal, which keeps the view. The crude version is bubble wrap misted onto the glass, which gives up the view, so it suits a window nobody looks through. Either way it traps a layer of still air against the window: the gain is the trapped air, not the material. The window loses less heat without being replaced: in a test on a single-glazed sash window, secondary glazing cut the heat lost through it by 63%. Bubble wrap costs almost nothing and goes up in minutes.",
    "slug": "secondary-glazing",
    "slug_fr": "survitrage",
    "inputs": [],
@@ -14443,21 +14688,21 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Bubble-wrap window insulation (cheapest still-air layer, blocks the view)",
-     "tier": "C",
-     "url": "https://www.builditsolar.com/Projects/Conservation/bubblewrap.htm",
+     "name": "Historic Scotland, Technical Paper 1: Thermal performance of traditional windows (Paul Baker, Glasgow Caledonian University, October 2008): one single-glazed sash window, U-value 4.5 W/m²K, each measure tested in an environmental chamber; heat loss through the window cut by 63% with secondary glazing, 51% with closed timber shutters, 14% with heavy curtains; draught-proofing cut its air leakage by 86%",
+     "tier": "B",
+     "url": "https://app-hes-pubs-prod-neu-01.azurewebsites.net/api/file/786682a0-6416-4524-be69-a59400beb5ee",
      "lang": null
     },
     {
-     "name": "Making your own acrylic interior storm windows",
+     "name": "Bubble-wrap window insulation (cheapest still-air layer, blocks the view)",
      "tier": "C",
-     "url": "https://www.builditsolar.com/Projects/Conservation/AcrylicStorms.htm",
+     "url": "https://www.builditsolar.com/Projects/Conservation/bubblewrap.htm",
      "lang": null
     }
    ],
    "fr": {
     "name": "Survitrage (vitre intérieure ajoutée)",
-    "description": "Une seconde couche, intérieure, ajoutée à une fenêtre existante au lieu de la remplacer. La version soignée est un second vitrage en acrylique, en polycarbonate ou en film, tenu dans un cadre posé dans l’embrasure, qui conserve la vue. La version fruste est du papier bulle appliqué à l’eau sur le verre, qui sacrifie la vue et convient donc à une fenêtre que personne ne regarde. Dans les deux cas, elle emprisonne une lame d’air immobile contre la fenêtre : le gain vient de cet air, pas du matériau. La fenêtre perd moins de chaleur sans être remplacée, et le papier bulle ne coûte presque rien et se pose en quelques minutes.",
+    "description": "Une seconde couche, intérieure, ajoutée à une fenêtre existante au lieu de la remplacer. La version soignée est un second vitrage en acrylique, en polycarbonate ou en film, tenu dans un cadre posé dans l’embrasure, qui conserve la vue. La version fruste est du papier bulle appliqué à l’eau sur le verre, qui sacrifie la vue et convient donc à une fenêtre que personne ne regarde. Dans les deux cas, elle emprisonne une lame d’air immobile contre la fenêtre : le gain vient de cet air, pas du matériau. La fenêtre perd moins de chaleur sans être remplacée : lors d’un essai sur une fenêtre à guillotine en simple vitrage, un survitrage intérieur a réduit de 63 % la chaleur perdue par la fenêtre. Le papier bulle ne coûte presque rien et se pose en quelques minutes.",
     "lifespan": "20 à 30 ans, mêmes modes de défaillance (joint, quincaillerie) que le vitrage principal",
     "build_note": "ajout d’une vitre intérieure à l’existant",
     "efficiency_note": "ajoute une seconde vitre à une fenêtre existante, mieux que le simple vitrage, en deçà d’une unité neuve",
@@ -14478,7 +14723,7 @@
    "name": "Insulated operable shutters",
    "subfunction_id": "FN-02.6",
    "function_id": "FN-02",
-   "summary": "Insulated panels, removable or folding, that close over the windows at night. At night the glass is the coldest part of the wall, and the panel covers it with a thick insulating layer. They cut the heat lost through the windows at night, when the sun is not bringing any warmth anyway.",
+   "summary": "Insulated panels, removable or folding, that close over the windows at night. At night the glass is the coldest part of the wall, and the panel covers it with a thick insulating layer. They cut the heat lost through the windows at night, when the sun is not bringing any warmth anyway: closed timber shutters cut it by 51% in a test on a single-glazed sash window.",
    "slug": "insulated-operable-shutters",
    "slug_fr": "volets-isolants-man-uvrables",
    "inputs": [],
@@ -14556,9 +14801,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Cardboard shutter (the cheapest possible insulating shutter)",
-     "tier": "D",
-     "url": "https://www.builditsolar.com/Projects/Conservation/CardboardShutter.htm",
+     "name": "Historic Scotland, Technical Paper 1: Thermal performance of traditional windows (Paul Baker, Glasgow Caledonian University, October 2008): one single-glazed sash window, U-value 4.5 W/m²K, each measure tested in an environmental chamber; heat loss through the window cut by 63% with secondary glazing, 51% with closed timber shutters, 14% with heavy curtains; draught-proofing cut its air leakage by 86%",
+     "tier": "B",
+     "url": "https://app-hes-pubs-prod-neu-01.azurewebsites.net/api/file/786682a0-6416-4524-be69-a59400beb5ee",
      "lang": null
     },
     {
@@ -14570,7 +14815,7 @@
    ],
    "fr": {
     "name": "Volets isolants manœuvrables",
-    "description": "Des panneaux isolants, amovibles ou pliants, qui se ferment devant les fenêtres la nuit. La nuit, le vitrage est la partie la plus froide du mur, et le panneau le couvre d’une épaisse couche isolante. Ils réduisent la chaleur perdue par les fenêtres la nuit, quand le soleil n’apporte de toute façon aucune chaleur.",
+    "description": "Des panneaux isolants, amovibles ou pliants, qui se ferment devant les fenêtres la nuit. La nuit, le vitrage est la partie la plus froide du mur, et le panneau le couvre d’une épaisse couche isolante. Ils réduisent la chaleur perdue par les fenêtres la nuit, quand le soleil n’apporte de toute façon aucune chaleur : des volets en bois fermés l’ont réduite de 51 % lors d’un essai sur une fenêtre à guillotine en simple vitrage.",
     "lifespan": "20 à 30 ans pour la quincaillerie/charnières ; l’âme isolante dans le panneau correspond au matériau isolant utilisé",
     "build_note": "fabrication/pose de panneaux isolants",
     "efficiency_note": "nocturne seulement : réduit les pertes fermé, aucun effet ouvert",
@@ -14765,7 +15010,16 @@
      "maker": "Cordier",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Fouez",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a rocket stove with a griddle"
+     "line": "Full build: a rocket stove with a griddle",
+     "time": [
+      5,
+      "day"
+     ],
+     "level": "very-hard",
+     "cost": [
+      50,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -15273,7 +15527,16 @@
      "maker": "OHorizons",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:OHorizons",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a biosand filter"
+     "line": "Full build: a biosand filter",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      80,
+      "USD"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Filtre_bio-sable_pour_eau_potable",
@@ -15283,7 +15546,16 @@
      "maker": "Nomade des Mers",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Nomade_des_Mers",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a biosand drinking-water filter"
+     "line": "Full build: a biosand drinking-water filter",
+     "time": [
+      3,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      10,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -15635,7 +15907,16 @@
      "maker": "EKO!",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:EKO!",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a urine-diverting dry toilet"
+     "line": "Full build: a urine-diverting dry toilet",
+     "time": [
+      5,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      400,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Toilettes_s%C3%A8ches_%C3%A0_s%C3%A9paration_d%27urine/fr",
@@ -15645,7 +15926,16 @@
      "maker": "EKO!",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:EKO!",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a urine-diverting dry toilet"
+     "line": "Full build: a urine-diverting dry toilet",
+     "time": [
+      5,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      400,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Toilettes_s%C3%A8ches_amovibles",
@@ -15655,7 +15945,16 @@
      "maker": "Régis Guyon",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:AtelierBelow",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a removable dry toilet"
+     "line": "Full build: a removable dry toilet",
+     "time": [
+      8,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      300,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -15711,8 +16010,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 1,
+    "build": 3,
+    "maintain": 2,
     "efficiency": null,
     "build_skill": "Intermediate",
     "burden": 3,
@@ -15774,7 +16073,16 @@
      "maker": "Matelow-tech",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Matelow-tech",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a pedal-powered generator"
+     "line": "Full build: a pedal-powered generator",
+     "time": [
+      3,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      50,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -15889,7 +16197,12 @@
      "maker": "Kévin LOESLE",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:KvnLsl",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a rocket stove"
+     "line": "Full build: a rocket stove",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "easy"
     }
    ],
    "tutorial_lines_fr": {
@@ -16151,7 +16464,16 @@
      "maker": "Yann Gressier",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Permagicien",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a biochar kiln"
+     "line": "Full build: a biochar kiln",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      50,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/L'amendement_au_Biocharbon",
@@ -16161,7 +16483,12 @@
      "maker": "Matthieu Michelet",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:SEAD-sailing",
      "site": "Low-tech Lab wiki",
-     "line": "How-to: biochar as a soil amendment"
+     "line": "How-to: biochar as a soil amendment",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "easy"
     }
    ],
    "tutorial_lines_fr": {
@@ -16504,8 +16831,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 1,
+    "build": 3,
+    "maintain": 2,
     "efficiency": 3,
     "build_skill": "Intermediate",
     "burden": 1,
@@ -16639,7 +16966,16 @@
      "maker": "Agathe Pelletier",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Agathepelletier",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a superadobe structure"
+     "line": "Full build: a superadobe structure",
+     "time": [
+      1,
+      "month"
+     ],
+     "level": "medium",
+     "cost": [
+      100,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -16729,7 +17065,16 @@
      "maker": "APPROCHE-Paille",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:APPROCHE-Paille",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a straw wall"
+     "line": "Full build: a straw wall",
+     "time": [
+      1,
+      "month"
+     ],
+     "level": "medium",
+     "cost": [
+      35,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -16825,7 +17170,17 @@
      "maker": "Rémy",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Avenir_Low_Tech",
      "site": "Low-tech Lab wiki",
-     "line": "Step by step: strapped straw insulation outside"
+     "line": "Step by step: strapped straw insulation outside",
+     "time": [
+      2,
+      "month"
+     ],
+     "level": "hard",
+     "cost": [
+      600,
+      "EUR"
+     ],
+     "draft": true
     }
    ],
    "tutorial_lines_fr": {
@@ -16926,7 +17281,16 @@
      "maker": "Baptiste Faure",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Baptiste_Faure",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a vertical hand pump"
+     "line": "Full build: a vertical hand pump",
+     "time": [
+      3,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      30,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Pompe_manuelle_%28verticale%29/fr",
@@ -16936,7 +17300,16 @@
      "maker": "Baptiste Faure",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Baptiste_Faure",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a vertical hand pump"
+     "line": "Full build: a vertical hand pump",
+     "time": [
+      3,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      30,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -17038,7 +17411,16 @@
      "maker": "L'Atelier Low Tech",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:L%27Atelier_Low_Tech",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a ceramic water filter"
+     "line": "Full build: a ceramic water filter",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "hard",
+     "cost": [
+      30,
+      "USD"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -17430,7 +17812,16 @@
      "maker": "Vincent LE DAHERON",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:VLD",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a wood-chip filter"
+     "line": "Full build: a wood-chip filter",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      500,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -17534,7 +17925,16 @@
      "maker": "Low-Tech Bordeaux",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Earthproject",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: flushing with shower water"
+     "line": "Full build: flushing with shower water",
+     "time": [
+      1,
+      "minute"
+     ],
+     "level": "very-easy",
+     "cost": [
+      25,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -17951,8 +18351,8 @@
     }
    ],
    "ratings": {
-    "build": 3,
-    "maintain": 3,
+    "build": 4,
+    "maintain": 4,
     "efficiency": 1,
     "build_skill": "Specialist",
     "burden": 3,
@@ -18266,7 +18666,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a household biodigester"
+     "line": "Full build: a household biodigester",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      500,
+      "EUR"
+     ]
     },
     {
      "url": "https://www.builditsolar.com/Projects/BioFuel/VITABIOGAS3M.HTM",
@@ -18381,7 +18790,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a household biodigester"
+     "line": "Full build: a household biodigester",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      500,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Biodigesteur_domestique/fr",
@@ -18391,7 +18809,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a household biodigester"
+     "line": "Full build: a household biodigester",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      500,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -18785,7 +19212,16 @@
      "maker": "Lemuguet",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Oum_Ntcham_Lo%C3%AFc",
      "site": "Low-tech Lab wiki",
-     "line": "Design and build: a stand-alone solar dryer"
+     "line": "Design and build: a stand-alone solar dryer",
+     "time": [
+      1,
+      "month"
+     ],
+     "level": "medium",
+     "cost": [
+      20,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Séchoir_solaire_indirect",
@@ -18795,7 +19231,16 @@
      "maker": "Dynamo EMSE",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Dynamo_EMSE",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: an indirect solar dryer"
+     "line": "Full build: an indirect solar dryer",
+     "time": [
+      3,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      3,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -18833,7 +19278,7 @@
    "name": "Haybox / retained-heat cooker (fireless cooker)",
    "subfunction_id": "FN-10.4",
    "function_id": "FN-10",
-   "summary": "A heavily insulated box that a pot is put into after being brought to the boil. The heat already in the pot keeps it simmering for hours with no more fuel, and the food finishes cooking on its own. It cuts the fuel for slow-cooked dishes by a fifth to four fifths.",
+   "summary": "A heavily insulated box that a pot is put into after being brought to the boil. The heat already in the pot keeps it simmering for hours with no more fuel, and the food finishes cooking on its own. It cuts the energy for slow-cooked dishes: by 22% to 48% in a test on rice, potatoes, chicken and vegetables.",
    "slug": "haybox-retained-heat-cooker",
    "slug_fr": "marmite-norvegienne",
    "inputs": [
@@ -18896,7 +19341,17 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a haybox cooker"
+     "line": "Full build: a haybox cooker",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      10,
+      "EUR"
+     ],
+     "draft": true
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Marmite_Norvégienne_Tissu_Super_Efficace",
@@ -18906,7 +19361,16 @@
      "maker": "Ninon d'Ecocotte",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Ecocotte",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a haybox cooker"
+     "line": "Full build: a haybox cooker",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "easy",
+     "cost": [
+      30,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -18916,9 +19380,9 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Aprovecho Research Center, \"Retained Heat Cooking\" (about 50% savings in time and fuel)",
+     "name": "Performance Test of Wonder Bag (Islamic University of Technology, Bangladesh, for GIZ, July 2014): rice, potato, chicken and mixed vegetables cooked on an induction hob and an LPG stove, with and without the bag; 22% to 48% less cooking energy",
      "tier": "B",
-     "url": "https://aprovecho.org/biomass-alternatives/retained-heat-cooking/",
+     "url": "https://energypedia.info/images/a/af/Report_Performance_Test_of_retained_heat_cooker_%28WonderBag%29_GIZ.pdf",
      "lang": null
     },
     {
@@ -18930,7 +19394,7 @@
    ],
    "fr": {
     "name": "Marmite norvégienne (cuisson à chaleur retenue)",
-    "description": "Une boîte très isolée dans laquelle on place une marmite après l’avoir portée à ébullition. La chaleur déjà dans la marmite la fait mijoter des heures sans combustible, et le plat finit de cuire seul. Elle réduit d’un cinquième à quatre cinquièmes le combustible des plats mijotés.",
+    "description": "Une boîte très isolée dans laquelle on place une marmite après l’avoir portée à ébullition. La chaleur déjà dans la marmite la fait mijoter des heures sans combustible, et le plat finit de cuire seul. Elle réduit l’énergie des plats mijotés : de 22 à 48 % lors d’un essai sur du riz, des pommes de terre, du poulet et des légumes.",
     "lifespan": "10 ans ou plus pour un caisson isolé bien fait ; la doublure en mousse réfléchissante peut nécessiter un remplacement plus précoce qu’un modèle d’origine garni de foin",
     "build_note": "caisson isolé",
     "efficiency_note": "complément de rétention de chaleur, pas une source de chaleur",
@@ -19283,8 +19747,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 1,
+    "build": 3,
+    "maintain": 2,
     "efficiency": 3,
     "build_skill": "Intermediate",
     "burden": 1,
@@ -19329,7 +19793,16 @@
      "maker": "Matelow-tech",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Matelow-tech",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a mycelium insulation panel"
+     "line": "Full build: a mycelium insulation panel",
+     "time": [
+      1,
+      "month"
+     ],
+     "level": "medium",
+     "cost": [
+      17,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -19426,7 +19899,12 @@
      "maker": "Antoine Blanc",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Antoineblanc",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: sun shades for windows and skylights"
+     "line": "Full build: sun shades for windows and skylights",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "medium"
     },
     {
      "url": "https://solar.lowtechmagazine.com/2025/07/how-to-mount-a-balcony-awning/",
@@ -19535,7 +20013,16 @@
      "maker": "EKO!",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:EKO!",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a DIY air purifier"
+     "line": "Full build: a DIY air purifier",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      5,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -19634,7 +20121,12 @@
      "maker": "Uyo's Passengers",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Uyo%27s_Passengers",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a borehole and pump"
+     "line": "Full build: a borehole and pump",
+     "time": [
+      7,
+      "day"
+     ],
+     "level": "hard"
     }
    ],
    "tutorial_lines_fr": {
@@ -19735,7 +20227,16 @@
      "maker": "Low-Tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:GoldofBengal",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a ram pump"
+     "line": "Full build: a ram pump",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "easy",
+     "cost": [
+      100,
+      "EUR"
+     ]
     },
     {
      "url": "https://www.builditsolar.com/Projects/WaterPumping/Ram%20Pump/ram.htm",
@@ -19867,7 +20368,16 @@
      "maker": "nux",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Nux",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a water heater without electricity"
+     "line": "Full build: a water heater without electricity",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      150,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Chauffe_eau_sans_electricit%C3%A9/fr",
@@ -19877,7 +20387,16 @@
      "maker": "nux",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Nux",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a water heater without electricity"
+     "line": "Full build: a water heater without electricity",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      150,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -19993,7 +20512,16 @@
      "maker": "SZUMILO David",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Du_Soleil_dans_nos_Assiettes",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a pellet-fired autoclave"
+     "line": "Full build: a pellet-fired autoclave",
+     "time": [
+      5,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      400,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Autoclave_%C3%A9lectrique_low-tech",
@@ -20003,7 +20531,16 @@
      "maker": "SZUMILO David",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Du_Soleil_dans_nos_Assiettes",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a low-tech electric autoclave"
+     "line": "Full build: a low-tech electric autoclave",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      50,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/St%C3%A9rilisation_respectant_un_bar%C3%AAme_professionnel",
@@ -20013,7 +20550,12 @@
      "maker": "SZUMILO David",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Du_Soleil_dans_nos_Assiettes",
      "site": "Low-tech Lab wiki",
-     "line": "How-to: sterilising to a professional standard"
+     "line": "How-to: sterilising to a professional standard",
+     "level": "very-easy",
+     "cost": [
+      220,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -20123,7 +20665,12 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a micro-gasifier stove"
+     "line": "Full build: a micro-gasifier stove",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "very-easy"
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Cuiseur_micro_gaz%C3%A9ificateur/fr",
@@ -20133,7 +20680,12 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a micro-gasifier stove"
+     "line": "Full build: a micro-gasifier stove",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "very-easy"
     }
    ],
    "tutorial_lines_fr": {
@@ -20249,7 +20801,17 @@
      "maker": "Lenolevo",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Lenolevo",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a hand-powered washing machine"
+     "line": "Full build: a hand-powered washing machine",
+     "time": [
+      30,
+      "minute"
+     ],
+     "level": "easy",
+     "cost": [
+      2,
+      "EUR"
+     ],
+     "draft": true
     },
     {
      "url": "https://www.builditsolar.com/Projects/Conservation/FranWasher/Washer.htm",
@@ -20367,7 +20929,16 @@
      "maker": "LE NILLON",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Fregan",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a worm composter"
+     "line": "Full build: a worm composter",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      359,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Worm_Compost_Bins",
@@ -20377,7 +20948,16 @@
      "maker": "SabinaBean",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:SabinaBean",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: worm compost bins"
+     "line": "Full build: worm compost bins",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      50,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -20485,7 +21065,16 @@
      "maker": "Michon Antoine",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:TouneMitch",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a heliostat bringing sun to the north side"
+     "line": "Full build: a heliostat bringing sun to the north side",
+     "time": [
+      7,
+      "day"
+     ],
+     "level": "hard",
+     "cost": [
+      150,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -20598,7 +21187,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a desert fridge"
+     "line": "Full build: a desert fridge",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "very-easy",
+     "cost": [
+      10,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Frigo_du_d%C3%A9sert/fr",
@@ -20608,7 +21206,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a desert fridge"
+     "line": "Full build: a desert fridge",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "very-easy",
+     "cost": [
+      10,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -20714,7 +21321,12 @@
      "maker": "EKO!",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:EKO!",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: geothermal cooling"
+     "line": "Full build: geothermal cooling",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "hard"
     }
    ],
    "tutorial_lines_fr": {
@@ -20809,7 +21421,16 @@
      "maker": "Mobilab Songo",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Anton",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: draught-blocking curtains"
+     "line": "Full build: draught-blocking curtains",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      5,
+      "EUR"
+     ]
     },
     {
      "url": "https://www.builditsolar.com/Projects/Conservation/ThermalShades/ReflectexShade.htm",
@@ -20938,7 +21559,16 @@
      "maker": "L'Atelier Low Tech",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:L%27Atelier_Low_Tech",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a fog collector"
+     "line": "Full build: a fog collector",
+     "time": [
+      7,
+      "day"
+     ],
+     "level": "easy",
+     "cost": [
+      1000,
+      "USD"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Attrape_Nuages/fr",
@@ -20948,7 +21578,16 @@
      "maker": "L'Atelier Low Tech",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:L%27Atelier_Low_Tech",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a fog collector"
+     "line": "Full build: a fog collector",
+     "time": [
+      7,
+      "day"
+     ],
+     "level": "easy",
+     "cost": [
+      1000,
+      "USD"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -21053,7 +21692,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a zero-waste pantry"
+     "line": "Full build: a zero-waste pantry",
+     "time": [
+      3,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      150,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Garde-Manger/fr",
@@ -21063,7 +21711,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a zero-waste pantry"
+     "line": "Full build: a zero-waste pantry",
+     "time": [
+      3,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      150,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -21174,7 +21831,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a solar air heater"
+     "line": "Full build: a solar air heater",
+     "time": [
+      3,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      400,
+      "EUR"
+     ]
     },
     {
      "url": "https://www.builditsolar.com/Projects/SpaceHeating/GregAircol/AirCol.htm",
@@ -21407,7 +22073,16 @@
      "maker": "BIOSPHERE EXPERIENCE",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Biosphere_Experience",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a solar cooking pot"
+     "line": "Full build: a solar cooking pot",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      60,
+      "EUR"
+     ]
     },
     {
      "url": "https://solar.lowtechmagazine.com/2025/10/how-to-build-an-electric-heating-element-from-scratch/",
@@ -21700,8 +22375,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 2,
+    "build": 3,
+    "maintain": 3,
     "efficiency": 4,
     "build_skill": "Intermediate",
     "burden": 2,
@@ -22669,7 +23344,17 @@
      "maker": "Clémence Althabegoïty",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Cl%C3%A9menceAlthabegoity",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a tarpaulin rainwater collector"
+     "line": "Full build: a tarpaulin rainwater collector",
+     "time": [
+      8,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      225,
+      "EUR"
+     ],
+     "draft": true
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Jauge_de_niveau_pour_r%C3%A9cup%C3%A9rateur_d'eau",
@@ -22679,7 +23364,12 @@
      "maker": "Slandais",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Slandais",
      "site": "Low-tech Lab wiki",
-     "line": "One part: a level gauge for a rainwater tank"
+     "line": "One part: a level gauge for a rainwater tank",
+     "time": [
+      15,
+      "minute"
+     ],
+     "level": "very-easy"
     }
    ],
    "tutorial_lines_fr": {
@@ -22893,7 +23583,16 @@
      "maker": "CoolRoof DIY",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Cool_Roof_France",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a DIY cool roof"
+     "line": "Full build: a DIY cool roof",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      3,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -23599,7 +24298,7 @@
    "name": "Draught-proofing an existing house",
    "subfunction_id": "FN-02.5",
    "function_id": "FN-02",
-   "summary": "Sealing the gaps that let air into an existing house: around windows and doors, along the foot of the walls, around pipes and cables, at the loft hatch and in unused chimneys. It is done with sealant, tape, foam and brush strips, an afternoon at a time. It is usually the cheapest way to cut heat loss, but the house still needs a way to air itself.",
+   "summary": "Sealing the gaps that let air into an existing house: around windows and doors, along the foot of the walls, around pipes and cables, at the loft hatch and in unused chimneys. It is done with sealant, tape, foam and brush strips, an afternoon at a time. It is usually the cheapest way to cut heat loss: on a test window, draught-proofing cut the air leaking through it by 86%. The house still needs a way to air itself.",
    "slug": "draught-proofing-existing-house",
    "slug_fr": "calfeutrage-maison-existante",
    "inputs": [],
@@ -23668,11 +24367,17 @@
      "tier": "C",
      "url": "https://www.builditsolar.com/Projects/Conservation/Southface8_airsealing.pdf",
      "lang": null
+    },
+    {
+     "name": "Historic Scotland, Technical Paper 1: Thermal performance of traditional windows (Paul Baker, Glasgow Caledonian University, October 2008): one single-glazed sash window, U-value 4.5 W/m²K, each measure tested in an environmental chamber; heat loss through the window cut by 63% with secondary glazing, 51% with closed timber shutters, 14% with heavy curtains; draught-proofing cut its air leakage by 86%",
+     "tier": "B",
+     "url": "https://app-hes-pubs-prod-neu-01.azurewebsites.net/api/file/786682a0-6416-4524-be69-a59400beb5ee",
+     "lang": null
     }
    ],
    "fr": {
     "name": "Calfeutrage d’une maison existante",
-    "description": "Boucher les interstices par où l’air entre dans une maison existante : autour des fenêtres et des portes, au bas des murs, autour des tuyaux et des câbles, à la trappe des combles et dans les cheminées inutilisées. On le fait avec du mastic, de l’adhésif, de la mousse et des joints brosse, un après-midi à la fois. C’est souvent la façon la moins chère de réduire les pertes, mais la maison doit toujours pouvoir s’aérer.",
+    "description": "Boucher les interstices par où l’air entre dans une maison existante : autour des fenêtres et des portes, au bas des murs, autour des tuyaux et des câbles, à la trappe des combles et dans les cheminées inutilisées. On le fait avec du mastic, de l’adhésif, de la mousse et des joints brosse, un après-midi à la fois. C’est souvent la façon la moins chère de réduire les pertes : sur une fenêtre d’essai, le calfeutrage a réduit de 86 % l’air qui passait. La maison doit toujours pouvoir s’aérer.",
     "lifespan": "Des années pour les rubans et les mousses ; les joints à brosse s’usent là où l’on passe",
     "build_note": "le premier chantier par excellence : bon marché, réversible, et rentable avant tout le reste",
     "regulation_fr": "Aucune autorisation pour les travaux eux-mêmes. Les aides françaises à la rénovation peuvent exiger un test d’étanchéité à l’air après travaux lorsque ceux-ci sont présentés à ce titre.",
@@ -23761,7 +24466,8 @@
      "maker": "EKO!",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:EKO!",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a hanging drying rack"
+     "line": "Full build: a hanging drying rack",
+     "level": "easy"
     }
    ],
    "tutorial_lines_fr": {
@@ -24181,7 +24887,16 @@
      "maker": "Low-Tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:GoldofBengal",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a solar desalinator"
+     "line": "Full build: a solar desalinator",
+     "time": [
+      3,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      50,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -24244,8 +24959,8 @@
     }
    ],
    "ratings": {
-    "build": 2,
-    "maintain": 3,
+    "build": 3,
+    "maintain": 4,
     "efficiency": null,
     "build_skill": "Intermediate",
     "burden": 5,
@@ -24353,7 +25068,7 @@
    ],
    "ratings": {
     "build": 1,
-    "maintain": 2,
+    "maintain": 3,
     "efficiency": null,
     "build_skill": "None",
     "burden": 4,
@@ -24444,7 +25159,7 @@
    ],
    "ratings": {
     "build": 1,
-    "maintain": 4,
+    "maintain": 5,
     "efficiency": null,
     "build_skill": "None",
     "burden": 7,
@@ -25192,7 +25907,16 @@
      "maker": "BIOSPHERE EXPERIENCE",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Biosphere_Experience",
      "site": "Low-tech Lab wiki",
-     "line": "Citizen science: a living toilet"
+     "line": "Citizen science: a living toilet",
+     "time": [
+      45,
+      "minute"
+     ],
+     "level": "medium",
+     "cost": [
+      10,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -25314,7 +26038,12 @@
      "maker": "BIOSPHERE EXPERIENCE",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Biosphere_Experience",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a water- and energy-saving shower"
+     "line": "Full build: a water- and energy-saving shower",
+     "time": [
+      2,
+      "day"
+     ],
+     "level": "medium"
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Sciences_Participatives_:_La_douche_%C3%A0_brumisation",
@@ -25324,7 +26053,16 @@
      "maker": "BIOSPHERE EXPERIENCE",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Biosphere_Experience",
      "site": "Low-tech Lab wiki",
-     "line": "Citizen science: a misting shower"
+     "line": "Citizen science: a misting shower",
+     "time": [
+      3,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      23,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -25608,7 +26346,16 @@
      "maker": "Agathe Pelletier",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Agathepelletier",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a superadobe structure"
+     "line": "Full build: a superadobe structure",
+     "time": [
+      1,
+      "month"
+     ],
+     "level": "medium",
+     "cost": [
+      100,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -25790,8 +26537,19 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://thatroundhouse.info/reciframes.htm",
+     "lang": "en",
+     "format": "text",
+     "title": "Making a Reciprocal Frame Roof",
+     "site": "That Roundhouse",
+     "line": "One part: a reciprocal frame roof"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://thatroundhouse.info/reciframes.htm": "Une partie : une charpente réciproque"
+   },
    "tutorial_status": null,
    "sources": [
     {
@@ -25879,8 +26637,20 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://www.motherearthnews.com/diy/buildings/how-to-build-an-a-frame-ze0z1111zhir/",
+     "lang": "en",
+     "format": "text",
+     "title": "How to Build an A-Frame House",
+     "maker": "Fox Chapel Publishing",
+     "site": "Mother Earth News",
+     "line": "Full build: an A-frame cabin with a loft"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://www.motherearthnews.com/diy/buildings/how-to-build-an-a-frame-ze0z1111zhir/": "Construction complète : une cabane en A avec mezzanine"
+   },
    "tutorial_status": null,
    "sources": [
     {
@@ -25967,8 +26737,20 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://www.lowimpact.org/posts/building-geodesic-dome-greenhouse/",
+     "lang": "en",
+     "format": "text",
+     "title": "Building a geodesic dome greenhouse",
+     "maker": "Paul Rollason",
+     "site": "Lowimpact.org",
+     "line": "One person's project: the frame of a geodesic dome, as a greenhouse"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://www.lowimpact.org/posts/building-geodesic-dome-greenhouse/": "Le projet d’une personne : la structure d’un dôme géodésique, en serre"
+   },
    "tutorial_status": null,
    "sources": [
     {
@@ -26246,7 +27028,16 @@
      "maker": "Low Tech Developer",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low_Tech_Developer",
      "site": "Low-tech Lab wiki",
-     "line": "How-to: moving a yurt"
+     "line": "How-to: moving a yurt",
+     "time": [
+      15,
+      "day"
+     ],
+     "level": "very-hard",
+     "cost": [
+      500,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -26442,7 +27233,16 @@
      "maker": "Paul",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Ployez",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: an insulating skirt for a pot"
+     "line": "Full build: an insulating skirt for a pot",
+     "time": [
+      1,
+      "hour"
+     ],
+     "level": "very-easy",
+     "cost": [
+      5,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Jupe_isolante_de_casserole_ou_bouilloire",
@@ -26452,7 +27252,16 @@
      "maker": "Rowbin Plagnes",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Rowbin_Plagnes",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: an insulating skirt for a pot"
+     "line": "Full build: an insulating skirt for a pot",
+     "time": [
+      4,
+      "hour"
+     ],
+     "level": "medium",
+     "cost": [
+      5,
+      "EUR"
+     ]
     },
     {
      "url": "https://wiki.lowtechlab.org/wiki/Jupe_isolante",
@@ -26462,7 +27271,9 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low-tech_Lab",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: an insulating skirt for a pot"
+     "line": "Full build: an insulating skirt for a pot",
+     "level": "hard",
+     "draft": true
     }
    ],
    "tutorial_lines_fr": {
@@ -26569,7 +27380,16 @@
      "maker": "Low-tech Lab",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Valcoyard",
      "site": "Low-tech Lab wiki",
-     "line": "How-to: raising black soldier flies"
+     "line": "How-to: raising black soldier flies",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "easy",
+     "cost": [
+      20,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -26669,7 +27489,16 @@
      "maker": "Low Tech Developer",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Low_Tech_Developer",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a wood-fired earth oven"
+     "line": "Full build: a wood-fired earth oven",
+     "time": [
+      4,
+      "month"
+     ],
+     "level": "hard",
+     "cost": [
+      300,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -26769,7 +27598,16 @@
      "maker": "EKO!",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:EKO!",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a low-tech icebox"
+     "line": "Full build: a low-tech icebox",
+     "time": [
+      2,
+      "hour"
+     ],
+     "level": "easy",
+     "cost": [
+      10,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -26873,7 +27711,16 @@
      "maker": "yann",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Ygrekel",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a wood-fired pasteuriser"
+     "line": "Full build: a wood-fired pasteuriser",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      100,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -26976,7 +27823,16 @@
      "maker": "SZUMILO David",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:Du_Soleil_dans_nos_Assiettes",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: a pellet stove"
+     "line": "Full build: a pellet stove",
+     "time": [
+      1,
+      "day"
+     ],
+     "level": "medium",
+     "cost": [
+      200,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -27082,7 +27938,16 @@
      "maker": "EKO!",
      "maker_url": "https://wiki.lowtechlab.org/wiki/Utilisateur:EKO!",
      "site": "Low-tech Lab wiki",
-     "line": "Full build: an air dehumidifier"
+     "line": "Full build: an air dehumidifier",
+     "time": [
+      15,
+      "minute"
+     ],
+     "level": "very-easy",
+     "cost": [
+      2.5,
+      "EUR"
+     ]
     }
    ],
    "tutorial_lines_fr": {
@@ -27214,6 +28079,366 @@
    "desc_cut": [
     163,
     225
+   ]
+  },
+  {
+   "id": "SOL-250",
+   "name": "Low-temperature underfloor heating loop",
+   "subfunction_id": "FN-02.16",
+   "function_id": "FN-02",
+   "summary": "Plastic pipes laid in loops in or under the floor, carrying warm water from a heat pump, a boiler or a solar collector. The whole floor becomes the radiator: because its surface is so large, water only a little warmer than the room is enough to heat it. It works with the lowest water temperature of any emitter, which is what a heat pump or a solar collector does best with, and leaves the walls free.",
+   "slug": "underfloor-heating-loop",
+   "slug_fr": "plancher-chauffant-basse-temperature",
+   "inputs": [
+    {
+     "io": "IO-36",
+     "name": "Warm-water heat"
+    }
+   ],
+   "input_groups": [],
+   "outputs": [
+    {
+     "io": "IO-36",
+     "name": "Warm-water heat"
+    }
+   ],
+   "ratings": {
+    "build": 1,
+    "maintain": 1,
+    "efficiency": null,
+    "build_skill": "Intermediate",
+    "burden": 3,
+    "build_note": "pipe loops in the floor and a manifold; the screed is the heavy part",
+    "efficiency_note": "the lowest flow temperature of any emitter, so the heat source works at its best"
+   },
+   "benchmark": false,
+   "power": "Passive",
+   "maintenance": "occasional",
+   "repair_skill": "intermediate",
+   "build_skill": "Intermediate",
+   "consumables": "None",
+   "daily_life": "none",
+   "choose_if": "you are laying or redoing a floor and want the heat source to run at its lowest temperature.",
+   "cost": "medium",
+   "lifespan": "As long as the floor: the pipes are buried in it; the manifold and its valves are what get serviced",
+   "lifespan_band": "As long as the building",
+   "renting": "lasting",
+   "embodied_carbon": "medium",
+   "footprint": "medium",
+   "dispatchability": "Continuous process",
+   "site_prerequisites": "A floor that can be raised or dug: in a screed, or between the joists of a timber floor. Easiest in a new build or when a floor is being redone anyway, and usually limited to the ground floor",
+   "new_build_only": false,
+   "flat_feasible": true,
+   "flat_blocker": null,
+   "societal": "",
+   "regulation_fr": "",
+   "regulation_url": null,
+   "provides_pressure": false,
+   "conduit_for": [
+    "IO-36"
+   ],
+   "host_provides": null,
+   "host_required": null,
+   "input_via": {},
+   "input_warn": {},
+   "needs_pressure": false,
+   "tutorials": [],
+   "tutorial_lines_fr": null,
+   "tutorial_status": null,
+   "sources": [
+    {
+     "name": "Nesta, Will I need bigger radiators or underfloor heating? (2025): underfloor heating works efficiently at low temperatures; usually limited to the ground floor",
+     "tier": "B",
+     "url": "https://www.nesta.org.uk/report/what-homeowners-want-to-know-about-heat-pumps-data-driven-faqs/will-i-need-bigger-radiators-or-underfloor-heating/",
+     "lang": null
+    }
+   ],
+   "fr": {
+    "name": "Plancher chauffant basse température",
+    "description": "Des tuyaux en plastique posés en boucles dans ou sous le sol, où circule l’eau tiède d’une pompe à chaleur, d’une chaudière ou d’un capteur solaire. Tout le sol devient radiateur : sa surface est si grande qu’une eau à peine plus chaude que la pièce suffit à la chauffer. C’est l’émetteur qui se contente de l’eau la moins chaude, ce qui convient le mieux à une pompe à chaleur ou à un capteur solaire, et il laisse les murs libres.",
+    "lifespan": "Aussi longtemps que le sol, où les tuyaux sont noyés ; ce sont le collecteur et ses vannes qu’on entretient",
+    "site_prerequisites": "Un sol qu’on peut rehausser ou creuser : dans une chape, ou entre les solives d’un plancher bois. Plus simple en construction neuve ou quand on refait un sol, et en général limité au rez-de-chaussée",
+    "build_note": "des boucles de tuyau dans le sol et un collecteur ; la chape est le gros du travail",
+    "efficiency_note": "la température d’eau la plus basse de tous les émetteurs, là où la source rend le mieux",
+    "choose_if": "vous posez ou refaites un sol et voulez que la source de chaleur tourne à sa plus basse température.",
+    "desc_cut": [
+     149,
+     272
+    ]
+   },
+   "desc_cut": [
+    120,
+    254
+   ]
+  },
+  {
+   "id": "SOL-251",
+   "name": "Radiators sized for low water temperature",
+   "subfunction_id": "FN-02.16",
+   "function_id": "FN-02",
+   "summary": "Water radiators on the walls, chosen large enough, often double or triple panels, to heat the room with water cooler than a gas boiler sends. A radiator gives out more heat the hotter its water and the larger its surface. Make the surface larger and cooler water does the same job. A heat pump or a solar loop can heat the house through the radiators, often by changing only some of them rather than lifting floors.",
+   "slug": "low-temperature-radiators",
+   "slug_fr": "radiateurs-basse-temperature",
+   "inputs": [
+    {
+     "io": "IO-36",
+     "name": "Warm-water heat"
+    },
+    {
+     "io": "IO-37",
+     "name": "Strong heat"
+    }
+   ],
+   "input_groups": [
+    [
+     "IO-36",
+     "IO-37"
+    ]
+   ],
+   "outputs": [
+    {
+     "io": "IO-36",
+     "name": "Warm-water heat"
+    }
+   ],
+   "ratings": {
+    "build": 1,
+    "maintain": 1,
+    "efficiency": null,
+    "build_skill": "Intermediate",
+    "burden": 3,
+    "build_note": "plumbing a radiator in is a common DIY job; sizing them is the part to get right",
+    "efficiency_note": "a larger surface lets the source run cooler, which is where a heat pump is efficient"
+   },
+   "benchmark": false,
+   "power": "Passive",
+   "maintenance": "occasional",
+   "repair_skill": "basic",
+   "build_skill": "Intermediate",
+   "consumables": "Minor",
+   "daily_life": "none",
+   "choose_if": "you are moving to a heat pump or a solar loop and the house already has pipes and radiators.",
+   "cost": "medium",
+   "lifespan": "Several decades for a steel or cast-iron radiator kept full of treated water; valves are changed before that",
+   "lifespan_band": "30 years or more",
+   "renting": "lasting",
+   "embodied_carbon": "medium",
+   "footprint": "low",
+   "dispatchability": "Continuous process",
+   "site_prerequisites": "Wall space under the windows or on outside walls, and pipes to each radiator",
+   "new_build_only": false,
+   "flat_feasible": true,
+   "flat_blocker": null,
+   "societal": "",
+   "regulation_fr": "",
+   "regulation_url": null,
+   "provides_pressure": false,
+   "conduit_for": [
+    "IO-36"
+   ],
+   "host_provides": null,
+   "host_required": null,
+   "input_via": {},
+   "input_warn": {},
+   "needs_pressure": false,
+   "tutorials": [],
+   "tutorial_lines_fr": null,
+   "tutorial_status": null,
+   "sources": [
+    {
+     "name": "Nesta, Will I need bigger radiators or underfloor heating? (2025): heat pumps run at lower flow temperatures than gas boilers, so some radiators need a larger surface; double or triple panels raise the output",
+     "tier": "B",
+     "url": "https://www.nesta.org.uk/report/what-homeowners-want-to-know-about-heat-pumps-data-driven-faqs/will-i-need-bigger-radiators-or-underfloor-heating/",
+     "lang": null
+    }
+   ],
+   "fr": {
+    "name": "Radiateurs dimensionnés pour la basse température",
+    "description": "Des radiateurs à eau, choisis assez grands, souvent à double ou triple panneau, pour chauffer la pièce avec une eau moins chaude que celle d’une chaudière gaz. Un radiateur chauffe d’autant plus que son eau est chaude et sa surface grande. Avec une plus grande surface, une eau moins chaude fait le même travail. Une pompe à chaleur ou un capteur solaire peut chauffer la maison par les radiateurs, souvent en n’en changeant que quelques-uns plutôt qu’en refaisant les sols.",
+    "lifespan": "Plusieurs décennies pour un radiateur en acier ou en fonte rempli d’une eau traitée ; les robinets se changent avant",
+    "site_prerequisites": "De la place au mur sous les fenêtres ou sur les murs extérieurs, et des tuyaux jusqu’à chaque radiateur",
+    "build_note": "brancher un radiateur est un travail de bricolage courant ; c’est le dimensionnement qui compte",
+    "efficiency_note": "une plus grande surface laisse la source tourner moins chaud, là où une pompe à chaleur rend le mieux",
+    "choose_if": "vous passez à une pompe à chaleur ou au solaire et la maison a déjà ses tuyaux et ses radiateurs.",
+    "desc_cut": [
+     160,
+     313
+    ]
+   },
+   "desc_cut": [
+    142,
+    282
+   ]
+  },
+  {
+   "id": "SOL-252",
+   "name": "Radiator reflector panels",
+   "subfunction_id": "FN-02.3",
+   "function_id": "FN-02",
+   "summary": "A sheet of reflective insulation cut to size and taped to the wall behind a radiator. It turns back the heat the radiator sends into the wall behind it, so less of it leaves through that wall. A cheap fix that fits in minutes and comes off when you leave, worth it only on an outside wall that has no insulation.",
+   "slug": "radiator-reflector-panels",
+   "slug_fr": "panneaux-reflecteurs-pour-radiateur",
+   "inputs": [],
+   "input_groups": [],
+   "outputs": [
+    {
+     "io": "IO-46",
+     "name": "Reduced heat loss"
+    }
+   ],
+   "ratings": {
+    "build": 1,
+    "maintain": 1,
+    "efficiency": null,
+    "build_skill": "None",
+    "burden": 0,
+    "build_note": "cut to size and taped behind the radiator",
+    "efficiency_note": "turns back heat that would go into an uninsulated outside wall"
+   },
+   "benchmark": false,
+   "power": "Passive",
+   "maintenance": "none",
+   "repair_skill": "none",
+   "build_skill": "None",
+   "consumables": "None",
+   "daily_life": "none",
+   "choose_if": "your radiators hang on outside walls that have no insulation and you cannot insulate them yet.",
+   "cost": "low",
+   "lifespan": "As long as the adhesive holds; nothing to wear out",
+   "lifespan_band": "5 to 15 years",
+   "renting": "removable",
+   "embodied_carbon": "low",
+   "footprint": "low",
+   "dispatchability": "Continuous process",
+   "site_prerequisites": "A radiator on an outside wall with no insulation. Not worth it on an insulated wall, or on a wall between two heated rooms",
+   "new_build_only": false,
+   "flat_feasible": true,
+   "flat_blocker": null,
+   "societal": "",
+   "regulation_fr": "",
+   "regulation_url": null,
+   "provides_pressure": false,
+   "conduit_for": [],
+   "host_provides": null,
+   "host_required": null,
+   "input_via": {},
+   "input_warn": {},
+   "needs_pressure": false,
+   "tutorials": [],
+   "tutorial_lines_fr": null,
+   "tutorial_status": null,
+   "sources": [
+    {
+     "name": "Smart Energy GB, Fitting radiator reflector panels (2026, with Nesta and the Energy Saving Trust): only on uninsulated external walls; how to fit them",
+     "tier": "B",
+     "url": "https://www.smartenergygb.org/smart-living/smart-energy-tips/radiator-panels",
+     "lang": null
+    }
+   ],
+   "fr": {
+    "name": "Panneaux réflecteurs pour radiateur",
+    "description": "Une feuille d’isolant réfléchissant coupée à la taille et collée au mur derrière un radiateur. Elle renvoie la chaleur que le radiateur envoie dans le mur derrière lui, et moins de chaleur s’échappe par ce mur. Une solution bon marché, posée en quelques minutes et retirée au départ, qui ne vaut la peine que sur un mur extérieur non isolé.",
+    "lifespan": "Tant que la colle tient ; rien ne s’use",
+    "site_prerequisites": "Un radiateur contre un mur extérieur non isolé. Inutile sur un mur isolé, ou entre deux pièces chauffées",
+    "build_note": "coupé à la taille et collé derrière le radiateur",
+    "efficiency_note": "renvoie la chaleur qui partirait dans un mur extérieur non isolé",
+    "choose_if": "vos radiateurs sont contre des murs extérieurs non isolés et vous ne pouvez pas encore les isoler.",
+    "desc_cut": [
+     95,
+     211
+    ]
+   },
+   "desc_cut": [
+    86,
+    193
+   ]
+  },
+  {
+   "id": "SOL-253",
+   "name": "Plug-in balcony solar kit",
+   "subfunction_id": "FN-09.1",
+   "function_id": "FN-09",
+   "summary": "One or two solar panels on a balcony, a wall or a flat roof, with a small inverter that plugs into an ordinary socket. The inverter turns the panels' power into the house's current and feeds it through the socket: whatever is switched on in the home uses it first, and draws less from the grid. Solar power without a roof or an electrician; in Germany, a 400 W panel facing south makes about 280 kWh a year.",
+   "slug": "plug-in-balcony-solar-kit",
+   "slug_fr": "kit-solaire-de-balcon",
+   "inputs": [
+    {
+     "io": "IO-01",
+     "name": "Solar radiation"
+    }
+   ],
+   "input_groups": [],
+   "outputs": [
+    {
+     "io": "IO-03",
+     "name": "AC electricity"
+    }
+   ],
+   "ratings": {
+    "build": 2,
+    "maintain": 1,
+    "efficiency": null,
+    "build_skill": "Basic",
+    "burden": 1,
+    "build_note": "bought as a kit; fixing it safely to the railing is the work",
+    "efficiency_note": "the power is used in the home as it is made, with no battery in between"
+   },
+   "benchmark": false,
+   "power": "Passive",
+   "maintenance": "none",
+   "repair_skill": "basic",
+   "build_skill": "Basic",
+   "consumables": "None",
+   "daily_life": "occasional",
+   "choose_if": "you have a sunny balcony or wall but no roof of your own, and want to make some of your own power.",
+   "cost": "low",
+   "lifespan": "Panels several decades; the micro-inverter is the part that fails first",
+   "lifespan_band": "15 to 30 years",
+   "renting": "movable",
+   "embodied_carbon": "medium",
+   "footprint": "low",
+   "dispatchability": "Weather/time-dependent",
+   "site_prerequisites": "A sunny balcony railing, wall or flat roof, unshaded: partial shade can cut the output by more than half. A socket nearby, on its own (no multi-plug), and the landlord's or the building's agreement for anything fixed outside",
+   "new_build_only": false,
+   "flat_feasible": true,
+   "flat_blocker": null,
+   "societal": "",
+   "regulation_fr": "",
+   "regulation_url": null,
+   "provides_pressure": false,
+   "conduit_for": [],
+   "host_provides": null,
+   "host_required": null,
+   "input_via": {},
+   "input_warn": {},
+   "needs_pressure": false,
+   "tutorials": [],
+   "tutorial_lines_fr": null,
+   "tutorial_status": null,
+   "sources": [
+    {
+     "name": "Verbraucherzentrale, Steckersolar (July 2026): 800 W inverter limit; about 280 kWh a year from a 400 W panel, vertical, unshaded, facing south; shade; landlords; registration (German rules)",
+     "tier": "B",
+     "url": "https://www.verbraucherzentrale.de/wissen/energie/erneuerbare-energien/steckersolar-solarstrom-vom-balkon-direkt-in-die-steckdose-44715",
+     "lang": null
+    }
+   ],
+   "fr": {
+    "name": "Kit solaire de balcon à brancher",
+    "description": "Un ou deux panneaux solaires sur un balcon, un mur ou un toit plat, avec un petit onduleur qui se branche sur une prise ordinaire. L’onduleur transforme le courant des panneaux en courant du logement et l’envoie par la prise : ce qui fonctionne dans la maison l’utilise d’abord, et prend moins au réseau. De l’électricité solaire sans toit ni électricien ; en Allemagne, un panneau de 400 W orienté au sud produit environ 280 kWh par an.",
+    "lifespan": "Les panneaux plusieurs décennies ; le micro-onduleur est la pièce qui lâche en premier",
+    "site_prerequisites": "Une rambarde, un mur ou un toit plat ensoleillé, sans ombre : une ombre partielle peut diviser la production par plus de deux. Une prise à proximité, seule (pas de multiprise), et l’accord du propriétaire ou de la copropriété pour ce qui est fixé dehors",
+    "build_note": "s’achète en kit ; le fixer solidement à la rambarde est le vrai travail",
+    "efficiency_note": "le courant sert dans le logement au moment où il est produit, sans batterie entre les deux",
+    "choose_if": "vous avez un balcon ou un mur ensoleillé mais pas de toit à vous, et voulez produire une part de votre électricité.",
+    "desc_cut": [
+     131,
+     305
+    ]
+   },
+   "desc_cut": [
+    119,
+    295
    ]
   }
  ],
@@ -29761,6 +30986,46 @@
   {
    "sol": "SOL-249",
    "io": "IO-45",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-250",
+   "io": "IO-36",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-250",
+   "io": "IO-36",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-251",
+   "io": "IO-36",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-251",
+   "io": "IO-37",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-251",
+   "io": "IO-36",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-252",
+   "io": "IO-46",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-253",
+   "io": "IO-01",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-253",
+   "io": "IO-03",
    "role": "produces"
   }
  ],

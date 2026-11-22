@@ -36,6 +36,7 @@ export function TutorialRow({ t, line }) {
         {' '}<span aria-hidden="true">↗</span><span className="sr-only">{S.opensNewTab}</span>
       </a>
       {line && <p className="tut-line">{line}</p>}
+      <TutFigures t={t} />
       <p className="tut-meta">
         {siteLabel(t)}
         {t.maker && (
@@ -59,6 +60,46 @@ export function TutorialRow({ t, line }) {
   )
 }
 
+
+/*
+ * The figures a tutorial gives about itself (B4): time, difficulty, what its author's materials
+ * cost, and whether the author calls it a draft. Only the Low-tech Lab wiki publishes them, so
+ * most rows have none and show nothing. The cost is said as the author's, never as a price.
+ */
+const money = (n, cur) => {
+  try { return new Intl.NumberFormat(cat.getLang(), { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(n) }
+  catch { return `${n} ${cur}` }
+}
+function TutFigures({ t }) {
+  const S = ui.solutionPage
+  const parts = []
+  if (t.time && S.tutTime[t.time[1]]) parts.push(fill(S.tutTime[t.time[1]][t.time[0] === 1 ? 0 : 1], { n: t.time[0] }))
+  if (t.level && S.tutLevel[t.level]) parts.push(S.tutLevel[t.level])
+  if (t.cost) parts.push(fill(S.tutCost, { cost: money(t.cost[0], t.cost[1]) }))
+  if (t.draft) parts.push(S.tutDraft)
+  if (!parts.length) return null
+  return <p className="tut-figs"><span className="sr-only">{S.tutFigures}: </span>{capFirst(parts.join(' · '))}</p>
+}
+
+/*
+ * The rows of a list, the videos apart when there are both (F9): a reader who wants to watch
+ * finds them without scanning, and one who reads is not sent to a video by the first row.
+ */
+export function TutorialRows({ sol, tuts }) {
+  const S = ui.solutionPage
+  const vids = tuts.filter((t) => t.format === 'video')
+  const reads = tuts.filter((t) => t.format !== 'video')
+  const row = (t, i) => <TutorialRow key={t.url + i} t={t} line={cat.tutorialLine(sol, t)} />
+  if (!vids.length || !reads.length) return <ul className="tut-list">{tuts.map(row)}</ul>
+  return (
+    <>
+      <h3 className="tut-group">{S.tutorialsToRead}</h3>
+      <ul className="tut-list">{reads.map(row)}</ul>
+      <h3 className="tut-group">{S.tutorialsToWatch}</h3>
+      <ul className="tut-list">{vids.map(row)}</ul>
+    </>
+  )
+}
 
 /*
  * One tutorial: a link straight to it. Several: "Tutorials (3)", opening the same rows as the

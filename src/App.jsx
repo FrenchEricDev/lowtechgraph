@@ -10,7 +10,8 @@ const TreeBuilder = lazy(() => import('./TreeBuilder'))
 import { ui, fill, setUiLang } from './ui-strings'
 import { parsePath, pathFor, urlFor, preferredLang } from './router'
 import Nav from './Nav'
-import { TutorialRow } from './Tutorials.jsx'
+import { TutorialRows } from './Tutorials.jsx'
+import SolutionMedia from './SolutionMedia.jsx'
 import useDialog from './useDialog'
 // The drawings (a fifth of the code) load on demand too, and are fetched while the browser is
 // idle after the first page, so they are normally there before anyone scrolls to them.
@@ -237,8 +238,10 @@ export default function App() {
       : route.view === 'tree' ? ui.app.navBuild
       : route.view === 'search' ? `“${route.q || ''}”`
       : ''
-    // The full name in the tab, as the static page's title: it holds the words people search for.
-    const name = entity ? cat.tLong(entity) : pageName
+    // A sub-need's everyday name in the tab, as on the page (F18, 2026-11-22): its long name is
+    // the workbook's ("Sourcing / extraction"). A need keeps its full name, which reads well and
+    // keeps "Fresh air" the need apart from fresh air the resource. As the static page's title.
+    const name = entity ? (route.view === 'function' ? cat.tLong(entity) : cat.tName(entity)) : pageName
     document.title = name ? `${name} · ${ui.app.name}` : ui.prerender.rootTitle
 
     let link = document.querySelector('link[rel="canonical"]')
@@ -888,9 +891,7 @@ function BuildIt({ sol, go, filters }) {
                   { lang: S.languageName[lang], other: S.languageName[others[0]] || others[0], n: tuts.length })}
               </p>
             )}
-            <ul className="tut-list">
-              {tuts.map((t, i) => <TutorialRow key={i} t={t} line={cat.tutorialLine(sol, t)} />)}
-            </ul>
+            <TutorialRows sol={sol} tuts={tuts} />
           </>
         )}
       </div>
@@ -1926,9 +1927,10 @@ function SolutionView({ id, go, filters, setFilter, landing }) {
       ) : <p className="summary">{cat.tSummary(s)}</p>}
       <SiteLine show={landing} />
 
-      <Suspense fallback={NO_PLATE.has(s.id) ? null : <div className="plate-reserve" aria-hidden="true" />}>
-        <SolutionPlate sol={s} />
-      </Suspense>
+      <SolutionMedia sol={s} drawing={
+        <Suspense fallback={NO_PLATE.has(s.id) ? null : <div className="plate-reserve" aria-hidden="true" />}>
+          <SolutionPlate sol={s} />
+        </Suspense>} />
 
 
       {/* The lead next step for a reader who arrived from a search (D10 Q2): the options for

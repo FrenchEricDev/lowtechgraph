@@ -1,0 +1,63 @@
+{
+  "slug": {
+    "en": "small-budget",
+    "fr": "petit-budget"
+  },
+  "en": {
+    "door": "Start with a small budget",
+    "title": "Start with almost nothing",
+    "intro": "Useful things made from common materials for very little money. For a household that cannot wait years for a saving to pay back what it cost."
+  },
+  "fr": {
+    "door": "Commencer avec un petit budget",
+    "title": "Commencer avec presque rien",
+    "intro": "Des choses utiles, faites de matériaux courants, pour très peu d’argent. Pour un foyer qui ne peut pas attendre des années qu’une économie rembourse ce qu’elle a coûté."
+  },
+  "picks": [
+    {
+      "id": "SOL-184",
+      "en": {
+        "why": "Two clay pots, sand and water keep vegetables fresh for weeks longer, with no power. Best in dry air."
+      },
+      "fr": {
+        "why": "Deux pots en terre, du sable et de l’eau gardent les légumes frais des semaines de plus, sans électricité. Mieux par air sec."
+      }
+    },
+    {
+      "id": "SOL-181",
+      "en": {
+        "why": "Two buckets and a plunger wash a load by hand. Very little to break."
+      },
+      "fr": {
+        "why": "Deux seaux et un piston lavent une lessive à la main. Presque rien ne peut casser."
+      }
+    },
+    {
+      "id": "SOL-204",
+      "en": {
+        "why": "A tarpaulin on poles catches rain where there is no roof to collect from."
+      },
+      "fr": {
+        "why": "Une bâche sur des piquets recueille la pluie là où il n’y a pas de toit pour la capter."
+      }
+    },
+    {
+      "id": "SOL-180",
+      "en": {
+        "why": "A stove made from tin cans that cooks on twigs and wood chips, and leaves charcoal instead of ash."
+      },
+      "fr": {
+        "why": "Un réchaud fait de boîtes de conserve, qui cuit avec des brindilles et des copeaux et laisse du charbon au lieu de cendres."
+      }
+    },
+    {
+      "id": "SOL-110",
+      "en": {
+        "why": "A sealed bucket turns kitchen scraps into something the soil can take, cooked food included, even in a flat."
+      },
+      "fr": {
+        "why": "Un seau fermé transforme les restes de cuisine en apport pour le sol, plats cuisinés compris, même en appartement."
+      }
+    }
+  ]
+}

@@ -12,7 +12,10 @@
 //   * the language, the kind of page, and the response status
 //   * the country Cloudflare already knows, at country granularity
 //   * the REFERRER'S HOSTNAME only, never the full referring URL
-// WHAT IS NOT RECORDED: no IP address, no user agent, no cookie, no identifier of any
+//   * whether the client says it is a program or a browser: one of two words, worked out
+//     from the user agent and then dropped (added 2026-11-23: without it, crawlers and
+//     monitors made most of the page counts and the home page's figure meant nothing)
+// WHAT IS NOT RECORDED: no IP address, no user agent string, no cookie, no identifier of any
 // kind, nothing that could distinguish one reader from another or link two requests
 // together. These are counts of pages, not visits by people. That is the constraint the
 // backlog set on 2026-08-19 and it is what keeps this side of a consent banner.
@@ -50,6 +53,15 @@ function referrerHost(request) {
   } catch {
     return ''
   }
+}
+
+/** 'bot' or 'browser', from the user agent, which is read here and never stored. A program
+ *  that names itself (a crawler, a monitor, an HTTP library, a link preview) or sends no
+ *  user agent at all is a bot; anything else is counted as a browser. A bot pretending to
+ *  be a browser is counted as one, so "browser" is an upper bound on people, not a count. */
+const BOT_UA = /bot|crawl|spider|slurp|scan|monitor|uptime|preview|fetch|curl|wget|python|httpx|aiohttp|go-http|java\/|okhttp|axios|node|headless|phantom|lighthouse|facebookexternalhit|embedly|whatsapp|telegram|discord|slack|feed|archive|checker|validator|^$/i
+export function agentOf(request) {
+  return BOT_UA.test(request.headers.get('user-agent') || '') ? 'bot' : 'browser'
 }
 
 // What the site offers machines, announced on every HTML page (TODO I7, after Cloudflare's
@@ -140,6 +152,7 @@ export default {
             String(response.status),
             (request.cf && request.cf.country) || '',
             referrerHost(request),
+            agentOf(request),
           ],
           // A count of one. Sums in the query, and leaves room for a duration or a size
           // later without changing the schema shape.

@@ -1338,6 +1338,17 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setNodes, setEdges, snapshot, nodes])
 
+  // S7: "Remove" in the picks sheet takes every card of that solution off the canvas, in one undo step.
+  const removeSol = useCallback((solId) => {
+    const ids = new Set(nodes.filter((n) => n.data.sol?.id === solId).map((n) => n.id))
+    if (!ids.size) return
+    snapshot()
+    setSaid(fill(ui.tree.saidRemoved, { name: cardName([...ids][0]) }))
+    setNodes((ns) => ns.filter((n) => !ids.has(n.id)))
+    setEdges((es) => es.filter((e) => !ids.has(e.source) && !ids.has(e.target)))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setNodes, setEdges, snapshot, nodes])
+
   /*
    * Deleting a link (TODO S2). A hairline is a small target, so the edge carries a wide invisible
    * interaction stroke and one tap selects it: it thickens and a Remove button appears beside it.
@@ -1924,7 +1935,7 @@ function Canvas({ filters, setFilter, go, seed, lang }) {
             </button>
           ) : <span className="tree-toolbar-gap" />}
           {/* the house as built so far: in the bar, so it never covers the canvas */}
-          <BuiltHouse sols={solsInTree} go={go} lang={lang} openKey={houseKey} />
+          <BuiltHouse sols={solsInTree} go={go} lang={lang} openKey={houseKey} onRemove={removeSol} />
           <button className="btn sm tree-verdict is-desktop-only" onClick={() => setAdequacyOpen((v) => !v)} aria-expanded={adequacyOpen}
                   disabled={!solIdsInTree.length} title={solIdsInTree.length ? ui.tree.tipCheck : ui.tree.tipCheckEmpty}>{ui.adequacy.button}</button>
         </div>

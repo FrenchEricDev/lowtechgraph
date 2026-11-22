@@ -1,0 +1,63 @@
+{
+  "slug": {
+    "en": "heating-bill",
+    "fr": "facture-de-chauffage"
+  },
+  "en": {
+    "door": "Cut my heating bill",
+    "title": "My heating bill is too high",
+    "intro": "Warm the people before the rooms, heat only the rooms in use, and keep in the heat you already pay for. The first three work in a rented home too."
+  },
+  "fr": {
+    "door": "Réduire ma facture de chauffage",
+    "title": "Ma facture de chauffage est trop élevée",
+    "intro": "Chauffez les personnes avant les pièces, ne chauffez que les pièces occupées, et gardez la chaleur que vous payez déjà. Les trois premières conviennent aussi en location."
+  },
+  "picks": [
+    {
+      "id": "SOL-249",
+      "en": {
+        "why": "Warms the bed you sleep in on about 100 W, where a fan heater draws about 2 kW."
+      },
+      "fr": {
+        "why": "Chauffe le lit où vous dormez avec environ 100 W, là où un radiateur soufflant tire environ 2 kW."
+      }
+    },
+    {
+      "id": "SOL-252",
+      "en": {
+        "why": "Taped behind a radiator on an outside wall with no insulation, it sends back the heat that would leave through the wall."
+      },
+      "fr": {
+        "why": "Collé derrière un radiateur contre un mur extérieur non isolé, il renvoie la chaleur qui partirait par le mur."
+      }
+    },
+    {
+      "id": "SOL-225",
+      "en": {
+        "why": "A small heater under a table and a thick blanket over it: the people sitting there stay warm in a cooler room."
+      },
+      "fr": {
+        "why": "Un petit chauffage sous une table et une couverture épaisse par-dessus : ceux qui y sont assis restent au chaud dans une pièce plus fraîche."
+      }
+    },
+    {
+      "id": "SOL-020",
+      "en": {
+        "why": "Recycled paper blown into the loft or the walls through small holes: the cheapest way to insulate a house you already live in."
+      },
+      "fr": {
+        "why": "Du papier recyclé insufflé dans les combles ou les murs par de petits trous : la façon la moins chère d’isoler une maison déjà habitée."
+      }
+    },
+    {
+      "id": "SOL-037",
+      "en": {
+        "why": "A thermostatic valve on each radiator lets the rooms nobody uses stay cool. Fitting one means draining the radiator first."
+      },
+      "fr": {
+        "why": "Un robinet thermostatique sur chaque radiateur laisse les pièces inoccupées au frais. Pour le poser, il faut d’abord vidanger le radiateur."
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "slug": {
+    "en": "off-grid",
+    "fr": "hors-reseau"
+  },
+  "en": {
+    "door": "No grid connection",
+    "title": "Living off the grid",
+    "intro": "For a plot with no connection, or one too costly to connect: water, toilets and power, the minimum to live there every day."
+  },
+  "fr": {
+    "door": "Pas de raccordement au réseau",
+    "title": "Vivre hors réseau",
+    "intro": "Pour un terrain sans raccordement, ou trop coûteux à raccorder : l’eau, les toilettes et l’électricité, le minimum pour y vivre au quotidien."
+  },
+  "picks": [
+    {
+      "id": "SOL-053",
+      "en": {
+        "why": "Water from the roof into a tank: the first supply to set up, and drinking water once it is treated."
+      },
+      "fr": {
+        "why": "L’eau du toit dans une cuve : la première ressource à mettre en place, et de l’eau potable une fois traitée."
+      }
+    },
+    {
+      "id": "SOL-069",
+      "en": {
+        "why": "No flush, no sewer and no septic tank: the waste becomes compost after a long curing period."
+      },
+      "fr": {
+        "why": "Ni chasse, ni égout, ni fosse : les déchets deviennent du compost après une longue maturation."
+      }
+    },
+    {
+      "id": "SOL-190",
+      "en": {
+        "why": "Panels wired straight to a pump or a fan: they run while the sun shines, with no battery to buy."
+      },
+      "fr": {
+        "why": "Des panneaux reliés directement à une pompe ou un ventilateur : ils tournent tant que le soleil brille, sans batterie à acheter."
+      }
+    },
+    {
+      "id": "SOL-076",
+      "en": {
+        "why": "The main source of power: panels that make electricity every sunny day, with no moving parts."
+      },
+      "fr": {
+        "why": "La source principale d’électricité : des panneaux qui produisent chaque jour de soleil, sans pièce mobile."
+      }
+    },
+    {
+      "id": "SOL-080",
+      "en": {
+        "why": "Stores the day’s power for the evening and the night: lights, a fridge and a pump keep running."
+      },
+      "fr": {
+        "why": "Stocke l’électricité du jour pour le soir et la nuit : l’éclairage, un réfrigérateur et une pompe continuent de tourner."
+      }
+    }
+  ]
+}

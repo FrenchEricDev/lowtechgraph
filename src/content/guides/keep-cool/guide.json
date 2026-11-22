@@ -1,0 +1,63 @@
+{
+  "slug": {
+    "en": "keep-cool",
+    "fr": "rester-au-frais"
+  },
+  "en": {
+    "door": "Cope with the summer heat",
+    "title": "Keep cool without air conditioning",
+    "intro": "Five ways to keep a home cooler in a heatwave without an air conditioner. Stop the sun before it reaches the glass and the roof, then let the house move the hot air out on its own."
+  },
+  "fr": {
+    "door": "Supporter la chaleur de l’été",
+    "title": "Rester au frais sans climatisation",
+    "intro": "Cinq façons de garder un logement plus frais pendant une canicule, sans climatiseur. Arrêtez le soleil avant qu’il n’atteigne les vitres et le toit, puis laissez la maison chasser l’air chaud d’elle-même."
+  },
+  "picks": [
+    {
+      "id": "SOL-127",
+      "en": {
+        "why": "A wet pad in front of a fan: the water that evaporates takes heat from the air. It works in dry heat, much less in humid weather."
+      },
+      "fr": {
+        "why": "Un tampon humide devant un ventilateur : l’eau qui s’évapore prend la chaleur de l’air. Efficace par chaleur sèche, beaucoup moins par temps humide."
+      }
+    },
+    {
+      "id": "SOL-124",
+      "en": {
+        "why": "Closed by day on the sunny side, they stop the sun before it reaches the glass. The same shutters keep the heat in on winter nights."
+      },
+      "fr": {
+        "why": "Fermés le jour du côté du soleil, ils arrêtent le soleil avant la vitre. Les mêmes volets gardent la chaleur les nuits d’hiver."
+      }
+    },
+    {
+      "id": "SOL-206",
+      "en": {
+        "why": "A white coating painted on the roof for the summer sends most of the sunlight back before it heats the rooms below."
+      },
+      "fr": {
+        "why": "Un enduit blanc peint sur le toit pour l’été renvoie l’essentiel du soleil avant qu’il ne chauffe les pièces du dessous."
+      }
+    },
+    {
+      "id": "SOL-039",
+      "en": {
+        "why": "A shaft warmed at the top draws hot air out and pulls cooler air in low, even on a day without wind."
+      },
+      "fr": {
+        "why": "Un conduit chauffé en haut aspire l’air chaud et fait entrer de l’air plus frais par le bas, même sans vent."
+      }
+    },
+    {
+      "id": "SOL-033",
+      "en": {
+        "why": "Air drawn through a pipe buried in the ground arrives cooler in summer, and warmer in winter. The biggest job here: a trench and a buried pipe."
+      },
+      "fr": {
+        "why": "L’air qui passe par un tuyau enterré arrive plus frais l’été, et plus doux l’hiver. Le plus gros chantier de la liste : une tranchée et un tuyau enterré."
+      }
+    }
+  ]
+}

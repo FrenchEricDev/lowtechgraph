@@ -349,3 +349,10 @@ figure.plate { container: plate / inline-size; }
 .guide-thumb .ov-num + .ov-line.hair[d*=" L"], .guide-thumb g:not([class]):not([mask]):not([clip-path]):has(> .ov-txt) > .ov-line,
 .guide-thumb circle.ov-dash:has(+ .ov-line + .ov-fill) + .ov-line, .guide-thumb circle.ov-dash + .ov-line + .ov-fill,
 .guide-thumb .ov-fill + clipPath + g { display: none; }
+
+/* S7: the picks as a plan, by need. */
+.bh-group + .bh-group { margin-top: var(--s-3); }
+.bh-group-name { margin: var(--s-2) 0 var(--s-1); font-size: var(--t-sm); color: var(--ink); }
+.bh-row-facts { flex-basis: 100%; font-size: var(--t-xs); color: var(--muted); }   /* its own line in the flex row */
+.bh-row-btn.is-remove { background: none; border-color: var(--line); color: var(--muted); font: inherit; font-size: var(--t-xs); font-weight: 600; cursor: pointer; }
+.bh-row-btn.is-remove:hover { color: var(--ink); border-color: var(--muted); background: none; }

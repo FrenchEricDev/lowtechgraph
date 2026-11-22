@@ -1089,7 +1089,7 @@ for (const lang of LANGS) {
   }
   for (const s of cat.subfunctions) {
     urls.push(writePage({ kind: 'subfunction', entity: s, lang, body: subfunctionBody(s, lang),
-      title: pageTitle(tLong(s, lang), tLong(fnById[s.function_id], lang)), name: tName(s, lang),
+      title: pageTitle(tName(s, lang), tName(fnById[s.function_id], lang)), name: tName(s, lang),
       crumbs: [...crumbHead(lang),
                { name: tName(fnById[s.function_id], lang), path: pathOf('function', fnById[s.function_id], lang) },
                { name: tName(s, lang), path: pathOf('subfunction', s, lang) }],

@@ -1,0 +1,63 @@
+{
+  "slug": {
+    "en": "without-power",
+    "fr": "sans-electricite"
+  },
+  "en": {
+    "door": "Everyday needs without power",
+    "title": "Everyday needs without power",
+    "intro": "Keeping food, cooking, washing, hot water and light, each met with no electricity at all. One solution per need, each one passive or run by your own effort."
+  },
+  "fr": {
+    "door": "Le quotidien sans électricité",
+    "title": "Le quotidien sans électricité",
+    "intro": "Conserver, cuisiner, laver, chauffer l’eau, s’éclairer : chaque besoin couvert sans aucune électricité. Une solution par besoin, passive ou mue par votre propre effort."
+  },
+  "picks": [
+    {
+      "id": "SOL-165",
+      "en": {
+        "why": "Carrots, beetroot and potatoes keep for months in boxes of sand, in a cool dark place, with no fridge."
+      },
+      "fr": {
+        "why": "Carottes, betteraves et pommes de terre se gardent des mois dans des caisses de sable, au frais et à l’ombre, sans réfrigérateur."
+      }
+    },
+    {
+      "id": "SOL-090",
+      "en": {
+        "why": "Cooks with the sun alone, no fuel and no smoke, on sunny days."
+      },
+      "fr": {
+        "why": "Cuit avec le seul soleil, sans combustible ni fumée, les jours de beau temps."
+      }
+    },
+    {
+      "id": "SOL-093",
+      "en": {
+        "why": "Your legs turn the drum a motor would: clean clothes with no electricity, for some time and effort per load."
+      },
+      "fr": {
+        "why": "Vos jambes font tourner le tambour à la place d’un moteur : du linge propre sans électricité, contre du temps et de l’effort à chaque lessive."
+      }
+    },
+    {
+      "id": "SOL-059",
+      "en": {
+        "why": "Hot water from the sun with no pump: the warm water rises on its own into a tank set above the panel."
+      },
+      "fr": {
+        "why": "De l’eau chaude grâce au soleil, sans pompe : l’eau chauffée monte d’elle-même vers un ballon placé au-dessus du capteur."
+      }
+    },
+    {
+      "id": "SOL-171",
+      "en": {
+        "why": "A few seconds lifting a weight give about twenty minutes of light, with no battery, no grid and no sun."
+      },
+      "fr": {
+        "why": "Quelques secondes à lever un poids donnent une vingtaine de minutes de lumière, sans pile, sans réseau et sans soleil."
+      }
+    }
+  ]
+}

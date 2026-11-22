@@ -1429,6 +1429,65 @@ const KZ2 = {
     <path class="ov-line hair" d="M478,248 V240 h26 v8"/>
     <path class="ov-line" d="M540,206 q4,46 0,92 M556,206 q-4,46 0,92 M572,206 q4,46 0,92"/>
     <path class="ov-line hair" d="M600,250 h-14"/>${arrow(583, 250, -1, 0, k * 0.5)}`,
+  // B19, 2026-11-22: a bed with a heated blanket on it and its cord to a socket on the inner face of
+  // the south wall (x 672). The
+  // wires are what heats, so they are drawn; the heat goes up into the bed, not out into the room.
+  blanket: (k) => `
+    <path class="ov-line" d="M470,272 h130 v18 h-130 z"/>
+    <path class="ov-line hair" d="M474,290 V298 M596,290 V298"/>
+    <path class="ov-line" d="M472,262 h126 v10 h-126 z"/>
+    <path class="ov-line hair" d="M476,254 h18 v8 h-18 z"/>
+    <path class="ov-tint" d="M500,254 h96 v8 h-96 z"/>
+    <path class="ov-line" d="M500,254 h96 v8 h-96 z"/>
+    <path class="ov-line hair" d="M504,258 l6,-2 l6,4 l6,-4 l6,4 l6,-4 l6,4 l6,-4 l6,4 l6,-4 l6,4 l6,-4 l6,4 l6,-4 l6,4"/>
+    <path class="ov-line hair" d="M596,258 q22,0 24,16 v10 H664"/>
+    <path class="ov-line hair" d="M612,272 h8 v6 h-8 z"/>
+    <path class="ov-line" d="M664,278 h8 v12 h-8 z"/>
+    <path class="ov-line hair" d="M530,253 V244 M566,253 V244"/>
+    ${arrow(530, 242, 0, -1, k * 0.5)}${arrow(566, 242, 0, -1, k * 0.5)}`,
+}
+/* A15 and B20, 2026-11-22: getting heat to the rooms, keeping it out of the wall behind a
+   radiator, and a solar panel on the south wall. Geometry from BASE: the ground-floor slab is
+   y 434-448, the south wall's inner face x 672, the lower window y 338-408, the upper 210-268,
+   the first floor 300-312. */
+const XF = { zone: [440, 404, 236, 46], crop: [430, 390, 250, 70] }       // the living-room floor
+const XR = { zone: [630, 270, 46, 166], crop: [600, 250, 100, 200] }      // under the south windows
+const XS = { zone: [672, 270, 70, 70], crop: [640, 250, 120, 110] }       // on the south wall, outside
+const KZ3 = {
+  // a pipe in loops through the screed of the living-room floor, from a manifold at the riser:
+  // the whole floor gives the heat, so the water in it can stay barely warm
+  floorLoop: (k) => `
+    <path class="ov-line" d="M446,420 h12 v14 h-12 z"/>
+    <path class="ov-line hair" d="M452,434 V438 H640 q6,0 6,3 q0,3 -6,3 H470 q-4,0 -4,-3"/>
+    <path class="ov-line hair" d="M474,440 H636 M478,442 H632"/>
+    <path class="ov-line hair" d="M560,432 V424 M620,432 V424"/>
+    ${arrow(560, 422, 0, -1, k * 0.5)}${arrow(620, 422, 0, -1, k * 0.5)}`,
+  // a deep panel radiator under each south window, fed from below; the air it warms rises past
+  // the cold glass, which is why radiators sit there
+  radiators: (k) => `
+    <path class="ov-line" d="M656,410 h12 v22 h-12 z"/>
+    <path class="ov-line hair" d="M660,410 V432 M664,410 V432 M660,432 V434 M664,432 V434"/>
+    <path class="ov-line" d="M656,272 h12 v22 h-12 z"/>
+    <path class="ov-line hair" d="M660,272 V294 M664,272 V294 M660,294 V300 M664,294 V300"/>
+    <path class="ov-line hair" d="M650,412 V398 M650,274 V262"/>
+    ${arrow(650, 396, 0, -1, k * 0.5)}${arrow(650, 260, 0, -1, k * 0.5)}`,
+  // a reflective sheet on the wall behind the lower radiator: what the back of the radiator
+  // sends towards the cold outside wall comes back into the room
+  reflector: (k) => `
+    <path class="ov-line hair" d="M656,410 h12 v22 h-12 z"/>
+    <path class="ov-tint" d="M669,406 h3 v30 h-3 z"/>
+    <path class="ov-line" d="M670,406 V436"/>
+    <path class="ov-line hair" d="M664,420 h4 M640,420 h12"/>
+    ${arrow(638, 420, -1, 0, k * 0.5)}`,
+  // one panel hung on the south wall under the upper window, its micro-inverter behind it, and
+  // the cable through the wall to a socket inside
+  balconySolar: (k) => `
+    <path class="ov-tint" d="M698,276 L722,330 L728,327 L704,273 Z"/>
+    <path class="ov-line" d="M698,276 L722,330 L728,327 L704,273 Z"/>
+    <path class="ov-line hair" d="M690,278 H700 M690,326 H722"/>
+    <path class="ov-line hair" d="M694,300 h8 v8 h-8 z"/>
+    <path class="ov-line hair" d="M698,308 V316 H690 M672,316 H668 V320"/>
+    <path class="ov-line" d="M664,320 h8 v10 h-8 z"/>`,
 }
 /* <<< plate helpers */
 
@@ -2754,6 +2813,37 @@ export const PLATES = [
     // an unheated bedroom, and still the one that uses no energy at all.
     site: () => KZ2.boxBed(6),
     draw: (t) => annotated(t, { obj: KZ2.boxBed, label: ['BOX BED WITH A CURTAIN', 'LIT CLOS À RIDEAU', 250, 204, 'start', [469, 205]], notes: [] }),
+  },
+  {
+    id: 'SOL-250', fnEn: 'Thermal comfort', fnFr: 'Confort thermique', en: 'Low-temperature underfloor heating loop', fr: 'Plancher chauffant basse température', ...XF,
+    // A15, 2026-11-22: loops in the ground-floor screed from a manifold at the riser.
+    site: () => KZ3.floorLoop(6),
+    draw: (t) => annotated(t, { obj: KZ3.floorLoop, label: ['UNDERFLOOR LOOP', 'PLANCHER CHAUFFANT', 500, 386, 'middle', [500, 441]], notes: [] }),
+  },
+  {
+    id: 'SOL-251', fnEn: 'Thermal comfort', fnFr: 'Confort thermique', en: 'Radiators sized for low water temperature', fr: 'Radiateurs dimensionnés pour la basse température', ...XR,
+    // A15, 2026-11-22: a deep panel under each south window, on both floors.
+    site: () => KZ3.radiators(6),
+    draw: (t) => annotated(t, { obj: KZ3.radiators, label: ['LARGE RADIATORS', 'GRANDS RADIATEURS', 560, 360, 'end', [655, 420]], notes: [] }),
+  },
+  {
+    id: 'SOL-252', fnEn: 'Thermal comfort', fnFr: 'Confort thermique', en: 'Radiator reflector panels', fr: 'Panneaux réflecteurs pour radiateur', ...XR,
+    // B20, 2026-11-22: the sheet between the lower radiator and the outside wall.
+    site: () => KZ3.reflector(6),
+    draw: (t) => annotated(t, { obj: KZ3.reflector, label: ['REFLECTOR PANEL', 'PANNEAU RÉFLECTEUR', 560, 360, 'end', [669, 410]], notes: [] }),
+  },
+  {
+    id: 'SOL-253', fnEn: 'Power & energy supply', fnFr: 'Production et fourniture d’énergie', en: 'Plug-in balcony solar kit', fr: 'Kit solaire de balcon à brancher', ...XS,
+    // B20, 2026-11-22: a panel hung on the south wall, its cable to a socket inside.
+    site: () => KZ3.balconySolar(6),
+    draw: (t) => annotated(t, { obj: KZ3.balconySolar, label: ['PLUG-IN SOLAR PANEL', 'PANNEAU SOLAIRE À BRANCHER', 650, 252, 'end', [701, 290]], notes: [] }),
+  },
+  {
+    id: 'SOL-249', fnEn: 'Thermal comfort', fnFr: 'Confort thermique', en: 'Electric blanket or heated mattress topper', fr: 'Couverture ou surmatelas chauffant', ...XB,
+    // B19, 2026-11-22: the bed in the bedroom slot, the heating wire drawn through the blanket and
+    // its cord to the wall socket. It warms the bed someone lies in, not the room.
+    site: () => KZ2.blanket(6),
+    draw: (t) => annotated(t, { obj: KZ2.blanket, label: ['HEATED BLANKET', 'COUVERTURE CHAUFFANTE', 250, 204, 'start', [499, 255]], notes: [] }),
   },
   {
     id: 'SOL-239', fnEn: 'Thermal comfort', fnFr: 'Confort thermique', en: 'Insulating furniture (hooded chair, folding screen)', fr: 'Mobilier isolant (fauteuil à capuchon, paravent)', ...LZ,

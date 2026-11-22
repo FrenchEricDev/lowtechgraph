@@ -1541,7 +1541,7 @@ a.row, a.chip { text-decoration: none; }
   padding: var(--s-4) var(--s-5); align-items: baseline;
 }
 /* The format, a column of its own, centred against the two lines beside it. */
-.tut > .tut-fmt { grid-row: span 3; align-self: center; justify-self: start; }
+.tut > .tut-fmt { grid-row: span 4; align-self: center; justify-self: start; }
 .tut > .tut-link, .tut > .tut-line, .tut > .tut-meta { grid-column: 2; }
 .tut-link { display: inline; color: var(--ink); text-decoration: none; }
 /* The whole row is the link: the link's own box stretched over it, "also in French" above that. */
@@ -1557,6 +1557,12 @@ a.row, a.chip { text-decoration: none; }
 .tut-title { font-style: italic; font-weight: 600; font-size: var(--t-md); line-height: var(--lh-snug); overflow-wrap: anywhere; }
 .tut-line { margin: var(--s-1) 0 0; font-size: var(--t-sm); color: var(--ink); }
 .tut-meta { margin: var(--s-1) 0 0; font-size: var(--t-sm); color: var(--muted); }
+.tut > .tut-figs { grid-column: 2; }
+.tut-figs { margin: var(--s-1) 0 0; font-size: var(--t-sm); color: var(--ink); }
+.tut-group { font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--muted); margin: 0; padding: var(--s-4) var(--s-5) 0; }
+.tut-list + .tut-group { border-top: 1px solid var(--line-soft); }
+.tut-pick-list .tut-figs { font-size: var(--t-xs); }
 .tut-meta a { color: var(--accent-ink); }
 .tut-fmt {
   display: inline-flex; align-items: center; gap: 3px; padding: 0 5px;
@@ -2129,3 +2135,25 @@ a.row, a.chip { text-decoration: none; }
   .site-req { margin-top: var(--s-6); margin-bottom: var(--s-6); }
   .sum-parts { margin: var(--s-5) 0 var(--s-6); }
 }
+
+/* ---- R1 trial: the drawing, a photo and a video as tabs (Eric, 2026-11-22). One frame, so the
+   page is no longer than with the drawing alone; the photo keeps its 4:3. */
+.media { margin: var(--s-5) 0; }
+.media-tabs { display: flex; gap: var(--s-1); border-bottom: 1px solid var(--line); margin-bottom: var(--s-3); }
+.media-tab {
+  font: inherit; font-size: var(--t-sm); font-weight: 600; color: var(--muted); background: none;
+  border: 0; border-bottom: 2px solid transparent; padding: var(--s-2) var(--s-3); margin-bottom: -1px; cursor: pointer;
+}
+.media-tab.is-on { color: var(--accent-ink); border-bottom-color: var(--accent); }
+.media-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.media-panel > figure.plate { margin-top: 0; }
+.media-photo { margin: 0; }
+.media-photo img { display: block; width: 100%; height: auto; max-width: 720px; border-radius: var(--radius); background: var(--surface); }
+.media-credit { margin: var(--s-2) 0 0; font-size: var(--t-xs); color: var(--muted); }
+.media-credit a { color: var(--accent-ink); }
+.media-video { max-width: 720px; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); }
+.media-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.media-video-wait { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--s-2); padding: var(--s-4); text-align: center; }
+.media-video-title { margin: 0; font-weight: 600; }

@@ -28,7 +28,7 @@ const usesInset = (p, t) => p.draw(t).includes('class="dr-fill" d="M34,50')
 const HEAD = 160   // the tall sheet is 840 x 720 when both views show
 const INSET = [606, 12, 216, 144]
 
-export default function BuiltHouse({ sols, go, lang, openKey }) {
+export default function BuiltHouse({ sols, go, lang, openKey, onRemove }) {
   const t = (en, fr) => (lang === 'fr' ? fr : en)
   const key = sols.map((s) => s.id).join(',')
 
@@ -167,6 +167,15 @@ export default function BuiltHouse({ sols, go, lang, openKey }) {
   }
   const lastFresh = fresh.size ? model.rows.find((r) => r.base && fresh.has(r.plate.id)) : null
 
+  // S7: the index as a plan, grouped by need in the catalogue's order, each row with its cost and
+  // the skill it takes. (A "Copy as a checklist" was tried and removed, 2026-11-22: a list of
+  // tutorial links is not a checklist anyone would use; the share text already lists the system.)
+  const B = ui.builtHouse
+  const factsOf = (s) => fill(B.rowFacts, { cost: cat.tEnum(s.cost) || '?', skill: (cat.tEnum(s.build_skill) || '?').toLowerCase() })
+  const groups = cat.catalogue.functions
+    .map((f) => ({ fn: f, rows: model.rows.filter((r) => r.sol.function_id === f.id) }))
+    .filter((g) => g.rows.length)
+
   return (
     <>
       {/* One button for the page's life (B11): a key that changed on each landing remounted it and
@@ -223,9 +232,12 @@ export default function BuiltHouse({ sols, go, lang, openKey }) {
                     </ul>
                   </div>
                 )}
-                <h3>{ui.builtHouse.indexTitle}</h3>
+                <h3>{B.indexTitle}</h3>
+                {groups.map((g) => (
+                <div key={g.fn.id} className="bh-group">
+                <h4 className="bh-group-name">{cat.tName(g.fn)}</h4>
                 <ul>
-                  {model.rows.map((r) => {
+                  {g.rows.map((r) => {
                     const on = selected === r.sol.id
                     const sub = cat.subById[r.sol.subfunction_id]
                     return (
@@ -234,6 +246,7 @@ export default function BuiltHouse({ sols, go, lang, openKey }) {
                           onClick={() => select(r.sol.id)}>
                           <span className="bh-row-name">{cat.tName(r.sol)}</span>
                           {sub && <span className="bh-row-sub">{cat.tName(sub)}</span>}
+                          <span className="bh-row-facts">{factsOf(r.sol)}</span>
                         </button>
                         {/* Buttons, not small links, which readers missed; both open a new tab, so
                             the drawing stays open (a user's session, 2026-11-03). */}
@@ -242,11 +255,19 @@ export default function BuiltHouse({ sols, go, lang, openKey }) {
                             {ui.builtHouse.solutionPage} <span aria-hidden="true">↗</span><span className="sr-only">{ui.solutionPage.opensNewTab}</span>
                           </a>
                           <TutorialsPick sol={r.sol} className="bh-row-btn" />
+                          {onRemove && (
+                            <button type="button" className="bh-row-btn is-remove" onClick={() => onRemove(r.sol.id)}
+                                    aria-label={fill(B.removeNamed, { name: cat.tName(r.sol) })}>
+                              {B.remove}
+                            </button>
+                          )}
                         </span>
                       </li>
                     )
                   })}
                 </ul>
+                </div>
+                ))}
                 {model.notDrawn.length > 0 && <p className="bh-note">{ui.builtHouse.notDrawnWhy}</p>}
                 {/* CM1 place 3: before building, where to find help (the solution page's line). */}
                 <WhereToFindHelp go={go} />
