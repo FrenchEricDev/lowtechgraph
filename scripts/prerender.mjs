@@ -424,6 +424,10 @@ function pageFoot(lang, altPaths) {
     </footer>`
 }
 
+// A17: the need page's headings, read as content.js reads them (it cannot be imported here).
+const NEED_GROUPS = JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/content/need-groups.json'), 'utf8'))
+const needGroups = (fnId, lang) => (NEED_GROUPS[fnId] ? NEED_GROUPS[fnId].map((x) => ({ title: x[lang] || x.en, subs: x.subs })) : null)
+
 function functionBody(fn, lang) {
   const subs = subsOf(fn.id, lang)
   return `
@@ -432,11 +436,14 @@ function functionBody(fn, lang) {
     ${longLine(fn, lang)}
     ${tSummary(fn, lang) ? `<p class="pr-lede">${esc(tSummary(fn, lang))}</p>` : ''}
     <h2>${esc(ui.needPages.subfunctionsHeading)}</h2>
-    ${listOf(subs.map((s) => {
-      const n = solsOfSub(s.id).length
-      return `${link(pathOf('subfunction', s, lang), tName(s, lang))} — ${fill(ui.home.solutionCount, { n })}`
+    ${(() => {
+      const row = (s) => `${link(pathOf('subfunction', s, lang), tName(s, lang))} — ${fill(ui.home.solutionCount, { n: solsOfSub(s.id).length })}`
         .replace(' — ', ', ')
-    }))}`
+      const groups = needGroups(fn.id, lang)
+      if (!groups) return listOf(subs.map(row))
+      // A17: the same headings as the app's need page.
+      return groups.map((g) => `<h3>${esc(g.title)}</h3>${listOf(g.subs.map((id) => subs.find((s) => s.id === id)).filter(Boolean).map(row))}`).join('')
+    })()}`
 }
 
 function subfunctionBody(sub, lang) {
@@ -557,15 +564,21 @@ function homeBody(lang) {
 const siteLine = (lang) =>
   `<p class="pr-site">${esc(ui.app.siteLine)}</p>`
 
+// The same two sections as the app (2026-11-26): selections, then example systems.
 function guidesBody(lang) {
-  return `
-    <h1>${esc(ui.guides.title)}</h1>
-    <p class="pr-lede">${esc(ui.guides.intro)}</p>
-    ${listOf(guides.map((g) => {
+  const G = ui.guides
+  const isSys = (g) => g.kind === 'home' || g.kind === 'system'
+  const sec = (title, intro, gs) => !gs.length ? '' : `
+    <section><h2>${esc(title)}</h2><p>${esc(intro)}</p>
+    ${listOf(gs.map((g) => {
       const t = g[lang] || g.en || {}
       return `${link(pathOf('guide', g, lang), t.title || '')}: ${esc(t.intro || '')} `
-        + `(${esc(fill(ui.guides.picks, { n: (g.picks || []).length }))})`
-    }))}`
+        + `(${esc(fill(G.picks, { n: isSys(g) ? (g.solutions || []).length : (g.picks || []).length }))})`
+    }))}</section>`
+  return `
+    <h1>${esc(G.title)}</h1>
+    ${sec(G.selTitle, G.selIntro, guides.filter((g) => !isSys(g)))}
+    ${sec(G.sysTitle, G.sysIntro, guides.filter(isSys))}`
 }
 
 function needsBody(lang) {
@@ -580,7 +593,30 @@ function needsBody(lang) {
     }))}`
 }
 
+// An example home (2026-11-26): every solution of its system, grouped by need as the app shows it,
+// the picks with their reason and the home's own warnings on the solution they concern.
+function homeList(g, lang) {
+  const G = ui.guide
+  const rows = (g.solutions || []).map((id) => solById[id]).filter(Boolean)
+  const fnOrder = cat.functions.map((f) => f.id)
+  const skill = ['None', 'Basic', 'Intermediate', 'Specialist']
+  const groups = fnOrder.map((fid) => [fid, rows.filter((s) => s.function_id === fid)
+    .sort((a, b) => skill.indexOf(a.build_skill) - skill.indexOf(b.build_skill))]).filter(([, r]) => r.length)
+  const keys = (g[lang] || g.en || {}).keys
+  return `<h2>${esc(g.kind === 'home' ? G.listTitleHome : G.listTitleSystem)}</h2>`
+    + (keys ? `<p>${esc(keys)}</p>` : '') + groups.map(([fid, sols]) =>
+    `<h3>${esc(tName(fnById[fid], lang))}</h3>` + listOf(sols.map((sol) => {
+      const pick = (g.picks || []).find((p) => p.id === sol.id)
+      const why = pick ? (pick[lang] || pick.en || {}).why || '' : ''
+      const note = (g.notes?.[sol.id] || {})[lang] || ''
+      return `${link(pathOf('solution', sol, lang), tName(sol, lang))}${pick ? ` (${esc(G.keyChoice)})` : ''}`
+        + (note ? `: ${esc(note)}` : '')
+        + (why ? ` — ${esc(G.whyLabel)}: ${esc(why)}` : '')
+    }))).join('')
+}
+
 function guideBody(g, lang) {
+  const isHome = g.kind === 'home' || g.kind === 'system'
   const t = g[lang] || g.en || {}
   // Only the pick and the reason come from the file; the name and summary are read from
   // the catalogue, exactly as the app does it, so a renamed solution is renamed here too.
@@ -594,8 +630,8 @@ function guideBody(g, lang) {
   return `
     <h1>${esc(t.title || '')}</h1>
     <p class="pr-lede">${esc(t.intro || '')}</p>
-    ${listOf(picks)}
-    <section><h2>${esc(ui.guide.moreHeading)}</h2><p>${esc(ui.guide.moreBody)}</p>
+    ${isHome ? homeList(g, lang) : listOf(picks)}
+    <section><h2>${esc(isHome ? ui.guide.moreHeadingHome : ui.guide.moreHeading)}</h2><p>${esc(isHome ? ui.guide.moreBodyHome : ui.guide.moreBody)}</p>
     ${link(pathOf('guides', null, lang), ui.guide.otherGuides)}
     ${link(pathOf('needs', null, lang), fill(ui.guide.moreButton, { n: cat.solutions.length }))}</section>`
 }

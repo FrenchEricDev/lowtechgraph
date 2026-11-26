@@ -66,6 +66,7 @@ export const COMPETE = new Set([
   "SOL-066|SOL-152",
   "SOL-066|SOL-154",
   "SOL-067|SOL-068",
+  "SOL-067|SOL-254",
   "SOL-069|SOL-070",
   "SOL-069|SOL-153",
   "SOL-069|SOL-199",

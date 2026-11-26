@@ -1,0 +1,108 @@
+{
+  "slug": {
+    "en": "off-grid-home",
+    "fr": "maison-autonome"
+  },
+  "kind": "home",
+  "en": {
+    "door": "A house off the grid",
+    "title": "An example home: off the grid",
+    "intro": "A home that needs no mains: no power, water or sewer bills, and nothing that stops when the networks fail. The price is daily care and living on what the plot gives: less power in a grey winter week, and only the water the rain brings.",
+    "keys": "The five key choices are what lets this home live with no mains at all: power stored and distributed, drinking water and greywater dealt with on the plot, and laundry by hand."
+  },
+  "fr": {
+    "door": "Une maison hors réseau",
+    "title": "Un exemple de logement : hors réseau",
+    "intro": "Un logement sans aucun raccordement : pas de facture d’électricité, d’eau ni d’assainissement, et rien qui s’arrête quand les réseaux tombent en panne. En échange, il demande un entretien quotidien et oblige à vivre avec ce que donne le terrain : moins d’électricité pendant une semaine grise d’hiver, et seulement l’eau que la pluie apporte.",
+    "keys": "Les cinq choix clés sont ce qui permet à ce logement de vivre sans aucun raccordement : l’électricité stockée et distribuée, l’eau de boisson et les eaux grises traitées sur place, et le linge lavé à la main."
+  },
+  "picks": [
+    {
+      "id": "SOL-181",
+      "en": {
+        "why": "Laundry washed by hand in two buckets with a plunger: no power, and little to break."
+      },
+      "fr": {
+        "why": "Le linge lavé à la main dans deux seaux avec un piston : pas d’électricité, et peu de chose qui casse."
+      }
+    },
+    {
+      "id": "SOL-155",
+      "en": {
+        "why": "Lithium batteries store the day’s sun for the evening, and last longer than lead-acid ones."
+      },
+      "fr": {
+        "why": "Des batteries lithium gardent le soleil du jour pour le soir, et durent plus longtemps que le plomb."
+      }
+    },
+    {
+      "id": "SOL-081",
+      "en": {
+        "why": "Two circuits: direct current for the lights and the radio straight from the batteries, alternating current for the rest."
+      },
+      "fr": {
+        "why": "Deux circuits : le courant continu des batteries pour l’éclairage et la radio, l’alternatif pour le reste."
+      }
+    },
+    {
+      "id": "SOL-131",
+      "en": {
+        "why": "Rainwater poured into a tall bed of sand and gravel passes slowly through it and comes out cleaned for drinking, with no power, once its living layer has grown and with regular care."
+      },
+      "fr": {
+        "why": "L’eau de pluie versée dans un haut lit de sable et de gravier le traverse lentement et en ressort épurée pour boire, sans électricité, une fois sa couche vivante formée et avec un entretien régulier."
+      }
+    },
+    {
+      "id": "SOL-065",
+      "en": {
+        "why": "A reed bed cleans the greywater on the plot before it returns to the ground."
+      },
+      "fr": {
+        "why": "Un filtre planté de roseaux épure les eaux grises sur le terrain avant leur retour au sol."
+      }
+    }
+  ],
+  "cards": 29,
+  "solutions": [
+    "SOL-014",
+    "SOL-017",
+    "SOL-030",
+    "SOL-038",
+    "SOL-047",
+    "SOL-053",
+    "SOL-055",
+    "SOL-057",
+    "SOL-058",
+    "SOL-059",
+    "SOL-065",
+    "SOL-069",
+    "SOL-076",
+    "SOL-081",
+    "SOL-082",
+    "SOL-089",
+    "SOL-090",
+    "SOL-091",
+    "SOL-108",
+    "SOL-114",
+    "SOL-131",
+    "SOL-155",
+    "SOL-164",
+    "SOL-178",
+    "SOL-181",
+    "SOL-182",
+    "SOL-215",
+    "SOL-217",
+    "SOL-228"
+  ],
+  "notes": {
+    "SOL-053": {
+      "en": "Its water goes untreated to the shower, the dishes and the washing; only the drinking water is filtered.",
+      "fr": "Son eau va non traitée à la douche, à la vaisselle et au linge ; seule l’eau de boisson est filtrée."
+    },
+    "SOL-131": {
+      "en": "Takes out most germs, not chemicals.",
+      "fr": "Retire la plupart des germes, pas les produits chimiques."
+    }
+  }
+}

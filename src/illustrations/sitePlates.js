@@ -609,6 +609,7 @@ const LABEL_AT = {
   '077-rotor': [-40, 0], '077-mast': [50, 0], '077-cable': [-20, -12],
   '187-net': [0, -24], '187-gutter': [40, -6], '187-tank': [-20, 42], '187-fog': [-50, 0],
   '204-tarp': [60, -24], '204-box': [-10, 24],
+  '254-tank': [90, 36], '254-drip': [-60, 60],
 }
 
 const SOLUTIONS = [
@@ -930,6 +931,26 @@ const SOLUTIONS = [
         <path class="ov-tint soft" d="${patch([[10, 5.4], [18.8, 5.4], [18.8, 11.1], [10, 11.1]])}"/>
         <path class="ov-hide" d="${pathOf(header)}"/>${head(header)}${rows}${plants}
         ${notes(t, [lab('067-drip', G(13.5, 8.25), 'DRIP LINES, BURIED', 'GOUTTE-À-GOUTTE ENTERRÉ')])}`
+    },
+  },
+  {
+    /* SOL-254 (A16, 2026-11-23): a rain tank raised on a stand at the house's south-west corner,
+       its pipe running down to drip lines laid on the beds west of the house. On the surface, so
+       solid lines, where SOL-067's buried ones are dashed; the same beds, so the two compete. */
+    id: 'SOL-254', base: 'site', fnEn: 'Potable water supply', fnFr: 'Alimentation en eau potable',
+    en: 'Gravity drip watering from the rain tank', fr: 'Goutte-à-goutte par gravité depuis la cuve de pluie',
+    zone: [95, 285, 200, 146], crop: [34, 250, 320, 220],
+    draw: (t) => {
+      const pipe = lay([[19.6, 9.4], [18.8, 9.4], [18.8, 6]], 0.8)
+      let rows = '', plants = ''
+      for (const n of [6, 7.6, 9.2]) rows += `<path class="ov-line hair" d="${pathOf(lay([[18.8, n], [10.6, n]], 0.8))}"/>`
+      for (let e = 11.2; e < 18; e += 3.4) for (const n of [6.8, 8.4]) plants += tuft(e, n)
+      return `
+        <path class="ov-tint soft" d="${patch([[10.2, 5.4], [18.8, 5.4], [18.8, 10], [10.2, 10]])}"/>
+        ${hut(19.4, 20.6, 8.8, 10.0, 1.6)}
+        <path class="ov-line" d="${pathOf(pipe)}"/>${head(pipe)}${rows}${plants}
+        ${notes(t, [lab('254-tank', G(20, 9.4), 'RAIN TANK, RAISED', 'CUVE DE PLUIE SURÉLEVÉE'),
+                    lab('254-drip', G(14, 7.6), 'DRIP LINES', 'GOUTTE-À-GOUTTE')])}`
     },
   },
   {

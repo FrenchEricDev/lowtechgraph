@@ -1,0 +1,777 @@
+{
+  "nodes": [
+    {
+      "id": "sun",
+      "res": "IO-01",
+      "position": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    {
+      "id": "rain",
+      "res": "IO-08",
+      "position": {
+        "x": 60,
+        "y": 290
+      }
+    },
+    {
+      "id": "wood",
+      "res": "IO-04",
+      "position": {
+        "x": 60,
+        "y": 520
+      }
+    },
+    {
+      "id": "air",
+      "res": "IO-05",
+      "position": {
+        "x": 60,
+        "y": 750
+      }
+    },
+    {
+      "id": "hands",
+      "res": "IO-21",
+      "position": {
+        "x": 60,
+        "y": 980
+      }
+    },
+    {
+      "id": "pv",
+      "sol": "SOL-076",
+      "position": {
+        "x": 390,
+        "y": 60
+      }
+    },
+    {
+      "id": "battery",
+      "sol": "SOL-155",
+      "position": {
+        "x": 720,
+        "y": 60
+      }
+    },
+    {
+      "id": "inv",
+      "sol": "SOL-082",
+      "position": {
+        "x": 1050,
+        "y": 60
+      }
+    },
+    {
+      "id": "bus",
+      "sol": "SOL-081",
+      "position": {
+        "x": 1380,
+        "y": 60
+      }
+    },
+    {
+      "id": "led",
+      "sol": "SOL-047",
+      "position": {
+        "x": 1710,
+        "y": 60
+      }
+    },
+    {
+      "id": "radio",
+      "sol": "SOL-114",
+      "position": {
+        "x": 1710,
+        "y": 290
+      }
+    },
+    {
+      "id": "tank",
+      "sol": "SOL-053",
+      "position": {
+        "x": 390,
+        "y": 290
+      }
+    },
+    {
+      "id": "pump",
+      "sol": "SOL-058",
+      "position": {
+        "x": 1710,
+        "y": 520
+      }
+    },
+    {
+      "id": "high",
+      "sol": "SOL-055",
+      "position": {
+        "x": 2040,
+        "y": 60
+      }
+    },
+    {
+      "id": "pipes",
+      "sol": "SOL-057",
+      "position": {
+        "x": 2370,
+        "y": 60
+      }
+    },
+    {
+      "id": "filter",
+      "sol": "SOL-131",
+      "position": {
+        "x": 720,
+        "y": 290
+      }
+    },
+    {
+      "id": "cook",
+      "sol": "SOL-089",
+      "position": {
+        "x": 390,
+        "y": 520
+      }
+    },
+    {
+      "id": "solarcook",
+      "sol": "SOL-090",
+      "position": {
+        "x": 390,
+        "y": 750
+      }
+    },
+    {
+      "id": "stove",
+      "sol": "SOL-030",
+      "position": {
+        "x": 390,
+        "y": 980
+      }
+    },
+    {
+      "id": "coil",
+      "sol": "SOL-178",
+      "position": {
+        "x": 2700,
+        "y": 60
+      }
+    },
+    {
+      "id": "solar",
+      "sol": "SOL-059",
+      "position": {
+        "x": 2700,
+        "y": 290
+      }
+    },
+    {
+      "id": "shower",
+      "sol": "SOL-091",
+      "position": {
+        "x": 3030,
+        "y": 60
+      }
+    },
+    {
+      "id": "dishes",
+      "sol": "SOL-228",
+      "position": {
+        "x": 3030,
+        "y": 290
+      }
+    },
+    {
+      "id": "washer",
+      "sol": "SOL-181",
+      "position": {
+        "x": 720,
+        "y": 520
+      }
+    },
+    {
+      "id": "line",
+      "sol": "SOL-215",
+      "position": {
+        "x": 60,
+        "y": 1210
+      }
+    },
+    {
+      "id": "reeds",
+      "sol": "SOL-065",
+      "position": {
+        "x": 3360,
+        "y": 60
+      }
+    },
+    {
+      "id": "toilet",
+      "sol": "SOL-069",
+      "position": {
+        "x": 3360,
+        "y": 290
+      }
+    },
+    {
+      "id": "cure",
+      "sol": "SOL-164",
+      "position": {
+        "x": 3690,
+        "y": 60
+      }
+    },
+    {
+      "id": "vent",
+      "sol": "SOL-038",
+      "position": {
+        "x": 390,
+        "y": 1210
+      }
+    },
+    {
+      "id": "form",
+      "sol": "SOL-014",
+      "position": {
+        "x": 60,
+        "y": 1440
+      }
+    },
+    {
+      "id": "straw",
+      "sol": "SOL-017",
+      "position": {
+        "x": 60,
+        "y": 1670
+      }
+    },
+    {
+      "id": "sort",
+      "sol": "SOL-108",
+      "position": {
+        "x": 3360,
+        "y": 520
+      }
+    },
+    {
+      "id": "worms",
+      "sol": "SOL-182",
+      "position": {
+        "x": 3690,
+        "y": 290
+      }
+    },
+    {
+      "id": "collect",
+      "sol": "SOL-217",
+      "position": {
+        "x": 3690,
+        "y": 520
+      }
+    },
+    {
+      "id": "house",
+      "dest": "home",
+      "position": {
+        "x": 3030,
+        "y": 520
+      }
+    },
+    {
+      "id": "building",
+      "dest": "dwelling",
+      "position": {
+        "x": 390,
+        "y": 1440
+      }
+    },
+    {
+      "id": "outside",
+      "dest": "environment",
+      "position": {
+        "x": 4020,
+        "y": 60
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-sun-pv",
+      "source": "sun",
+      "target": "pv",
+      "io": "IO-01",
+      "ios": [
+        "IO-01"
+      ]
+    },
+    {
+      "id": "e-pv-battery",
+      "source": "pv",
+      "target": "battery",
+      "io": "IO-18",
+      "ios": [
+        "IO-18"
+      ]
+    },
+    {
+      "id": "e-battery-inv",
+      "source": "battery",
+      "target": "inv",
+      "io": "IO-18",
+      "ios": [
+        "IO-18"
+      ]
+    },
+    {
+      "id": "e-battery-bus",
+      "source": "battery",
+      "target": "bus",
+      "io": "IO-18",
+      "ios": [
+        "IO-18"
+      ]
+    },
+    {
+      "id": "e-inv-bus",
+      "source": "inv",
+      "target": "bus",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-bus-led",
+      "source": "bus",
+      "target": "led",
+      "io": "IO-18",
+      "ios": [
+        "IO-18",
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-bus-radio",
+      "source": "bus",
+      "target": "radio",
+      "io": "IO-18",
+      "ios": [
+        "IO-18"
+      ]
+    },
+    {
+      "id": "e-bus-pump",
+      "source": "bus",
+      "target": "pump",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-bus-house",
+      "source": "bus",
+      "target": "house",
+      "io": "IO-18",
+      "ios": [
+        "IO-18",
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-led-house",
+      "source": "led",
+      "target": "house",
+      "io": "IO-23",
+      "ios": [
+        "IO-23"
+      ]
+    },
+    {
+      "id": "e-radio-house",
+      "source": "radio",
+      "target": "house",
+      "io": "IO-25",
+      "ios": [
+        "IO-25"
+      ]
+    },
+    {
+      "id": "e-rain-tank",
+      "source": "rain",
+      "target": "tank",
+      "io": "IO-08",
+      "ios": [
+        "IO-08"
+      ]
+    },
+    {
+      "id": "e-tank-filter",
+      "source": "tank",
+      "target": "filter",
+      "io": "IO-16",
+      "ios": [
+        "IO-16"
+      ]
+    },
+    {
+      "id": "e-filter-house",
+      "source": "filter",
+      "target": "house",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-tank-pump",
+      "source": "tank",
+      "target": "pump",
+      "io": "IO-16",
+      "ios": [
+        "IO-16"
+      ]
+    },
+    {
+      "id": "e-tank-washer",
+      "source": "tank",
+      "target": "washer",
+      "io": "IO-16",
+      "ios": [
+        "IO-16"
+      ]
+    },
+    {
+      "id": "e-hands-washer",
+      "source": "hands",
+      "target": "washer",
+      "io": "IO-21",
+      "ios": [
+        "IO-21"
+      ]
+    },
+    {
+      "id": "e-pump-high",
+      "source": "pump",
+      "target": "high",
+      "io": "IO-16",
+      "ios": [
+        "IO-16"
+      ]
+    },
+    {
+      "id": "e-high-pipes",
+      "source": "high",
+      "target": "pipes",
+      "io": "IO-16",
+      "ios": [
+        "IO-16"
+      ]
+    },
+    {
+      "id": "e-pipes-coil",
+      "source": "pipes",
+      "target": "coil",
+      "io": "IO-16",
+      "ios": [
+        "IO-16"
+      ]
+    },
+    {
+      "id": "e-pipes-solar",
+      "source": "pipes",
+      "target": "solar",
+      "io": "IO-16",
+      "ios": [
+        "IO-16"
+      ]
+    },
+    {
+      "id": "e-pipes-shower",
+      "source": "pipes",
+      "target": "shower",
+      "io": "IO-16",
+      "ios": [
+        "IO-16"
+      ]
+    },
+    {
+      "id": "e-sun-solarcook",
+      "source": "sun",
+      "target": "solarcook",
+      "io": "IO-01",
+      "ios": [
+        "IO-01"
+      ]
+    },
+    {
+      "id": "e-solarcook-house",
+      "source": "solarcook",
+      "target": "house",
+      "io": "IO-44",
+      "ios": [
+        "IO-44"
+      ]
+    },
+    {
+      "id": "e-sun-solar",
+      "source": "sun",
+      "target": "solar",
+      "io": "IO-01",
+      "ios": [
+        "IO-01"
+      ]
+    },
+    {
+      "id": "e-solar-shower",
+      "source": "solar",
+      "target": "shower",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-solar-dishes",
+      "source": "solar",
+      "target": "dishes",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-solar-house",
+      "source": "solar",
+      "target": "house",
+      "io": "IO-41",
+      "ios": [
+        "IO-41"
+      ]
+    },
+    {
+      "id": "e-wood-cook",
+      "source": "wood",
+      "target": "cook",
+      "io": "IO-04",
+      "ios": [
+        "IO-04"
+      ]
+    },
+    {
+      "id": "e-wood-stove",
+      "source": "wood",
+      "target": "stove",
+      "io": "IO-04",
+      "ios": [
+        "IO-04"
+      ]
+    },
+    {
+      "id": "e-cook-house",
+      "source": "cook",
+      "target": "house",
+      "io": "IO-44",
+      "ios": [
+        "IO-44",
+        "IO-37"
+      ]
+    },
+    {
+      "id": "e-cook-coil",
+      "source": "cook",
+      "target": "coil",
+      "io": "IO-42",
+      "ios": [
+        "IO-42"
+      ]
+    },
+    {
+      "id": "e-stove-house",
+      "source": "stove",
+      "target": "house",
+      "io": "IO-37",
+      "ios": [
+        "IO-37"
+      ]
+    },
+    {
+      "id": "e-stove-outside",
+      "source": "stove",
+      "target": "outside",
+      "io": "IO-42",
+      "ios": [
+        "IO-42"
+      ]
+    },
+    {
+      "id": "e-coil-shower",
+      "source": "coil",
+      "target": "shower",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-coil-house",
+      "source": "coil",
+      "target": "house",
+      "io": "IO-41",
+      "ios": [
+        "IO-41"
+      ]
+    },
+    {
+      "id": "e-shower-reeds",
+      "source": "shower",
+      "target": "reeds",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-dishes-reeds",
+      "source": "dishes",
+      "target": "reeds",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-washer-reeds",
+      "source": "washer",
+      "target": "reeds",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-reeds-outside",
+      "source": "reeds",
+      "target": "outside",
+      "io": "IO-26",
+      "ios": [
+        "IO-26",
+        "IO-15"
+      ]
+    },
+    {
+      "id": "e-house-toilet",
+      "source": "house",
+      "target": "toilet",
+      "io": "IO-38",
+      "ios": [
+        "IO-38"
+      ]
+    },
+    {
+      "id": "e-toilet-cure",
+      "source": "toilet",
+      "target": "cure",
+      "io": "IO-12",
+      "ios": [
+        "IO-12"
+      ]
+    },
+    {
+      "id": "e-toilet-outside",
+      "source": "toilet",
+      "target": "outside",
+      "io": "IO-07",
+      "ios": [
+        "IO-07"
+      ]
+    },
+    {
+      "id": "e-cure-outside",
+      "source": "cure",
+      "target": "outside",
+      "io": "IO-12",
+      "ios": [
+        "IO-12"
+      ]
+    },
+    {
+      "id": "e-air-vent",
+      "source": "air",
+      "target": "vent",
+      "io": "IO-05",
+      "ios": [
+        "IO-05"
+      ]
+    },
+    {
+      "id": "e-vent-outside",
+      "source": "vent",
+      "target": "outside",
+      "io": "IO-06",
+      "ios": [
+        "IO-06"
+      ]
+    },
+    {
+      "id": "e-form-building",
+      "source": "form",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46",
+        "IO-53"
+      ]
+    },
+    {
+      "id": "e-straw-building",
+      "source": "straw",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-house-sort",
+      "source": "house",
+      "target": "sort",
+      "io": "IO-39",
+      "ios": [
+        "IO-39"
+      ]
+    },
+    {
+      "id": "e-sort-worms",
+      "source": "sort",
+      "target": "worms",
+      "io": "IO-13",
+      "ios": [
+        "IO-13"
+      ]
+    },
+    {
+      "id": "e-sort-collect",
+      "source": "sort",
+      "target": "collect",
+      "io": "IO-14",
+      "ios": [
+        "IO-14",
+        "IO-40"
+      ]
+    },
+    {
+      "id": "e-worms-outside",
+      "source": "worms",
+      "target": "outside",
+      "io": "IO-12",
+      "ios": [
+        "IO-12",
+        "IO-15"
+      ]
+    }
+  ]
+}

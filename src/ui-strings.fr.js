@@ -81,7 +81,7 @@ export const fr = {
     carouselLabel: 'Choisir une solution à montrer',
     carouselShow: 'Montrer {name}',
     // « réellement » kept on purpose, as "actually" in English (Eric, 2026-11-19).
-    sourcesBody: 'Note : chaque solution renvoie aux tutoriels et aux personnes qui l’ont réellement construite. Les sources vers lesquelles notre catalogue renvoie le plus : {names}.',
+    sourcesBody: 'Note : chaque solution renvoie aux tutoriels et aux personnes qui l’ont construite. Les sources vers lesquelles notre catalogue renvoie le plus : {names}.',
     examplesHeading: 'Exemples de solutions low-tech',
     pathCompareGo: 'Parcourir les solutions',
     pathTeachGo: 'Explorer la communauté',
@@ -157,12 +157,38 @@ export const fr = {
 
   guides: {
     title: 'Guides',
-    intro: 'Nos guides : des solutions choisies à la main autour d’un thème ou d’un besoin commun',
+    intro: 'Nos guides : des solutions choisies à la main autour d’un besoin ou d’un objectif, et des exemples de systèmes pour tout le logement',
+    selTab: 'Choix par besoin',
+    sysTab: 'Systèmes complets',
+    selTitle: 'Des solutions choisies par besoin, idée ou objectif',
+    selIntro: 'Chaque guide réunit quelques solutions autour d’un besoin, d’une idée ou d’un objectif, et dit pourquoi chacune y figure. Inutile de tout prendre : choisissez celle qui vous convient, ou ajoutez-en plusieurs au fil du temps.',
+    sysTitle: 'Exemples de systèmes pour tout le logement',
+    sysIntro: 'Chaque exemple montre à quoi peut ressembler un système entier construit autour d’une idée ou d’un objectif, pour tout le logement ou une partie, comme le chauffage et le rafraîchissement : toutes les solutions et leurs liens. Ce sont des illustrations, pas des plans à suivre. En réaliser un en entier est un grand chantier, qui demande du temps, des efforts et de l’argent.',
     picks: '{n} solutions',
     open: 'Ouvrir le guide',
   },
 
   guide: {
+    homeTitle: 'Tout le logement, en un seul système',
+    homeOpen: 'Ouvrir ce logement dans Mon système',
+    homeCount: 'Ouvertes dans votre système, ces {n} solutions et leurs liens deviennent votre copie, que vous pouvez modifier à votre guise. Ce logement montre comment les pièces s’assemblent ; ce n’est pas un plan pour le vôtre. Pour n’ajouter qu’une solution, utilisez son propre bouton dans la liste plus bas.',
+    systemTitle: 'Le tout, en un seul système',
+    systemOpen: 'Ouvrir ce système dans Mon système',
+    systemCount: 'Ouvertes dans votre système, ces {n} solutions et leurs liens deviennent votre copie, où vous pouvez tout modifier et ajouter le reste du logement. Ce système montre comment les pièces s’assemblent ; ce n’est pas un plan pour votre logement. Pour n’ajouter qu’une solution, utilisez son propre bouton dans la liste plus bas.',
+    keyChoice: 'Choix clé',
+    listTitleHome: 'Toutes les solutions de ce logement',
+    listTitleSystem: 'Toutes les solutions de ce système',
+    drawingNameHome: 'Les {n} solutions de « {guide} » dessinées ensemble sur la maison en coupe.',
+    drawingNameHomeSite: 'Les {n} solutions de « {guide} » dessinées ensemble sur le plan du terrain.',
+    drawingHintHome: 'Toutes les solutions de ce logement qui ont un dessin, sur une même maison. Choisissez-en une pour la voir seule.',
+    drawingHintSystem: 'Toutes les solutions de ce système qui ont un dessin, sur une même maison. Choisissez-en une pour la voir seule.',
+    pictureNameHome: 'Les {n} solutions de ce logement et leurs {links} liens, tels qu’ils s’ouvrent dans votre système.',
+    pictureEnlarge: 'Agrandir',
+    pictureClose: 'Fermer',
+    pictureNameSystem: 'Les {n} solutions de ce système et leurs {links} liens, tels qu’ils s’ouvrent dans votre système.',
+    moreHeadingHome: 'D’autres façons de répondre à chaque besoin',
+    moreBodyHome: 'Chaque solution ici n’est qu’une façon parmi d’autres. Le catalogue les réunit toutes, classées par besoin ou par ressource.',
+    homeReplace: 'Cela remplace ce qui est sur votre plan de travail. Vos systèmes enregistrés sont conservés. Continuer ?',
     whyLabel: 'Pourquoi celle-ci',
     drawingName: 'Les {n} propositions de « {guide} », dessinées ensemble sur la maison en coupe.',
     drawingNameSite: 'Les {n} propositions de « {guide} », dessinées ensemble sur le plan du terrain.',
@@ -246,14 +272,7 @@ export const fr = {
     heading: 'À propos de Lowtech Graph',
     title: 'À propos',
     desc: 'Ce qu’est Lowtech Graph : un outil gratuit pour découvrir, comparer, choisir et combiner des low-techs pour chaque besoin d’un logement, puis les construire.',
-    lede:
-      'Lowtech Graph est un outil gratuit et indépendant pour choisir comment votre logement répond ' +
-      'à ses besoins. Il recense {solutions} façons de chauffer, rafraîchir, ventiler, éclairer et ' +
-      'alimenter en énergie une maison, de lui fournir son eau, de traiter ses déchets et de nourrir ' +
-      'ceux qui y vivent : des options low-tech et bioclimatiques placées à côté des solutions ' +
-      'conventionnelles. Il vous aide à découvrir, comparer, choisir et combiner celles qui ' +
-      'conviennent à votre logement, puis vous oriente vers les personnes les mieux placées pour ' +
-      'vous apprendre à les construire.',
+    lede: "Lowtech Graph est un guide gratuit et indépendant des façons dont un logement peut répondre à ses besoins. Il place {solutions} options low-tech et bioclimatiques à côté des solutions conventionnelles, pour la chaleur, la fraîcheur, l’air, la lumière, l’énergie, l’eau, les déchets et l’alimentation. Comparez-les, choisissez et combinez celles qui conviennent à votre logement, et trouvez les personnes qui peuvent vous apprendre à les construire.",
     stepsHeading: 'Découvrir, comparer, choisir, combiner, puis construire avec d’autres',
     discoverTitle: 'Découvrir.',
     discoverBody:
@@ -288,11 +307,7 @@ export const fr = {
       '{solutions} solutions pour {subs} besoins précis d’un logement, low-tech et bioclimatiques ' +
       'à côté des conventionnelles, chacune avec sa source, ses limites et ce qu’elle vous demande.',
     diffCompareTitle: 'Comparées sur des critères objectifs.',
-    diffCompareBody:
-      'Les options d’un besoin sont évaluées côte à côte sur le coût, l’entretien, le carbone ' +
-      'incorporé, la durée de vie, le savoir-faire pour construire et pour réparer, la dépendance ' +
-      'au réseau, la possibilité en appartement et ce qui change au quotidien, y compris quand la ' +
-      'low-tech fait moins.',
+    diffCompareBody: "Évaluées sur les mêmes critères, y compris quand la low-tech fait moins.",
     diffIoTitle: 'Ce que chacune utilise et donne.',
     diffIoBody:
       'Chaque solution indique ce qu’elle consomme et ce qu’elle produit : eau de pluie, eaux grises, chaleur, ' +
@@ -318,14 +333,7 @@ export const fr = {
       'confiance. Ni marques, ni liens sponsorisés, ni publicité, et tout le catalogue est ' +
       'librement réutilisable sous licence CC BY-SA.',
     circularHeading: 'Circularité : ce qu’une solution donne, une autre peut l’utiliser',
-    circularBody:
-      '{loops} des {solutions} solutions produisent quelque chose qu’une autre peut utiliser. La ' +
-      'pluie du toit remplit une cuve, est filtrée pour être bue, ressort de la douche en eaux ' +
-      'grises et arrose le jardin ; les épluchures deviennent le compost qui le nourrit ; la ' +
-      'chaleur qui monte dans le conduit d’un poêle peut chauffer un ballon d’eau. Chaque page de ' +
-      'solution indique ce qu’elle prend et ce qu’elle donne, et chaque page de ressource liste ce ' +
-      'qui la produit ou l’utilise : les boucles qu’un logement pourrait fermer sont là, à ' +
-      'découvrir. Mon système est l’endroit où les combiner.',
+    circularBody: "{loops} des {solutions} solutions produisent quelque chose qu’une autre peut utiliser. La pluie du toit est filtrée pour être bue, ressort de la douche en eaux grises et arrose le jardin ; les épluchures deviennent son compost ; la chaleur qui monte dans le conduit d’un poêle chauffe un ballon d’eau. Chaque page de solution dit ce qu’elle prend et donne, chaque page de ressource ce qui la produit et l’utilise. Mon système est l’endroit où les relier.",
     communitiesHeading: 'Construire : nous vous orientons vers ceux qui savent',
     communitiesBody:
       'C’est à la construction que l’expérience compte le plus. Nous renvoyons donc vers ceux qui ' +
@@ -447,12 +455,7 @@ export const fr = {
       'd’eau. Ce que vous récupérez en échange, en revanche, en vaut la peine :',
 
     agencyHeading: 'Vous comprenez votre propre maison',
-    agencyBody:
-      'Quand vous construisez ou entretenez quelque chose vous-même, vous savez comment ça ' +
-      'fonctionne, de quoi ça a besoin, et ce que signifie un bruit qui n’était pas là ' +
-      'avant. Vous cessez d’être le client de votre propre maison. Ce savoir se cumule : il ' +
-      'change ce que vous remarquez, ce que vous pouvez réparer un dimanche après-midi, et ' +
-      'ce que vous êtes capable de juger quand on vous fait un devis.',
+    agencyBody: "Construisez ou entretenez quelque chose vous-même et vous savez comment ça fonctionne, de quoi ça a besoin, et ce que veut dire un nouveau bruit. Vous cessez d’être le client de votre propre maison, et cela s’accumule : ce que vous remarquez, ce que vous réparez un dimanche après-midi, ce que vous savez juger quand on vous fait un devis.",
 
     impactHeading: 'Vous diminuez votre empreinte',
     impactBody:
@@ -462,21 +465,10 @@ export const fr = {
       'quatre points, surtout lorsqu’elles sont passives (sans réseau ni pompe).',
 
     costHeading: 'Ça coûte moins cher, à la construction et à l’usage',
-    costBody:
-      'Souvent bien moins, en particulier lorsque votre propre travail remplace celui d’un ' +
-      'artisan. L’économie est parfois immédiate, parfois elle tient à vingt ans sans avoir ' +
-      'à remplacer quoi que ce soit. Mais pas toujours. Certaines options low-tech coûtent ' +
-      'plus cher à construire et se rentabilisent lentement, voire jamais, sur le seul plan ' +
-      'financier. Elles vous apportent en revanche des bénéfices inégalés, surtout en situation de crise. Dans le catalogue, nous essayons de vous donner des repères sur les coûts ' +
-      'relatifs entre les différentes solutions.',
+    costBody: "Souvent bien moins, surtout quand votre propre travail remplace celui d’un artisan : parfois tout de suite, parfois sur vingt ans sans rien remplacer. Certaines coûtent plus cher et ne se rentabilisent jamais sur le seul plan financier ; elles apportent à la place de l’autonomie, de la résilience ou une empreinte plus légère. Les options de chaque besoin sont comparées sur le coût.",
 
     resilienceHeading: 'Ça continue de fonctionner quelle que soit la situation',
-    resilienceBody:
-      'Les réseaux tombent, les chaînes d’approvisionnement se tendent, les prix bougent. Un ' +
-      'système qui ne demande ni pompe, ni raccordement au réseau, ni pièce détachée ' +
-      'propriétaire est largement indifférent à tout cela. Nul besoin de croire à ' +
-      'l’effondrement sociétal pour y voir de la valeur. Une semaine sans électricité ou deux jours ' +
-      'sans eau suffisent à convaincre n’importe qui.',
+    resilienceBody: "Les réseaux tombent, les chaînes d’approvisionnement se tendent, les prix bougent. Un système sans pompe, sans raccordement au réseau et sans pièce détachée propriétaire en est largement à l’abri. Pas besoin de croire à l’effondrement : une semaine sans électricité, ou deux jours sans eau, suffisent pour vouloir une solution de secours.",
 
     joyHeading: 'Et c’est satisfaisant',
     joyBody:

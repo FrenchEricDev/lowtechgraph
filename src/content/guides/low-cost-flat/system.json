@@ -1,0 +1,669 @@
+{
+  "nodes": [
+    {
+      "id": "sun",
+      "res": "IO-01",
+      "position": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    {
+      "id": "air",
+      "res": "IO-05",
+      "position": {
+        "x": 60,
+        "y": 290
+      }
+    },
+    {
+      "id": "grid",
+      "sol": "SOL-079",
+      "position": {
+        "x": 60,
+        "y": 520
+      }
+    },
+    {
+      "id": "water",
+      "sol": "SOL-195",
+      "position": {
+        "x": 60,
+        "y": 750
+      }
+    },
+    {
+      "id": "sewer",
+      "sol": "SOL-196",
+      "position": {
+        "x": 2370,
+        "y": 60
+      }
+    },
+    {
+      "id": "balcony",
+      "sol": "SOL-253",
+      "position": {
+        "x": 390,
+        "y": 60
+      }
+    },
+    {
+      "id": "hob",
+      "sol": "SOL-163",
+      "position": {
+        "x": 720,
+        "y": 60
+      }
+    },
+    {
+      "id": "skirt",
+      "sol": "SOL-242",
+      "position": {
+        "x": 1050,
+        "y": 60
+      }
+    },
+    {
+      "id": "haybox",
+      "sol": "SOL-169",
+      "position": {
+        "x": 1380,
+        "y": 60
+      }
+    },
+    {
+      "id": "boiler",
+      "sol": "SOL-061",
+      "position": {
+        "x": 720,
+        "y": 290
+      }
+    },
+    {
+      "id": "dishes",
+      "sol": "SOL-228",
+      "position": {
+        "x": 1050,
+        "y": 290
+      }
+    },
+    {
+      "id": "shower",
+      "sol": "SOL-230",
+      "position": {
+        "x": 1050,
+        "y": 520
+      }
+    },
+    {
+      "id": "wash",
+      "sol": "SOL-094",
+      "position": {
+        "x": 390,
+        "y": 290
+      }
+    },
+    {
+      "id": "line",
+      "sol": "SOL-215",
+      "position": {
+        "x": 60,
+        "y": 980
+      }
+    },
+    {
+      "id": "basin",
+      "sol": "SOL-199",
+      "position": {
+        "x": 390,
+        "y": 520
+      }
+    },
+    {
+      "id": "wc",
+      "sol": "SOL-216",
+      "position": {
+        "x": 2040,
+        "y": 60
+      }
+    },
+    {
+      "id": "vent",
+      "sol": "SOL-038",
+      "position": {
+        "x": 390,
+        "y": 750
+      }
+    },
+    {
+      "id": "dry",
+      "sol": "SOL-248",
+      "position": {
+        "x": 60,
+        "y": 1210
+      }
+    },
+    {
+      "id": "led",
+      "sol": "SOL-047",
+      "position": {
+        "x": 390,
+        "y": 980
+      }
+    },
+    {
+      "id": "blanket",
+      "sol": "SOL-249",
+      "position": {
+        "x": 390,
+        "y": 1210
+      }
+    },
+    {
+      "id": "kotatsu",
+      "sol": "SOL-225",
+      "position": {
+        "x": 390,
+        "y": 1440
+      }
+    },
+    {
+      "id": "bottle",
+      "sol": "SOL-224",
+      "position": {
+        "x": 1050,
+        "y": 750
+      }
+    },
+    {
+      "id": "glazing",
+      "sol": "SOL-123",
+      "position": {
+        "x": 60,
+        "y": 1440
+      }
+    },
+    {
+      "id": "draught",
+      "sol": "SOL-214",
+      "position": {
+        "x": 60,
+        "y": 1670
+      }
+    },
+    {
+      "id": "curtains",
+      "sol": "SOL-186",
+      "position": {
+        "x": 60,
+        "y": 1900
+      }
+    },
+    {
+      "id": "shade",
+      "sol": "SOL-174",
+      "position": {
+        "x": 60,
+        "y": 2130
+      }
+    },
+    {
+      "id": "sort",
+      "sol": "SOL-108",
+      "position": {
+        "x": 2040,
+        "y": 290
+      }
+    },
+    {
+      "id": "worms",
+      "sol": "SOL-182",
+      "position": {
+        "x": 2370,
+        "y": 290
+      }
+    },
+    {
+      "id": "collect",
+      "sol": "SOL-217",
+      "position": {
+        "x": 2370,
+        "y": 520
+      }
+    },
+    {
+      "id": "house",
+      "dest": "home",
+      "position": {
+        "x": 1710,
+        "y": 60
+      }
+    },
+    {
+      "id": "building",
+      "dest": "dwelling",
+      "position": {
+        "x": 390,
+        "y": 1670
+      }
+    },
+    {
+      "id": "outside",
+      "dest": "environment",
+      "position": {
+        "x": 2700,
+        "y": 60
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-sun-balcony",
+      "source": "sun",
+      "target": "balcony",
+      "io": "IO-01",
+      "ios": [
+        "IO-01"
+      ]
+    },
+    {
+      "id": "e-balcony-house",
+      "source": "balcony",
+      "target": "house",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-balcony-hob",
+      "source": "balcony",
+      "target": "hob",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-balcony-boiler",
+      "source": "balcony",
+      "target": "boiler",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-hob",
+      "source": "grid",
+      "target": "hob",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-boiler",
+      "source": "grid",
+      "target": "boiler",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-led",
+      "source": "grid",
+      "target": "led",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-blanket",
+      "source": "grid",
+      "target": "blanket",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-kotatsu",
+      "source": "grid",
+      "target": "kotatsu",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-wash",
+      "source": "grid",
+      "target": "wash",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-hob-skirt",
+      "source": "hob",
+      "target": "skirt",
+      "io": "IO-44",
+      "ios": [
+        "IO-44"
+      ]
+    },
+    {
+      "id": "e-skirt-haybox",
+      "source": "skirt",
+      "target": "haybox",
+      "io": "IO-44",
+      "ios": [
+        "IO-44"
+      ]
+    },
+    {
+      "id": "e-haybox-house",
+      "source": "haybox",
+      "target": "house",
+      "io": "IO-44",
+      "ios": [
+        "IO-44"
+      ]
+    },
+    {
+      "id": "e-hob-house",
+      "source": "hob",
+      "target": "house",
+      "io": "IO-44",
+      "ios": [
+        "IO-44"
+      ]
+    },
+    {
+      "id": "e-water-boiler",
+      "source": "water",
+      "target": "boiler",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-boiler-dishes",
+      "source": "boiler",
+      "target": "dishes",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-boiler-shower",
+      "source": "boiler",
+      "target": "shower",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-boiler-bottle",
+      "source": "boiler",
+      "target": "bottle",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-boiler-house",
+      "source": "boiler",
+      "target": "house",
+      "io": "IO-41",
+      "ios": [
+        "IO-41"
+      ]
+    },
+    {
+      "id": "e-bottle-house",
+      "source": "bottle",
+      "target": "house",
+      "io": "IO-45",
+      "ios": [
+        "IO-45"
+      ]
+    },
+    {
+      "id": "e-water-dishes",
+      "source": "water",
+      "target": "dishes",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-water-shower",
+      "source": "water",
+      "target": "shower",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-water-wash",
+      "source": "water",
+      "target": "wash",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-water-house",
+      "source": "water",
+      "target": "house",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-water-basin",
+      "source": "water",
+      "target": "basin",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-dishes-sewer",
+      "source": "dishes",
+      "target": "sewer",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-shower-sewer",
+      "source": "shower",
+      "target": "sewer",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-wash-sewer",
+      "source": "wash",
+      "target": "sewer",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-basin-wc",
+      "source": "basin",
+      "target": "wc",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-house-wc",
+      "source": "house",
+      "target": "wc",
+      "io": "IO-38",
+      "ios": [
+        "IO-38"
+      ]
+    },
+    {
+      "id": "e-wc-sewer",
+      "source": "wc",
+      "target": "sewer",
+      "io": "IO-11",
+      "ios": [
+        "IO-11"
+      ]
+    },
+    {
+      "id": "e-air-vent",
+      "source": "air",
+      "target": "vent",
+      "io": "IO-05",
+      "ios": [
+        "IO-05"
+      ]
+    },
+    {
+      "id": "e-vent-outside",
+      "source": "vent",
+      "target": "outside",
+      "io": "IO-06",
+      "ios": [
+        "IO-06"
+      ]
+    },
+    {
+      "id": "e-dry-house",
+      "source": "dry",
+      "target": "house",
+      "io": "IO-52",
+      "ios": [
+        "IO-52"
+      ]
+    },
+    {
+      "id": "e-led-house",
+      "source": "led",
+      "target": "house",
+      "io": "IO-23",
+      "ios": [
+        "IO-23"
+      ]
+    },
+    {
+      "id": "e-blanket-house",
+      "source": "blanket",
+      "target": "house",
+      "io": "IO-45",
+      "ios": [
+        "IO-45"
+      ]
+    },
+    {
+      "id": "e-kotatsu-house",
+      "source": "kotatsu",
+      "target": "house",
+      "io": "IO-45",
+      "ios": [
+        "IO-45"
+      ]
+    },
+    {
+      "id": "e-glazing-building",
+      "source": "glazing",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-draught-building",
+      "source": "draught",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-curtains-building",
+      "source": "curtains",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-shade-building",
+      "source": "shade",
+      "target": "building",
+      "io": "IO-47",
+      "ios": [
+        "IO-47"
+      ]
+    },
+    {
+      "id": "e-house-sort",
+      "source": "house",
+      "target": "sort",
+      "io": "IO-39",
+      "ios": [
+        "IO-39"
+      ]
+    },
+    {
+      "id": "e-sort-worms",
+      "source": "sort",
+      "target": "worms",
+      "io": "IO-13",
+      "ios": [
+        "IO-13"
+      ]
+    },
+    {
+      "id": "e-sort-collect",
+      "source": "sort",
+      "target": "collect",
+      "io": "IO-14",
+      "ios": [
+        "IO-14",
+        "IO-40"
+      ]
+    },
+    {
+      "id": "e-worms-outside",
+      "source": "worms",
+      "target": "outside",
+      "io": "IO-12",
+      "ios": [
+        "IO-12",
+        "IO-15"
+      ]
+    }
+  ]
+}

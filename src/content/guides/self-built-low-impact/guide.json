@@ -1,0 +1,112 @@
+{
+  "slug": {
+    "en": "self-built-low-impact-house",
+    "fr": "maison-autoconstruite-et-sobre"
+  },
+  "kind": "home",
+  "en": {
+    "door": "A self-built, low-impact house",
+    "title": "An example home: self-built and low-impact",
+    "intro": "A home that takes little to make and little to run, built mostly by your own hands from earth, straw and wood, so your work replaces much of the money. Its limit: building it takes a great deal of your time.",
+    "keys": "The five key choices cost little and are yours to make or build, and they are what makes the house need little to run."
+  },
+  "fr": {
+    "door": "Une maison autoconstruite et sobre",
+    "title": "Un exemple de logement : autoconstruit et sobre",
+    "intro": "Un logement sobre à construire comme à habiter, bâti surtout de vos mains, en terre, en paille et en bois, si bien que votre travail remplace une bonne part de l’argent. Sa limite : le construire prend beaucoup de votre temps.",
+    "keys": "Les cinq choix clés coûtent peu et sont à votre portée, à décider ou à construire, et ce sont eux qui font que la maison demande peu pour vivre."
+  },
+  "picks": [
+    {
+      "id": "SOL-015",
+      "en": {
+        "why": "Main windows south, service rooms north: it costs little and cuts the heating the house needs."
+      },
+      "fr": {
+        "why": "Les grandes fenêtres au sud, les pièces de service au nord : cela coûte peu et réduit le chauffage nécessaire."
+      }
+    },
+    {
+      "id": "SOL-059",
+      "en": {
+        "why": "A solar water heater with no pump: the warmed water rises into the tank by itself."
+      },
+      "fr": {
+        "why": "Un chauffe-eau solaire sans pompe : l’eau chauffée monte d’elle-même dans le ballon."
+      }
+    },
+    {
+      "id": "SOL-017",
+      "en": {
+        "why": "Straw blocks insulate walls for little money, from a field rather than a factory."
+      },
+      "fr": {
+        "why": "Des blocs de paille isolent les murs pour peu d’argent, venus d’un champ plutôt que d’une usine."
+      }
+    },
+    {
+      "id": "SOL-126",
+      "en": {
+        "why": "A rocket mass heater burns hot and clean on little wood, and stores the heat in a bench that stays warm for hours."
+      },
+      "fr": {
+        "why": "Un poêle de masse rocket brûle chaud et proprement avec peu de bois, et garde la chaleur dans un banc qui reste tiède des heures."
+      }
+    },
+    {
+      "id": "SOL-152",
+      "en": {
+        "why": "A bed of wood chips cleans the greywater on the plot, with no power where the ground slopes enough."
+      },
+      "fr": {
+        "why": "Un lit de broyat épure les eaux grises sur le terrain, sans électricité là où le terrain a assez de pente."
+      }
+    }
+  ],
+  "cards": 29,
+  "solutions": [
+    "SOL-014",
+    "SOL-015",
+    "SOL-017",
+    "SOL-025",
+    "SOL-029",
+    "SOL-038",
+    "SOL-046",
+    "SOL-047",
+    "SOL-053",
+    "SOL-058",
+    "SOL-059",
+    "SOL-067",
+    "SOL-069",
+    "SOL-079",
+    "SOL-090",
+    "SOL-108",
+    "SOL-115",
+    "SOL-126",
+    "SOL-136",
+    "SOL-148",
+    "SOL-152",
+    "SOL-164",
+    "SOL-169",
+    "SOL-181",
+    "SOL-182",
+    "SOL-215",
+    "SOL-217",
+    "SOL-228",
+    "SOL-230"
+  ],
+  "notes": {
+    "SOL-053": {
+      "en": "Its water goes untreated to the shower, the dishes and the washing; only the drinking water is filtered.",
+      "fr": "Son eau va non traitée à la douche, à la vaisselle et au linge ; seule l’eau de boisson est filtrée."
+    },
+    "SOL-059": {
+      "en": "In a grey winter week there is no hot water.",
+      "fr": "Pendant une semaine grise d’hiver, il n’y a pas d’eau chaude."
+    },
+    "SOL-148": {
+      "en": "Takes out most germs, not chemicals.",
+      "fr": "Retire la plupart des germes, pas les produits chimiques."
+    }
+  }
+}

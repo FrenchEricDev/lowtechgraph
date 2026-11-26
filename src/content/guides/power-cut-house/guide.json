@@ -1,0 +1,112 @@
+{
+  "slug": {
+    "en": "power-cut-house",
+    "fr": "maison-sans-coupure"
+  },
+  "kind": "home",
+  "en": {
+    "door": "A house through a power cut",
+    "title": "An example home: an ordinary house that keeps working in a power cut",
+    "intro": "An ordinary house on the mains that keeps you warm, fed, washed, lit and informed when the power or the water stops. During a cut, the household lives around the wood cookstove.",
+    "keys": "The five key choices are the main fallbacks for when the grid or the water stops: heat and cooking, running water, light and news. The rest is an ordinary house and the smaller fallbacks around them."
+  },
+  "fr": {
+    "door": "Une maison qui passe les coupures",
+    "title": "Un exemple de logement : une maison ordinaire qui fonctionne pendant une coupure",
+    "intro": "Une maison ordinaire raccordée aux réseaux, où l’on peut encore se chauffer, cuisiner, se laver, s’éclairer et s’informer quand l’électricité ou l’eau s’arrête. Pendant une coupure, le foyer vit autour de la cuisinière à bois.",
+    "keys": "Les cinq choix clés sont les principales solutions de repli quand le réseau ou l’eau s’arrête : la chaleur et la cuisine, l’eau au robinet, la lumière et les nouvelles. Le reste, c’est une maison ordinaire et les solutions de repli secondaires qui les entourent."
+  },
+  "picks": [
+    {
+      "id": "SOL-055",
+      "en": {
+        "why": "A tank set high, kept full by the mains: when the water stops, the taps still run from it by gravity."
+      },
+      "fr": {
+        "why": "Une cuve placée en hauteur, remplie par le réseau : quand l’eau s’arrête, les robinets coulent encore par gravité."
+      }
+    },
+    {
+      "id": "SOL-089",
+      "en": {
+        "why": "One wood fire cooks and warms the kitchen, and the house in cold weather, with no power; a coil on its flue heats the water."
+      },
+      "fr": {
+        "why": "Un seul feu de bois cuit les repas et chauffe la cuisine, et la maison par temps froid, sans électricité ; un serpentin sur son conduit chauffe l’eau."
+      }
+    },
+    {
+      "id": "SOL-114",
+      "en": {
+        "why": "A radio on a battery charged by the sun, for news when the grid and the network are down."
+      },
+      "fr": {
+        "why": "Une radio sur une batterie chargée par le soleil, pour les nouvelles quand le réseau et internet tombent."
+      }
+    },
+    {
+      "id": "SOL-171",
+      "en": {
+        "why": "A falling weight lights a lamp for about twenty minutes, with no battery to run flat."
+      },
+      "fr": {
+        "why": "Un poids qui descend allume une lampe une vingtaine de minutes, sans batterie qui se vide."
+      }
+    },
+    {
+      "id": "SOL-080",
+      "en": {
+        "why": "A small battery bank charged by a solar panel keeps a few lamps and the radio going."
+      },
+      "fr": {
+        "why": "Un petit parc de batteries chargé par un panneau solaire fait tourner quelques lampes et la radio."
+      }
+    }
+  ],
+  "cards": 29,
+  "solutions": [
+    "SOL-020",
+    "SOL-031",
+    "SOL-038",
+    "SOL-047",
+    "SOL-055",
+    "SOL-057",
+    "SOL-059",
+    "SOL-076",
+    "SOL-079",
+    "SOL-080",
+    "SOL-089",
+    "SOL-090",
+    "SOL-091",
+    "SOL-094",
+    "SOL-108",
+    "SOL-114",
+    "SOL-163",
+    "SOL-169",
+    "SOL-171",
+    "SOL-178",
+    "SOL-182",
+    "SOL-195",
+    "SOL-196",
+    "SOL-214",
+    "SOL-215",
+    "SOL-216",
+    "SOL-217",
+    "SOL-228",
+    "SOL-251"
+  ],
+  "notes": {
+    "SOL-031": {
+      "en": "Stops with the grid.",
+      "fr": "S’arrête avec le réseau."
+    },
+    "SOL-055": {
+      "en": "The taps run gently from it, and once the water stops it holds only what was already in it.",
+      "fr": "Les robinets en coulent doucement, et une fois l’eau coupée, il ne contient que ce qu’il avait déjà."
+    },
+    "SOL-178": {
+      "en": "Heats water only while the stove is lit: in winter, hot water means lighting it, even with the grid up.",
+      "fr": "Ne chauffe l’eau que quand la cuisinière est allumée : l’hiver, pour avoir de l’eau chaude, il faut l’allumer, même quand le réseau fonctionne."
+    }
+  }
+}

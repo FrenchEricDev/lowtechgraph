@@ -1,0 +1,32 @@
+{
+ "SOL-059": {
+  "photo": {
+   "alt": {
+    "en": "A solar water heater on the ground in a garden: flat collector panels with the hot-water tank across their top",
+    "fr": "Un chauffe-eau solaire posé au sol dans un jardin : des capteurs plans, le ballon d’eau chaude couché au-dessus"
+   },
+   "author": "David Monniaux",
+   "h": 720,
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Solar_heater_dsc00632.jpg",
+   "src": "/photos/sol-059.jpg",
+   "w": 960
+  }
+ },
+ "SOL-136": {
+  "photo": {
+   "alt": {
+    "en": "A rocket stove built of concrete blocks and clay outdoors, with its chimney and an oven beside it",
+    "fr": "Un poêle-fusée en parpaings et en terre, dehors, avec sa cheminée et un four à côté"
+   },
+   "author": "Sarah and Jason",
+   "h": 720,
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Rocket_Stove_with_Oven.jpg",
+   "src": "/photos/sol-136.jpg",
+   "w": 960
+  }
+ }
+}

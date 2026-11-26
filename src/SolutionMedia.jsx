@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import * as cat from './catalogue'
 import { ui, fill } from './ui-strings'
-import { SOLUTION_MEDIA, youtubeId } from './data/solution-media'
+import SOLUTION_MEDIA from './data/solution-media.json'
+
+// The video tab plays the solution's first YouTube tutorial, in the reading language if it has one.
+const youtubeId = (url) => {
+  const m = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/.exec(url || '')
+  return m ? m[1] : null
+}
 
 /*
  * The drawing, a photo and a video as tabs in one frame (R1, Eric 2026-11-22: readers asked
@@ -12,7 +18,7 @@ import { SOLUTION_MEDIA, youtubeId } from './data/solution-media'
  * only when the reader presses play, with a line saying it comes from YouTube.
  *
  * Kept 2026-11-22 (Eric): the Video tab on every solution with a YouTube tutorial; photos only
- * where solution-media.js has one, until the photo pass moves them to the workbook (R1-b).
+ * where the workbook's Media sheet has one (R1-b, 2026-11-23), exported to data/solution-media.json.
  */
 export default function SolutionMedia({ sol, drawing }) {
   const M = ui.solutionPage.media

@@ -1,0 +1,575 @@
+{
+  "nodes": [
+    {
+      "id": "air",
+      "res": "IO-05",
+      "position": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    {
+      "id": "wood",
+      "res": "IO-04",
+      "position": {
+        "x": 60,
+        "y": 290
+      }
+    },
+    {
+      "id": "grid",
+      "sol": "SOL-079",
+      "position": {
+        "x": 60,
+        "y": 520
+      }
+    },
+    {
+      "id": "water",
+      "sol": "SOL-195",
+      "position": {
+        "x": 60,
+        "y": 750
+      }
+    },
+    {
+      "id": "sewer",
+      "sol": "SOL-196",
+      "position": {
+        "x": 1710,
+        "y": 60
+      }
+    },
+    {
+      "id": "render",
+      "sol": "SOL-194",
+      "position": {
+        "x": 60,
+        "y": 980
+      }
+    },
+    {
+      "id": "draught",
+      "sol": "SOL-214",
+      "position": {
+        "x": 60,
+        "y": 1210
+      }
+    },
+    {
+      "id": "windows",
+      "sol": "SOL-024",
+      "position": {
+        "x": 60,
+        "y": 1440
+      }
+    },
+    {
+      "id": "loft",
+      "sol": "SOL-020",
+      "position": {
+        "x": 60,
+        "y": 1670
+      }
+    },
+    {
+      "id": "clay",
+      "sol": "SOL-041",
+      "position": {
+        "x": 60,
+        "y": 1900
+      }
+    },
+    {
+      "id": "hrv",
+      "sol": "SOL-128",
+      "position": {
+        "x": 390,
+        "y": 60
+      }
+    },
+    {
+      "id": "stove",
+      "sol": "SOL-030",
+      "position": {
+        "x": 390,
+        "y": 290
+      }
+    },
+    {
+      "id": "hp",
+      "sol": "SOL-031",
+      "position": {
+        "x": 390,
+        "y": 520
+      }
+    },
+    {
+      "id": "rads",
+      "sol": "SOL-251",
+      "position": {
+        "x": 720,
+        "y": 60
+      }
+    },
+    {
+      "id": "boiler",
+      "sol": "SOL-061",
+      "position": {
+        "x": 390,
+        "y": 750
+      }
+    },
+    {
+      "id": "shower",
+      "sol": "SOL-092",
+      "position": {
+        "x": 720,
+        "y": 290
+      }
+    },
+    {
+      "id": "dishes",
+      "sol": "SOL-228",
+      "position": {
+        "x": 720,
+        "y": 520
+      }
+    },
+    {
+      "id": "wash",
+      "sol": "SOL-094",
+      "position": {
+        "x": 390,
+        "y": 980
+      }
+    },
+    {
+      "id": "line",
+      "sol": "SOL-215",
+      "position": {
+        "x": 60,
+        "y": 2130
+      }
+    },
+    {
+      "id": "wc",
+      "sol": "SOL-216",
+      "position": {
+        "x": 1380,
+        "y": 60
+      }
+    },
+    {
+      "id": "led",
+      "sol": "SOL-047",
+      "position": {
+        "x": 390,
+        "y": 1210
+      }
+    },
+    {
+      "id": "hob",
+      "sol": "SOL-163",
+      "position": {
+        "x": 390,
+        "y": 1440
+      }
+    },
+    {
+      "id": "sort",
+      "sol": "SOL-108",
+      "position": {
+        "x": 1380,
+        "y": 290
+      }
+    },
+    {
+      "id": "worms",
+      "sol": "SOL-182",
+      "position": {
+        "x": 1710,
+        "y": 290
+      }
+    },
+    {
+      "id": "collect",
+      "sol": "SOL-217",
+      "position": {
+        "x": 1710,
+        "y": 520
+      }
+    },
+    {
+      "id": "house",
+      "dest": "home",
+      "position": {
+        "x": 1050,
+        "y": 60
+      }
+    },
+    {
+      "id": "building",
+      "dest": "dwelling",
+      "position": {
+        "x": 390,
+        "y": 1670
+      }
+    },
+    {
+      "id": "outside",
+      "dest": "environment",
+      "position": {
+        "x": 2040,
+        "y": 60
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-wood-stove",
+      "source": "wood",
+      "target": "stove",
+      "io": "IO-04",
+      "ios": [
+        "IO-04"
+      ]
+    },
+    {
+      "id": "e-stove-house",
+      "source": "stove",
+      "target": "house",
+      "io": "IO-37",
+      "ios": [
+        "IO-37"
+      ]
+    },
+    {
+      "id": "e-stove-outside",
+      "source": "stove",
+      "target": "outside",
+      "io": "IO-42",
+      "ios": [
+        "IO-42"
+      ]
+    },
+    {
+      "id": "e-grid-hp",
+      "source": "grid",
+      "target": "hp",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-hp-rads",
+      "source": "hp",
+      "target": "rads",
+      "io": "IO-36",
+      "ios": [
+        "IO-36"
+      ]
+    },
+    {
+      "id": "e-rads-house",
+      "source": "rads",
+      "target": "house",
+      "io": "IO-36",
+      "ios": [
+        "IO-36"
+      ]
+    },
+    {
+      "id": "e-grid-boiler",
+      "source": "grid",
+      "target": "boiler",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-water-boiler",
+      "source": "water",
+      "target": "boiler",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-boiler-shower",
+      "source": "boiler",
+      "target": "shower",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-boiler-dishes",
+      "source": "boiler",
+      "target": "dishes",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-boiler-house",
+      "source": "boiler",
+      "target": "house",
+      "io": "IO-41",
+      "ios": [
+        "IO-41"
+      ]
+    },
+    {
+      "id": "e-water-shower",
+      "source": "water",
+      "target": "shower",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-water-dishes",
+      "source": "water",
+      "target": "dishes",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-water-wash",
+      "source": "water",
+      "target": "wash",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-water-house",
+      "source": "water",
+      "target": "house",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-water-wc",
+      "source": "water",
+      "target": "wc",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-grid-wash",
+      "source": "grid",
+      "target": "wash",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-hrv",
+      "source": "grid",
+      "target": "hrv",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-led",
+      "source": "grid",
+      "target": "led",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-grid-hob",
+      "source": "grid",
+      "target": "hob",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-air-hrv",
+      "source": "air",
+      "target": "hrv",
+      "io": "IO-05",
+      "ios": [
+        "IO-05"
+      ]
+    },
+    {
+      "id": "e-hrv-house",
+      "source": "hrv",
+      "target": "house",
+      "io": "IO-05",
+      "ios": [
+        "IO-05",
+        "IO-35"
+      ]
+    },
+    {
+      "id": "e-shower-sewer",
+      "source": "shower",
+      "target": "sewer",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-dishes-sewer",
+      "source": "dishes",
+      "target": "sewer",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-wash-sewer",
+      "source": "wash",
+      "target": "sewer",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-house-wc",
+      "source": "house",
+      "target": "wc",
+      "io": "IO-38",
+      "ios": [
+        "IO-38"
+      ]
+    },
+    {
+      "id": "e-wc-sewer",
+      "source": "wc",
+      "target": "sewer",
+      "io": "IO-11",
+      "ios": [
+        "IO-11"
+      ]
+    },
+    {
+      "id": "e-led-house",
+      "source": "led",
+      "target": "house",
+      "io": "IO-23",
+      "ios": [
+        "IO-23"
+      ]
+    },
+    {
+      "id": "e-hob-house",
+      "source": "hob",
+      "target": "house",
+      "io": "IO-44",
+      "ios": [
+        "IO-44"
+      ]
+    },
+    {
+      "id": "e-clay-house",
+      "source": "clay",
+      "target": "house",
+      "io": "IO-52",
+      "ios": [
+        "IO-52"
+      ]
+    },
+    {
+      "id": "e-render-building",
+      "source": "render",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-draught-building",
+      "source": "draught",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-windows-building",
+      "source": "windows",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-loft-building",
+      "source": "loft",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-house-sort",
+      "source": "house",
+      "target": "sort",
+      "io": "IO-39",
+      "ios": [
+        "IO-39"
+      ]
+    },
+    {
+      "id": "e-sort-worms",
+      "source": "sort",
+      "target": "worms",
+      "io": "IO-13",
+      "ios": [
+        "IO-13"
+      ]
+    },
+    {
+      "id": "e-sort-collect",
+      "source": "sort",
+      "target": "collect",
+      "io": "IO-14",
+      "ios": [
+        "IO-14",
+        "IO-40"
+      ]
+    },
+    {
+      "id": "e-worms-outside",
+      "source": "worms",
+      "target": "outside",
+      "io": "IO-12",
+      "ios": [
+        "IO-12",
+        "IO-15"
+      ]
+    }
+  ]
+}

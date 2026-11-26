@@ -83,7 +83,7 @@
 .summary { margin: var(--s-2) 0 var(--s-3); }
 /* The description in its three parts (F20, Eric 2026-11-19; catalogue.js tParts), each
    labelled. Stacked on a phone; the label in a column of its own where there is room. */
-.sum-parts { margin: var(--s-3) 0 var(--s-4); padding: 0; display: grid; gap: var(--s-3); max-width: 46rem; }
+.sum-parts { margin: var(--s-3) 0 var(--s-4); padding: 0; display: grid; gap: var(--s-3); }
 .sum-part { display: grid; gap: 2px; }
 .sum-part dt { font-size: var(--t-xs); font-weight: 700; color: var(--accent-ink); text-transform: uppercase; letter-spacing: var(--ls-caps); }
 .sum-part dd { margin: 0; }
@@ -547,8 +547,10 @@ a.row, a.chip { text-decoration: none; }
 /* In --muted, not at an opacity: .55 of ink fell to about 2.5:1 (B5). */
 .branch-row.is-empty, .branch-row.is-empty * { color: var(--muted); text-decoration: none; }
 
-/* ---- measure. No cap of its own (Eric, 2026-10-21): text runs to the edge of the column it is
-   in, and the column is the page's (--maxw), so every page wraps at the same place. */
+/* ---- measure. No cap of its own (Eric, 2026-10-21, again 2026-11-26): text runs to the edge of
+   the column it is in, and the column is the page's (--maxw), so every page wraps at the same
+   place. scripts/qa-measure.mjs fails the build on a new max-width that is not a control, a
+   picture or a builder part. */
 
 /* ---- master-detail on a wide screen. Below 1024px the rail is absent (the list is up the breadcrumb); above, the card grows a left column. */
 .rail { display: none; }
@@ -674,17 +676,7 @@ a.row, a.chip { text-decoration: none; }
  * ===========================================================================
  */
 
-/*
- * The measure cap is for running text: the home view opts out by widening, so the page keeps a
- * right edge.
- */
-/* The 70ch paragraph cap only fights the card grid. */
-.view.is-home .ccard-text { max-width: none; }
 
-/*
- * Optional line above the carousel, not rendered when empty. Own auto margins, since .view p
- * caps the measure and a capped centred block would sit left.
- */
 /*
  * The page's <h1>. Two-part selector: `.view h1` is (0,1,1) and would otherwise hold it to
  * --t-xl.
@@ -693,14 +685,10 @@ a.row, a.chip { text-decoration: none; }
   margin: var(--s-5) auto var(--s-2);
   text-align: center; text-wrap: balance;
   font-size: var(--t-2xl); line-height: 1.08; letter-spacing: -0.015em;
-  color: var(--ink); max-width: 18ch;
+  color: var(--ink);
 }
 
 .home-tagline {
-  /*
-   * The measure cap is lifted beside .view p: this selector is (0,1,0) and would lose to `.view
-   * p` (0,1,1).
-   */
   /* A subhead under .home-title: the two read as one block. */
   margin: 0 auto var(--s-5);
   text-align: center; text-wrap: balance;
@@ -892,6 +880,18 @@ a.row, a.chip { text-decoration: none; }
 }
 /* The guides index (D10 Q5): one tile per guide, the whole tile the link. */
 .guide-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--s-4); margin-top: var(--s-5); }
+/* Its two sections (2026-11-26): the selections, then the example systems. */
+.guide-sec { margin-top: var(--s-6); }
+.guide-sec + .guide-sec { padding-top: var(--s-6); border-top: 1px solid var(--line); }
+/* The toggle between the two sections (2026-11-26). */
+.seg.guides-tabs { margin: var(--s-2) 0 0; max-width: 100%; }
+.guides-tabs .seg-item { white-space: nowrap; }
+.guides-tab-n { margin-left: var(--s-1); font-variant-numeric: tabular-nums; opacity: .8; }
+@media (max-width: 420px) { .guides-tabs { display: flex; } .guides-tabs .seg-item { flex: 1 1 0; padding: 0 var(--s-2); } }
+/* Between the page title and the tile titles, which keep their heading look though now h3s. */
+.view .guide-sec-title { margin: 0; font-size: calc((var(--t-lg) + var(--t-xl)) / 2); }
+.view h3.guide-tile-title { text-transform: none; letter-spacing: normal; color: var(--ink); font-weight: 700; }
+.guide-sec-intro { margin: var(--s-2) 0 0; }
 .guide-tile {
   display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-5);
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
@@ -2157,3 +2157,52 @@ a.row, a.chip { text-decoration: none; }
 .media-video-wait { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: var(--s-2); padding: var(--s-4); text-align: center; }
 .media-video-title { margin: 0; font-weight: 600; }
+
+/* F10: the example home, in a frame of its own, apart from the per-solution Add buttons. */
+.guide-home { border: 1px solid var(--accent-line); background: var(--accent-bg-2); border-radius: var(--radius);
+  padding: var(--s-4) var(--s-5); margin: 0 0 var(--s-6); }
+.guide-home-title { font-size: var(--t-md); margin: 0 0 var(--s-2); }
+/* The home's system as it opens in the builder (SystemPicture.jsx): the page's width on a wide
+   screen; on a phone it keeps a readable size and scrolls sideways. */
+.syspic { margin: var(--s-3) 0 var(--s-4); overflow-x: auto; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s-3); }
+.syspic svg { display: block; width: 100%; min-width: 680px; height: auto; }
+.syspic-reserve { min-height: 360px; }
+.syspic-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.syspic-enlarge { margin-top: var(--s-3); }
+/* Full screen, at the picture's own size (F10-p). */
+.syspic-backdrop { position: fixed; inset: 0; z-index: 60; display: flex; padding: var(--s-4); background: rgba(0, 0, 0, .45); }
+.syspic-panel { flex: 1; min-width: 0; display: flex; flex-direction: column; background: var(--surface); color: var(--ink);
+  border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, .3); }
+.syspic-head { display: flex; align-items: center; gap: var(--s-3); padding: 8px 12px; border-bottom: 1px solid var(--line); }
+.syspic-head p { flex: 1; margin: 0; font-size: var(--t-sm); }
+.syspic-close { width: 44px; height: 44px; border: 0; border-radius: var(--radius-sm); background: none; color: var(--ink);
+  font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.syspic-close:hover { background: var(--surface-2); }
+.syspic-scroll { flex: 1; overflow: auto; padding: var(--s-4); -webkit-overflow-scrolling: touch; }
+.syspic-scroll svg { display: block; max-width: none; }
+@media (max-width: 560px) { .syspic-backdrop { padding: 0; } .syspic-panel { border-radius: 0; } }
+.syspic-links path { fill: none; stroke: var(--muted); stroke-width: 1.4; opacity: .55; }
+.syspic-card rect { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+.syspic-card.is-res rect { fill: var(--resource-bg); stroke: var(--resource-line); }
+.syspic-card.is-dest rect { fill: var(--accent-bg); stroke: var(--accent-line); }
+.syspic-card text { font-size: 13px; fill: var(--ink); font-weight: 600; }
+.syspic-card.is-res text { fill: var(--resource-ink); }
+/* An example home's full list (2026-11-26): under need headings, the key choices tagged, and a
+   home's warning about a solution in view under its name. */
+.view .pick-list-title { margin-top: var(--s-7); }
+.view .pick-group-title { margin: var(--s-5) 0 var(--s-2); }
+.pick-list-intro { margin: 0 0 var(--s-2); }
+.pick-key {
+  display: inline-block; margin-left: var(--s-2); padding: 1px 8px; vertical-align: 2px;
+  font-size: var(--t-xs); font-weight: 700; border-radius: 999px;
+  color: var(--accent-ink); background: var(--accent-bg); border: 1px solid var(--accent-line);
+}
+.pick-note { margin: 0; padding: 0 var(--s-4) var(--s-3) calc(var(--s-4) + 2.2em); font-size: var(--t-sm); color: var(--ink); }
+.guide-tile-count { margin: var(--s-2) 0; font-size: var(--t-sm); font-weight: 600; flex: 1; }
+.guide-home p { margin: 0 0 var(--s-3); font-size: var(--t-sm); color: var(--ink); }
+.guide-home-btn { display: inline-flex; align-items: center; gap: var(--s-2); }
+
+/* A17: headings over a need's sub-needs. */
+.ngroup + .ngroup { margin-top: var(--s-5); }
+.ngroup-title { font-size: var(--t-sm); font-weight: 700; color: var(--ink); margin: var(--s-4) 0 var(--s-2); }

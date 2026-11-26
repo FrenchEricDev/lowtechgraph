@@ -3,7 +3,7 @@ import Glyph, { ResourceMark } from './Glyph.jsx'
 import * as cat from './catalogue'
 import { search } from './search'
 import { shareLink, copyText, prefersShareSheet, sendFeedback, FEEDBACK_EMAIL } from './platform'
-import { subscribeTree, placedSolutionCount, placedSolutionIds, isPlaced } from './treeStore'
+import { subscribeTree, placedSolutionCount, placedSolutionIds, isPlaced, encodeTree, HASH_PREFIX } from './treeStore'
 // The builder, its graph library and the system check load on demand (2026-09-25): most
 // visits never open it, and search crawlers were fetching all of it with every page.
 const TreeBuilder = lazy(() => import('./TreeBuilder'))
@@ -30,6 +30,7 @@ const GuideHouse = lazy(loadGuideHouse)
 const HouseCarousel = lazy(() => loadGuideHouse().then((m) => ({ default: m.HouseCarousel })))
 const SubDrawing = lazy(() => loadGuideHouse().then((m) => ({ default: m.SubDrawing })))
 const GuideThumb = lazy(() => loadGuideHouse().then((m) => ({ default: m.GuideThumb })))
+const SystemPicture = lazy(() => import('./SystemPicture.jsx'))
 // Why's drawings (brief 11, C): the plates, loaded with the page that needs them.
 const WhyBubble = lazy(() => import('./illustrations/WhyBubble.jsx'))
 // The home page's site tour (F19): its own chunk, as the first load is near its budget.
@@ -44,7 +45,7 @@ import FacetBar, { activeCountOf, FilterLine, EmptyByFilters, FiltersHost, filte
 import Comparison, { CompareTable, CompareRows, AspectSwitch } from './Comparison.jsx'
 import { AddButton, AddPlus, AddToast, IoChip, ConnectBar, ConnectButton, keepConnectingOn,
          useConnecting, candidatesOf } from './AddToTree.jsx'
-import { guide, guideIds } from './content'
+import { guide, guideIds, needGroups, loadHomeSystem } from './content'
 import { applyUpdateIfPending } from './sw-update'
 import buildInfo from './data/build-info.json'
 import { siteCounts, ABOUT_STEPS, ABOUT_DIFFS } from './siteCounts'
@@ -1513,28 +1514,72 @@ function NeedsView({ go, filters, setFilter }) {
   )
 }
 
-// The guides index (D10 Q5): every guide with its promise and its number of picks. Example homes
-// will join as their own group.
+// The guides index (D10 Q5): every guide with its promise and its picks. Two sections (Eric,
+// 2026-11-26): the themed selections, where a reader takes one pick or several, then the example
+// systems (homes and themed systems), whose long intros made every tile in a shared grid too tall.
 function GuidesView({ go, lang }) {
   const list = guideIds().map((id) => guide(id, lang)).filter((g) => g && g.picks.length)
+  const G = ui.guides
+  const sections = [
+    ['sel', 'guides-sel-h', G.selTitle, G.selIntro, list.filter((g) => !g.home), G.selTab],
+    ['sys', 'guides-sys-h', G.sysTitle, G.sysIntro, list.filter((g) => g.home), G.sysTab],
+  ].filter((x) => x[4].length)
+  // One section at a time (Eric, 2026-11-26: the page was long on a phone). The choice is kept in
+  // this page's history entry, so Back from a guide returns to the same one; #homes opens the second.
+  const [shown, setShown] = useState(() => {
+    if (typeof window === 'undefined') return 'sel'
+    return window.history.state?.guidesTab || (window.location.hash === '#homes' ? 'sys' : 'sel')
+  })
+  const pick = (k) => {
+    setShown(k)
+    try { window.history.replaceState({ ...window.history.state, guidesTab: k }, '') } catch { /* ignore */ }
+  }
+  const onTabKey = (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
+    const next = shown === 'sel' ? 'sys' : 'sel'
+    pick(next)
+    document.getElementById('guides-tab-' + next)?.focus()
+  }
   return (
     <div className="view">
-      <Crumbs go={go} trail={[homeCrumb(), { name: ui.guides.title, route: null }]} />
-      <h1>{ui.guides.title}</h1>
-      <p className="lede">{ui.guides.intro}</p>
-      <div className="guide-index">
-        {list.map((g) => (
-          <article key={g.id} className="guide-tile">
-            <Suspense fallback={<div className="guide-thumb-reserve" aria-hidden="true" />}><GuideThumb picks={g.picks} /></Suspense>
-            <h2 className="guide-tile-title">{g.title}</h2>
-            <p className="guide-tile-intro">{g.intro}</p>
-            <ul className="guide-tile-picks">
-              {g.picks.map((p) => <li key={p.sol.id}>{cat.tName(p.sol)}</li>)}
-            </ul>
-            <Nav route={{ view: 'guide', id: g.id }} go={go} className="btn secondary guide-tile-go">{ui.guides.open}</Nav>
-          </article>
-        ))}
-      </div>
+      <Crumbs go={go} trail={[homeCrumb(), { name: G.title, route: null }]} />
+      <h1>{G.title}</h1>
+      {sections.length > 1 && (
+        <div className="seg guides-tabs" role="tablist" aria-label={G.title} onKeyDown={onTabKey}>
+          {sections.map(([k, , , , gs, label]) => (
+            <button key={k} type="button" role="tab" id={'guides-tab-' + k} aria-controls={'guides-panel-' + k}
+                    aria-selected={shown === k} tabIndex={shown === k ? 0 : -1}
+                    className={'seg-item' + (shown === k ? ' is-on' : '')} onClick={() => pick(k)}>
+              {label}<span className="guides-tab-n"> {gs.length}</span>
+            </button>
+          ))}
+        </div>
+      )}
+      {sections.filter(([k]) => sections.length === 1 || k === shown).map(([k, hid, title, intro, gs]) => (
+        <section key={hid} className="guide-sec" id={'guides-panel-' + k} role="tabpanel"
+                 aria-labelledby={'guides-tab-' + k}>
+          <h2 id={hid} className="guide-sec-title">{title}</h2>
+          <p className="guide-sec-intro">{intro}</p>
+          <div className="guide-index">
+            {gs.map((g) => (
+              <article key={g.id} className="guide-tile">
+                <Suspense fallback={<div className="guide-thumb-reserve" aria-hidden="true" />}><GuideThumb picks={g.home ? g.members : g.picks} /></Suspense>
+                <h3 className="guide-tile-title">{g.title}</h3>
+                <p className="guide-tile-intro">{g.intro}</p>
+                {/* An example home holds 20 to 30: its count, not its list (Eric, 2026-11-26). */}
+                {g.home
+                  ? <p className="guide-tile-count">{fill(G.picks, { n: g.members.length })}</p>
+                  : (
+                    <ul className="guide-tile-picks">
+                      {g.picks.map((p) => <li key={p.sol.id}>{cat.tName(p.sol)}</li>)}
+                    </ul>
+                  )}
+                <Nav route={{ view: 'guide', id: g.id }} go={go} className="btn secondary guide-tile-go">{G.open}</Nav>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   )
 }
@@ -1560,6 +1605,50 @@ function GuideReserve({ picks }) {
   )
 }
 
+/*
+ * An example home (F10): its whole system opens in the builder as a shared link would, so the
+ * builder needs nothing new. It replaces what is on the canvas, so a reader with cards placed is
+ * asked first; their named saves are never touched.
+ */
+function OpenHome({ g, lang }) {
+  const G = ui.guide
+  const open = async () => {
+    if (placedSolutionCount() > 0 && !window.confirm(G.homeReplace)) return
+    const system = await loadHomeSystem(g.id)
+    if (!system) return
+    const code = await encodeTree({ ...system, name: g.title, counter: system.nodes.length })
+    window.location.assign(pathFor({ view: 'tree' }, lang) + HASH_PREFIX + code)
+  }
+  // Its own framed block, apart from the drawing's per-solution "Add" buttons (Eric, 2026-11-23):
+  // this one takes the whole home, those take one solution each.
+  return (
+    <section className="guide-home" aria-labelledby="guide-home-h">
+      <h2 id="guide-home-h" className="guide-home-title">{g.home.whole ? G.homeTitle : G.systemTitle}</h2>
+      <Suspense fallback={<div className="syspic syspic-reserve" aria-hidden="true" />}>
+        <SystemPicture id={g.id} whole={g.home.whole} />
+      </Suspense>
+      <p>{fill(g.home.whole ? G.homeCount : G.systemCount, { n: g.home.cards })}</p>
+      <button type="button" className="btn secondary guide-home-btn" onClick={open}>
+        <Glyph name="house" size={16} />{g.home.whole ? G.homeOpen : G.systemOpen}
+      </button>
+    </section>
+  )
+}
+
+// An example home's solutions under their needs, in the catalogue's order of needs, the easiest
+// to build first within each, numbered on from one group to the next.
+function byNeed(members) {
+  let start = 0
+  return cat.catalogue.functions
+    .map((f) => ({
+      id: f.id, title: cat.tName(f),
+      rows: members.filter((m) => m.sol.function_id === f.id)
+        .sort((a, b) => cat.SKILL_ORDER.indexOf(a.sol.build_skill) - cat.SKILL_ORDER.indexOf(b.sol.build_skill)),
+    }))
+    .filter((g) => g.rows.length)
+    .map((g) => { const out = { ...g, start }; start += g.rows.length; return out })
+}
+
 function GuideView({ id, go, lang }) {
   const g = guide(id, lang)
   if (!g) return <NotFound home={() => go({ view: 'home' })} />
@@ -1571,12 +1660,27 @@ function GuideView({ id, go, lang }) {
       <p className="lede">{g.intro}</p>
 
       {/* B10: the drawing's room and the picks, held while the drawing's code loads, so the page
-          does not jump (as on a solution page). */}
-      <Suspense fallback={<GuideReserve picks={g.picks} />}><GuideHouse key={id} picks={g.picks} go={go} title={g.title} /></Suspense>
+          does not jump (as on a solution page). An example home (2026-11-26): every solution of
+          its system, drawn on the house, then the system as it opens in My system, then the list
+          by need. */}
+      {g.home ? (
+        <Suspense fallback={<GuideReserve picks={g.members} />}>
+          <GuideHouse key={id} picks={g.members} groups={byNeed(g.members)} go={go} title={g.title}
+            between={<OpenHome g={g} lang={lang} />}
+            words={{
+              drawingName: ui.guide.drawingNameHome, drawingNameSite: ui.guide.drawingNameHomeSite,
+              drawingHint: g.home.whole ? ui.guide.drawingHintHome : ui.guide.drawingHintSystem,
+              listTitle: g.home.whole ? ui.guide.listTitleHome : ui.guide.listTitleSystem,
+              listIntro: g.keys,
+            }} />
+        </Suspense>
+      ) : (
+        <Suspense fallback={<GuideReserve picks={g.picks} />}><GuideHouse key={id} picks={g.picks} go={go} title={g.title} /></Suspense>
+      )}
 
       <section className="guide-more">
-        <h2>{ui.guide.moreHeading}</h2>
-        <p>{ui.guide.moreBody}</p>
+        <h2>{g.home ? ui.guide.moreHeadingHome : ui.guide.moreHeading}</h2>
+        <p>{g.home ? ui.guide.moreBodyHome : ui.guide.moreBody}</p>
         <div className="guide-more-btns">
           <Nav route={{ view: 'guides' }} go={go} className="btn secondary">{ui.guide.otherGuides}</Nav>
           <Nav route={{ view: 'needs' }} go={go} className="btn">
@@ -1683,9 +1787,19 @@ function FunctionView({ id, go, filters, setFilter }) {
       <h2 className="sec">{ui.needPages.subfunctionsHeading}</h2>
       <p className="muted small">{fill(ui.needPages.partsCount, { parts: subs.length, n: total })}</p>
       <FilterLine all={cat.solsByFunction[id] || []} filters={filters} />
-      <div className="nlist">
-        {subs.map((s) => <SubRow key={s.id} sub={s} go={go} filters={filters} />)}
-      </div>
+      {needGroups(id, cat.getLang()) ? needGroups(id, cat.getLang()).map((g) => (
+        <section key={g.title} className="ngroup">
+          <h3 className="ngroup-title">{g.title}</h3>
+          <div className="nlist">
+            {g.subs.map((sid) => subs.find((s) => s.id === sid)).filter(Boolean)
+              .map((s) => <SubRow key={s.id} sub={s} go={go} filters={filters} />)}
+          </div>
+        </section>
+      )) : (
+        <div className="nlist">
+          {subs.map((s) => <SubRow key={s.id} sub={s} go={go} filters={filters} />)}
+        </div>
+      )}
     </div>
   )
 }

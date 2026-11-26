@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-22",
+ "generated": "2026-11-26",
  "counts": {
   "functions": 15,
   "subfunctions": 89,
   "io_types": 52,
-  "solutions": 251,
-  "io_index": 517,
+  "solutions": 252,
+  "io_index": 530,
   "bases": 24,
   "coefficients": 78,
   "fabric_classes": 56
@@ -1096,14 +1096,14 @@
    "short": "Keeping food cold",
    "function_id": "FN-10",
    "summary": "Keeping food cold enough to slow what spoils it. The ground and a shaded, ventilated space do part of this for nothing; a machine does the rest reliably but continuously. The options differ in how cold they get, how steady that is through the year, and whether they need power.",
-   "efficiency_basis": "Ranked by how cold the store gets and how dependably. A powered refrigerator holds a set temperature whatever the weather. A root cellar is reliably cool from ground contact but tracks the season rather than a setpoint. A zeer pot achieves a useful drop below ambient only while the surrounding air is dry enough for evaporation, a real limitation in Normandy's oceanic climate.",
+   "efficiency_basis": "Ranked by how cold the store gets and how dependably. A powered refrigerator holds a set temperature whatever the weather. A root cellar is reliably cool from ground contact but tracks the season rather than a setpoint. A zeer pot achieves a useful drop below ambient only while the surrounding air is dry enough for evaporation, a real limitation in a humid, oceanic climate.",
    "slug": "cold-storage",
    "slug_fr": "conservation-au-froid",
    "fr": {
     "name": "Conservation au froid",
     "short": "Garder au frais",
     "description": "Garder les aliments assez froids pour ralentir ce qui les abîme. Le sol et un local ombragé et ventilé y parviennent en partie sans rien consommer ; une machine fait le reste de façon fiable mais continue. Les options diffèrent par la température atteinte, par sa régularité sur l’année, et par le besoin d’électricité.",
-    "efficiency_basis": "Classement par froid atteint et par fiabilité. Un réfrigérateur alimenté maintient une température fixe quelle que soit la météo. Un cellier enterré est fraîchement fiable grâce au contact avec le sol mais suit la saison plutôt qu’une consigne. Un pot zeer n’obtient une baisse utile sous l’ambiante que tant que l’air environnant est assez sec pour permettre l’évaporation, une vraie limite dans le climat océanique normand."
+    "efficiency_basis": "Classement par froid atteint et par fiabilité. Un réfrigérateur alimenté maintient une température fixe quelle que soit la météo. Un cellier enterré est fraîchement fiable grâce au contact avec le sol mais suit la saison plutôt qu’une consigne. Un pot zeer n’obtient une baisse utile sous l’ambiante que tant que l’air environnant est assez sec pour permettre l’évaporation, une vraie limite sous un climat humide et océanique."
    }
   },
   {
@@ -3113,22 +3113,34 @@
   },
   {
    "id": "SOL-005",
-   "name": "Earth-sheltered / semi-buried form (storm resistance)",
-   "subfunction_id": "FN-01.3",
+   "name": "Earth-sheltered / semi-buried form",
+   "subfunction_id": "FN-01.10",
    "function_id": "FN-01",
-   "summary": "A house set partly into the ground, with earth against some of its walls and sometimes over its roof. The earth takes the force of the wind off those walls and shelters the house in a storm. The same earth keeps the indoor temperature steady all year. It is much easier to build on a slope.",
+   "summary": "A house set partly into the ground, with earth against some of its walls and sometimes over its roof. Walls with earth banked against them give the wind nothing to push on, so less of the house is exposed in a storm. The same earth keeps the indoor temperature steady all year. It is much easier to build on a slope.",
    "slug": "earth-sheltered-form-storm",
    "slug_fr": "forme-semi-enterree-tempete",
    "inputs": [],
    "input_groups": [],
    "outputs": [
     {
+     "io": "IO-53",
+     "name": "Building form"
+    },
+    {
+     "io": "IO-46",
+     "name": "Reduced heat loss"
+    },
+    {
+     "io": "IO-47",
+     "name": "Reduced heat gain"
+    },
+    {
      "io": "IO-51",
      "name": "Hazard protection"
     }
    ],
    "ratings": {
-    "build": 3,
+    "build": 2,
     "maintain": 3,
     "efficiency": null,
     "build_skill": "Intermediate",
@@ -3168,10 +3180,17 @@
    "tutorials": [],
    "tutorial_lines_fr": null,
    "tutorial_status": "trade",
-   "sources": [],
+   "sources": [
+    {
+     "name": "US DOE technical report (Christian, J.E., 1985), \"Detailed thermal performance measurements and cost effectiveness of earth-sheltered construction: a case study\"",
+     "tier": "B",
+     "url": "https://www.osti.gov/biblio/5284616",
+     "lang": null
+    }
+   ],
    "fr": {
-    "name": "Forme semi-enterrée / abritée par le terrain (résistance aux tempêtes)",
-    "description": "Une maison en partie enterrée, avec de la terre contre certains murs et parfois sur le toit. La terre encaisse la force du vent sur ces murs et abrite la maison pendant les tempêtes. Cette même terre garde la température intérieure stable toute l’année. C’est bien plus simple à réaliser sur un terrain en pente.",
+    "name": "Forme semi-enterrée / abritée par le terrain",
+    "description": "Une maison en partie enterrée, avec de la terre contre certains murs et parfois sur le toit. Les murs contre lesquels la terre est appuyée n’offrent pas de prise au vent : une moindre part de la maison est exposée pendant une tempête. Cette même terre garde la température intérieure stable toute l’année. C’est bien plus simple à réaliser sur un terrain en pente.",
     "lifespan": "Correspond à la durée de vie de la structure (l’habitat semi-enterré est un choix de forme, pas un composant qui s’use séparément) ; la membrane d’étanchéité elle-même nécessite généralement un renouvellement tous les 20-30 ans",
     "site_prerequisites": "Terrain en pente fortement préférable (excaver un bassin sur terrain plat est coûteux) ; bon drainage ou conception qui suppose une humidité durable",
     "build_note": "excavation + soutènement/étanchéité",
@@ -3179,12 +3198,12 @@
     "choose_if": "vous construisez neuf sur un site exposé et voulez aussi une température intérieure stable toute l’année.",
     "desc_cut": [
      93,
-     183
+     235
     ]
    },
    "desc_cut": [
     102,
-    191
+    217
    ]
   },
   {
@@ -3600,7 +3619,14 @@
    "tutorials": [],
    "tutorial_lines_fr": null,
    "tutorial_status": "no-build",
-   "sources": [],
+   "sources": [
+    {
+     "name": "City of Saint Paul, Crime Prevention Through Environmental Design for Developers (June 2026): main entrance at least partly visible from the street, clear sightlines from streets and windows",
+     "tier": "B",
+     "url": "https://www.stpaul.gov/departments/neighborhood-safety/crime-prevention-through-environmental-design-developers",
+     "lang": null
+    }
+   ],
    "fr": {
     "name": "Aménagement du site favorisant la surveillance naturelle",
     "description": "Disposer les entrées, les allées et les fenêtres pour que la maison et ses abords soient visibles depuis la rue et depuis l’intérieur. Quiconque s’approche de la porte est à la vue de tous. Cela décourage les intrusions sans rien coûter, par la seule organisation du terrain.",
@@ -3967,7 +3993,14 @@
    "tutorials": [],
    "tutorial_lines_fr": null,
    "tutorial_status": "no-build",
-   "sources": [],
+   "sources": [
+    {
+     "name": "GreenSpec, The Heat Loss Form Factor (E. Burrell, architect): the more compact a building, the easier it is to make efficient; form factor = envelope area / floor area, Passivhaus aims for 3 or less",
+     "tier": "C",
+     "url": "https://greenspec.co.uk/building-design/heat-loss-form-factor/",
+     "lang": null
+    }
+   ],
    "fr": {
     "name": "Emprise au sol compacte et rectangulaire",
     "description": "Un plan de maison simple et compact, proche du carré ou d’un rectangle court, sans ailes ni décrochés. À surface égale, une forme compacte a moins de murs et de toiture par où la chaleur s’échappe. Cela ne coûte rien de plus et rend la maison moins chère à chauffer.",
@@ -5827,93 +5860,6 @@
    "desc_cut": [
     86,
     208
-   ]
-  },
-  {
-   "id": "SOL-034",
-   "name": "Earth-sheltered / semi-buried form (thermal stability)",
-   "subfunction_id": "FN-02.12",
-   "function_id": "FN-02",
-   "summary": "A house set partly into the ground, with earth against some walls and sometimes over the roof. The ground stays at a steady temperature, so the walls it touches lose less heat in winter and gain less in summer. Indoor temperature stays even all year. It is easier and cheaper on a slope.",
-   "slug": "earth-sheltered-form-thermal",
-   "slug_fr": "forme-semi-enterree-thermique",
-   "inputs": [],
-   "input_groups": [],
-   "outputs": [
-    {
-     "io": "IO-46",
-     "name": "Reduced heat loss"
-    },
-    {
-     "io": "IO-47",
-     "name": "Reduced heat gain"
-    }
-   ],
-   "ratings": {
-    "build": 1,
-    "maintain": 1,
-    "efficiency": null,
-    "build_skill": "Intermediate",
-    "burden": 3,
-    "build_note": "excavation + retaining/waterproofing",
-    "efficiency_note": ""
-   },
-   "benchmark": false,
-   "power": "Passive",
-   "maintenance": "occasional",
-   "repair_skill": "intermediate",
-   "build_skill": "Intermediate",
-   "consumables": "None",
-   "daily_life": "none",
-   "choose_if": "you are building new and want indoor temperatures that stay even all year.",
-   "cost": "high",
-   "lifespan": "Matches structure lifespan, identical form choice, listed under the two functions it serves",
-   "lifespan_band": "as long as the building",
-   "renting": "lasting",
-   "embodied_carbon": "medium",
-   "footprint": "high",
-   "dispatchability": "None",
-   "site_prerequisites": "Sloped site strongly preferred",
-   "new_build_only": true,
-   "flat_feasible": false,
-   "flat_blocker": "structure",
-   "societal": "",
-   "regulation_fr": "Part of the structure or footprint: covered by the building permit (permis de construire) for a new dwelling. Rural sites are additionally constrained by the commune's PLU zoning, outside a constructible zone, a new dwelling is generally refused.",
-   "regulation_url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1986",
-   "provides_pressure": false,
-   "conduit_for": [],
-   "host_provides": null,
-   "host_required": null,
-   "input_via": {},
-   "input_warn": {},
-   "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
-   "tutorial_status": "trade",
-   "sources": [
-    {
-     "name": "US DOE technical report (Christian, J.E., 1985), \"Detailed thermal performance measurements and cost effectiveness of earth-sheltered construction: a case study\"",
-     "tier": "B",
-     "url": "https://www.osti.gov/biblio/5284616",
-     "lang": null
-    }
-   ],
-   "fr": {
-    "name": "Forme semi-enterrée / abritée par le terrain (stabilité thermique)",
-    "description": "Une maison en partie enterrée, avec de la terre contre certains murs et parfois sur le toit. Le sol garde une température stable : les murs qu’il touche perdent moins de chaleur en hiver et en gagnent moins en été. La température intérieure reste égale toute l’année. Plus simple et moins cher sur un terrain en pente.",
-    "lifespan": "Correspond à la durée de vie de la structure, choix de forme identique, listé sous les deux fonctions qu’elle sert",
-    "site_prerequisites": "Terrain en pente fortement préférable",
-    "build_note": "excavation + soutènement/étanchéité",
-    "regulation_fr": "Élément de structure ou d’emprise au sol : soumis au permis de construire pour un logement neuf. Les terrains ruraux sont en outre contraints par le zonage PLU de la commune, hors zone constructible, un logement neuf est généralement refusé.",
-    "choose_if": "vous construisez neuf et voulez une température intérieure stable toute l’année.",
-    "desc_cut": [
-     93,
-     215
-    ]
-   },
-   "desc_cut": [
-    95,
-    211
    ]
   },
   {
@@ -8248,7 +8194,7 @@
    ],
    "ratings": {
     "build": 2,
-    "maintain": 2,
+    "maintain": 3,
     "efficiency": null,
     "build_skill": "Intermediate",
     "burden": 6,
@@ -10309,7 +10255,7 @@
    "embodied_carbon": "medium",
    "footprint": "medium",
    "dispatchability": "Weather/time-dependent",
-   "site_prerequisites": "Site-dependent on adequate, consistent wind exposure, open terrain, away from trees/buildings; a real constraint for a bocage-normand hedgerow landscape",
+   "site_prerequisites": "Steady wind on open ground, away from trees and buildings: hedged or wooded country rarely has it",
    "new_build_only": false,
    "flat_feasible": false,
    "flat_blocker": "resource-access",
@@ -10358,7 +10304,7 @@
     "name": "Petite éolienne",
     "description": "Une petite éolienne sur un mât qui transforme le vent en électricité pour la maison. Les pales font tourner une génératrice, et le courant est utilisé aussitôt ou stocké dans des batteries. Elle peut produire la nuit et en hiver, quand les panneaux solaires donnent peu, mais seulement sur un site au vent régulier et dégagé.",
     "lifespan": "20 à 25 ans pour une petite éolienne bien construite avec des composants durables et une protection de régulateur adéquate",
-    "site_prerequisites": "Dépendant du site : exposition au vent adéquate et régulière, terrain dégagé, loin des arbres et bâtiments ; une vraie contrainte pour un paysage de bocage normand",
+    "site_prerequisites": "Un vent régulier sur un terrain dégagé, loin des arbres et des bâtiments : un pays de haies ou de bois en a rarement",
     "build_note": "mât + éolienne + câblage",
     "choose_if": "votre site a un vent régulier et dégagé, et il vous faut de l’électricité les nuits et l’hiver, quand le solaire donne peu.",
     "desc_cut": [
@@ -11609,7 +11555,7 @@
    "name": "Solar cooker",
    "subfunction_id": "FN-10.4",
    "function_id": "FN-10",
-   "summary": "A reflective box or dish that concentrates sunlight onto a dark cooking pot. The pot absorbs the light and heats up enough to cook food. It cooks for free, with no fuel and no smoke, but only on sunny days.",
+   "summary": "A reflective box or dish that concentrates sunlight onto a dark cooking pot. The pot absorbs the light and heats up enough to cook food. It cooks for free, with no fuel and no smoke, but only on sunny days. In a six-week trial in Zambia, households given solar stoves cooked about 40% of their dishes on them and spent less time and money on fuel.",
    "slug": "solar-cooker",
    "slug_fr": "cuiseur-solaire",
    "inputs": [
@@ -11703,11 +11649,17 @@
      "tier": "C",
      "url": "https://outils-autonomie.fr/cuisiniere-solaire/",
      "lang": null
+    },
+    {
+     "name": "McCann, Michler et al., Food Without Fire: a solar stove field experiment (arXiv:2410.02075, 2024; a preprint, read in its abstract)",
+     "tier": "B",
+     "url": "https://arxiv.org/abs/2410.02075",
+     "lang": null
     }
    ],
    "fr": {
     "name": "Cuiseur solaire",
-    "description": "Une boîte ou une parabole réfléchissante qui concentre la lumière du soleil sur une marmite sombre. La marmite absorbe la lumière et chauffe assez pour cuire. On cuisine gratuitement, sans combustible ni fumée, mais seulement les jours de soleil.",
+    "description": "Une boîte ou une parabole réfléchissante qui concentre la lumière du soleil sur une marmite sombre. La marmite absorbe la lumière et chauffe assez pour cuire. On cuisine gratuitement, sans combustible ni fumée, mais seulement les jours de soleil. Lors d’un essai de six semaines en Zambie, les foyers équipés de cuiseurs solaires y ont préparé environ 40 % de leurs plats et ont consacré moins de temps et d’argent au combustible.",
     "lifespan": "10 à 20 ans pour un cuiseur à panneaux réfléchissants bien construit (la surface réfléchissante nécessite un renouvellement plus précoce, tous les 3-5 ans, pour maintenir l’efficacité)",
     "site_prerequisites": "Exposition au soleil dégagée aux heures de cuisson",
     "build_note": "construction réflecteur/caisson",
@@ -11899,7 +11851,7 @@
    "embodied_carbon": "medium",
    "footprint": "low",
    "dispatchability": "On-demand/controllable",
-   "site_prerequisites": "A mains water connection.",
+   "site_prerequisites": "Water under pressure, from the mains or a pump.",
    "new_build_only": false,
    "flat_feasible": true,
    "flat_blocker": null,
@@ -11930,7 +11882,7 @@
     "name": "Douche ou bain sous pression sur réseau",
     "description": "Une douche ou une baignoire ordinaire alimentée en eau sous pression, par le réseau ou par une pompe. L’équipement lui-même ne consomme pas d’énergie ; la pression vient d’en amont. Sur le réseau, elle fonctionne pendant une coupure de courant ; sur une pompe, elle s’arrête avec la pompe.",
     "lifespan": "Équipement : 20-30 ans ; dépend de la durée de vie propre du système de distribution par pompe sous pression",
-    "site_prerequisites": "Un raccordement au réseau d’eau.",
+    "site_prerequisites": "De l’eau sous pression, venue du réseau ou d’une pompe.",
     "build_note": "plomberie standard sur réseau",
     "efficiency_note": "eau et énergie les plus élevées par douche",
     "choose_if": "vous voulez la douche ou la baignoire habituelle, à pleine pression.",
@@ -12679,7 +12631,14 @@
    "tutorials": [],
    "tutorial_lines_fr": null,
    "tutorial_status": "no-build",
-   "sources": [],
+   "sources": [
+    {
+     "name": "Green Building Advisor, Roof Overhangs and Moisture Problems (A. Bailes, 2022), on the Survey of Building Envelope Failures in the Coastal Climate of British Columbia: nearly 90% of walls with no overhang had moisture problems, 25% of walls with a 600 mm overhang; coastal climate",
+     "tier": "C",
+     "url": "https://greenbuildingadvisor.com/article/roof-overhangs-and-moisture-problems",
+     "lang": null
+    }
+   ],
    "fr": {
     "name": "Larges débords de toit",
     "description": "Un toit qui dépasse largement des murs. Le débord empêche la plus grande partie de la pluie, même poussée par le vent, d’atteindre les murs et les fenêtres. C’est la façon la moins chère de protéger une maison de la pluie.",
@@ -13874,12 +13833,22 @@
    "name": "Cob / monolithic earthen wall construction",
    "subfunction_id": "FN-01.1",
    "function_id": "FN-01",
-   "summary": "Thick walls built up by hand from a mix of clay, sand and straw, layer by layer, with no bricks or moulds. The walls carry the roof and store heat. They use almost nothing bought, but are slow to build and need covering from rain while they dry.",
+   "summary": "Thick walls built up by hand from a mix of clay, sand and straw, layer by layer, with no bricks or moulds. The walls carry the roof and store heat, evening out temperatures between day and night. Dense cob insulates little on its own: a light, straw-rich mix, or a layer of insulation, keeps a house warm in winter. They use almost nothing bought, but are slow to build and need covering from rain while they dry.",
    "slug": "cob-monolithic-earthen-wall-construction",
    "slug_fr": "mur-porteur-en-terre-monolithique",
-   "inputs": [],
+   "inputs": [
+    {
+     "io": "IO-35",
+     "name": "Gentle warmth"
+    }
+   ],
    "input_groups": [],
-   "outputs": [],
+   "outputs": [
+    {
+     "io": "IO-35",
+     "name": "Gentle warmth"
+    }
+   ],
    "ratings": {
     "build": 2,
     "maintain": 2,
@@ -13948,23 +13917,29 @@
      "tier": "B",
      "url": "https://web.archive.org/web/2023/https://www.ihbc.org.uk/guidance_notes/docs/Cob_Paper/cobindex.html",
      "lang": null
+    },
+    {
+     "name": "Zeghari, Gounni, Louahlia, Marion, Boutouil, Goodhew, Streif, \"Novel Dual Walling Cob Building: Dynamic Thermal Performance\", Energies 14(22), 2021: light, fibre-rich cob for insulating walls, denser cob for load-bearing ones, together in a dual wall",
+     "tier": "A",
+     "url": "https://doi.org/10.3390/en14227663",
+     "lang": null
     }
    ],
    "fr": {
     "name": "Mur porteur en terre monolithique (bauge)",
-    "description": "Des murs épais montés à la main avec un mélange d’argile, de sable et de paille, couche après couche, sans briques ni coffrage. Les murs portent le toit et stockent la chaleur. Ils n’utilisent presque rien d’acheté, mais sont lents à monter et doivent être protégés de la pluie pendant qu’ils sèchent.",
+    "description": "Des murs épais montés à la main avec un mélange d’argile, de sable et de paille, couche après couche, sans briques ni coffrage. Les murs portent le toit et stockent la chaleur, ce qui lisse les écarts entre le jour et la nuit. Dense, la bauge isole peu à elle seule : un mélange léger et riche en paille, ou une couche d’isolant, garde la maison chaude en hiver. Ils n’utilisent presque rien d’acheté, mais sont lents à monter et doivent être protégés de la pluie pendant qu’ils sèchent.",
     "lifespan": "Plusieurs siècles si la toiture, les fondations et l’enduit sont maintenus en bon état (des bâtiments en bauge documentés dans le Devon, Royaume-Uni, datent du 15e au 19e siècle)",
     "build_note": "murs en terre montés à la main, lent",
     "regulation_fr": "Élément de structure ou d’emprise au sol : soumis au permis de construire pour un logement neuf. Les terrains ruraux sont en outre contraints par le zonage PLU de la commune, hors zone constructible, un logement neuf est généralement refusé.",
     "choose_if": "vous voulez façonner librement vos murs à la main, sans briques ni moules, avec l’argile de votre terrain.",
     "desc_cut": [
      128,
-     177
+     363
     ]
    },
    "desc_cut": [
     107,
-    148
+    316
    ]
   },
   {
@@ -15114,7 +15089,7 @@
    "embodied_carbon": "low",
    "footprint": "low",
    "dispatchability": "On-demand/controllable",
-   "site_prerequisites": "Low-humidity climate for real effectiveness, flagged elsewhere as a limitation for Normandy's oceanic climate",
+   "site_prerequisites": "A dry climate: in humid air it cools little",
    "new_build_only": false,
    "flat_feasible": true,
    "flat_blocker": null,
@@ -15154,7 +15129,7 @@
     "name": "Rafraîchissement évaporatif",
     "description": "Un appareil qui souffle de l’air à travers un tampon humide ou une fine brume d’eau. En s’évaporant, l’eau prend de la chaleur à l’air, qui ressort plus frais. Il rafraîchit à peu de frais par temps sec, mais fonctionne mal sous un climat humide.",
     "lifespan": "10 à 20 ans pour une unité mécanique de rafraîchissement évaporatif (les tampons nécessitent un remplacement tous les 1-3 ans)",
-    "site_prerequisites": "Climat à faible humidité pour une réelle efficacité, signalé ailleurs comme une limite pour le climat océanique normand",
+    "site_prerequisites": "Un climat sec : dans un air humide, il rafraîchit peu",
     "build_note": "tampon humidifié + ventilateur",
     "choose_if": "vos étés sont secs et vous voulez un rafraîchissement bon marché.",
     "desc_cut": [
@@ -16626,9 +16601,19 @@
    "summary": "Damp earth rammed hard, layer by layer, between temporary wooden boards, which come off to leave a solid earth wall. The thick wall carries the roof and stores heat, evening out temperatures between day and night. It builds solid walls from earth, with no firing. It needs extra insulation, ideally on the inside, to keep a house warm in winter.",
    "slug": "rammed-earth-wall-construction",
    "slug_fr": "mur-en-pise",
-   "inputs": [],
+   "inputs": [
+    {
+     "io": "IO-35",
+     "name": "Gentle warmth"
+    }
+   ],
    "input_groups": [],
-   "outputs": [],
+   "outputs": [
+    {
+     "io": "IO-35",
+     "name": "Gentle warmth"
+    }
+   ],
    "ratings": {
     "build": 2,
     "maintain": 2,
@@ -18643,7 +18628,7 @@
    "embodied_carbon": "low",
    "footprint": "medium",
    "dispatchability": "Continuous process",
-   "site_prerequisites": "Supplemental insulation or heating likely needed to sustain mesophilic temperatures through a Normandy winter (per its own description)",
+   "site_prerequisites": "Insulation, or some heat, to keep the digester warm through a cold winter",
    "new_build_only": false,
    "flat_feasible": false,
    "flat_blocker": "resource-access",
@@ -18709,7 +18694,7 @@
     "name": "Biodigesteur domestique anaérobie (biogaz + digestat)",
     "description": "Une cuve fermée où les restes alimentaires se décomposent sans air. Des bactéries qui vivent sans oxygène digèrent les restes et dégagent du méthane, qui s’accumule en haut, tandis que le liquide digéré s’écoule. Elle donne deux choses : du gaz pour un brûleur de cuisine, et un engrais liquide. Les bactéries ont besoin de chaleur : sous un climat frais, la cuve doit être isolée ou chauffée, sinon sa production baisse en hiver.",
     "lifespan": "15 à 20 ans pour une cuve de digesteur à dôme fixe ou à poche souple bien construite ; le composant poche/membrane (si type à poche souple) nécessite un remplacement plus précoce",
-    "site_prerequisites": "Isolation ou chauffage complémentaire probablement nécessaire pour maintenir des températures mésophiles pendant l’hiver normand (selon sa propre description)",
+    "site_prerequisites": "De l’isolation, ou un peu de chaleur, pour garder le digesteur au chaud pendant un hiver froid",
     "build_note": "digesteur étanche + plomberie gaz",
     "choose_if": "vous voulez du gaz de cuisson et un engrais liquide à partir de vos restes alimentaires.",
     "desc_cut": [
@@ -19123,7 +19108,14 @@
     "https://www.youtube.com/watch?v=QEDOyMv5-p8&hl=en&cc_lang_pref=en&cc=1": "Vidéo : récolter et conserver betteraves et carottes"
    },
    "tutorial_status": null,
-   "sources": [],
+   "sources": [
+    {
+     "name": "SDSU Extension, Harvesting and Storing Root Vegetables (R. Burrows, updated 2021): carrots layered in slightly moist sand, not touching, covered with more sand; or a can dug into the ground with damp sand and straw on top",
+     "tier": "B",
+     "url": "https://extension.sdstate.edu/harvesting-and-storing-root-vegetables",
+     "lang": null
+    }
+   ],
    "fr": {
     "name": "Conservation des légumes-racines en caisse de sable",
     "description": "Des légumes racines comme les carottes, les betteraves et les pommes de terre rangés dans des caisses de sable sec ou légèrement humide, au frais et dans le noir. Le sable sépare chaque légume : ils ne germent pas et ne se font pas pourrir entre eux. Ils se gardent des mois sans réfrigérateur.",
@@ -22675,7 +22667,7 @@
    "embodied_carbon": "high",
    "footprint": "low",
    "dispatchability": "On-demand/controllable",
-   "site_prerequisites": "A gas distribution main reaching the property (much of rural Normandy is not served)",
+   "site_prerequisites": "A gas main reaching the property: many rural areas have none",
    "new_build_only": false,
    "flat_feasible": true,
    "flat_blocker": null,
@@ -22704,7 +22696,7 @@
     "name": "Gaz de ville",
     "description": "Du gaz naturel livré à la maison par canalisation, pour cuisiner ou chauffer. Le réseau maintient les conduites sous pression, et un compteur à la maison mesure ce que prennent les brûleurs. Rien à stocker, commander ni porter. Mais c’est un combustible fossile, et le foyer dépend du réseau et du prix du gaz.",
     "lifespan": "Raccordement et canalisation enterrée : 40 ans ou plus ; le compteur et un éventuel détendeur sont remplacés par l’opérateur selon son propre cycle",
-    "site_prerequisites": "Une conduite de distribution de gaz desservant la propriété (une grande partie de la Normandie rurale n’est pas desservie)",
+    "site_prerequisites": "Une conduite de gaz qui dessert la propriété : beaucoup de zones rurales n’en ont pas",
     "build_note": "raccordé par l’opérateur ; aucune construction de votre côté Exploité par l’opérateur, retenu comme point de comparaison réseau. L’opérateur possède et entretient tout jusqu’au compteur.",
     "regulation_fr": "Le raccordement s’organise avec le gestionnaire du réseau, et une installation neuve doit obtenir un certificat de conformité avant sa mise en service. Il n’y a pas de contrôle périodique de l’installation de gaz d’un logement en tant que tel : un diagnostic gaz est dû à la vente ou à la location lorsque l’installation a plus de 15 ans. De nombreuses communes rurales ne sont pas desservies par le gaz.",
     "choose_if": "le réseau de gaz arrive jusqu’à vous, ce qui vous évite la cuve et les livraisons.",
@@ -24423,7 +24415,7 @@
    "cost": "low",
    "lifespan": "Decades for a rack; a line is a consumable and costs almost nothing to replace",
    "lifespan_band": "30 years or more",
-   "renting": "lasting",
+   "renting": "movable",
    "embodied_carbon": "low",
    "footprint": "low",
    "dispatchability": "Weather/time-dependent",
@@ -26797,6 +26789,14 @@
     {
      "io": "IO-53",
      "name": "Building form"
+    },
+    {
+     "io": "IO-46",
+     "name": "Reduced heat loss"
+    },
+    {
+     "io": "IO-47",
+     "name": "Reduced heat gain"
     }
    ],
    "ratings": {
@@ -27090,6 +27090,14 @@
     {
      "io": "IO-53",
      "name": "Building form"
+    },
+    {
+     "io": "IO-46",
+     "name": "Reduced heat loss"
+    },
+    {
+     "io": "IO-47",
+     "name": "Reduced heat gain"
     }
    ],
    "ratings": {
@@ -28142,8 +28150,20 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://www.homebuilding.co.uk/advice/how-to-install-underfloor-heating",
+     "lang": "en",
+     "format": "text",
+     "title": "Underfloor Heating Installation: How-to Lay Wet UFH Yourself",
+     "maker": "Tim Pullen",
+     "site": "Homebuilding & Renovating",
+     "line": "Guide: laying wet underfloor heating pipes and screed"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://www.homebuilding.co.uk/advice/how-to-install-underfloor-heating": "Guide : poser les tuyaux d’un plancher chauffant à eau et la chape"
+   },
    "tutorial_status": null,
    "sources": [
     {
@@ -28241,8 +28261,20 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://www.homebuilding.co.uk/advice/how-to-replace-a-radiator",
+     "lang": "en",
+     "format": "text",
+     "title": "How To Replace a Radiator",
+     "maker": "Ben Field",
+     "site": "Homebuilding & Renovating",
+     "line": "Guide: swapping a radiator for another"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://www.homebuilding.co.uk/advice/how-to-replace-a-radiator": "Guide : remplacer un radiateur par un autre"
+   },
    "tutorial_status": null,
    "sources": [
     {
@@ -28324,8 +28356,19 @@
    "input_via": {},
    "input_warn": {},
    "needs_pressure": false,
-   "tutorials": [],
-   "tutorial_lines_fr": null,
+   "tutorials": [
+    {
+     "url": "https://environmentcentre.com/affordable-warmth/reflective-radiator-panels/",
+     "lang": "en",
+     "format": "text",
+     "title": "Using reflective radiator panels",
+     "site": "The Environment Centre",
+     "line": "Guide: fitting reflector panels behind a radiator"
+    }
+   ],
+   "tutorial_lines_fr": {
+    "https://environmentcentre.com/affordable-warmth/reflective-radiator-panels/": "Guide : poser des panneaux réflecteurs derrière un radiateur"
+   },
    "tutorial_status": null,
    "sources": [
     {
@@ -28403,8 +28446,8 @@
    "flat_feasible": true,
    "flat_blocker": null,
    "societal": "",
-   "regulation_fr": "",
-   "regulation_url": null,
+   "regulation_fr": "In France, panels that only supply the home are declared to the grid operator (Enedis) by signing a self-consumption agreement without injection (CACSI) before switching on, with a device that stops power flowing back to the grid unless production always stays below use. Panels fixed to the building also need a planning declaration (déclaration préalable) at the town hall. The government page does not name plug-in kits.",
+   "regulation_url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31487",
    "provides_pressure": false,
    "conduit_for": [],
    "host_provides": null,
@@ -28430,6 +28473,7 @@
     "site_prerequisites": "Une rambarde, un mur ou un toit plat ensoleillé, sans ombre : une ombre partielle peut diviser la production par plus de deux. Une prise à proximité, seule (pas de multiprise), et l’accord du propriétaire ou de la copropriété pour ce qui est fixé dehors",
     "build_note": "s’achète en kit ; le fixer solidement à la rambarde est le vrai travail",
     "efficiency_note": "le courant sert dans le logement au moment où il est produit, sans batterie entre les deux",
+    "regulation_fr": "En France, des panneaux qui alimentent seulement le logement se déclarent au gestionnaire du réseau (Enedis) en signant une convention d’autoconsommation sans injection (CACSI) avant la mise en service, avec un dispositif qui empêche le courant de repartir sur le réseau, sauf si la production reste toujours inférieure à la consommation. Des panneaux fixés au bâtiment demandent aussi une déclaration préalable en mairie. La page du gouvernement ne cite pas les kits à brancher.",
     "choose_if": "vous avez un balcon ou un mur ensoleillé mais pas de toit à vous, et voulez produire une part de votre électricité.",
     "desc_cut": [
      131,
@@ -28439,6 +28483,187 @@
    "desc_cut": [
     119,
     295
+   ]
+  },
+  {
+   "id": "SOL-254",
+   "name": "Gravity drip watering from the rain tank",
+   "subfunction_id": "FN-06.4",
+   "function_id": "FN-06",
+   "summary": "A drip line or a soaker hose run from a raised rain tank to the vegetable beds. The height of the tank gives the push: water standing about 70 cm above the beds gives a small pressure, enough for low-pressure drip tape. The garden is watered from the roof with no pump and no treated water, slowly, at the roots.",
+   "slug": "gravity-drip-from-rain-tank",
+   "slug_fr": "goutte-a-goutte-gravitaire-depuis-la-cuve",
+   "inputs": [
+    {
+     "io": "IO-16",
+     "name": "Raw water"
+    },
+    {
+     "io": "IO-09",
+     "name": "Potable water"
+    }
+   ],
+   "input_groups": [
+    [
+     "IO-16",
+     "IO-09"
+    ]
+   ],
+   "outputs": [],
+   "ratings": {
+    "build": 1,
+    "maintain": 2,
+    "efficiency": null,
+    "build_skill": "Basic",
+    "burden": 4,
+    "build_note": "a raised tank, a bulkhead fitting, a filter and drip tape",
+    "efficiency_note": "water at the roots, by gravity"
+   },
+   "benchmark": false,
+   "power": "Passive",
+   "maintenance": "seasonal",
+   "repair_skill": "basic",
+   "build_skill": "Basic",
+   "consumables": "Minor",
+   "daily_life": "occasional",
+   "choose_if": "the water is for the garden, not the house, and the tank can stand above the beds.",
+   "cost": "low",
+   "lifespan": "Drip tape a few seasons; the tank and fittings much longer",
+   "lifespan_band": "5 to 15 years",
+   "renting": "removable",
+   "embodied_carbon": "low",
+   "footprint": "low",
+   "dispatchability": "On-demand/controllable",
+   "site_prerequisites": "A rain tank set higher than the beds, and an outlet large enough for the drip line",
+   "new_build_only": false,
+   "flat_feasible": false,
+   "flat_blocker": "resource-access",
+   "societal": "",
+   "regulation_fr": "Rainwater from a roof nobody walks on may water a vegetable garden without authorisation (décret 2024-796 and arrêté of 12 July 2024).",
+   "regulation_url": "https://www.iledefrance.ars.sante.fr/reutilisation-des-eaux-non-conventionnelles-nouveaux-usages-domestiques-des-eaux-impropres-la",
+   "provides_pressure": false,
+   "conduit_for": [],
+   "host_provides": null,
+   "host_required": null,
+   "input_via": {},
+   "input_warn": {},
+   "needs_pressure": false,
+   "tutorials": [],
+   "tutorial_lines_fr": null,
+   "tutorial_status": null,
+   "sources": [
+    {
+     "name": "University of Kentucky Extension, HO-120, Ultra-low Pressure Drip Irrigation and Rainwater Catchment (Rowell and Jacobsen): 1 psi for every 2.3 ft of height; outlets and fittings",
+     "tier": "B",
+     "url": "https://publications.mgcafe.uky.edu/sites/publications.ca.uky.edu/files/HO120.pdf",
+     "lang": null
+    }
+   ],
+   "fr": {
+    "name": "Goutte-à-goutte par gravité depuis la cuve de pluie",
+    "description": "Un tuyau goutte-à-goutte ou un tuyau suintant mené d’une cuve de pluie surélevée jusqu’aux planches du potager. La hauteur de la cuve fait la poussée : une eau qui se tient à environ 70 cm au-dessus des planches donne une petite pression, suffisante pour une gaine goutte-à-goutte basse pression. Le potager est arrosé avec l’eau du toit, sans pompe ni eau du robinet, lentement, au pied des plantes.",
+    "lifespan": "La gaine quelques saisons ; la cuve et les raccords bien plus longtemps",
+    "site_prerequisites": "Une cuve de pluie plus haute que les planches, et une sortie assez large pour le tuyau",
+    "build_note": "une cuve surélevée, un passe-paroi, un filtre et une gaine goutte-à-goutte",
+    "efficiency_note": "l’eau au pied des plantes, par gravité",
+    "regulation_fr": "L’eau de pluie d’un toit non accessible peut arroser un potager sans autorisation (décret 2024-796 et arrêté du 12 juillet 2024).",
+    "choose_if": "l’eau est pour le jardin, pas pour la maison, et la cuve peut se tenir au-dessus des planches.",
+    "desc_cut": [
+     112,
+     297
+    ]
+   },
+   "desc_cut": [
+    80,
+    220
+   ]
+  },
+  {
+   "id": "SOL-255",
+   "name": "Lactic fermentation (sauerkraut, brined vegetables)",
+   "subfunction_id": "FN-10.5",
+   "function_id": "FN-10",
+   "summary": "Vegetables kept in salt or brine in a crock or a jar, such as sauerkraut or brined cucumbers. Bacteria already on the vegetables turn their sugars into lactic acid, and the sour, salty brine keeps spoilage away while the vegetables stay under it. Vegetables keep for months with no heat to make them and no energy to store them, once the recipe's salt and temperature are followed.",
+   "slug": "lactic-fermentation",
+   "slug_fr": "lactofermentation",
+   "inputs": [
+    {
+     "io": "IO-32",
+     "name": "Fresh or perishable food"
+    }
+   ],
+   "input_groups": [],
+   "outputs": [
+    {
+     "io": "IO-31",
+     "name": "Preserved food"
+    }
+   ],
+   "ratings": {
+    "build": 1,
+    "maintain": 2,
+    "efficiency": null,
+    "build_skill": "None",
+    "burden": 3,
+    "build_note": "a recipe, not a build: follow a tested one exactly",
+    "efficiency_note": "no energy to make or to keep"
+   },
+   "benchmark": false,
+   "power": "Passive",
+   "maintenance": "seasonal",
+   "repair_skill": "none",
+   "build_skill": "None",
+   "consumables": "Minor",
+   "daily_life": "occasional",
+   "choose_if": "you want vegetables to keep sour and raw, with no heat, rather than cooked in jars.",
+   "cost": "low",
+   "lifespan": "A stoneware crock or glass jars last for decades",
+   "lifespan_band": "30 years or more",
+   "renting": "movable",
+   "embodied_carbon": "low",
+   "footprint": "low",
+   "dispatchability": "Continuous process",
+   "site_prerequisites": "A place that stays around 20 °C for a few weeks, then somewhere cool to keep the jars",
+   "new_build_only": false,
+   "flat_feasible": true,
+   "flat_blocker": null,
+   "societal": "",
+   "regulation_fr": "",
+   "regulation_url": null,
+   "provides_pressure": false,
+   "conduit_for": [],
+   "host_provides": null,
+   "host_required": null,
+   "input_via": {},
+   "input_warn": {},
+   "needs_pressure": false,
+   "tutorials": [],
+   "tutorial_lines_fr": null,
+   "tutorial_status": null,
+   "sources": [
+    {
+     "name": "Penn State Extension, Let's Preserve: Fermentation - Sauerkraut and Pickles (2023): the salt ratio, 21-23 °C for three to four weeks, vegetables kept under the brine",
+     "tier": "B",
+     "url": "https://extension.psu.edu/lets-preserve-fermentation-sauerkraut-and-pickles",
+     "lang": null
+    }
+   ],
+   "fr": {
+    "name": "Lactofermentation (choucroute, légumes en saumure)",
+    "description": "Des légumes gardés dans le sel ou la saumure, en pot de grès ou en bocal, comme la choucroute ou les cornichons lactofermentés. Les bactéries déjà présentes sur les légumes transforment leurs sucres en acide lactique, et la saumure acide et salée tient la pourriture à l’écart tant que les légumes restent dessous. Les légumes se gardent des mois sans chaleur pour les préparer ni énergie pour les conserver, à condition de suivre le sel et la température de la recette.",
+    "lifespan": "Un pot de grès ou des bocaux en verre durent des décennies",
+    "site_prerequisites": "Un endroit qui reste vers 20 °C pendant quelques semaines, puis un lieu frais pour les bocaux",
+    "build_note": "une recette, pas une construction : suivez exactement une recette éprouvée",
+    "efficiency_note": "aucune énergie pour préparer ni pour conserver",
+    "choose_if": "vous voulez des légumes qui se gardent acides et crus, sans chaleur, plutôt que cuits en bocal.",
+    "desc_cut": [
+     128,
+     315
+    ]
+   },
+   "desc_cut": [
+    94,
+    247
    ]
   }
  ],
@@ -28451,6 +28676,21 @@
   {
    "sol": "SOL-004",
    "io": "IO-51",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-005",
+   "io": "IO-53",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-005",
+   "io": "IO-46",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-005",
+   "io": "IO-47",
    "role": "produces"
   },
   {
@@ -28656,16 +28896,6 @@
   {
    "sol": "SOL-033",
    "io": "IO-05",
-   "role": "produces"
-  },
-  {
-   "sol": "SOL-034",
-   "io": "IO-46",
-   "role": "produces"
-  },
-  {
-   "sol": "SOL-034",
-   "io": "IO-47",
    "role": "produces"
   },
   {
@@ -29564,6 +29794,16 @@
    "role": "produces"
   },
   {
+   "sol": "SOL-115",
+   "io": "IO-35",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-115",
+   "io": "IO-35",
+   "role": "produces"
+  },
+  {
    "sol": "SOL-117",
    "io": "IO-51",
    "role": "produces"
@@ -29816,6 +30056,16 @@
   {
    "sol": "SOL-140",
    "io": "IO-25",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-141",
+   "io": "IO-35",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-141",
+   "io": "IO-35",
    "role": "produces"
   },
   {
@@ -30879,6 +31129,16 @@
    "role": "produces"
   },
   {
+   "sol": "SOL-238",
+   "io": "IO-46",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-238",
+   "io": "IO-47",
+   "role": "produces"
+  },
+  {
    "sol": "SOL-239",
    "io": "IO-46",
    "role": "produces"
@@ -30891,6 +31151,16 @@
   {
    "sol": "SOL-241",
    "io": "IO-53",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-241",
+   "io": "IO-46",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-241",
+   "io": "IO-47",
    "role": "produces"
   },
   {
@@ -31026,6 +31296,26 @@
   {
    "sol": "SOL-253",
    "io": "IO-03",
+   "role": "produces"
+  },
+  {
+   "sol": "SOL-254",
+   "io": "IO-16",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-254",
+   "io": "IO-09",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-255",
+   "io": "IO-32",
+   "role": "consumes"
+  },
+  {
+   "sol": "SOL-255",
+   "io": "IO-31",
    "role": "produces"
   }
  ],
@@ -31897,8 +32187,8 @@
    "high": 0.179,
    "unit": "m3/kg wet",
    "basis": "per kg of wet feedstock",
-   "condition": "Biogas from each kilogram of kitchen scraps, worked out from the published figures for the part that digests. A cold digester in a Normandy winter makes less.",
-   "condition_fr": "Le biogaz tiré de chaque kilo d’épluchures, calculé à partir des chiffres publiés pour la part qui se digère. Un digesteur froid, l’hiver en Normandie, en produit moins.",
+   "condition": "Biogas from each kilogram of kitchen scraps, worked out from the published figures for the part that digests. A cold digester makes less in winter.",
+   "condition_fr": "Le biogaz tiré de chaque kilo d’épluchures, calculé à partir des chiffres publiés pour la part qui se digère. Un digesteur froid en produit moins en hiver.",
    "source": "Peer-reviewed anaerobic digestion literature for the yield, and food-waste characterisation studies for the solids fractions",
    "source_url": "https://www.sciencedirect.com/science/article/pii/S2405844023035673",
    "tier": "A",

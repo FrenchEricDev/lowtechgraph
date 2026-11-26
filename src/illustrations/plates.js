@@ -327,6 +327,14 @@ const KO = {
     <path class="ov-line" d="M283,375 V351 H297 V375 Z"/>
     <path class="ov-line hair" d="M282,351 H298 M288,351 v-2 h4 v2"/>
     <path class="ov-hide" d="M285.5,374 v-10 q0,-2 2,-2 h0.5 q2,0 2,2 v10 M291.5,374 v-10 q0,-2 2,-2 h0.5 q2,0 2,2 v10"/>`,
+  // A7, 2026-11-23: a stoneware crock on the pantry floor, a weight holding the vegetables under
+  // the brine, a lid on top. Under the brine is the whole method, so the line is drawn.
+  crock: () => `
+    <path class="ov-tint" d="M177,420 h10 v7.5 h-10 z"/>
+    <path class="ov-line" d="M176.5,416 q-1.5,6 0,12 h11 q1.5,-6 0,-12 z"/>
+    <path class="ov-line hair" d="M175.5,416 h13"/>
+    <path class="ov-line hair" d="M176.6,420 h10.8"/>
+    <ellipse class="ov-line hair" cx="182" cy="421.4" rx="3.6" ry="1.2" fill="none"/>`,
   // a cool box standing in the appliance recess: thick walls, ice packs down the sides, a lid
   coolbox: () => `
     <path class="ov-line" d="M237,406 h24 v22 h-24 z"/>
@@ -1837,6 +1845,15 @@ export const PLATES = [
       { x: 446, y: 220, en: 'ACID FOODS ONLY', fr: 'ALIMENTS ACIDES SEULEMENT' }] }),
   },
   {
+    id: 'SOL-255', fnEn: 'Food storage & preparation infrastructure', fnFr: 'Conservation et préparation des aliments',
+    en: 'Lactic fermentation (sauerkraut, brined vegetables)', fr: 'Lactofermentation (choucroute, légumes en saumure)', ...KZ,
+    // A7, 2026-11-23: a crock on the cool pantry floor, the vegetables held under the brine.
+    site: () => KO.crock(6),
+    draw: (t) => closeUp(t, { focus: [182, 421], obj: KO.crock, label: ['FERMENTING CROCK', 'POT DE LACTOFERMENTATION'], notes: [
+      { x: 446, y: 165, en: 'WEIGHT', fr: 'POIDS', to: [182, 421.4] },
+      { x: 446, y: 200, en: 'UNDER THE BRINE', fr: 'SOUS LA SAUMURE', to: [179, 424] }] }),
+  },
+  {
     id: 'SOL-245', fnEn: 'Food storage & preparation infrastructure', fnFr: 'Conservation et préparation des aliments',
     en: 'Insulated cool box', fr: 'Glacière isolée', ...KZ,
     // The fridge's recess: what keeps food cold when the fridge cannot.
@@ -2725,10 +2742,10 @@ export const PLATES = [
   },
   /* ---- twelfth batch, 2026-09-12: the last twelve. */
   {
-    id: 'SOL-005', members: ['SOL-034'], fnEn: 'Structural integrity & safety', fnFr: 'Intégrité structurelle et sécurité', en: 'Earth-sheltered / semi-buried form', fr: 'Forme semi-enterrée (abritée par la terre)', ...XN,
-    // Earth banked against the cold side does two jobs with one move, which is why the
-    // catalogue lists it twice: the wind cannot get at the wall, and the ground behind it sits
-    // a few degrees above the January air all winter.
+    id: 'SOL-005', members: [], fnEn: 'Structural integrity & safety', fnFr: 'Intégrité structurelle et sécurité', en: 'Earth-sheltered / semi-buried form', fr: 'Forme semi-enterrée (abritée par la terre)', ...XN,
+    // Earth banked against the cold side does two jobs with one move: the wind cannot get at
+    // the wall, and the ground behind it sits a few degrees above the January air all winter.
+    // (The thermal twin, SOL-034, was retired into this row on 2026-11-24.)
     site: () => KZ2.berm(6),
     draw: (t) => annotated(t, { obj: KZ2.berm, label: ['EARTH AGAINST THE NORTH WALL', 'TERRE CONTRE LE MUR NORD', 250, 204, 'start', [83, 344]], notes: [] }),
   },

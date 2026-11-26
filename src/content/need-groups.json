@@ -1,0 +1,50 @@
+{
+  "_note": "A17 trial (Eric, 2026-11-23: ok to try the headings). Headings over a need's sub-needs; the sub-needs, their pages and addresses do not change. A need with no entry here lists its sub-needs as before. Every sub-need of a grouped need must be in exactly one group (scripts/validate_content.py).",
+  "FN-02": [
+    {
+      "en": "Keep the heat in",
+      "fr": "Garder la chaleur",
+      "subs": [
+        "FN-02.3",
+        "FN-02.4",
+        "FN-02.5",
+        "FN-02.6"
+      ]
+    },
+    {
+      "en": "Free heat from the sun and the ground",
+      "fr": "La chaleur gratuite du soleil et du sol",
+      "subs": [
+        "FN-02.2",
+        "FN-02.7",
+        "FN-02.9",
+        "FN-02.12",
+        "FN-02.13"
+      ]
+    },
+    {
+      "en": "Keep the summer heat out",
+      "fr": "Se protéger de la chaleur d’été",
+      "subs": [
+        "FN-02.8",
+        "FN-02.11"
+      ]
+    },
+    {
+      "en": "Make the heat and get it to the rooms",
+      "fr": "Produire la chaleur et l’amener dans les pièces",
+      "subs": [
+        "FN-02.10",
+        "FN-02.16",
+        "FN-02.14"
+      ]
+    },
+    {
+      "en": "Warm the people, not the rooms",
+      "fr": "Chauffer les personnes, pas les pièces",
+      "subs": [
+        "FN-02.15"
+      ]
+    }
+  ]
+}

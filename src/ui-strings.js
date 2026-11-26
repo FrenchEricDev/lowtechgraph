@@ -139,7 +139,7 @@ const EN = {
     // Eric's sentence (2026-10-18): the sources are named, not linked; the links sit beside the tutorials.
     // Eric's wording 2026-11-19, under the bar above the foot. "actually" is a writing-check Block
     // word, kept on purpose (Eric, 2026-11-19): it says the people built it, not only wrote about it.
-    sourcesBody: 'Note: Each solution points to the tutorials and people who have actually built it. The sources our catalogue links to the most are: {names}.',
+    sourcesBody: 'Note: Each solution points to the tutorials and people who have built it. The sources our catalogue links to the most are: {names}.',
     examplesHeading: 'Examples of low-tech solutions',
     pathCompareGo: 'Browse the solutions',
     pathTeachGo: 'Explore the community',
@@ -235,12 +235,40 @@ const EN = {
 
   guides: {
     title: 'Guides',
-    intro: 'Our guides: hand-picked solutions around a common theme or need',
+    intro: 'Our guides: hand-picked solutions around a need or a goal, and examples of whole home systems',
+    // The index's two sections (2026-11-26).
+    selTab: 'Picks by need',
+    sysTab: 'Full home systems',
+    selTitle: 'Solutions picked by need, idea or goal',
+    selIntro: 'Each guide gathers a few solutions around one need, idea or goal, and says why each one is there. You don’t have to take them all: pick the one that suits you, or add several over time.',
+    sysTitle: 'Examples of whole home systems',
+    sysIntro: 'Each example shows what a whole system built around one idea or goal can look like, for the whole home or one part of it, such as heating and cooling: every solution and how they link. They are illustrations, not plans to follow. Building one in full is a big undertaking that takes time, effort and money.',
     picks: '{n} solutions',
     open: 'Open the guide',
   },
 
   guide: {
+    // F10 example homes.
+    homeTitle: 'The whole home, as one system',
+    homeOpen: 'Open this home in My system',
+    homeCount: 'Opened in your system, these {n} solutions and their links become your own copy, which you can change as you like. This home shows how the pieces fit; it is not a design for yours. To add one solution only, use its own button in the list below.',
+    systemTitle: 'All of it, as one system',
+    systemOpen: 'Open this system in My system',
+    systemCount: 'Opened in your system, these {n} solutions and their links become your own copy, where you can change anything and add the rest of the home. This system shows how the pieces fit; it is not a design for your home. To add one solution only, use its own button in the list below.',
+    keyChoice: 'Key choice',
+    listTitleHome: 'Every solution in this home',
+    listTitleSystem: 'Every solution in this system',
+    drawingNameHome: 'The {n} solutions of “{guide}” that have a drawing, together on the house in section.',
+    drawingNameHomeSite: 'The {n} solutions of “{guide}” that have a drawing, together on the site plan.',
+    drawingHintHome: 'Every solution of this home that has a drawing, on one house. Choose one to see it on its own.',
+    drawingHintSystem: 'Every solution of this system that has a drawing, on one house. Choose one to see it on its own.',
+    pictureNameHome: 'The {n} solutions of this home and their {links} links, as they open in your system.',
+    pictureEnlarge: 'Enlarge',
+    pictureClose: 'Close',
+    pictureNameSystem: 'The {n} solutions of this system and their {links} links, as they open in your system.',
+    moreHeadingHome: 'Other ways to meet each need',
+    moreBodyHome: 'Each solution here is one way among several. The catalogue holds them all, sorted by need or by resource.',
+    homeReplace: 'This replaces what is on your canvas now. Your saved systems are kept. Continue?',
     // Sits above each pick, introducing the hand-written reason.
     whyLabel: 'Why this one',
     // The drawing of the house above the picks: its caption before a pick is chosen, the switch
@@ -356,12 +384,7 @@ const EN = {
     heading: 'About Lowtech Graph',
     title: 'About',
     desc: 'What Lowtech Graph is: a free tool to discover, compare, pick and combine low-tech solutions for every need of a home, then build them with the right communities.',
-    lede:
-      'Lowtech Graph is a free, independent tool for choosing how your home meets its needs. It ' +
-      'lists {solutions} ways to heat, cool, ventilate, light and power a home, supply its water, ' +
-      'deal with its waste and feed the people in it: low-tech and bioclimatic options set beside ' +
-      'the conventional ones. It helps you discover, compare, pick and combine the ones that suit your ' +
-      'home, then points you to the people best placed to teach you how to build them.',
+    lede: "Lowtech Graph is a free, independent guide to how a home can meet its needs. It sets {solutions} low-tech and bioclimatic options beside the conventional ones, for heat, cool, air, light, power, water, waste and food. Compare them, pick and combine the ones that suit your home, and find the people who can teach you to build them.",
     stepsHeading: 'Discover, compare, pick, combine, then build with others',
     discoverTitle: 'Discover.',
     discoverBody:
@@ -393,10 +416,7 @@ const EN = {
       '{solutions} solutions for {subs} precise needs of a home, low-tech and bioclimatic beside ' +
       'conventional, each with its source, its limits and what it asks of you.',
     diffCompareTitle: 'Compared on objective criteria.',
-    diffCompareBody:
-      'The options for a need are rated side by side on cost, upkeep, embodied carbon, lifespan, ' +
-      'the skill to build and to repair, whether they need the grid, whether they work in a flat ' +
-      'and what they change in daily life, including where the low-tech one does less.',
+    diffCompareBody: "Rated on the same criteria, including where the low-tech one does less.",
     diffIoTitle: 'What each one uses and gives.',
     diffIoBody:
       'Every solution states what it takes and gives: rainwater, greywater, heat, compost, ' +
@@ -421,13 +441,7 @@ const EN = {
       'grade. No brands, no sponsored links, no ads, and the whole catalogue is free to reuse ' +
       'under CC BY-SA.',
     circularHeading: 'Circularity: what one solution gives, another can use',
-    circularBody:
-      '{loops} of the {solutions} solutions produce something another one can use. Rain off the ' +
-      'roof fills a tank, is filtered for drinking, leaves the shower as greywater and waters the ' +
-      'garden; kitchen scraps become the compost that feeds it; the heat going up a stove flue can ' +
-      'warm a tank of water. Every solution page lists what it takes and what it gives, and every ' +
-      'resource page lists what produces or uses it, so the loops a home could close are there to ' +
-      'find. My system is where you combine them.',
+    circularBody: "{loops} of the {solutions} solutions make something another can use. Rain off the roof is filtered for drinking, leaves the shower as greywater and waters the garden; kitchen scraps become its compost; the heat up a stove flue warms a tank of water. Each solution page says what it takes and gives, each resource page what makes and uses it. My system is where you join them.",
     communitiesHeading: 'Building: we send you to the people who know how',
     communitiesBody:
       'Building is where experience matters most, so we link to the people who have it rather than ' +
@@ -553,12 +567,7 @@ const EN = {
       'is worth it:',
 
     agencyHeading: 'You understand your own home and become autonomous',
-    agencyBody:
-      'When you build or maintain something yourself, you know how it works, what it needs, ' +
-      "and what it means when it starts making a noise it didn't make before. You stop being " +
-      'a customer of your own house. That knowledge compounds: it changes what you notice, ' +
-      'what you can fix on a Sunday afternoon, and what you can judge when someone quotes ' +
-      'you for a job.',
+    agencyBody: "Build or maintain something yourself and you know how it works, what it needs, and what a new noise means. You stop being a customer of your own house, and it adds up: what you notice, what you fix on a Sunday afternoon, what you can judge when someone quotes you for a job.",
 
     impactHeading: 'It treads lighter on ecosystems',
     impactBody:
@@ -568,18 +577,10 @@ const EN = {
       '(no grid and no pump).',
 
     costHeading: 'It costs less to build, and lowers your bills',
-    costBody:
-      "Low-tech solutions often cost much less than the standard ones, especially where your own labour replaces a contractor's. Sometimes " +
-      'the saving is upfront, sometimes it is twenty years of not replacing something. Some low-tech options cost more to build and pay back slowly, or never, ' +
-      'in money alone; they bring other things instead: autonomy, resilience, a lighter footprint. The catalogue compares the relative ' +
-      'cost of the options for each need.',
+    costBody: "Low-tech solutions often cost much less, above all where your own work replaces a contractor's: sometimes up front, sometimes over twenty years of not replacing something. Some cost more and never pay back in money alone; they bring autonomy, resilience or a lighter footprint instead. Each need's options are compared on cost.",
 
     resilienceHeading: 'It keeps working when the system fails',
-    resilienceBody:
-      'Grids fail, supply chains stretch, prices move. A system that needs no pump, no mains ' +
-      'connection and no proprietary spare part is largely indifferent to all of that. You ' +
-      "don't need to believe in societal collapse to value this. A week without power or two days " +
-      'without water is enough to be convinced that a backup can spare you a lot of worry.',
+    resilienceBody: "Grids fail, supply chains stretch, prices move. A system with no pump, no mains connection and no proprietary spare part shrugs most of that off. No need to expect collapse: a week without power, or two days without water, is enough to want a backup.",
 
     joyHeading: 'And it is satisfying',
     joyBody:

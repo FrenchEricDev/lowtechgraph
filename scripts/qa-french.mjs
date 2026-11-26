@@ -39,6 +39,7 @@ const LONG = 45
 // was read before being added. If a string here later gains an accent, nothing breaks --
 // the check only looks at strings that have none.
 const ACCENTLESS_BUT_CORRECT = new Set([
+  'home.sourcesBody', // 2026-11-24: accent-free once "réellement" went as a hollow intensifier
   'home.whyHeading',
   // 'adequacy.noSolver', 'adequacy.reasons.missing-scenario': correct French. Read 2026-10-30.
   'adequacy.unitNames.kWh per kg seasoned / kWh per kg green',

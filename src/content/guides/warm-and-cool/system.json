@@ -1,0 +1,427 @@
+{
+  "nodes": [
+    {
+      "id": "sun",
+      "res": "IO-01",
+      "position": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    {
+      "id": "air",
+      "res": "IO-05",
+      "position": {
+        "x": 60,
+        "y": 290
+      }
+    },
+    {
+      "id": "grid",
+      "sol": "SOL-079",
+      "position": {
+        "x": 60,
+        "y": 520
+      }
+    },
+    {
+      "id": "orient",
+      "sol": "SOL-015",
+      "position": {
+        "x": 60,
+        "y": 750
+      }
+    },
+    {
+      "id": "form",
+      "sol": "SOL-014",
+      "position": {
+        "x": 60,
+        "y": 980
+      }
+    },
+    {
+      "id": "south",
+      "sol": "SOL-025",
+      "position": {
+        "x": 390,
+        "y": 60
+      }
+    },
+    {
+      "id": "mass",
+      "sol": "SOL-029",
+      "position": {
+        "x": 720,
+        "y": 60
+      }
+    },
+    {
+      "id": "overhang",
+      "sol": "SOL-026",
+      "position": {
+        "x": 60,
+        "y": 1210
+      }
+    },
+    {
+      "id": "sides",
+      "sol": "SOL-027",
+      "position": {
+        "x": 60,
+        "y": 1440
+      }
+    },
+    {
+      "id": "shutters",
+      "sol": "SOL-124",
+      "position": {
+        "x": 60,
+        "y": 1670
+      }
+    },
+    {
+      "id": "insul",
+      "sol": "SOL-016",
+      "position": {
+        "x": 60,
+        "y": 1900
+      }
+    },
+    {
+      "id": "ext",
+      "sol": "SOL-021",
+      "position": {
+        "x": 60,
+        "y": 2130
+      }
+    },
+    {
+      "id": "slab",
+      "sol": "SOL-202",
+      "position": {
+        "x": 60,
+        "y": 2360
+      }
+    },
+    {
+      "id": "airtight",
+      "sol": "SOL-022",
+      "position": {
+        "x": 60,
+        "y": 2590
+      }
+    },
+    {
+      "id": "windows",
+      "sol": "SOL-023",
+      "position": {
+        "x": 60,
+        "y": 2820
+      }
+    },
+    {
+      "id": "tube",
+      "sol": "SOL-033",
+      "position": {
+        "x": 390,
+        "y": 290
+      }
+    },
+    {
+      "id": "mvhr",
+      "sol": "SOL-040",
+      "position": {
+        "x": 720,
+        "y": 290
+      }
+    },
+    {
+      "id": "night",
+      "sol": "SOL-032",
+      "position": {
+        "x": 390,
+        "y": 520
+      }
+    },
+    {
+      "id": "hp",
+      "sol": "SOL-031",
+      "position": {
+        "x": 390,
+        "y": 750
+      }
+    },
+    {
+      "id": "floor",
+      "sol": "SOL-250",
+      "position": {
+        "x": 720,
+        "y": 520
+      }
+    },
+    {
+      "id": "hpcool",
+      "sol": "SOL-160",
+      "position": {
+        "x": 390,
+        "y": 980
+      }
+    },
+    {
+      "id": "fan",
+      "sol": "SOL-209",
+      "position": {
+        "x": 390,
+        "y": 1210
+      }
+    },
+    {
+      "id": "house",
+      "dest": "home",
+      "position": {
+        "x": 1050,
+        "y": 60
+      }
+    },
+    {
+      "id": "building",
+      "dest": "dwelling",
+      "position": {
+        "x": 390,
+        "y": 1440
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-sun-south",
+      "source": "sun",
+      "target": "south",
+      "io": "IO-01",
+      "ios": [
+        "IO-01"
+      ]
+    },
+    {
+      "id": "e-south-mass",
+      "source": "south",
+      "target": "mass",
+      "io": "IO-35",
+      "ios": [
+        "IO-35"
+      ]
+    },
+    {
+      "id": "e-mass-house",
+      "source": "mass",
+      "target": "house",
+      "io": "IO-35",
+      "ios": [
+        "IO-35"
+      ]
+    },
+    {
+      "id": "e-air-tube",
+      "source": "air",
+      "target": "tube",
+      "io": "IO-05",
+      "ios": [
+        "IO-05"
+      ]
+    },
+    {
+      "id": "e-tube-mvhr",
+      "source": "tube",
+      "target": "mvhr",
+      "io": "IO-05",
+      "ios": [
+        "IO-05"
+      ]
+    },
+    {
+      "id": "e-grid-mvhr",
+      "source": "grid",
+      "target": "mvhr",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-mvhr-house",
+      "source": "mvhr",
+      "target": "house",
+      "io": "IO-05",
+      "ios": [
+        "IO-05",
+        "IO-35"
+      ]
+    },
+    {
+      "id": "e-air-night",
+      "source": "air",
+      "target": "night",
+      "io": "IO-05",
+      "ios": [
+        "IO-05"
+      ]
+    },
+    {
+      "id": "e-night-house",
+      "source": "night",
+      "target": "house",
+      "io": "IO-24",
+      "ios": [
+        "IO-24"
+      ]
+    },
+    {
+      "id": "e-grid-hp",
+      "source": "grid",
+      "target": "hp",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-hp-floor",
+      "source": "hp",
+      "target": "floor",
+      "io": "IO-36",
+      "ios": [
+        "IO-36"
+      ]
+    },
+    {
+      "id": "e-floor-house",
+      "source": "floor",
+      "target": "house",
+      "io": "IO-36",
+      "ios": [
+        "IO-36"
+      ]
+    },
+    {
+      "id": "e-grid-hpcool",
+      "source": "grid",
+      "target": "hpcool",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-hpcool-house",
+      "source": "hpcool",
+      "target": "house",
+      "io": "IO-24",
+      "ios": [
+        "IO-24"
+      ]
+    },
+    {
+      "id": "e-grid-fan",
+      "source": "grid",
+      "target": "fan",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-orient-building",
+      "source": "orient",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46",
+        "IO-53"
+      ]
+    },
+    {
+      "id": "e-form-building",
+      "source": "form",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46",
+        "IO-53"
+      ]
+    },
+    {
+      "id": "e-overhang-building",
+      "source": "overhang",
+      "target": "building",
+      "io": "IO-47",
+      "ios": [
+        "IO-47"
+      ]
+    },
+    {
+      "id": "e-sides-building",
+      "source": "sides",
+      "target": "building",
+      "io": "IO-47",
+      "ios": [
+        "IO-47"
+      ]
+    },
+    {
+      "id": "e-shutters-building",
+      "source": "shutters",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46",
+        "IO-47"
+      ]
+    },
+    {
+      "id": "e-insul-building",
+      "source": "insul",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-ext-building",
+      "source": "ext",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-slab-building",
+      "source": "slab",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-airtight-building",
+      "source": "airtight",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    },
+    {
+      "id": "e-windows-building",
+      "source": "windows",
+      "target": "building",
+      "io": "IO-46",
+      "ios": [
+        "IO-46"
+      ]
+    }
+  ]
+}

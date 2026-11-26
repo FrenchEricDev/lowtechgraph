@@ -1,0 +1,95 @@
+{
+  "slug": {
+    "en": "warm-in-winter-cool-in-summer",
+    "fr": "chaud-l-hiver-frais-l-ete"
+  },
+  "kind": "system",
+  "en": {
+    "door": "Warm in winter, cool in summer",
+    "title": "Warm in winter and cool in summer, as one system",
+    "intro": "Not a whole home: how a house still being designed can stay warm in winter and cool in summer with little heating or cooling, because its shape, the sun and its envelope cut much of the need first. Its limit: those choices can only be made before building.",
+    "keys": "The five key choices are what this system adds to a well-insulated house: a plan turned to the sun, a floor that stops leaking heat, air tempered in the ground, and one heat pump that warms the floor in winter and cools it in summer."
+  },
+  "fr": {
+    "door": "Chaud l’hiver, frais l’été",
+    "title": "Chaud l’hiver et frais l’été, en un seul système",
+    "intro": "Pas tout un logement : comment une maison encore à concevoir peut rester chaude l’hiver et fraîche l’été avec peu de chauffage et de rafraîchissement, parce que sa forme, le soleil et son enveloppe réduisent d’abord une bonne part du besoin. Sa limite : ces choix ne se font qu’avant de construire.",
+    "keys": "Les cinq choix clés sont ce que ce système ajoute à une maison bien isolée : un plan tourné vers le soleil, un plancher qui ne perd plus sa chaleur, un air tempéré dans le sol, et une seule pompe à chaleur qui chauffe le plancher l’hiver et le rafraîchit l’été."
+  },
+  "picks": [
+    {
+      "id": "SOL-015",
+      "en": {
+        "why": "Main windows and living rooms to the south, storerooms and stairs to the north as a shield: the house needs less heating."
+      },
+      "fr": {
+        "why": "Les grandes fenêtres et les pièces de vie au sud, les rangements et l’escalier au nord en bouclier : la maison a besoin de moins de chauffage."
+      }
+    },
+    {
+      "id": "SOL-033",
+      "en": {
+        "why": "Fresh air drawn through a pipe in the ground, laid to a slope so it drains, before the ventilation unit: milder in winter. In summer its cool air reaches the rooms only if the unit can bypass its exchanger."
+      },
+      "fr": {
+        "why": "L’air neuf passe par un tuyau enterré, posé en pente pour qu’il s’égoutte, avant la ventilation : plus doux l’hiver. L’été, sa fraîcheur n’arrive aux pièces que si la ventilation peut contourner son échangeur."
+      }
+    },
+    {
+      "id": "SOL-202",
+      "en": {
+        "why": "Insulation round the edge of the slab and a break between slab and foundation: the floor stops leaking heat into the cold ground."
+      },
+      "fr": {
+        "why": "Un isolant autour du bord de la dalle et une coupure entre la dalle et la fondation : le plancher ne perd plus sa chaleur dans le sol froid."
+      }
+    },
+    {
+      "id": "SOL-250",
+      "en": {
+        "why": "The whole floor becomes the radiator, so water only a little warmer than the room is enough, which suits a heat pump; in summer the same pipes carry the cooling."
+      },
+      "fr": {
+        "why": "Tout le plancher devient radiateur : une eau à peine plus chaude que la pièce suffit, ce qui convient à une pompe à chaleur ; l’été, les mêmes tuyaux portent la fraîcheur."
+      }
+    },
+    {
+      "id": "SOL-160",
+      "en": {
+        "why": "The same heat pump, run in reverse in summer, cools the water in the floor, kept warm enough that the floor does not sweat."
+      },
+      "fr": {
+        "why": "La même pompe à chaleur, inversée l’été, refroidit l’eau du plancher, sans descendre assez bas pour que le sol condense."
+      }
+    }
+  ],
+  "cards": 20,
+  "solutions": [
+    "SOL-014",
+    "SOL-015",
+    "SOL-016",
+    "SOL-021",
+    "SOL-022",
+    "SOL-023",
+    "SOL-025",
+    "SOL-026",
+    "SOL-027",
+    "SOL-029",
+    "SOL-031",
+    "SOL-032",
+    "SOL-033",
+    "SOL-040",
+    "SOL-079",
+    "SOL-124",
+    "SOL-160",
+    "SOL-202",
+    "SOL-209",
+    "SOL-250"
+  ],
+  "notes": {
+    "SOL-032": {
+      "en": "Needs cool nights; switch the ventilation unit off while the windows are open.",
+      "fr": "Demande des nuits fraîches ; arrêtez la ventilation quand les fenêtres sont ouvertes."
+    }
+  }
+}

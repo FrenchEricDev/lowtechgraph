@@ -28,3 +28,9 @@
 # Unheated water became Raw water (Eric, 2026-11-01); the id IO-16 stays, the address moved.
 /en/resource/unheated-water    /en/resource/raw-water    301
 /fr/ressource/eau-froide    /fr/ressource/eau-brute    301
+
+# SOL-034 retired into SOL-005, the same earth-sheltered house (A17-c, Eric, 2026-11-24).
+/en/solution/earth-sheltered-form-thermal    /en/solution/earth-sheltered-form-storm    301
+/en/solution/earth-sheltered-form-thermal.md    /en/solution/earth-sheltered-form-storm.md    301
+/fr/solution/forme-semi-enterree-thermique    /fr/solution/forme-semi-enterree-tempete    301
+/fr/solution/forme-semi-enterree-thermique.md    /fr/solution/forme-semi-enterree-tempete.md    301

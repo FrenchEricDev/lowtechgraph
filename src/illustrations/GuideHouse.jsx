@@ -18,7 +18,12 @@ import './plate.css'
  * with the description, the reason and the link. Clicking a drawing selects its pick too.
  * Picks on the site plan get their own sheet, reached by the view switch or by selecting one.
  */
-export default function GuideHouse({ picks, go, title }) {
+/*
+ * An example home (Eric, 2026-11-26) passes every solution of its system as `picks`, the same
+ * solutions under need headings as `groups`, `between` (its builder picture, drawn between the
+ * drawing and the list) and its own `words` for the drawing's caption and the list's heading.
+ */
+export default function GuideHouse({ picks, go, title, groups = null, between = null, words = {} }) {
   const t = (en, fr) => (cat.getLang() === 'fr' ? fr : en)
   const rows = picks.map((p) => {
     const section = plateFor(p.sol.id)
@@ -63,8 +68,42 @@ export default function GuideHouse({ picks, go, title }) {
   draw(null)
   const name = current && current.base === shown
     ? altText(cat.tName(current.sol), shown, labels, ui, fill)
-    : fill(shown === 'site' ? ui.guide.drawingNameSite : ui.guide.drawingName, { n: plates(shown).length, guide: title || '' })
+    : fill(shown === 'site' ? (words.drawingNameSite || ui.guide.drawingNameSite) : (words.drawingName || ui.guide.drawingName),
+      { n: plates(shown).length, guide: title || '' })
   const html = draw(name)
+
+  function pickRow({ sol, why, note, key }, i) {
+    const isOpen = open === sol.id
+    return (
+      <li key={sol.id} className={'pick' + (isOpen ? ' is-open' : '') + (key ? ' is-key' : '')}>
+        <button type="button" className="pick-head" aria-expanded={isOpen}
+          aria-controls={`pick-${sol.id}`} onClick={() => select(sol.id)}>
+          <span className="pick-n" aria-hidden="true">{i + 1}</span>
+          <span className="pick-name">{cat.tName(sol)}{key && <span className="pick-key">{ui.guide.keyChoice}</span>}</span>
+          <span className="pick-tri" aria-hidden="true">{isOpen ? '▾' : '▸'}</span>
+        </button>
+        {/* A home's warning about this solution stays in view, folded or not. */}
+        {note && <p className="pick-note">{note}</p>}
+        {isOpen && (
+          <div className="pick-body" id={`pick-${sol.id}`}>
+            <p className="pick-sum">{cat.tSummary(sol)}</p>
+            {why && (
+              <p className="pick-why">
+                <span className="pick-why-label">{ui.guide.whyLabel}</span> {why}
+              </p>
+            )}
+            <div className="pick-actions">
+              {/* The main action, so the green button (Eric, 2026-11-05). */}
+              <Nav route={{ view: 'solution', id: sol.id }} go={go} className="btn pick-link">
+                {ui.guide.openSolution}
+              </Nav>
+              <AddButton sol={sol} go={go} className="btn secondary" />
+            </div>
+          </div>
+        )}
+      </li>
+    )
+  }
 
   return (
     <>
@@ -82,42 +121,29 @@ export default function GuideHouse({ picks, go, title }) {
           )}
           <div className="guide-drawing" onClick={onDrawingClick} dangerouslySetInnerHTML={{ __html: html }} />
           <PlateLegend labels={labels} />
-          <figcaption>{current ? cat.tName(current.sol) : ui.guide.drawingHint}</figcaption>
+          <figcaption>{current ? cat.tName(current.sol) : (words.drawingHint || ui.guide.drawingHint)}</figcaption>
         </figure>
       )}
 
-      <ol className="picks">
-        {rows.map(({ sol, why }, i) => {
-          const isOpen = open === sol.id
-          return (
-            <li key={sol.id} className={'pick' + (isOpen ? ' is-open' : '')}>
-              <button type="button" className="pick-head" aria-expanded={isOpen}
-                aria-controls={`pick-${sol.id}`} onClick={() => select(sol.id)}>
-                <span className="pick-n" aria-hidden="true">{i + 1}</span>
-                <span className="pick-name">{cat.tName(sol)}</span>
-                <span className="pick-tri" aria-hidden="true">{isOpen ? '▾' : '▸'}</span>
-              </button>
-              {isOpen && (
-                <div className="pick-body" id={`pick-${sol.id}`}>
-                  <p className="pick-sum">{cat.tSummary(sol)}</p>
-                  {why && (
-                    <p className="pick-why">
-                      <span className="pick-why-label">{ui.guide.whyLabel}</span> {why}
-                    </p>
-                  )}
-                  <div className="pick-actions">
-                    {/* The main action, so the green button (Eric, 2026-11-05). */}
-                    <Nav route={{ view: 'solution', id: sol.id }} go={go} className="btn pick-link">
-                      {ui.guide.openSolution}
-                    </Nav>
-                    <AddButton sol={sol} go={go} className="btn secondary" />
-                  </div>
-                </div>
-              )}
-            </li>
-          )
-        })}
-      </ol>
+      {between}
+      {groups ? (
+        <>
+          {words.listTitle && <h2 className="pick-list-title">{words.listTitle}</h2>}
+          {words.listIntro && <p className="pick-list-intro">{words.listIntro}</p>}
+          {groups.map((gr) => (
+            <section key={gr.id} className="pick-group" aria-label={gr.title}>
+              <h3 className="pick-group-title">{gr.title}</h3>
+              <ol className="picks" start={gr.start + 1}>
+                {gr.rows.map((r, i) => pickRow(r, gr.start + i))}
+              </ol>
+            </section>
+          ))}
+        </>
+      ) : (
+        <ol className="picks">
+          {rows.map((r, i) => pickRow(r, i))}
+        </ol>
+      )}
       {/* No "add all of them" here: it read as the thing to do, and a guide's picks are
           examples, rarely one system to build (Eric, 2026-11-05). */}
     </>

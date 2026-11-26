@@ -1,0 +1,102 @@
+{
+  "slug": {
+    "en": "old-stone-house",
+    "fr": "maison-en-pierre"
+  },
+  "kind": "home",
+  "en": {
+    "door": "An old stone house",
+    "title": "An example home: an old stone house, renovated",
+    "intro": "An old stone house made warm and comfortable without harming its walls: they keep breathing, so damp in them can dry out. With two kinds of heat, one room stays warm even in a power cut. For everything else, it still relies on the mains.",
+    "keys": "The five key choices are what makes an old stone house warm without trapping damp in its walls: insulation that breathes, better windows, air renewed room by room, and a second source of heat."
+  },
+  "fr": {
+    "door": "Une vieille maison en pierre",
+    "title": "Un exemple de logement : une maison en pierre rénovée",
+    "intro": "Une vieille maison en pierre rendue chaude et confortable sans abîmer ses murs : ils continuent de respirer, et l’humidité qu’ils contiennent peut sécher. Avec deux sources de chaleur, une pièce reste chaude même pendant une coupure de courant. Pour tout le reste, elle dépend toujours des réseaux.",
+    "keys": "Les cinq choix clés sont ce qui rend une vieille maison en pierre chaude sans enfermer l’humidité dans ses murs : une isolation qui respire, de meilleures fenêtres, un air renouvelé pièce par pièce, et une seconde source de chaleur."
+  },
+  "picks": [
+    {
+      "id": "SOL-020",
+      "en": {
+        "why": "Cellulose blown into the loft: a cheap way to insulate an existing house."
+      },
+      "fr": {
+        "why": "De la ouate de cellulose soufflée dans les combles : une façon peu coûteuse d’isoler une maison existante."
+      }
+    },
+    {
+      "id": "SOL-194",
+      "en": {
+        "why": "A lime-hemp render insulates the stone and still lets it breathe, so damp in the wall can dry out."
+      },
+      "fr": {
+        "why": "Un enduit chaux-chanvre isole la pierre en la laissant respirer : l’humidité du mur peut sécher."
+      }
+    },
+    {
+      "id": "SOL-128",
+      "en": {
+        "why": "Small heat-recovery units in the walls of each room, with no ducts to thread through old floors."
+      },
+      "fr": {
+        "why": "De petits ventilateurs à récupération de chaleur dans les murs de chaque pièce, sans gaines à faire passer dans les vieux planchers."
+      }
+    },
+    {
+      "id": "SOL-024",
+      "en": {
+        "why": "Double glazing in insulated frames, where the old windows cannot be kept."
+      },
+      "fr": {
+        "why": "Du double vitrage dans des menuiseries isolées, là où les anciennes fenêtres ne peuvent être gardées."
+      }
+    },
+    {
+      "id": "SOL-030",
+      "en": {
+        "why": "A wood stove warms the main room on wood, so the heat pump does less on the coldest days."
+      },
+      "fr": {
+        "why": "Un poêle à bois chauffe la pièce principale au bois : la pompe à chaleur en fait moins les jours les plus froids."
+      }
+    }
+  ],
+  "cards": 23,
+  "solutions": [
+    "SOL-020",
+    "SOL-024",
+    "SOL-030",
+    "SOL-031",
+    "SOL-041",
+    "SOL-047",
+    "SOL-061",
+    "SOL-079",
+    "SOL-092",
+    "SOL-094",
+    "SOL-108",
+    "SOL-128",
+    "SOL-163",
+    "SOL-182",
+    "SOL-194",
+    "SOL-195",
+    "SOL-196",
+    "SOL-214",
+    "SOL-215",
+    "SOL-216",
+    "SOL-217",
+    "SOL-228",
+    "SOL-251"
+  ],
+  "notes": {
+    "SOL-030": {
+      "en": "Takes its air from outside, now the house is draught-proofed.",
+      "fr": "Prend son air dehors, maintenant que la maison est calfeutrée."
+    },
+    "SOL-061": {
+      "en": "Heats the water by electricity, the costliest way.",
+      "fr": "Chauffe l’eau à l’électricité, la façon la plus chère."
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "slug": {
+    "en": "low-cost-flat",
+    "fr": "appartement-econome"
+  },
+  "kind": "home",
+  "en": {
+    "door": "A flat on a small budget",
+    "title": "An example home: a flat on a small budget",
+    "intro": "A rented flat made warmer, drier and cheaper to live in, for little money, and almost all of it leaves with you when you move. The heating, the toilet, the water heater and the hob stay the ones already there.",
+    "keys": "The five key choices are cheap changes a tenant can make; the rest adds more of the same, or is the flat as it already is."
+  },
+  "fr": {
+    "door": "Un appartement à petit budget",
+    "title": "Un exemple de logement : un appartement à petit budget",
+    "intro": "Un appartement en location rendu plus chaud, plus sec et moins cher à vivre, pour peu d’argent, et presque tout part avec vous quand vous déménagez. Le chauffage, les toilettes, le chauffe-eau et la plaque restent ceux déjà en place.",
+    "keys": "Les cinq choix clés sont des changements bon marché qu’un locataire peut faire ; le reste en ajoute d’autres du même genre, ou c’est l’appartement tel qu’il est déjà."
+  },
+  "picks": [
+    {
+      "id": "SOL-038",
+      "en": {
+        "why": "Where the flat has windows on two sides, opening both clears the damp: draught-proofing still needs airing."
+      },
+      "fr": {
+        "why": "Si l’appartement a des fenêtres sur deux côtés, les ouvrir chasse l’humidité : un logement calfeutré doit toujours être aéré."
+      }
+    },
+    {
+      "id": "SOL-224",
+      "en": {
+        "why": "A hot water bottle in the bed or on your lap warms you, not the room, for very little."
+      },
+      "fr": {
+        "why": "Une bouillotte dans le lit ou sur les genoux vous réchauffe vous, pas la pièce, pour très peu."
+      }
+    },
+    {
+      "id": "SOL-230",
+      "en": {
+        "why": "A fine spray washes you with much less hot water than a shower head."
+      },
+      "fr": {
+        "why": "Une brume fine vous lave avec bien moins d’eau chaude qu’un pommeau de douche."
+      }
+    },
+    {
+      "id": "SOL-253",
+      "en": {
+        "why": "A panel on a sunny balcony rail feeds the flat’s sockets: whatever runs in daylight uses it first. It needs the landlord’s agreement."
+      },
+      "fr": {
+        "why": "Un panneau sur une rambarde ensoleillée alimente les prises : ce qui tourne en journée l’utilise en premier. Il faut l’accord du propriétaire."
+      }
+    },
+    {
+      "id": "SOL-047",
+      "en": {
+        "why": "LED bulbs in the fittings you already have: the same light for a fraction of the power."
+      },
+      "fr": {
+        "why": "Des ampoules LED dans les luminaires existants : la même lumière pour une fraction de l’électricité."
+      }
+    }
+  ],
+  "cards": 27,
+  "solutions": [
+    "SOL-038",
+    "SOL-047",
+    "SOL-061",
+    "SOL-079",
+    "SOL-094",
+    "SOL-108",
+    "SOL-123",
+    "SOL-163",
+    "SOL-169",
+    "SOL-174",
+    "SOL-182",
+    "SOL-186",
+    "SOL-195",
+    "SOL-196",
+    "SOL-199",
+    "SOL-214",
+    "SOL-215",
+    "SOL-216",
+    "SOL-217",
+    "SOL-224",
+    "SOL-225",
+    "SOL-228",
+    "SOL-230",
+    "SOL-242",
+    "SOL-248",
+    "SOL-249",
+    "SOL-253"
+  ],
+  "notes": {
+    "SOL-253": {
+      "en": "Stops in a power cut: it feeds the sockets only while the grid is on.",
+      "fr": "S’arrête pendant une coupure : il n’alimente les prises que quand le réseau fonctionne."
+    }
+  }
+}

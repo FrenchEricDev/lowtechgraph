@@ -1,0 +1,114 @@
+{
+  "slug": {
+    "en": "passive-house",
+    "fr": "maison-passive"
+  },
+  "kind": "home",
+  "en": {
+    "door": "A passive house",
+    "title": "An example home: a passive house",
+    "intro": "A house that stays warm all winter on very little heating, with fresh air in every room and no draughts or cold walls. Its limit: this one is a new build.",
+    "keys": "The five key choices are the envelope, the fresh air and the summer shade that make this a passive house; the rest supports them and meets the household’s other needs."
+  },
+  "fr": {
+    "door": "Une maison passive",
+    "title": "Un exemple de logement : une maison passive",
+    "intro": "Une maison qui reste chaude tout l’hiver avec très peu de chauffage, avec de l’air neuf dans chaque pièce, sans courants d’air ni murs froids. Sa limite : celle-ci est une construction neuve.",
+    "keys": "Les cinq choix clés sont l’enveloppe, l’air neuf et l’ombre d’été qui font de cette maison une maison passive ; le reste les complète et couvre les autres besoins du foyer."
+  },
+  "picks": [
+    {
+      "id": "SOL-026",
+      "en": {
+        "why": "An overhang lets the low winter sun in and keeps the high summer sun off the south windows."
+      },
+      "fr": {
+        "why": "Un débord de toit laisse entrer le soleil bas de l’hiver et protège les fenêtres sud du soleil haut de l’été."
+      }
+    },
+    {
+      "id": "SOL-021",
+      "en": {
+        "why": "Insulation wrapped round the outside without a break, so the frame does not carry heat out."
+      },
+      "fr": {
+        "why": "Un isolant posé à l’extérieur sans interruption, pour que la structure ne laisse pas filer la chaleur."
+      }
+    },
+    {
+      "id": "SOL-022",
+      "en": {
+        "why": "The membrane taped at every joint makes the house airtight, so it keeps much more of its heat."
+      },
+      "fr": {
+        "why": "La membrane scotchée à chaque jonction rend la maison étanche à l’air : elle garde bien plus de sa chaleur."
+      }
+    },
+    {
+      "id": "SOL-023",
+      "en": {
+        "why": "Three panes and a low-emissivity coating: the windows lose much less than double glazing."
+      },
+      "fr": {
+        "why": "Trois vitrages et une couche faiblement émissive : les fenêtres perdent bien moins qu’un double vitrage."
+      }
+    },
+    {
+      "id": "SOL-040",
+      "en": {
+        "why": "Fresh air all the time with the windows shut, warmed by the air going out."
+      },
+      "fr": {
+        "why": "De l’air neuf en permanence, fenêtres fermées, réchauffé par l’air qui sort."
+      }
+    }
+  ],
+  "cards": 31,
+  "solutions": [
+    "SOL-014",
+    "SOL-020",
+    "SOL-021",
+    "SOL-022",
+    "SOL-023",
+    "SOL-025",
+    "SOL-026",
+    "SOL-027",
+    "SOL-029",
+    "SOL-031",
+    "SOL-040",
+    "SOL-046",
+    "SOL-047",
+    "SOL-061",
+    "SOL-070",
+    "SOL-076",
+    "SOL-079",
+    "SOL-082",
+    "SOL-092",
+    "SOL-094",
+    "SOL-108",
+    "SOL-133",
+    "SOL-163",
+    "SOL-182",
+    "SOL-195",
+    "SOL-196",
+    "SOL-202",
+    "SOL-215",
+    "SOL-217",
+    "SOL-228",
+    "SOL-251"
+  ],
+  "notes": {
+    "SOL-027": {
+      "en": "Moved by hand each day in summer: without its shading, the house can overheat.",
+      "fr": "Se manœuvrent à la main chaque jour l’été : sans ses protections solaires, la maison peut surchauffer."
+    },
+    "SOL-040": {
+      "en": "Uses power, and its filters need changing now and then.",
+      "fr": "Consomme de l’électricité, et ses filtres sont à changer de temps en temps."
+    },
+    "SOL-076": {
+      "en": "Gives no power in a power cut: with no battery, its inverter shuts down with the grid.",
+      "fr": "Ne donne rien pendant une coupure : sans batterie, son onduleur s’arrête avec le réseau."
+    }
+  }
+}

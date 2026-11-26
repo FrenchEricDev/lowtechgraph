@@ -9,11 +9,19 @@
 // summary, ratings, link). So a card stores a solution ID, never a name, and IDs rather than
 // slugs, so one file serves both languages.
 import { solById } from './catalogue'
+import NEED_GROUPS from './content/need-groups.json'
 
 // Resolved at build time: an added folder needs a rebuild. `eager` keeps call sites
 // synchronous.
 const CARDS = import.meta.glob('./content/{hero,section1,section2}/*/card.json', { eager: true })
 const GUIDES = import.meta.glob('./content/guides/*/guide.json', { eager: true })
+// An example home's whole system (F10) loads only when the reader opens it, so eight systems do
+// not weigh on every page's first load (qa-budget, 2026-11-24).
+const SYSTEMS = import.meta.glob('./content/guides/*/system.json', { import: 'default' })
+export function loadHomeSystem(id) {
+  const f = SYSTEMS[`./content/guides/${id}/system.json`]
+  return f ? f() : Promise.resolve(null)
+}
 // Per-language artwork, since hero images carry their text: `image.*` for both languages, or
 // `image-en.*` / `image-fr.*`.
 const IMAGES = import.meta.glob('./content/**/image*.{png,jpg,jpeg,svg,webp,avif}', {
@@ -90,9 +98,32 @@ export function guide(id, lang) {
     id,
     title: t.title || '',
     intro: t.intro || '',
+    // An example home: what its "Key choice" tags mean here (2026-11-26).
+    keys: t.keys || '',
     door: t.door || '',
     onHome: typeof d.order === 'number',
     placeholder: !!d._placeholder,
+    // F10 example homes: a whole connected system, opened in the builder from the page; the
+    // system itself is in system.json (loadHomeSystem), the count of its cards here.
+    // A themed system (kind "system", 2026-11-24) opens the same way but is not a whole home.
+    home: d.kind === 'home' || d.kind === 'system' ? { cards: d.cards, whole: d.kind === 'home' } : null,
+    // Every solution in an example home's system (Eric, 2026-11-26: the page shows the whole
+    // system, not five picks): the picks keep their reason, and a home-specific warning sits on
+    // the solution it concerns. Empty for an ordinary guide.
+    members: (d.solutions || [])
+      .map((sid) => {
+        const sol = solById[sid]
+        if (!sol) return null
+        const pick = (d.picks || []).find((p) => p.id === sid)
+        const n = d.notes?.[sid]
+        return {
+          sol,
+          key: !!pick,
+          why: pick ? (pick[lang] || pick.en || {}).why || '' : '',
+          note: n ? n[lang] || n.en || '' : '',
+        }
+      })
+      .filter(Boolean),
     picks: (d.picks || [])
       .map((p) => {
         const sol = solById[p.id]
@@ -116,6 +147,15 @@ export function guideIdForSlug(slug, lang) {
 export function guideSlug(id, lang) {
   const d = guideIndex()[id]
   return d ? d.slug?.[lang] || d.slug?.en || id : null
+}
+
+/*
+ * A17 trial: headings over a need's sub-needs, from content/need-groups.json. Returns
+ * [{ title, subs: [ids] }] for a need that has them, else null.
+ */
+export function needGroups(fnId, lang) {
+  const g = NEED_GROUPS[fnId]
+  return g ? g.map((x) => ({ title: x[lang] || x.en, subs: x.subs })) : null
 }
 
 /** Every guide id, for the validator and for prerendering. */

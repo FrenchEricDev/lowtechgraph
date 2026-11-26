@@ -1,0 +1,120 @@
+{
+  "slug": {
+    "en": "hot-summer-house",
+    "fr": "maison-pour-les-etes-chauds"
+  },
+  "kind": "home",
+  "en": {
+    "door": "A house for heatwaves and drought",
+    "title": "An example home: heatwaves and drought, without air conditioning",
+    "intro": "A house that stays bearable through a heatwave with no air conditioner, and keeps drinking water and a working toilet when the water is restricted or cut. Its limit: the tank holds only what the last rains gave.",
+    "keys": "The five key choices are what keeps this house cool without air conditioning and gives it drinking water when the taps are restricted or cut; the rest supports them and meets the household’s other needs."
+  },
+  "fr": {
+    "door": "Une maison pour les canicules et la sécheresse",
+    "title": "Un exemple de logement : canicules et sécheresse, sans climatisation",
+    "intro": "Une maison qui reste supportable pendant une canicule sans climatiseur, et qui garde de l’eau à boire et des toilettes qui fonctionnent en cas de restrictions ou de coupure d’eau. Sa limite : la cuve ne contient que ce que les dernières pluies ont donné.",
+    "keys": "Les cinq choix clés sont ce qui garde cette maison fraîche sans climatisation et lui donne de l’eau à boire en cas de restrictions ou de coupure d’eau ; le reste les complète et couvre les autres besoins du foyer."
+  },
+  "picks": [
+    {
+      "id": "SOL-153",
+      "en": {
+        "why": "The shower water is kept to flush the toilet: the same water washes you, then flushes, and the tank lasts longer."
+      },
+      "fr": {
+        "why": "L’eau de la douche est gardée pour la chasse d’eau : la même eau vous lave puis rince les toilettes, et la cuve dure plus longtemps."
+      }
+    },
+    {
+      "id": "SOL-032",
+      "en": {
+        "why": "Open up at night, close in the morning: the cool night air carries the day’s heat out of the house."
+      },
+      "fr": {
+        "why": "Ouvrir la nuit, fermer le matin : l’air frais de la nuit emporte la chaleur de la journée."
+      }
+    },
+    {
+      "id": "SOL-148",
+      "en": {
+        "why": "A clay filter on the counter turns the rain in the tank into drinking water with no power, so there is still water to drink when the taps are cut."
+      },
+      "fr": {
+        "why": "Un filtre en terre cuite sur le plan de travail fait de l’eau de pluie de la cuve une eau à boire, sans électricité : il en reste à boire quand les robinets sont coupés."
+      }
+    },
+    {
+      "id": "SOL-127",
+      "en": {
+        "why": "Water evaporating from a wet pad cools the air passing through it, in dry heat."
+      },
+      "fr": {
+        "why": "L’eau qui s’évapore d’un tampon humide rafraîchit l’air qui le traverse, par chaleur sèche."
+      }
+    },
+    {
+      "id": "SOL-206",
+      "en": {
+        "why": "A white roof sends most of the sunlight back before it heats the rooms below."
+      },
+      "fr": {
+        "why": "Un toit blanc renvoie l’essentiel du soleil avant qu’il ne chauffe les pièces du dessous."
+      }
+    }
+  ],
+  "cards": 33,
+  "solutions": [
+    "SOL-020",
+    "SOL-025",
+    "SOL-026",
+    "SOL-027",
+    "SOL-028",
+    "SOL-029",
+    "SOL-032",
+    "SOL-038",
+    "SOL-039",
+    "SOL-046",
+    "SOL-047",
+    "SOL-053",
+    "SOL-059",
+    "SOL-070",
+    "SOL-079",
+    "SOL-090",
+    "SOL-092",
+    "SOL-094",
+    "SOL-108",
+    "SOL-124",
+    "SOL-127",
+    "SOL-148",
+    "SOL-153",
+    "SOL-163",
+    "SOL-182",
+    "SOL-195",
+    "SOL-196",
+    "SOL-206",
+    "SOL-209",
+    "SOL-215",
+    "SOL-217",
+    "SOL-228",
+    "SOL-254"
+  ],
+  "notes": {
+    "SOL-032": {
+      "en": "Needs cool nights.",
+      "fr": "Demande des nuits fraîches."
+    },
+    "SOL-053": {
+      "en": "Its tank must stand high enough to feed the toilet and the garden. In a long drought, keep its water for drinking and the toilet, and let the cooler and the garden stop first.",
+      "fr": "Sa cuve doit être posée assez haut pour alimenter les toilettes et le jardin. Dans une longue sécheresse, gardez son eau pour boire et pour les toilettes, et laissez le rafraîchisseur et le jardin s’arrêter les premiers."
+    },
+    "SOL-127": {
+      "en": "Needs dry air: in humid air it cools little.",
+      "fr": "Demande un air sec : dans un air humide, il rafraîchit peu."
+    },
+    "SOL-148": {
+      "en": "Takes out most germs, not chemicals.",
+      "fr": "Retire la plupart des germes, pas les produits chimiques."
+    }
+  }
+}
