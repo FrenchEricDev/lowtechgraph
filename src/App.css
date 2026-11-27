@@ -887,7 +887,7 @@ a.row, a.chip { text-decoration: none; }
 .seg.guides-tabs { margin: var(--s-2) 0 0; max-width: 100%; }
 .guides-tabs .seg-item { white-space: nowrap; }
 .guides-tab-n { margin-left: var(--s-1); font-variant-numeric: tabular-nums; opacity: .8; }
-@media (max-width: 420px) { .guides-tabs { display: flex; } .guides-tabs .seg-item { flex: 1 1 0; padding: 0 var(--s-2); } }
+@media (max-width: 560px) { .seg.guides-tabs { display: flex; width: 100%; box-sizing: border-box; } .guides-tabs .seg-item { flex: 1 1 0; padding: 0 var(--s-2); } }
 /* Between the page title and the tile titles, which keep their heading look though now h3s. */
 .view .guide-sec-title { margin: 0; font-size: calc((var(--t-lg) + var(--t-xl)) / 2); }
 .view h3.guide-tile-title { text-transform: none; letter-spacing: normal; color: var(--ink); font-weight: 700; }

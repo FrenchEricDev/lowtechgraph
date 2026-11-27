@@ -1,7 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import * as cat from './catalogue'
 import { ui, fill } from './ui-strings'
-import SOLUTION_MEDIA from './data/solution-media.json'
+
+// The photos' data loads on its own, after the first page (qa-budget, 2026-11-26: twelve photos with
+// their alt text in two languages took the first load over its budget). App.jsx warms it when idle.
+let MEDIA = null
+let loading = null
+export function warmMedia() {
+  if (!loading) loading = import('./data/solution-media.json').then((m) => { MEDIA = m.default; return MEDIA })
+  return loading
+}
 
 // The video tab plays the solution's first YouTube tutorial, in the reading language if it has one.
 const youtubeId = (url) => {
@@ -23,7 +31,13 @@ const youtubeId = (url) => {
 export default function SolutionMedia({ sol, drawing }) {
   const M = ui.solutionPage.media
   const lang = cat.getLang()
-  const media = SOLUTION_MEDIA[sol.id]
+  const [all, setAll] = useState(MEDIA)
+  useEffect(() => {
+    let live = true
+    if (!all) warmMedia().then((m) => { if (live) setAll(m) })
+    return () => { live = false }
+  }, [all])
+  const media = all ? all[sol.id] : null
   const vids = (sol.tutorials || []).filter((t) => t.format === 'video' && youtubeId(t.url))
   const video = vids.find((t) => t.lang === lang) || vids[0]
   const [tab, setTab] = useState('drawing')
@@ -48,7 +62,9 @@ export default function SolutionMedia({ sol, drawing }) {
         {tab === 'drawing' && drawing}
         {tab === 'photo' && p && (
           <figure className="media-photo">
-            <img src={p.src} width={p.w} height={p.h} alt={p.alt[lang] || p.alt.en} loading="lazy" decoding="async" />
+            {/* Never wider than its own pixels: a small diagram stays sharp (R1-b6, 2026-11-26). */}
+            <img src={p.src} width={p.w} height={p.h} alt={p.alt[lang] || p.alt.en} loading="lazy" decoding="async"
+                 style={p.w ? { maxWidth: `min(${p.w}px, 720px, 100%)` } : undefined} />
             <figcaption className="media-credit">
               {/* i18n-ok: the author's own name */}
               {fill(M.photoBy, { author: p.author })}{' · '}

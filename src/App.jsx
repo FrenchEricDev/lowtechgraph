@@ -11,7 +11,7 @@ import { ui, fill, setUiLang } from './ui-strings'
 import { parsePath, pathFor, urlFor, preferredLang } from './router'
 import Nav from './Nav'
 import { TutorialRows } from './Tutorials.jsx'
-import SolutionMedia from './SolutionMedia.jsx'
+import SolutionMedia, { warmMedia } from './SolutionMedia.jsx'
 import useDialog from './useDialog'
 // The drawings (a fifth of the code) load on demand too, and are fetched while the browser is
 // idle after the first page, so they are normally there before anyone scrolls to them.
@@ -36,7 +36,7 @@ const WhyBubble = lazy(() => import('./illustrations/WhyBubble.jsx'))
 // The home page's site tour (F19): its own chunk, as the first load is near its budget.
 const SiteTour = lazy(() => import('./SiteTour.jsx'))
 if (typeof window !== 'undefined') {
-  const warm = () => { loadPlate(); loadGuideHouse() }
+  const warm = () => { loadPlate(); loadGuideHouse(); warmMedia() }
   if ('requestIdleCallback' in window) window.requestIdleCallback(warm, { timeout: 4000 })
   else setTimeout(warm, 2000)
 }

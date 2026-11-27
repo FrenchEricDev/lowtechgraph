@@ -145,11 +145,19 @@
       }
     },
     {
+      "id": "divert",
+      "sol": "SOL-193",
+      "position": {
+        "x": 1050,
+        "y": 60
+      }
+    },
+    {
       "id": "hp",
       "sol": "SOL-031",
       "position": {
         "x": 1050,
-        "y": 60
+        "y": 290
       }
     },
     {
@@ -164,8 +172,8 @@
       "id": "boiler",
       "sol": "SOL-061",
       "position": {
-        "x": 1050,
-        "y": 290
+        "x": 390,
+        "y": 750
       }
     },
     {
@@ -189,7 +197,7 @@
       "sol": "SOL-094",
       "position": {
         "x": 390,
-        "y": 750
+        "y": 980
       }
     },
     {
@@ -221,7 +229,7 @@
       "sol": "SOL-046",
       "position": {
         "x": 390,
-        "y": 980
+        "y": 1210
       }
     },
     {
@@ -229,7 +237,7 @@
       "sol": "SOL-047",
       "position": {
         "x": 390,
-        "y": 1210
+        "y": 1440
       }
     },
     {
@@ -237,7 +245,7 @@
       "sol": "SOL-163",
       "position": {
         "x": 390,
-        "y": 1440
+        "y": 1670
       }
     },
     {
@@ -277,7 +285,7 @@
       "dest": "dwelling",
       "position": {
         "x": 390,
-        "y": 1670
+        "y": 1900
       }
     },
     {
@@ -318,12 +326,39 @@
       ]
     },
     {
-      "id": "e-inv-boiler",
+      "id": "e-inv-divert",
       "source": "inv",
-      "target": "boiler",
+      "target": "divert",
       "io": "IO-03",
       "ios": [
         "IO-03"
+      ]
+    },
+    {
+      "id": "e-divert-shower",
+      "source": "divert",
+      "target": "shower",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-divert-dishes",
+      "source": "divert",
+      "target": "dishes",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-divert-house",
+      "source": "divert",
+      "target": "house",
+      "io": "IO-41",
+      "ios": [
+        "IO-41"
       ]
     },
     {

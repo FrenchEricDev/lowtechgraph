@@ -13833,7 +13833,7 @@
    "name": "Cob / monolithic earthen wall construction",
    "subfunction_id": "FN-01.1",
    "function_id": "FN-01",
-   "summary": "Thick walls built up by hand from a mix of clay, sand and straw, layer by layer, with no bricks or moulds. The walls carry the roof and store heat, evening out temperatures between day and night. Dense cob insulates little on its own: a light, straw-rich mix, or a layer of insulation, keeps a house warm in winter. They use almost nothing bought, but are slow to build and need covering from rain while they dry.",
+   "summary": "Thick walls built up by hand from a mix of clay, sand and straw, layer by layer, with no bricks or moulds. The walls carry the roof and store heat, evening out temperatures between day and night. Dense cob insulates little on its own: a lighter, straw-rich cob insulates better and can be built as an insulating wall beside the load-bearing one, or a layer of insulation is added. Cob walls use almost nothing bought, but are slow to build and need covering from rain while they dry.",
    "slug": "cob-monolithic-earthen-wall-construction",
    "slug_fr": "mur-porteur-en-terre-monolithique",
    "inputs": [
@@ -13927,19 +13927,19 @@
    ],
    "fr": {
     "name": "Mur porteur en terre monolithique (bauge)",
-    "description": "Des murs épais montés à la main avec un mélange d’argile, de sable et de paille, couche après couche, sans briques ni coffrage. Les murs portent le toit et stockent la chaleur, ce qui lisse les écarts entre le jour et la nuit. Dense, la bauge isole peu à elle seule : un mélange léger et riche en paille, ou une couche d’isolant, garde la maison chaude en hiver. Ils n’utilisent presque rien d’acheté, mais sont lents à monter et doivent être protégés de la pluie pendant qu’ils sèchent.",
+    "description": "Des murs épais montés à la main avec un mélange d’argile, de sable et de paille, couche après couche, sans briques ni coffrage. Les murs portent le toit et stockent la chaleur, ce qui lisse les écarts entre le jour et la nuit. Dense, la bauge isole peu à elle seule : une bauge plus légère et riche en paille isole mieux et peut former un mur isolant à côté du mur porteur, ou l’on ajoute une couche d’isolant. Les murs en bauge n’utilisent presque rien d’acheté, mais sont lents à monter et doivent être protégés de la pluie pendant qu’ils sèchent.",
     "lifespan": "Plusieurs siècles si la toiture, les fondations et l’enduit sont maintenus en bon état (des bâtiments en bauge documentés dans le Devon, Royaume-Uni, datent du 15e au 19e siècle)",
     "build_note": "murs en terre montés à la main, lent",
     "regulation_fr": "Élément de structure ou d’emprise au sol : soumis au permis de construire pour un logement neuf. Les terrains ruraux sont en outre contraints par le zonage PLU de la commune, hors zone constructible, un logement neuf est généralement refusé.",
     "choose_if": "vous voulez façonner librement vos murs à la main, sans briques ni moules, avec l’argile de votre terrain.",
     "desc_cut": [
      128,
-     363
+     411
     ]
    },
    "desc_cut": [
     107,
-    316
+    381
    ]
   },
   {

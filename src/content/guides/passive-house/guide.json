@@ -63,7 +63,7 @@
       }
     }
   ],
-  "cards": 31,
+  "cards": 32,
   "solutions": [
     "SOL-014",
     "SOL-020",
@@ -89,6 +89,7 @@
     "SOL-133",
     "SOL-163",
     "SOL-182",
+    "SOL-193",
     "SOL-195",
     "SOL-196",
     "SOL-202",
@@ -109,6 +110,10 @@
     "SOL-076": {
       "en": "Gives no power in a power cut: with no battery, its inverter shuts down with the grid.",
       "fr": "Ne donne rien pendant une coupure : sans batterie, son onduleur s’arrête avec le réseau."
+    },
+    "SOL-193": {
+      "en": "Sends the panels’ surplus to the water heater: the tank of hot water stores it, in place of a battery.",
+      "fr": "Envoie le surplus des panneaux au chauffe-eau : le ballon d’eau chaude le stocke, à la place d’une batterie."
     }
   }
 }

@@ -1455,6 +1455,12 @@ check('an input nothing gives is said, figure or no figure', () => {
   // Natural resources are always there.
   const pv = assess({ nodes: [{ id: 'a', sol: 'SOL-076' }], edges: [], linkedOnly: true }, BASE, data)
   if (pv.unfed.length) throw new Error('solar panels asked for sunshine')
+  // A heat store's warmth is an option (F10-q): mass, a water wall, cob and rammed earth stand unfed,
+  // while a card that uses gentle warmth up (the compost-coil preheater) is still asked.
+  const stores = ['SOL-029', 'SOL-125', 'SOL-115', 'SOL-141', 'SOL-060']
+  const asked = stores.filter((sol) => assess({ nodes: [{ id: 'w', sol }], edges: [], linkedOnly: true }, BASE, data)
+    .unfed.some((u) => u.io === 'IO-35'))
+  if (asked.join() !== 'SOL-060') throw new Error('gentle warmth asked of ' + asked.join(', '))
 })
 
 check('a supply offer can supply: no pass-through, sources first, low-tech before mains', () => {

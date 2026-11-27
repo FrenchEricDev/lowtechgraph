@@ -1,31 +1,181 @@
 {
+ "SOL-053": {
+  "photo": {
+   "alt": {
+    "en": "Two rain butts against a house wall, filled from the downpipe",
+    "fr": "Deux récupérateurs d’eau de pluie contre un mur, remplis par la descente de gouttière"
+   },
+   "author": "David Hawgood",
+   "h": 931,
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Domestic_rainwater_conservation_-_geograph.org.uk_-_5861793.jpg",
+   "src": "/photos/sol-053.jpg",
+   "w": 960
+  }
+ },
  "SOL-059": {
   "photo": {
    "alt": {
-    "en": "A solar water heater on the ground in a garden: flat collector panels with the hot-water tank across their top",
-    "fr": "Un chauffe-eau solaire posé au sol dans un jardin : des capteurs plans, le ballon d’eau chaude couché au-dessus"
+    "en": "A solar water heater on a tiled roof: evacuated tubes with the hot-water tank above them",
+    "fr": "Un chauffe-eau solaire sur un toit de tuiles : des tubes sous vide, le ballon au-dessus d’eux"
    },
-   "author": "David Monniaux",
-   "h": 720,
-   "licence": "CC BY-SA 3.0",
-   "licence_url": "http://creativecommons.org/licenses/by-sa/3.0/",
-   "page": "https://commons.wikimedia.org/wiki/File:Solar_heater_dsc00632.jpg",
+   "author": "Martinvl",
+   "h": 640,
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:DomesticSolarHeater_SouthAfrica.jpg",
    "src": "/photos/sol-059.jpg",
    "w": 960
+  }
+ },
+ "SOL-089": {
+  "photo": {
+   "alt": {
+    "en": "A cast-iron wood cookstove with pans on its hot plate and its stovepipe",
+    "fr": "Une cuisinière à bois en fonte, des casseroles sur la plaque et son tuyau"
+   },
+   "author": "Daniel Schwen",
+   "h": 960,
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Lincoln_stove.jpg",
+   "src": "/photos/sol-089.jpg",
+   "w": 640
+  }
+ },
+ "SOL-090": {
+  "photo": {
+   "alt": {
+    "en": "A wooden box solar cooker with its glass lid and reflector open, a dark roasting pan and potatoes inside",
+    "fr": "Un cuiseur solaire en caisson de bois, vitre et réflecteur ouverts, une cocotte sombre et des pommes de terre dedans"
+   },
+   "author": "Erik Burton",
+   "h": 758,
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0/",
+   "page": "https://www.flickr.com/photos/13470115@N08/6396200661",
+   "src": "/photos/sol-090.jpg",
+   "w": 960
+  }
+ },
+ "SOL-115": {
+  "photo": {
+   "alt": {
+    "en": "Gloved hands pressing a mix of clay and straw onto a cob wall being built",
+    "fr": "Des mains gantées pressent un mélange d’argile et de paille sur un mur en bauge en construction"
+   },
+   "author": "Fountains of Bryn Mawr",
+   "h": 522,
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Cob_wall_mud_construction.jpg",
+   "src": "/photos/sol-115.jpg",
+   "w": 690
+  }
+ },
+ "SOL-126": {
+  "photo": {
+   "alt": {
+    "en": "A rocket mass heater: a steel barrel above the fire and a long cob bench with cushions",
+    "fr": "Un poêle de masse rocket : un fût d’acier au-dessus du foyer et un long banc en bauge avec des coussins"
+   },
+   "author": "Derrick Parker",
+   "h": 640,
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Cob_style_rocket_mass_heater.jpg",
+   "src": "/photos/sol-126.jpg",
+   "w": 960
+  }
+ },
+ "SOL-131": {
+  "photo": {
+   "alt": {
+    "en": "Four concrete biosand filters, each pouring clean water into a basin",
+    "fr": "Quatre filtres à sable en béton, chacun versant l’eau épurée dans une bassine"
+   },
+   "author": "Nora.jeanine530",
+   "h": 480,
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Biosand_Filters_in_Guatemala.JPG",
+   "src": "/photos/sol-131.jpg",
+   "w": 640
+  }
+ },
+ "SOL-133": {
+  "photo": {
+   "alt": {
+    "en": "Diagram: the shower's drain water runs down through a coil that warms the cold water on its way to the water heater",
+    "fr": "Schéma : l’eau de la douche descend dans un serpentin qui réchauffe l’eau froide en route vers le chauffe-eau"
+   },
+   "author": "Ashp uk",
+   "h": 819,
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Waste_Water_Heat_Recovery_in_the_most_efficient_%27equal_flow%27_configuration.png",
+   "src": "/photos/sol-133.png",
+   "w": 489
   }
  },
  "SOL-136": {
   "photo": {
    "alt": {
-    "en": "A rocket stove built of concrete blocks and clay outdoors, with its chimney and an oven beside it",
-    "fr": "Un poêle-fusée en parpaings et en terre, dehors, avec sa cheminée et un four à côté"
+    "en": "A rocket stove of stacked bricks, burning, with sticks fed in at the bottom",
+    "fr": "Un réchaud rocket en briques empilées, allumé, le bois glissé par le bas"
    },
-   "author": "Sarah and Jason",
-   "h": 720,
-   "licence": "CC BY-SA 2.0",
-   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Rocket_Stove_with_Oven.jpg",
+   "author": "wsssst",
+   "h": 960,
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0/",
+   "page": "https://www.flickr.com/photos/28451957@N06/3819053784",
    "src": "/photos/sol-136.jpg",
+   "w": 720
+  }
+ },
+ "SOL-169": {
+  "photo": {
+   "alt": {
+    "en": "A wooden haybox, open, with a cooking pot sitting in its insulated hollow",
+    "fr": "Une marmite norvégienne en bois, ouverte, une cocotte posée dans son creux isolé"
+   },
+   "author": "DKrieger",
+   "h": 960,
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Kochkiste-0439.jpg",
+   "src": "/photos/sol-169.jpg",
+   "w": 960
+  }
+ },
+ "SOL-250": {
+  "photo": {
+   "alt": {
+    "en": "Red underfloor heating pipes laid in loops on insulation boards, before the screed",
+    "fr": "Des tubes rouges de plancher chauffant posés en boucles sur des panneaux isolants, avant la chape"
+   },
+   "author": "H. Raab (User:Vesta)",
+   "h": 720,
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Underfloor_heating_pipes.jpg",
+   "src": "/photos/sol-250.jpg",
+   "w": 960
+  }
+ },
+ "SOL-253": {
+  "photo": {
+   "alt": {
+    "en": "Two solar panels hung on the balcony rail of a block of flats",
+    "fr": "Deux panneaux solaires accrochés à la rambarde d’un balcon d’immeuble"
+   },
+   "author": "Triplec85",
+   "h": 794,
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:2023-05-05_Sogenanntes_Balkonkraftwerk,_eine_Mini-PV-Anlage,_in_Tauberbischofsheim_03.jpg",
+   "src": "/photos/sol-253.jpg",
    "w": 960
   }
  }

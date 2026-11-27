@@ -105,6 +105,9 @@ export const FAMILY_UNIT = {
  */
 export const BYPRODUCT_FAMILIES = new Set(['flue', 'reject'])
 
+// Gentle warmth: what a heat store takes in and gives back (openEnds).
+const STORED_WARMTH = 'IO-35'
+
 /*
  * IO families that share a unit. A shared unit is not a shared pool: cooling is not heat
  * supply, and hot water is not space heat.
@@ -474,8 +477,12 @@ function openEnds(nodes, graph, solById, data) {
     const s = solById[n.sol]
     if (!s) continue
     const done = new Set()
+    const gives = new Set((s.outputs || []).map((o) => o.io))
     for (const { io } of s.inputs || []) {
       if (done.has(io) || free.has(io)) continue
+      // A heat store (exposed mass, a water wall, cob or rammed earth) takes gentle warmth and gives it
+      // back: warmth fed in is an option, not a need, so it is never "not supplied" (F10-q, Eric 2026-11-27).
+      if (io === STORED_WARMTH && gives.has(io)) continue
       const group = (s.input_groups || []).find((g) => g.includes(io)) || [io]
       group.forEach((x) => done.add(x))
       if (group.some((x) => free.has(x) || edges.some((e) => e.to === n.id && carried(e, x, 'from')))) continue

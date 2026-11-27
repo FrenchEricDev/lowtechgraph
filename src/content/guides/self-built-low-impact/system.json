@@ -68,8 +68,8 @@
       "id": "cob",
       "sol": "SOL-115",
       "position": {
-        "x": 60,
-        "y": 1900
+        "x": 720,
+        "y": 60
       }
     },
     {
@@ -77,7 +77,7 @@
       "sol": "SOL-017",
       "position": {
         "x": 60,
-        "y": 2130
+        "y": 1900
       }
     },
     {
@@ -85,14 +85,6 @@
       "sol": "SOL-025",
       "position": {
         "x": 390,
-        "y": 60
-      }
-    },
-    {
-      "id": "mass",
-      "sol": "SOL-029",
-      "position": {
-        "x": 720,
         "y": 60
       }
     },
@@ -205,7 +197,7 @@
       "sol": "SOL-215",
       "position": {
         "x": 60,
-        "y": 2360
+        "y": 2130
       }
     },
     {
@@ -308,17 +300,17 @@
       ]
     },
     {
-      "id": "e-south-mass",
+      "id": "e-south-cob",
       "source": "south",
-      "target": "mass",
+      "target": "cob",
       "io": "IO-35",
       "ios": [
         "IO-35"
       ]
     },
     {
-      "id": "e-mass-house",
-      "source": "mass",
+      "id": "e-cob-house",
+      "source": "cob",
       "target": "house",
       "io": "IO-35",
       "ios": [
