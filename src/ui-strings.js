@@ -74,6 +74,10 @@ const EN = {
     navLabel: 'Main',
     // While the builder loads on demand.
     loading: 'Loading…',
+    // In place of the whole page when drawing it failed (src/main.jsx), rather than a blank screen.
+    crashHeading: 'This page stopped working',
+    crashBody: 'Something went wrong while showing it. Reloading the page usually fixes it.',
+    crashReload: 'Reload the page',
     // The mobile menu: below 900px the settings gear becomes this button. filtersActive is
     // shown when a catalogue-wide filter is on; it goes into the accessible name and the title,
     // since the dot beside it is decorative.

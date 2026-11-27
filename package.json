@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "check:i18n": "node scripts/check-i18n-identity.mjs",
-    "build": "oxlint && node scripts/check-i18n-identity.mjs && vite build && node scripts/check-i18n-identity.mjs --built && node scripts/prerender.mjs && node scripts/qa-contrast.mjs && node scripts/qa-measure.mjs && node scripts/qa-seo.mjs && node scripts/qa-build.mjs && node scripts/qa-budget.mjs && node scripts/qa-adequacy.mjs && node scripts/qa-host.mjs && node scripts/qa-french.mjs && node scripts/qa-markdown.mjs",
+    "build": "oxlint && node scripts/check-i18n-identity.mjs && vite build && node scripts/check-i18n-identity.mjs --built && node scripts/prerender.mjs && node scripts/qa-contrast.mjs && node scripts/qa-measure.mjs && node scripts/qa-seo.mjs && node scripts/qa-build.mjs && node scripts/qa-budget.mjs && node scripts/qa-resilience.mjs && node scripts/qa-adequacy.mjs && node scripts/qa-host.mjs && node scripts/qa-french.mjs && node scripts/qa-markdown.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "qa:seo": "node scripts/qa-seo.mjs",
@@ -17,6 +17,7 @@
     "qa:adequacy": "node scripts/qa-adequacy.mjs",
     "qa:host": "node scripts/qa-host.mjs",
     "qa:markdown": "node scripts/qa-markdown.mjs",
+    "qa:resilience": "node scripts/qa-resilience.mjs",
     "qa:journeys": "node scripts/qa-journeys.mjs"
   },
   "dependencies": {

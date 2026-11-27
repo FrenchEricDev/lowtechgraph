@@ -5,8 +5,10 @@
 // registerSW.js: owning it risks silently ending offline support.
 
 // Was this page already controlled when it loaded? On a first visit the new worker also fires
-// controllerchange, and there is nothing stale to reload. Read at module load.
-const wasControlled = !!navigator.serviceWorker?.controller
+// controllerchange, and there is nothing stale to reload. Read at module load. Only that first one
+// is skipped: a deploy later in the same visit is an update like any other (2026-11-27: a first
+// visit kept the old build while the new worker dropped its chunks, and My system came up blank).
+let controlled = !!navigator.serviceWorker?.controller
 
 // Set when an update arrived at a bad moment; applied on the reader's next navigation.
 let pending = false
@@ -85,7 +87,7 @@ export function startUpdateWatch() {
   setInterval(checkIfStale, 60 * 60 * 1000)
 
   sw.addEventListener('controllerchange', () => {
-    if (!wasControlled) return          // first registration, not an update
+    if (!controlled) { controlled = true; return }   // first registration, not an update
     if (safeToReloadNow()) applyUpdate()
     else pending = true
   })

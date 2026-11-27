@@ -91,6 +91,25 @@ await check('the bare root redirects, and its redirect carries the Link header',
   must(r.headers.get('link') === LINK_HEADER, '/: the redirect has no Link header')
 })
 
+await check('an address with no language goes to the one the browser asks for (2026-11-27)', async () => {
+  const go = async (p, lang) => {
+    const r = await worker.fetch(new Request('https://lowtechgraph.org' + p,
+      { headers: { accept: BROWSER, ...(lang ? { 'accept-language': lang } : {}) } }), env)
+    return r.status + ' ' + (r.headers.get('location') || '')
+  }
+  const cases = [
+    ['/', 'en-GB,en;q=0.9', '302 /en?l=auto'], ['/', 'de-DE,de;q=0.9', '302 /en?l=auto'],
+    ['/', 'fr-FR,fr;q=0.9,en;q=0.8', '302 /fr?l=auto'], ['/', 'en-US,fr;q=0.5', '302 /fr?l=auto'],
+    ['/', 'en,fr;q=0', '302 /en?l=auto'], ['/', null, '302 /fr?l=auto'],
+    ['/fr?l=auto', 'en-US,en;q=0.9', '302 /en?l=auto'], ['/fr?l=auto', 'fr-FR', '200 '],
+    ['/fr?l=auto', null, '200 '], ['/fr', 'en-US', '200 '], ['/en', 'fr-FR', '200 '],
+  ]
+  for (const [p, lang, want] of cases) {
+    const got = await go(p, lang)
+    must(got === want, `${p} with ${lang}: ${got}, wanted ${want}`)
+  }
+})
+
 await check('a browser gets HTML with the three Link relations and Vary: Accept', async () => {
   for (const p of ['/en', '/fr', solPath]) {
     const r = await get(p, BROWSER)

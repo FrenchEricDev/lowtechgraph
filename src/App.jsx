@@ -88,9 +88,9 @@ export default function App() {
       window.history.replaceState({ depth: 0 }, '', pathFor(parsed.route, l))
       return { lang: l, route: parsed.route }
     }
-    // Sent here by the CDN with l=auto: the host cannot branch on Accept-Language, so the root
-    // lands on French and the app corrects it. A /fr link without the marker stays French. The
-    // parameter is stripped so a reload never re-runs this.
+    // Sent here with l=auto: the Worker already picked the browser's language, and the app applies
+    // a language the reader saved. A /fr link without the marker stays French. The parameter is
+    // stripped so a reload never re-runs this.
     if (new URLSearchParams(window.location.search).get('l') === 'auto') {
       const l = preferredLang()
       window.history.replaceState({ depth: 0 }, '', pathFor(parsed.route, l))
@@ -1118,9 +1118,11 @@ function Autocomplete({ results, filters, pick, query, maxHeight }) {
 function SiteFooter({ go, compact }) {
   // On the builder, one line: the canvas needs the height, and the licence line is the
   // attribution for the catalogue content it shows.
+  // Keyed, so the switch replaces the footer whole instead of trimming its loose " · " text, which
+  // a page translator has swapped out from under React (2026-11-27, src/dom-guard.js).
   if (compact) {
     return (
-      <footer className="site-foot is-compact">
+      <footer key="compact" className="site-foot is-compact">
         <p>
           <Nav route={{ view: 'about' }} go={go} className="link">{ui.app.navAbout}</Nav>
           {' · '}
@@ -1132,7 +1134,7 @@ function SiteFooter({ go, compact }) {
     )
   }
   return (
-    <footer className="site-foot">
+    <footer key="full" className="site-foot">
       {/* Out of the top bar since D10 Q5; still one tap away from every page. */}
       <p className="site-foot-links">
         <Nav route={{ view: 'about' }} go={go} className="link">{ui.app.navAbout}</Nav>

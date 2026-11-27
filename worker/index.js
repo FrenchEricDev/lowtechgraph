@@ -105,6 +105,29 @@ async function markdownFor(request, env) {
   return res
 }
 
+/** An address with no language chosen (the bare root, or the installed app's start_url
+ *  /fr?l=auto) goes to the language the browser asks for, before any page arrives. Sending an
+ *  English reader the French page first made Chrome offer to translate it, and the translator
+ *  stayed on after the app switched to English, which crashed My system (2026-11-27). Same rule
+ *  as preferredLang() in src/router.js; l=auto stays so a language the reader saved still wins.
+ *  No Accept-Language (most crawlers): the French page, as before. */
+export function languageRedirect(request) {
+  if (request.method !== 'GET' && request.method !== 'HEAD') return null
+  const url = new URL(request.url)
+  const root = url.pathname === '/'
+  if (!root && !(url.pathname === '/fr' && url.searchParams.get('l') === 'auto')) return null
+  const asked = request.headers.get('accept-language')
+  if (!asked) return null
+  const french = asked.split(',').some((t) => {
+    const [tag, ...params] = t.trim().split(';')
+    const q = params.map((p) => p.trim()).find((p) => p.startsWith('q='))
+    return tag.trim().slice(0, 2).toLowerCase() === 'fr' && !(q && Number(q.slice(2)) === 0)
+  })
+  if (french && !root) return null
+  return new Response(null, { status: 302, headers: {
+    location: french ? '/fr?l=auto' : '/en?l=auto', vary: 'Accept-Language', 'cache-control': 'no-store' } })
+}
+
 export default {
   async fetch(request, env) {
     // Assets first: whatever happens below, this is what the reader gets.
@@ -119,7 +142,7 @@ export default {
       console.log('markdown lookup failed:', err && err.message)
     }
     if (!response) {
-      response = await env.ASSETS.fetch(request)
+      response = languageRedirect(request) || await env.ASSETS.fetch(request)
       // The bare root is a redirect (public/_redirects), and it is the address an agent's scan
       // reads first: it carries the Link header too (found live, 2026-11-13).
       const redirect = response.status >= 300 && response.status < 400
