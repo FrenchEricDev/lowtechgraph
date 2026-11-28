@@ -21,6 +21,7 @@
  * Run:  node scripts/qa-french.mjs
  */
 import frStrings from '../src/ui-strings.fr.js'
+import catalogue from '../src/data/catalogue.json' with { type: 'json' }
 
 let failures = 0
 const fail = (what, detail) => {
@@ -174,6 +175,39 @@ if (badSpace.length) {
     badSpace.slice(0, 8).map(([k]) => k).join(', '))
 } else {
   pass('every ? ! : ; in French follows a no-break space')
+}
+
+// No French in an English solution name (Eric, 2026-11-27: "Wood-chip filter (Filtres a Broyat de
+// Bois, FBB)"). The tell: an accented letter, or a bracket the French name repeats, accents aside:
+// two of its words, or its only word. One shared word in a longer bracket is common to both
+// languages (thermostat, passive). Codes (a digit, or all capitals) and the words both languages
+// borrow are left alone. Not checked: French outside brackets that the French name does not
+// repeat, or names elsewhere than the catalogue's solutions.
+// pisé is the English word too; kotatsu and LoRa are names.
+const BOTH_LANGUAGES = new Set(['kotatsu', 'lora', 'pise'])
+// Looked at and English (2026-11-27): words the two languages share. Kept by id, and flagged once
+// no longer needed, like ACCENTLESS_BUT_CORRECT above.
+const ENGLISH_AFTER_ALL = new Set(['SOL-130', 'SOL-193', 'SOL-246'])
+const fold = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+const looksFrench = (s) => {
+  if (ACCENTED.test(s.name)) return true
+  const frWords = new Set(fold(s.fr?.name || '').split(/[^a-z0-9]+/))
+  return [...s.name.matchAll(/\(([^)]*)\)/g)].some(([, inner]) => {
+    const words = inner.split(/[^A-Za-z0-9]+/).filter((w) => w.length >= 4 && !/\d/.test(w) && w !== w.toUpperCase())
+    const shared = words.filter((w) => frWords.has(fold(w)) && !BOTH_LANGUAGES.has(fold(w)))
+    return shared.length >= 2 || (words.length === 1 && shared.length === 1)
+  })
+}
+const flagged = catalogue.solutions.filter(looksFrench)
+const frenchInEnglish = flagged.filter((s) => !ENGLISH_AFTER_ALL.has(s.id))
+const notNeeded = [...ENGLISH_AFTER_ALL].filter((id) => !flagged.some((s) => s.id === id))
+if (frenchInEnglish.length) {
+  fail(`${frenchInEnglish.length} English solution names carry French`,
+    frenchInEnglish.slice(0, 8).map((s) => `${s.id} ${s.name}`).join('; '))
+} else if (notNeeded.length) {
+  fail(`no longer flagged, drop from ENGLISH_AFTER_ALL: ${notNeeded.join(', ')}`)
+} else {
+  pass(`no French in the ${catalogue.solutions.length} English solution names (${ENGLISH_AFTER_ALL.size} looked at and kept)`)
 }
 
 console.log(`\n${failures ? `${failures} FAILED` : 'french strings OK'}\n`)

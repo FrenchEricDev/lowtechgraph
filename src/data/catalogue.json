@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26",
+ "generated": "2026-11-28",
  "counts": {
   "functions": 15,
   "subfunctions": 89,
@@ -6330,7 +6330,7 @@
    "name": "Mechanical ventilation with heat recovery (MVHR)",
    "subfunction_id": "FN-03.2",
    "function_id": "FN-03",
-   "summary": "A fan unit that pulls stale air out of the house and brings fresh air in, passing both streams through a heat exchanger. It can be a factory unit installed by a professional, or built at home; the home build is the version rated here, and takes about two weeks, some electronics and a little programming. The outgoing warm air heats the incoming cold air without mixing with it. The house gets fresh air all the time while keeping most of its heat. One whole-house home build, with a plastic-plate exchanger and small 12 V fans run by a microcontroller, kept 84% of the heat over four months for about €1,600 with its ducts.",
+   "summary": "A fan unit that pulls stale air out of the house and brings fresh air in, passing both streams through a heat exchanger. It can be a factory unit installed by a professional, or built at home; the home build is the version rated here, and takes about two weeks, some electronics and a little programming. The outgoing warm air heats the incoming cold air without mixing with it. The house gets fresh air all the time while keeping most of its heat. One whole-house home build, with a plastic-plate exchanger and small 12 V fans run by a microcontroller, kept 84% of the heat over four months for about €1,600 with its ducts. Its fans use electricity all the time, and its filters need changing several times a year.",
    "slug": "mechanical-ventilation-with-heat-recovery",
    "slug_fr": "ventilation-mecanique-double-flux",
    "inputs": [
@@ -6456,7 +6456,7 @@
    ],
    "fr": {
     "name": "Ventilation mécanique double flux",
-    "description": "Un appareil à ventilateurs qui extrait l’air vicié et fait entrer de l’air neuf, en faisant passer les deux flux dans un échangeur. Ce peut être une centrale du commerce posée par un professionnel, ou une fabrication maison ; c’est la version maison qui est notée ici, et elle demande environ deux semaines, un peu d’électronique et de programmation. L’air chaud sortant réchauffe l’air froid entrant sans s’y mêler. La maison a de l’air frais en permanence tout en gardant l’essentiel de sa chaleur. Une installation maison pour toute une maison, avec un échangeur à plaques plastiques et de petits ventilateurs 12 V pilotés par un microcontrôleur, a gardé 84 % de la chaleur sur quatre mois, pour environ 1 600 € avec ses gaines.",
+    "description": "Un appareil à ventilateurs qui extrait l’air vicié et fait entrer de l’air neuf, en faisant passer les deux flux dans un échangeur. Ce peut être une centrale du commerce posée par un professionnel, ou une fabrication maison ; c’est la version maison qui est notée ici, et elle demande environ deux semaines, un peu d’électronique et de programmation. L’air chaud sortant réchauffe l’air froid entrant sans s’y mêler. La maison a de l’air frais en permanence tout en gardant l’essentiel de sa chaleur. Une installation maison pour toute une maison, avec un échangeur à plaques plastiques et de petits ventilateurs 12 V pilotés par un microcontrôleur, a gardé 84 % de la chaleur sur quatre mois, pour environ 1 600 € avec ses gaines. Ses ventilateurs consomment de l’électricité en permanence, et ses filtres sont à changer plusieurs fois par an.",
     "lifespan": "15 à 30 ans pour l’unité centrale ; les filtres nécessitent un remplacement tous les 3-6 mois, les ventilateurs/moteurs sont le point de défaillance habituel à mi-vie",
     "site_prerequisites": "Une enveloppe étanche à l’air, la VMC double flux perd l’essentiel de son intérêt sans cela",
     "build_note": "unité à gaines, mise en service",
@@ -8556,7 +8556,7 @@
   },
   {
    "id": "SOL-061",
-   "name": "Electric resistive water heater (cumulus)",
+   "name": "Electric resistive water heater",
    "subfunction_id": "FN-06.5",
    "function_id": "FN-06",
    "summary": "An insulated tank of water with an electric heating element inside. Like a large kettle, the element heats the water, a thermostat switches it off at the set temperature, and the insulation keeps the water hot until it is used. It is cheap to buy and simple: a failed element or thermostat is a part you can replace yourself. But every bit of heat is paid for in electricity, so it is the costliest way to heat water.",
@@ -11232,7 +11232,7 @@
    "name": "Electric refrigerator",
    "subfunction_id": "FN-10.1",
    "function_id": "FN-10",
-   "summary": "An ordinary electric fridge, with a compressor that pumps heat out of the insulated box. It keeps food cold whatever the season. It needs power all the time, though a small, efficient model can run from a solar system with batteries.",
+   "summary": "An ordinary electric fridge, with a compressor that pumps heat out of the insulated box. It keeps food cold whatever the season. It needs power all the time, though a small, efficient model can run from a solar system with batteries. In a power cut, it keeps food safe for about four hours.",
    "slug": "electric-refrigerator",
    "slug_fr": "refrigerateur-electrique",
    "inputs": [
@@ -11308,11 +11308,17 @@
      "tier": "C",
      "url": "https://standards.nsf.org/higherlogic/ws/public/download/348/NAHB%202007%20StudyUseful%20Life%20of%20Home%20Components.pdf",
      "lang": null
+    },
+    {
+     "name": "USDA Food Safety and Inspection Service, \"Keep Your Food Safe During Emergencies\"",
+     "tier": "A",
+     "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/emergencies/keep-your-food-safe-during-emergencies",
+     "lang": null
     }
    ],
    "fr": {
     "name": "Réfrigérateur électrique",
-    "description": "Un réfrigérateur électrique ordinaire, dont le compresseur pompe la chaleur hors de la boîte isolée. Il garde les aliments au froid en toute saison. Il a besoin de courant en permanence, mais un petit modèle efficace peut fonctionner sur une installation solaire avec batteries.",
+    "description": "Un réfrigérateur électrique ordinaire, dont le compresseur pompe la chaleur hors de la boîte isolée. Il garde les aliments au froid en toute saison. Il a besoin de courant en permanence, mais un petit modèle efficace peut fonctionner sur une installation solaire avec batteries. Pendant une coupure de courant, il garde les aliments sûrs environ quatre heures.",
     "lifespan": "10 à 15 ans typiquement pour un réfrigérateur résidentiel à compresseur",
     "build_note": "appareil, branchement direct",
     "efficiency_note": "maintient une température fixe toute l’année quelle que soit la météo",
@@ -14481,7 +14487,7 @@
   },
   {
    "id": "SOL-122",
-   "name": "Light straw-clay infill (torchis leger)",
+   "name": "Light straw-clay infill",
    "subfunction_id": "FN-02.3",
    "function_id": "FN-02",
    "summary": "Loose straw coated in liquid clay and packed into a timber frame to make the wall. The straw insulates and the clay binds it, holds a little heat and lets moisture pass. It makes a warm, healthy wall from cheap, local materials.",
@@ -15439,7 +15445,7 @@
    "name": "Bio-sand filter",
    "subfunction_id": "FN-06.3",
    "function_id": "FN-06",
-   "summary": "A tall container filled with layers of sand and gravel that water is poured into and slowly passes through. The proven design, rated here, is a concrete body about a metre tall; a small version in a plastic pipe gives about 5 litres a day, but its water had not been tested safe when it was published. A living layer of tiny organisms grows on top of the sand and eats germs, while the sand holds back dirt. It makes water safe to drink with no electricity, but takes time to start working and needs regular care.",
+   "summary": "A tall container filled with layers of sand and gravel that water is poured into and slowly passes through. The proven design, rated here, is a concrete body about a metre tall; a small version in a plastic pipe gives about 5 litres a day, but its water had not been tested safe when it was published. A living layer of tiny organisms grows on top of the sand and eats germs, while the sand holds back dirt. It makes water safe to drink with no electricity, but takes time to start working and needs regular care. It does not remove chemicals dissolved in the water, such as pesticides or arsenic.",
    "slug": "bio-sand-filter",
    "slug_fr": "filtre-a-sable-biologique",
    "inputs": [
@@ -15544,11 +15550,17 @@
      "tier": "C",
      "url": null,
      "lang": null
+    },
+    {
+     "name": "SSWM, Biosand Filter (2019), Effectiveness: dissolved chemicals, such as organic pesticides or arsenic, are not removed (read 2026-11-28)",
+     "tier": "B",
+     "url": "https://sswm.info/content/biosand-filter",
+     "lang": null
     }
    ],
    "fr": {
     "name": "Filtre à sable biologique",
-    "description": "Un grand récipient rempli de couches de sable et de gravier, dans lequel on verse l’eau qui le traverse lentement. Le modèle éprouvé, noté ici, est un corps en béton d’environ un mètre de haut ; une petite version dans un tube plastique donne environ 5 litres par jour, mais son eau n’avait pas été testée potable lors de sa publication. Une couche vivante de minuscules organismes se forme sur le sable et mange les germes, tandis que le sable retient les saletés. L’eau devient potable sans électricité, mais le filtre met du temps à devenir efficace et demande un entretien régulier.",
+    "description": "Un grand récipient rempli de couches de sable et de gravier, dans lequel on verse l’eau qui le traverse lentement. Le modèle éprouvé, noté ici, est un corps en béton d’environ un mètre de haut ; une petite version dans un tube plastique donne environ 5 litres par jour, mais son eau n’avait pas été testée potable lors de sa publication. Une couche vivante de minuscules organismes se forme sur le sable et mange les germes, tandis que le sable retient les saletés. L’eau devient potable sans électricité, mais le filtre met du temps à devenir efficace et demande un entretien régulier. Il ne retire pas les produits chimiques dissous dans l’eau, comme les pesticides ou l’arsenic.",
     "lifespan": "10 à 20 ans ou plus pour la structure du réservoir/media ; la couche biologique (schmutzdecke) nécessite des semaines pour se re-maturer si perturbée, elle n’est pas remplacée sur un calendrier",
     "build_note": "granulométrie du media + béton",
     "efficiency_note": "microbien uniquement, aucun chimique",
@@ -17094,7 +17106,7 @@
   },
   {
    "id": "SOL-146",
-   "name": "Strapped straw external insulation (ITE paille sanglee)",
+   "name": "Strapped straw external insulation",
    "subfunction_id": "FN-02.4",
    "function_id": "FN-02",
    "summary": "Straw bales fixed with straps against the outside of an existing wall, then rendered over. The bales wrap the old wall in thick insulation with very little framework. It makes an old house much warmer without touching the rooms inside.",
@@ -17731,7 +17743,7 @@
   },
   {
    "id": "SOL-152",
-   "name": "Wood-chip filter (Filtres a Broyat de Bois, FBB)",
+   "name": "Wood-chip filter",
    "subfunction_id": "FN-07.2",
    "function_id": "FN-07",
    "summary": "A bed of wood chips that the used water from sinks and showers trickles through. Microbes living on the chips feed on the dirt and clean the water. It works with no power, where the ground slopes enough, and only needs the chips topped up as they break down.",
@@ -20153,7 +20165,7 @@
   },
   {
    "id": "SOL-177",
-   "name": "Hydraulic ram pump (belier hydraulique)",
+   "name": "Hydraulic ram pump",
    "subfunction_id": "FN-06.1",
    "function_id": "FN-06",
    "summary": "A pump driven by a flowing stream. Water rushing down a pipe is suddenly stopped by a valve, and the shock pushes a small part of it up to a higher tank. It lifts water with no electricity or fuel and can run for decades, but needs a stream with enough fall.",
@@ -22352,7 +22364,7 @@
   },
   {
    "id": "SOL-194",
-   "name": "Lime-hemp (chaux-chanvre) insulating render",
+   "name": "Lime-hemp insulating render",
    "subfunction_id": "FN-02.3",
    "function_id": "FN-02",
    "summary": "A thick render of lime mixed with chopped hemp stalk, applied to old masonry walls inside or out. It adds insulation while letting the wall breathe. Old walls feel warmer and stay drier, and the render can last a century if well applied.",
@@ -25217,7 +25229,7 @@
   },
   {
    "id": "SOL-223",
-   "name": "Heat-pump water heater (chauffe-eau thermodynamique)",
+   "name": "Heat-pump water heater",
    "subfunction_id": "FN-06.5",
    "function_id": "FN-06",
    "summary": "A water heater with a small heat pump on top of the tank. It takes warmth from the surrounding air and moves it into the water, giving two to three and a half times more heat than the electricity it uses. It needs a large unheated room or a duct to the outside, and it cools the room it draws from.",
@@ -25810,7 +25822,7 @@
     }
    ],
    "fr": {
-    "name": "Vaisselle a la main en deux bassines",
+    "name": "Vaisselle à la main en deux bassines",
     "description": "Laver dans une bassine remplie et rincer dans une seconde, plutôt que sous un robinet ouvert. La vaisselle est lavée dans une bassine d’eau chaude savonneuse et rincée dans l’autre, si bien que la même eau sert pour tout le lot. Cela ne demande ni appareil, ni plomberie, ni électricité, et l’eau de rinçage reste assez propre pour arroser. Sa faiblesse est d’être une habitude et non un dispositif : la même étude qui mesure l’évier rempli au mieux mesure le robinet courant à plus de dix fois cela, et rien dans la méthode ne s’impose de soi-même.",
     "lifespan": "Indéfinie ; deux bassines",
     "site_prerequisites": "Un évier ou deux bassines, et de l'eau chaude venue de quelque part. Rien n'est fixé au bâtiment, donc cela fonctionne partout",
@@ -28401,7 +28413,7 @@
    "name": "Plug-in balcony solar kit",
    "subfunction_id": "FN-09.1",
    "function_id": "FN-09",
-   "summary": "One or two solar panels on a balcony, a wall or a flat roof, with a small inverter that plugs into an ordinary socket. The inverter turns the panels' power into the house's current and feeds it through the socket: whatever is switched on in the home uses it first, and draws less from the grid. Solar power without a roof or an electrician; in Germany, a 400 W panel facing south makes about 280 kWh a year.",
+   "summary": "One or two solar panels on a balcony, a wall or a flat roof, with a small inverter that plugs into an ordinary socket. The inverter turns the panels' power into the house's current and feeds it through the socket: whatever is switched on in the home uses it first, and draws less from the grid. Solar power without a roof or an electrician; in Germany, a 400 W panel facing south makes about 280 kWh a year. It gives no power without the grid, so none in a power cut.",
    "slug": "plug-in-balcony-solar-kit",
    "slug_fr": "kit-solaire-de-balcon",
    "inputs": [
@@ -28460,7 +28472,7 @@
    "tutorial_status": null,
    "sources": [
     {
-     "name": "Verbraucherzentrale, Steckersolar (July 2026): 800 W inverter limit; about 280 kWh a year from a 400 W panel, vertical, unshaded, facing south; shade; landlords; registration (German rules)",
+     "name": "Verbraucherzentrale, Steckersolar (July 2026): 800 W inverter limit; about 280 kWh a year from a 400 W panel, vertical, unshaded, facing south; shade; landlords; registration (German rules); no power without a grid connection",
      "tier": "B",
      "url": "https://www.verbraucherzentrale.de/wissen/energie/erneuerbare-energien/steckersolar-solarstrom-vom-balkon-direkt-in-die-steckdose-44715",
      "lang": null
@@ -28468,7 +28480,7 @@
    ],
    "fr": {
     "name": "Kit solaire de balcon à brancher",
-    "description": "Un ou deux panneaux solaires sur un balcon, un mur ou un toit plat, avec un petit onduleur qui se branche sur une prise ordinaire. L’onduleur transforme le courant des panneaux en courant du logement et l’envoie par la prise : ce qui fonctionne dans la maison l’utilise d’abord, et prend moins au réseau. De l’électricité solaire sans toit ni électricien ; en Allemagne, un panneau de 400 W orienté au sud produit environ 280 kWh par an.",
+    "description": "Un ou deux panneaux solaires sur un balcon, un mur ou un toit plat, avec un petit onduleur qui se branche sur une prise ordinaire. L’onduleur transforme le courant des panneaux en courant du logement et l’envoie par la prise : ce qui fonctionne dans la maison l’utilise d’abord, et prend moins au réseau. De l’électricité solaire sans toit ni électricien ; en Allemagne, un panneau de 400 W orienté au sud produit environ 280 kWh par an. Sans le réseau, il ne produit rien, donc rien pendant une coupure.",
     "lifespan": "Les panneaux plusieurs décennies ; le micro-onduleur est la pièce qui lâche en premier",
     "site_prerequisites": "Une rambarde, un mur ou un toit plat ensoleillé, sans ombre : une ombre partielle peut diviser la production par plus de deux. Une prise à proximité, seule (pas de multiprise), et l’accord du propriétaire ou de la copropriété pour ce qui est fixé dehors",
     "build_note": "s’achète en kit ; le fixer solidement à la rambarde est le vrai travail",

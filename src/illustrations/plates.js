@@ -1988,7 +1988,7 @@ export const PLATES = [
   },
   /* ---- fourth batch, 2026-09-11: the utility room. Twenty plates, 22 solutions. */
   {
-    id: 'SOL-061', fnEn: 'Potable water supply', fnFr: 'Alimentation en eau potable', en: 'Electric resistive water heater (cumulus)', fr: 'Chauffe-eau électrique à résistance (cumulus)', ...UZ,
+    id: 'SOL-061', fnEn: 'Potable water supply', fnFr: 'Alimentation en eau potable', en: 'Electric resistive water heater', fr: 'Chauffe-eau électrique à résistance (cumulus)', ...UZ,
     // Cold in at the bottom, hot out at the top: the tank stratifies, and the element sits low.
     site: () => KU.tank('electric')(6),
     draw: (t) => annotated(t, { obj: KU.tank('electric'), label: ['ELECTRIC WATER HEATER', 'CHAUFFE-EAU ÉLECTRIQUE', 186, 182], notes: [
@@ -2008,7 +2008,7 @@ export const PLATES = [
       { x: 222, y: 297, en: 'COLD IN', fr: 'EAU FROIDE' }] }),
   },
   {
-    id: 'SOL-223', fnEn: 'Potable water supply', fnFr: 'Alimentation en eau potable', en: 'Heat-pump water heater (chauffe-eau thermodynamique)', fr: 'Chauffe-eau thermodynamique', ...UZ,
+    id: 'SOL-223', fnEn: 'Potable water supply', fnFr: 'Alimentation en eau potable', en: 'Heat-pump water heater', fr: 'Chauffe-eau thermodynamique', ...UZ,
     // The catalogue's own figure: 2 to 3.5 units of heat per unit of electricity, the rest drawn
     // from the room's air -- which is why it wants a big unheated room, and this is one.
     site: () => KU.tank('heatpump')(6),

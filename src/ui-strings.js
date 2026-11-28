@@ -255,7 +255,7 @@ const EN = {
     // F10 example homes.
     homeTitle: 'The whole home, as one system',
     homeOpen: 'Open this home in My system',
-    homeCount: 'Opened in your system, these {n} solutions and their links become your own copy, which you can change as you like. This home shows how the pieces fit; it is not a design for yours. To add one solution only, use its own button in the list below.',
+    homeCount: 'Opened in your system, these {n} solutions and their links become your own copy, which you can change as you like. This home shows how the pieces fit; it is not a design for yours. Ordinary appliances appear only where they matter to this home’s goal. To add one solution only, use its own button in the list below.',
     systemTitle: 'All of it, as one system',
     systemOpen: 'Open this system in My system',
     systemCount: 'Opened in your system, these {n} solutions and their links become your own copy, where you can change anything and add the rest of the home. This system shows how the pieces fit; it is not a design for your home. To add one solution only, use its own button in the list below.',

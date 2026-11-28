@@ -93,10 +93,5 @@
     "SOL-249",
     "SOL-253"
   ],
-  "notes": {
-    "SOL-253": {
-      "en": "Stops in a power cut: it feeds the sockets only while the grid is on.",
-      "fr": "S’arrête pendant une coupure : il n’alimente les prises que quand le réseau fonctionne."
-    }
-  }
+  "notes": {}
 }

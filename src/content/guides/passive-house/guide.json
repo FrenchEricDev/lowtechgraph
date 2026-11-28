@@ -100,12 +100,8 @@
   ],
   "notes": {
     "SOL-027": {
-      "en": "Moved by hand each day in summer: without its shading, the house can overheat.",
-      "fr": "Se manœuvrent à la main chaque jour l’été : sans ses protections solaires, la maison peut surchauffer."
-    },
-    "SOL-040": {
-      "en": "Uses power, and its filters need changing now and then.",
-      "fr": "Consomme de l’électricité, et ses filtres sont à changer de temps en temps."
+      "en": "They are the only shade on the east and west windows: if they are left open on a summer day, the house can overheat.",
+      "fr": "Seuls à protéger les fenêtres est et ouest : s’ils restent ouverts un jour d’été, la maison peut surchauffer."
     },
     "SOL-076": {
       "en": "Gives no power in a power cut: with no battery, its inverter shuts down with the grid.",

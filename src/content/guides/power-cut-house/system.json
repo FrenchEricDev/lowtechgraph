@@ -241,6 +241,46 @@
       }
     },
     {
+      "id": "dishwasher",
+      "sol": "SOL-227",
+      "position": {
+        "x": 390,
+        "y": 2130
+      }
+    },
+    {
+      "id": "fridge",
+      "sol": "SOL-087",
+      "position": {
+        "x": 390,
+        "y": 2360
+      }
+    },
+    {
+      "id": "coolbox",
+      "sol": "SOL-245",
+      "position": {
+        "x": 720,
+        "y": 980
+      }
+    },
+    {
+      "id": "net",
+      "sol": "SOL-112",
+      "position": {
+        "x": 390,
+        "y": 2590
+      }
+    },
+    {
+      "id": "boiler",
+      "sol": "SOL-061",
+      "position": {
+        "x": 1050,
+        "y": 980
+      }
+    },
+    {
       "id": "sort",
       "sol": "SOL-108",
       "position": {
@@ -277,7 +317,7 @@
       "dest": "dwelling",
       "position": {
         "x": 390,
-        "y": 2130
+        "y": 2820
       }
     },
     {
@@ -712,6 +752,132 @@
       "io": "IO-46",
       "ios": [
         "IO-46"
+      ]
+    },
+    {
+      "id": "e-water-dishwasher",
+      "source": "water",
+      "target": "dishwasher",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-grid-dishwasher",
+      "source": "grid",
+      "target": "dishwasher",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-dishwasher-sewer",
+      "source": "dishwasher",
+      "target": "sewer",
+      "io": "IO-10",
+      "ios": [
+        "IO-10"
+      ]
+    },
+    {
+      "id": "e-grid-fridge",
+      "source": "grid",
+      "target": "fridge",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-fridge-coolbox",
+      "source": "fridge",
+      "target": "coolbox",
+      "io": "IO-32",
+      "ios": [
+        "IO-32"
+      ]
+    },
+    {
+      "id": "e-fridge-house",
+      "source": "fridge",
+      "target": "house",
+      "io": "IO-32",
+      "ios": [
+        "IO-32"
+      ]
+    },
+    {
+      "id": "e-coolbox-house",
+      "source": "coolbox",
+      "target": "house",
+      "io": "IO-32",
+      "ios": [
+        "IO-32"
+      ]
+    },
+    {
+      "id": "e-grid-net",
+      "source": "grid",
+      "target": "net",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-net-house",
+      "source": "net",
+      "target": "house",
+      "io": "IO-25",
+      "ios": [
+        "IO-25"
+      ]
+    },
+    {
+      "id": "e-grid-boiler",
+      "source": "grid",
+      "target": "boiler",
+      "io": "IO-03",
+      "ios": [
+        "IO-03"
+      ]
+    },
+    {
+      "id": "e-pipes-boiler",
+      "source": "pipes",
+      "target": "boiler",
+      "io": "IO-09",
+      "ios": [
+        "IO-09"
+      ]
+    },
+    {
+      "id": "e-boiler-shower",
+      "source": "boiler",
+      "target": "shower",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-boiler-dishes",
+      "source": "boiler",
+      "target": "dishes",
+      "io": "IO-17",
+      "ios": [
+        "IO-17"
+      ]
+    },
+    {
+      "id": "e-boiler-house",
+      "source": "boiler",
+      "target": "house",
+      "io": "IO-41",
+      "ios": [
+        "IO-41"
       ]
     },
     {

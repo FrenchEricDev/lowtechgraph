@@ -101,20 +101,12 @@
   ],
   "notes": {
     "SOL-032": {
-      "en": "Needs cool nights.",
-      "fr": "Demande des nuits fraîches."
+      "en": "When heatwave nights stay warm, the ceiling fan and, in dry air, the evaporative cooler take over.",
+      "fr": "Quand les nuits de canicule restent chaudes, le ventilateur de plafond et, par air sec, le rafraîchisseur prennent le relais."
     },
     "SOL-053": {
       "en": "Its tank must stand high enough to feed the toilet and the garden. In a long drought, keep its water for drinking and the toilet, and let the cooler and the garden stop first.",
       "fr": "Sa cuve doit être posée assez haut pour alimenter les toilettes et le jardin. Dans une longue sécheresse, gardez son eau pour boire et pour les toilettes, et laissez le rafraîchisseur et le jardin s’arrêter les premiers."
-    },
-    "SOL-127": {
-      "en": "Needs dry air: in humid air it cools little.",
-      "fr": "Demande un air sec : dans un air humide, il rafraîchit peu."
-    },
-    "SOL-148": {
-      "en": "Takes out most germs, not chemicals.",
-      "fr": "Retire la plupart des germes, pas les produits chimiques."
     }
   }
 }

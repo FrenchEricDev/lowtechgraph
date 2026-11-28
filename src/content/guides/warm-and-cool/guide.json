@@ -88,8 +88,8 @@
   ],
   "notes": {
     "SOL-032": {
-      "en": "Needs cool nights; switch the ventilation unit off while the windows are open.",
-      "fr": "Demande des nuits fraîches ; arrêtez la ventilation quand les fenêtres sont ouvertes."
+      "en": "Switch the ventilation unit off while the windows are open.",
+      "fr": "Arrêtez la ventilation quand les fenêtres sont ouvertes."
     }
   }
 }

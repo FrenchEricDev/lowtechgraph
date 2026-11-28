@@ -174,7 +174,7 @@ export const fr = {
   guide: {
     homeTitle: 'Tout le logement, en un seul système',
     homeOpen: 'Ouvrir ce logement dans Mon système',
-    homeCount: 'Ouvertes dans votre système, ces {n} solutions et leurs liens deviennent votre copie, que vous pouvez modifier à votre guise. Ce logement montre comment les pièces s’assemblent ; ce n’est pas un plan pour le vôtre. Pour n’ajouter qu’une solution, utilisez son propre bouton dans la liste plus bas.',
+    homeCount: 'Ouvertes dans votre système, ces {n} solutions et leurs liens deviennent votre copie, que vous pouvez modifier à votre guise. Ce logement montre comment les pièces s’assemblent ; ce n’est pas un plan pour le vôtre. Les appareils ordinaires n’y figurent que s’ils comptent pour l’objectif de ce logement. Pour n’ajouter qu’une solution, utilisez son propre bouton dans la liste plus bas.',
     systemTitle: 'Le tout, en un seul système',
     systemOpen: 'Ouvrir ce système dans Mon système',
     systemCount: 'Ouvertes dans votre système, ces {n} solutions et leurs liens deviennent votre copie, où vous pouvez tout modifier et ajouter le reste du logement. Ce système montre comment les pièces s’assemblent ; ce n’est pas un plan pour votre logement. Pour n’ajouter qu’une solution, utilisez son propre bouton dans la liste plus bas.',

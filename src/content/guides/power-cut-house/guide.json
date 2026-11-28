@@ -63,7 +63,7 @@
       }
     }
   ],
-  "cards": 29,
+  "cards": 34,
   "solutions": [
     "SOL-020",
     "SOL-031",
@@ -72,14 +72,17 @@
     "SOL-055",
     "SOL-057",
     "SOL-059",
+    "SOL-061",
     "SOL-076",
     "SOL-079",
     "SOL-080",
+    "SOL-087",
     "SOL-089",
     "SOL-090",
     "SOL-091",
     "SOL-094",
     "SOL-108",
+    "SOL-112",
     "SOL-114",
     "SOL-163",
     "SOL-169",
@@ -92,21 +95,43 @@
     "SOL-215",
     "SOL-216",
     "SOL-217",
+    "SOL-227",
     "SOL-228",
+    "SOL-245",
     "SOL-251"
   ],
   "notes": {
     "SOL-031": {
-      "en": "Stops with the grid.",
-      "fr": "S’arrête avec le réseau."
+      "en": "Stops with the grid; the wood cookstove then warms the kitchen, and the house in cold weather.",
+      "fr": "S’arrête avec le réseau électrique ; la cuisinière à bois chauffe alors la cuisine, et la maison par temps froid."
     },
     "SOL-055": {
       "en": "The taps run gently from it, and once the water stops it holds only what was already in it.",
       "fr": "Les robinets en coulent doucement, et une fois l’eau coupée, il ne contient que ce qu’il avait déjà."
     },
+    "SOL-061": {
+      "en": "Stops with the grid; the solar water heater and the stove’s coil then heat the water.",
+      "fr": "S’arrête avec le réseau électrique ; le chauffe-eau solaire et le serpentin de la cuisinière chauffent alors l’eau."
+    },
+    "SOL-087": {
+      "en": "Stops with the grid: move the food to the cool box.",
+      "fr": "S’arrête avec le réseau électrique : passez les aliments dans la glacière."
+    },
+    "SOL-112": {
+      "en": "Stops with the grid, or when the operator’s network is down; the radio still brings the news.",
+      "fr": "S’arrête avec le réseau électrique, ou quand celui de l’opérateur tombe ; la radio donne encore les nouvelles."
+    },
     "SOL-178": {
-      "en": "Heats water only while the stove is lit: in winter, hot water means lighting it, even with the grid up.",
-      "fr": "Ne chauffe l’eau que quand la cuisinière est allumée : l’hiver, pour avoir de l’eau chaude, il faut l’allumer, même quand le réseau fonctionne."
+      "en": "Heats water only while the stove is lit: in a power cut with no sun, hot water means lighting it.",
+      "fr": "Ne chauffe l’eau que quand la cuisinière est allumée : pendant une coupure sans soleil, pour avoir de l’eau chaude, il faut l’allumer."
+    },
+    "SOL-227": {
+      "en": "Stops when the power or the water is cut; the two basins take over.",
+      "fr": "S’arrête quand le courant ou l’eau est coupé ; les deux bassines prennent le relais."
+    },
+    "SOL-245": {
+      "en": "Needs ice or frozen packs, ready before the cut.",
+      "fr": "Demande de la glace ou des pains de glace, prêts avant la coupure."
     }
   }
 }
